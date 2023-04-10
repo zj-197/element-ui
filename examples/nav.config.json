@@ -311,6 +311,10 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
+            },
+            {
+              "path": "/wp-form",
+              "title": "WpForm 维普表单"
             }
           ]
         }
@@ -629,6 +633,10 @@
             {
               "path": "/statistic",
               "title": "Statistic"
+            },
+            {
+              "path": "/wp-form",
+              "title": "WpForm"
             }
           ]
         }
@@ -947,6 +955,10 @@
             {
               "path": "/statistic",
               "title": "Statistic"
+            },
+            {
+              "path": "/wp-form",
+              "title": "WpForm"
             }
           ]
         }
@@ -1265,6 +1277,10 @@
             {
               "path": "/statistic",
               "title": "Statistic"
+            },
+            {
+              "path": "/wp-form",
+              "title": "WpForm"
             }
           ]
         }

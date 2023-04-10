@@ -1,0 +1,44 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(wp-form) {
+  .el-form {
+    width: 100%;
+
+    .el-form-item {
+      .el-select {
+        width: 100%;
+      }
+
+      .el-date-editor {
+        width: 100%;
+      }
+
+      .el-input-number {
+        width: 100%;
+      }
+    }
+  }
+  .form-collapse-icon {
+    transition: transform .3s;
+    font-size: 18px;
+    margin-left: 6px;
+    vertical-align: baseline;
+
+    &.is-spread {
+      transform: rotate(180deg);
+    }
+  }
+
+  .collapse-wrapper {
+    cursor: pointer;
+    font-size: 14px;
+    color: $--color-primary;
+    margin-left: 10px;
+    padding-bottom: 2px;
+
+    &:hover {
+      border-bottom: 1px solid $--color-primary;
+    }
+  }
+}

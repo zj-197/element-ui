@@ -143,6 +143,10 @@
             {
               "path": "/form",
               "title": "Form 表单"
+            },
+            {
+              "path": "/wp-form",
+              "title": "WpForm 维普表单"
             }
           ]
         },
@@ -311,10 +315,6 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
-            },
-            {
-              "path": "/wp-form",
-              "title": "WpForm 维普表单"
             }
           ]
         }

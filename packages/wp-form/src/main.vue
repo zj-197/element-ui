@@ -1,6 +1,12 @@
 <script>
+import ElForm from 'element-ui/packages/form';
+import ElButton from 'element-ui/packages/button';
 export default {
   name: 'ElWpForm',
+  components: {
+    ElForm,
+    ElButton
+  },
   props: {
     isShowResetBtn: {
       type: Boolean,
@@ -35,7 +41,18 @@ export default {
     },
     // 是否需要展开收起
     isCollapse: {
-      type: Boolean
+      type: Boolean,
+      default: true
+    },
+    // 收起文字
+    collapseText: {
+      type: String,
+      default: '收起'
+    },
+    // 展开文字
+    spreadText: {
+      type: String,
+      default: '展开'
     },
     align: {
       type: String,
@@ -43,7 +60,10 @@ export default {
     },
     model: Object,
     rules: Object,
-    labelPosition: String,
+    labelPosition: {
+      type: String,
+      default: 'top'
+    },
     labelWidth: String,
     labelSuffix: {
       type: String,
@@ -56,7 +76,10 @@ export default {
       type: Boolean,
       default: true
     },
-    size: String,
+    size: {
+      type: String,
+      default: 'default'
+    },
     disabled: Boolean,
     validateOnRuleChange: {
       type: Boolean,
@@ -76,6 +99,16 @@ export default {
     },
     isShowActions() {
       return this.isCollapse || this.isShowSearchBtn || this.isShowResetBtn;
+    },
+    toolMarginTop() {
+      const obj = {
+        default: '26px',
+        undefined: '26px',
+        medium: '24px',
+        small: '22px',
+        mini: '20px'
+      };
+      return obj[this.size];
     }
   },
   data() {
@@ -86,12 +119,12 @@ export default {
     };
   },
   render(h) {
-    const children = (Array.isArray(this.$slots.default) ? this.$slots.default : []).reduce((preVal, curVal, index) => {
+    const children = (Array.isArray(this.$slots.default) ? this.$slots.default : []).filter(item => item.tag).reduce((preVal, curVal, index) => {
       const display = this.isCollapse && this.toggleCollapse && (index >= this.contentSpan) ? 'none' : undefined;
       if (/ElCol$/g.test(curVal.tag)) {
         preVal.push(h('div', {
           style: { display }
-        }, [curVal]));
+        }, []));
       } else {
         preVal.push(h('el-col', {
           props: {
@@ -103,7 +136,7 @@ export default {
       return preVal;
     }, []);
     // 如果需要展开收起
-    if (this.isShowActions) {
+    if (this.isShowActions || Array.isArray(this.$slots.actions)) {
       const actions = (Array.isArray(this.$slots.actions) ? this.$slots.actions : [])
         .concat([this.renderBtnSearch(h), this.renderBtnReset(h), this.renderCollapse(h)]);
       children.push(h('el-col', {
@@ -112,7 +145,8 @@ export default {
         },
         style: {
           marginLeft: 'auto',
-          textAlign: 'right'
+          textAlign: 'right',
+          marginTop: this.align === 'middle' && this.labelPosition === 'top' ? this.toolMarginTop : undefined
         }
       }, actions));
     }
@@ -129,6 +163,7 @@ export default {
         model: this.model,
         rules: this.rules,
         labelPosition: this.labelPosition,
+        labelWidth: this.labelWidth,
         labelSuffix: this.labelSuffix,
         inline: this.inline,
         inlineMessage: this.inlineMessage,
@@ -140,7 +175,7 @@ export default {
         hideRequiredAsterisk: this.hideRequiredAsterisk
       },
       ref: 'ZjForm',
-      class: 'wp-form',
+      class: 'el-wp-form',
       on: this.$listeners
     }, [rowNode]);
   },
@@ -153,10 +188,10 @@ export default {
             this.toggleCollapse = !this.toggleCollapse;
           }
         },
-        class: 'collapse-wrapper'
+        class: 'el-wp-form-collapse-wrapper'
       }, [
-        h('span', this.toggleCollapse ? '展开' : '收起'),
-        h('i', { class: ['el-icon-arrow-down', 'form-collapse-icon', !this.toggleCollapse && 'is-spread'] })
+        h('span', this.toggleCollapse ? this.spreadText : this.collapseText),
+        h('i', { class: ['el-icon-arrow-down', 'el-wp-form-collapse-icon', !this.toggleCollapse && 'is-spread'] })
       ]);
     },
     openResetting() {

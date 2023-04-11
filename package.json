@@ -47,7 +47,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ElemeFE/element.git"
+    "url": "https://github.com/zj-197/element-ui"
   },
   "homepage": "http://element.eleme.io",
   "keywords": [
@@ -56,9 +56,6 @@
     "components"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ElemeFE/element/issues"
-  },
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",
   "web-types": "./web-types.json",

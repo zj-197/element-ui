@@ -1,7 +1,7 @@
 {
-  "name": "element-ui",
-  "version": "2.15.13",
-  "description": "A Component Library for Vue.js.",
+  "name": "wp-element-ui",
+  "version": "1.0.0",
+  "description": "element-ui二开版",
   "main": "lib/element-ui.common.js",
   "files": [
     "lib",

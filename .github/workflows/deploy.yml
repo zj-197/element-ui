@@ -75,8 +75,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           publish_dir: examples/element-ui # 部署打包后的 dist 目录
-            github_token: ${{ secrets.deploy }} # secret 名
-            commit_message: Update Github gh-pages # 部署时的 git 提交信息，根据自身需要填写即可
+          github_token: ${{ secrets.deploy }} # secret 名
+          commit_message: Update Github gh-pages # 部署时的 git 提交信息，根据自身需要填写即可
+
       # 创建GitHub Release
       - name: 创建GitHub Release
         id: create_release

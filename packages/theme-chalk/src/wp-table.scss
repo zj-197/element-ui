@@ -1,0 +1,54 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(table-drag-drop-menu-item) {
+  background-color: $--color-primary-light-9;
+}
+@include b(table-setting-menu-title) {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  margin: 0 0 0 60px;
+  padding: 0;
+  font-weight: 400;
+  color: #1F2D3D;
+  font-size: 16px;
+  text-align: center;
+}
+@include b(table-tools-bar-right) {
+  margin-left: auto;
+}
+@include b(table-tools-bar-left) {
+  margin-right: auto;
+}
+@include b(table-tools-icon-item) {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 22px;
+
+  &:hover {
+    color: $--color-primary;
+  }
+}
+@include b(table-tools-icon-item-size) {
+  display: inline-block;
+  cursor: pointer;
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  margin-right: 10px;
+  position: relative;
+  top: 2px;
+  margin-bottom: 2px;
+  &:hover {
+    color: $--color-primary;
+  }
+}
+@include b(table-tool-size-bar-dropdown) {
+  text-align: center;
+  width: 70px;
+  &.is-active {
+    background-color: $--color-primary-light-9;
+    color: $--color-primary;
+  }
+}

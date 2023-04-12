@@ -315,6 +315,10 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
+            },
+            {
+              "path": "/wp-table",
+              "title": "WpTable 维普表格"
             }
           ]
         }
@@ -637,6 +641,10 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
+            },
+            {
+              "path": "/wp-table",
+              "title": "WpTable"
             }
           ]
         }
@@ -959,6 +967,10 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
+            },
+            {
+              "path": "/wp-table",
+              "title": "WpTable"
             }
           ]
         }
@@ -1281,6 +1293,10 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
+            },
+            {
+              "path": "/wp-table",
+              "title": "WpTable"
             }
           ]
         }

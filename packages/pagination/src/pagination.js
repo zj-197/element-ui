@@ -13,7 +13,17 @@ export default {
       type: Number,
       default: 10
     },
-
+    hidden: {
+      type: Boolean,
+      default: false
+    },
+    align: {
+      type: String,
+      default: '',
+      validator(val) {
+        return ['left', 'center', 'right', '', undefined].indexOf(val) > -1;
+      }
+    },
     small: Boolean,
 
     total: Number,
@@ -34,7 +44,7 @@ export default {
     },
 
     layout: {
-      default: 'prev, pager, next, jumper, ->, total'
+      default: 'total, sizes, tips, prev, pager, next, jumper'
     },
 
     pageSizes: {
@@ -50,7 +60,10 @@ export default {
 
     nextText: String,
 
-    background: Boolean,
+    background: {
+      type: Boolean,
+      default: true
+    },
 
     disabled: Boolean,
 
@@ -68,10 +81,10 @@ export default {
 
   render(h) {
     const layout = this.layout;
-    if (!layout) return null;
+    if (!layout || this.hidden) return null;
     if (this.hideOnSinglePage && (!this.internalPageCount || this.internalPageCount === 1)) return null;
 
-    let template = <div class={['el-pagination', {
+    let template = <div class={['el-pagination', this.align, {
       'is-background': this.background,
       'el-pagination--small': this.small
     }] }></div>;
@@ -82,7 +95,8 @@ export default {
       next: <next></next>,
       sizes: <sizes pageSizes={ this.pageSizes }></sizes>,
       slot: <slot>{ this.$slots.default ? this.$slots.default : '' }</slot>,
-      total: <total></total>
+      total: <total></total>,
+      tips: this.tips ? <span class="el-pagination-tips">{ this.tips }</span> : null
     };
     const components = layout.split(',').map((item) => item.trim());
     const rightWrapper = <div class="el-pagination__rightwrapper"></div>;
@@ -345,6 +359,11 @@ export default {
         return Math.max(1, this.pageCount);
       }
       return null;
+    },
+    tips({ currentPage, pageSize, total }) {
+      if (total === 0) return '';
+      return currentPage === 1 ? `第1-${Math.min(pageSize, total)}条`
+        : `第${((currentPage - 1) * pageSize) + 1}-${Math.min(currentPage * pageSize, total)}条`;
     }
   },
 

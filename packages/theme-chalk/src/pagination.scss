@@ -8,6 +8,15 @@
   padding: 2px 5px;
   color: $--pagination-font-color;
   font-weight: bold;
+  &.left {
+    text-align: left;
+  }
+  &.center {
+    text-align: center;
+  }
+  &.right {
+    text-align: right;
+  }
   @include utils-clearfix;
 
   span:not([class*=suffix]),
@@ -84,7 +93,7 @@
   }
 
   .btn-next {
-    padding-left: 12px;    
+    padding-left: 12px;
   }
 
   .el-pager li.disabled {
@@ -168,7 +177,7 @@
     line-height: 18px;
     padding: 0 2px;
     height: $--pagination-button-height;
-      
+
     text-align: center;
     margin: 0 2px;
     box-sizing: border-box;
@@ -292,4 +301,10 @@
       cursor: default;
     }
   }
+}
+@include b(pagination-tips) {
+  font-size: $--pagination-font-size;
+  margin-right: 10px;
+  color: $--color-text-regular;
+  font-weight: normal;
 }

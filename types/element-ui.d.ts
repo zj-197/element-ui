@@ -90,6 +90,7 @@ import { ElDescriptionsItem } from './descriptions-item'
 import { ElResult } from './result'
 import { ElStatistic } from './statistic'
 import { ElWpForm } from './wp-form'
+import { ElWpTable } from './wp-table'
 
 export interface InstallationOptions {
   locale: any,
@@ -383,3 +384,6 @@ export class Result extends ElResult {}
 export class Statistic extends ElStatistic {}
 /** WpForm Component */
 export class WpForm extends ElWpForm {}
+
+/** WpTable Component */
+export class WpTable extends ElWpTable {}

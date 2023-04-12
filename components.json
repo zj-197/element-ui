@@ -89,5 +89,7 @@
   "descriptions-item": "./packages/descriptions-item/index.js",
   "result": "./packages/result/index.js",
   "wp-form": "./packages/wp-form/index.js",
-  "wp-form-item": "./packages/wp-form-item/index.js"
+  "wp-form-item": "./packages/wp-form-item/index.js",
+  "wp-table": "./packages/wp-table/index.js",
+  "wp-table-column": "./packages/wp-table/index.js"
 }

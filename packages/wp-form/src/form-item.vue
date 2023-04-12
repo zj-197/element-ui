@@ -17,14 +17,14 @@
         </el-tooltip>
       </template>
     </slot>
-    <template v-slot:error="{ error }">
+    <template slot="error" slot-scope="{ error }">
       <slot name="error" :error="error"/>
     </template>
   </el-form-item>
 </template>
 
 <script>
-import { PATTERN } from './config';
+import { PATTERN, regExp } from './config';
 import ElFormItem from 'element-ui/packages/form-item';
 import ElTooltip from 'element-ui/packages/tooltip';
 export default {
@@ -47,10 +47,10 @@ export default {
       }
     },
     pattern: {
-      type: String,
+      type: [String, RegExp],
       default: '',
       validator(val) {
-        return val === '' || Object.keys(PATTERN).includes(val) || val == null;
+        return regExp(val) || val === '' || Object.keys(PATTERN).includes(val) || val == null;
       }
     },
     patternMsg: {
@@ -123,7 +123,7 @@ export default {
         const obj = Object.assign({
           type: valueType,
           trigger: ['blur', 'change']
-        }, PATTERN[pattern]);
+        }, regExp(pattern) ? { pattern } : PATTERN[pattern]);
         if (this.patternMsg) {
           obj.message = this.patternMsg;
         }

@@ -1,11 +1,15 @@
 <script>
 import ElForm from 'element-ui/packages/form';
 import ElButton from 'element-ui/packages/button';
+import ElRow from 'element-ui/packages/row';
+import ElCol from 'element-ui/packages/col';
 export default {
   name: 'ElWpForm',
   components: {
     ElForm,
-    ElButton
+    ElButton,
+    ElRow,
+    ElCol
   },
   props: {
     isShowResetBtn: {

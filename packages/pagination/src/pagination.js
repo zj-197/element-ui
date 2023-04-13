@@ -111,9 +111,13 @@ export default {
       }
 
       if (!haveRightWrapper) {
-        template.children.push(TEMPLATE_MAP[compo]);
+        if (TEMPLATE_MAP[compo]) {
+          template.children.push(TEMPLATE_MAP[compo]);
+        }
       } else {
-        rightWrapper.children.push(TEMPLATE_MAP[compo]);
+        if (TEMPLATE_MAP[compo]) {
+          rightWrapper.children.push(TEMPLATE_MAP[compo]);
+        }
       }
     });
 
@@ -361,7 +365,7 @@ export default {
       return null;
     },
     tips({ currentPage, pageSize, total }) {
-      if (total === 0) return '';
+      if (total === 0 || total == null || total === '') return '';
       return currentPage === 1 ? `第1-${Math.min(pageSize, total)}条`
         : `第${((currentPage - 1) * pageSize) + 1}-${Math.min(currentPage * pageSize, total)}条`;
     }

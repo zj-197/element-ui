@@ -45,11 +45,8 @@ export default {
     // 分页布局方式
     paginationProps: {
       type: Object,
-      default: function() {
-        return {justify: 'start'};
-      },
-      validator(val) {
-        return ['layout', 'autoScroll', 'justify', 'background', 'pageSizes', 'hidden'].some(key => key in val);
+      default() {
+        return Object.create(null);
       }
     },
     // 默认的pageSize
@@ -60,9 +57,7 @@ export default {
     // 加载数据
     loadData: {
       type: [Array, Function],
-      default: function() {
-        return ['refresh', 'setting', 'size'];
-      }
+      required: true
     },
 
     size: {
@@ -185,6 +180,12 @@ export default {
     isShowSizeTool: {
       type: Boolean,
       default: true
+    },
+    toolAlign: {
+      type: String,
+      validator(val) {
+        return [undefined, '', 'left', 'right'].indexOf(val) > -1;
+      }
     }
   },
   data(vm) {
@@ -199,12 +200,11 @@ export default {
       pagination: {
         [realPaginationKey.page]: 1,
         [realPaginationKey.pageSize]: vm.pageSize,
-        [realPaginationKey.total]: 1,
-        isReloading: false
+        [realPaginationKey.total]: 0
       },
       isError: false, // 是否加载错误
       isLoading: false, // 是否加载中
-      selected: null, // 默认选中的selected
+      selected: [], // 默认选中的selected
       tableSize: this.size,
       controlTableColumns: [] // 受控制的el-tableColumns
     };
@@ -281,9 +281,8 @@ export default {
         [this.realPaginationKey.page]: page,
         [this.realPaginationKey.pageSize]: pageSize
       }).then(res => {
-        const list = res[this.realPaginationKey.tableList];
-        if (res && isObject(res) && Array.isArray(list)) {
-          this.tableList = list;
+        if (res && isObject(res) && Object.keys(res).length > 0) {
+          this.tableList = res[this.realPaginationKey.tableList];
           Object.keys(this.pagination).forEach(key => {
             if (Object.prototype.hasOwnProperty.call(res, key)) {
               this.setPagination(key, res[key]);
@@ -343,7 +342,7 @@ export default {
     },
     // 获取表格实例
     getTableVm() {
-      return this.$refs['wp-table'];
+      return this.$refs.wpTable;
     },
     // 设置pagination数据
     setPagination(key, value) {
@@ -355,24 +354,25 @@ export default {
       const rowKey = this.rowKey;
       const index = findIndex(selected, item => {
         const value = isObject(item) ? item[rowKey] : item;
-        return value === row[rowKey];
+        return value + '' === row[rowKey] + '';
       });
-      return selected.length >= this.maxSelect
-        ? index !== -1
-        : true;
+      return selected.length >= this.maxSelect ? index !== -1 : true;
     },
     setSelected(list) {
       if (Array.isArray(list)) {
         const tableVm = this.getTableVm();
         tableVm.clearSelection();
         list.forEach(item => {
-          const row = isObject(item) ? item : {[this.rowKey]: item};
-          tableVm.toggleRowSelection(row);
+          const currentRow = this.tableList.find(row => {
+            const value = isObject(item) ? item[this.rowKey] : item;
+            return value + '' === row[this.rowKey] + '';
+          });
+          tableVm.toggleRowSelection(currentRow);
         });
       }
     },
     getSelected() {
-      return this.selected;
+      return this.selected || [];
     },
     // 获取受控制的列
     getElTableColumns() {
@@ -397,12 +397,13 @@ export default {
     // 渲染slot为空的插槽
     renderEmpty(h) {
       const scoped = typeof this.$scopedSlots.empty === 'function' ? this.$scopedSlots.empty({
-        isError: this.isError
+        isError: this.isError,
+        isLoading: this.isLoading
       }) : null;
-      if (this.$slots.empty) return this.$slots.empty;
       if (scoped) return scoped;
+      if (this.$slots.empty) return this.$slots.empty;
       return (
-        <el-empty description={this.isError ? '加载失败' : this.emptyText} image-size={100} style="line-height: 16px">
+        <el-empty class={{'el-wp-table-empty-is-loading': this.isLoading}} description={this.isError ? '加载失败' : this.emptyText} image-size={100} style="line-height: 16px">
           <el-button type="primary" size="mini"
             on-click={() => {
               if (this.isError) {
@@ -422,10 +423,10 @@ export default {
     renderPagination(h) {
       return h('el-pagination', {
         props: {
+          ...this.paginationProps,
           total: this.pagination[this.realPaginationKey.total],
           pageSize: this.pagination[this.realPaginationKey.pageSize],
-          currentPage: this.pagination[this.realPaginationKey.page],
-          ...this.paginationProps
+          currentPage: this.pagination[this.realPaginationKey.page]
         },
         on: {
           'size-change': val => this.handlePagination({
@@ -481,7 +482,8 @@ export default {
           isShowSettingTool: this.isShowSettingTool,
           isShowRefreshTool: this.isShowRefreshTool,
           controlTableColumns: this.controlTableColumns,
-          tableSize: this.tableSize
+          tableSize: this.tableSize,
+          justify: this.toolAlign
         },
         on: {
           onTableSize: (val) => {
@@ -549,8 +551,10 @@ export default {
       <div style={{width: this.width}}>
         {this.renderToolBar(h)}
         <el-table
-          ref="wp-table"
+          ref="wpTable"
+          class="el-wp-table"
           element-loading-text="加载中..."
+          element-loading-background="rgba(255, 255, 255, 0.7)"
           v-loading={this.isLoading}
           on-selection-change={this.handleSelectionChange}
           {...{

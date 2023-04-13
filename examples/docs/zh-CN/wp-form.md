@@ -398,11 +398,12 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 </script>
 ```
 :::
-### Wp-Form Attributes
+
+### Wp-Form New Attributes 新增的prop
 
 | 参数                      | 说明                                                           | 类型            | 可选值                   | 默认值   |
 |-------------------------|--------------------------------------------------------------|---------------|-----------------------|-------|
- | col-count               | 表单列数                                                         | number/string | —                     | 3     |
+| col-count               | 表单列数                                                         | number/string | —                     | 3     |
 | gutter                  | 表单每列间隔                                                       | number/string | —                     | 20    |
 | is-show-reset-btn       | 是否显示重置按钮                                                     | boolean       | —                     | true  |
 | reset-btn-text          | 重置按钮文字                                                       | string        | —                     | 重 置   |
@@ -412,6 +413,11 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 | collapse-text           | 收起文字                                                         | string        | —                     | 收起    |
 | spread-text             | 展开文字                                                         | string        | —                     | 展开    |
 | align                   | 垂直方向对齐方式                                                     | string        | top/middle/bottom     | top   |
+
+### Form Attributes
+
+| 参数                      | 说明                                                           | 类型            | 可选值                   | 默认值   |
+|-------------------------|--------------------------------------------------------------|---------------|-----------------------|-------|
 | model                   | 表单数据对象                                                       | object        | —                     | —     |
 | rules                   | 表单验证规则                                                       | object        | —                     | —     |
 | inline                  | 行内表单模式                                                       | boolean       | —                     | false |

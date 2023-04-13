@@ -158,6 +158,10 @@
               "title": "Table 表格"
             },
             {
+              "path": "/wp-table",
+              "title": "WpTable 维普表格"
+            },
+            {
               "path": "/tag",
               "title": "Tag 标签"
             },
@@ -315,10 +319,6 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
-            },
-            {
-              "path": "/wp-table",
-              "title": "WpTable 维普表格"
             }
           ]
         }
@@ -480,6 +480,10 @@
               "title": "Table"
             },
             {
+              "path": "/wp-table",
+              "title": "WpTable"
+            },
+            {
               "path": "/tag",
               "title": "Tag"
             },
@@ -641,10 +645,6 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
-            },
-            {
-              "path": "/wp-table",
-              "title": "WpTable"
             }
           ]
         }
@@ -806,6 +806,10 @@
               "title": "Table"
             },
             {
+              "path": "/wp-table",
+              "title": "WpTable"
+            },
+            {
               "path": "/tag",
               "title": "Tag"
             },
@@ -967,10 +971,6 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
-            },
-            {
-              "path": "/wp-table",
-              "title": "WpTable"
             }
           ]
         }

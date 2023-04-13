@@ -81,7 +81,7 @@ import ElRow from 'element-ui/packages/row';
 import ElCheckbox from 'element-ui/packages/checkbox';
 import ElScrollbar from 'element-ui/packages/scrollbar';
 export default {
-  name: 'ToolBar',
+  name: 'ElWpToolBar',
   props: {
     isShowRefreshTool: Boolean,
     isShowSizeTool: Boolean,

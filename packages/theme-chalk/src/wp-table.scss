@@ -1,6 +1,9 @@
 @import "mixins/mixins";
 @import "common/var";
 
+@include b(wp-table) {
+  margin-bottom: 25px;
+}
 @include b(table-drag-drop-menu-item) {
   background-color: $--color-primary-light-9;
 }
@@ -51,4 +54,7 @@
     background-color: $--color-primary-light-9;
     color: $--color-primary;
   }
+}
+@include b(wp-table-empty-is-loading) {
+  opacity: 0;
 }

@@ -116,15 +116,22 @@
           view-class="el-select-dropdown__list"
           ref="scrollbar"
           :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
-          v-show="options.length > 0 && !loading">
+          v-show="options.length > 0 && !customLoading">
           <el-option
             :value="query"
             created
             v-if="showNewOption">
           </el-option>
-          <slot></slot>
+          <slot v-if="$slots.default"></slot>
+          <el-option
+              v-else
+              v-for="option in list"
+              :key="'wp-el-select-option' + option[valueKey]"
+              :value="option[valueKey]"
+              :disabled="Boolean(option[disabledKey])"
+              :label="option[labelKey]"/>
         </el-scrollbar>
-        <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
+        <template v-if="emptyText && (!allowCreate || customLoading || (allowCreate && options.length === 0 ))">
           <slot name="empty" v-if="$slots.empty"></slot>
           <p class="el-select-dropdown__empty" v-else>
             {{ emptyText }}
@@ -141,7 +148,7 @@
   import Locale from 'element-ui/src/mixins/locale';
   import ElInput from 'element-ui/packages/input';
   import ElSelectMenu from './select-dropdown.vue';
-  import ElOption from './option.vue';
+  import ElOption from 'element-ui/packages/option';
   import ElTag from 'element-ui/packages/tag';
   import ElScrollbar from 'element-ui/packages/scrollbar';
   import debounce from 'throttle-debounce/debounce';
@@ -149,6 +156,7 @@
   import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
   import scrollIntoView from 'element-ui/src/utils/scroll-into-view';
   import { getValueByPath, valueEquals, isIE, isEdge } from 'element-ui/src/utils/util';
+  import { isObject } from 'element-ui/src/utils/types';
   import NavigationMixin from './navigation-mixin';
   import { isKorean } from 'element-ui/src/utils/shared';
 
@@ -179,6 +187,10 @@
       _elFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
       },
+      list() {
+        if (typeof this.optionData === 'function') return this.listData;
+        return this.optionData;
+      },
 
       readonly() {
         return !this.filterable || this.multiple || (!isIE() && !isEdge() && !this.visible);
@@ -204,7 +216,7 @@
       },
 
       emptyText() {
-        if (this.loading) {
+        if (this.customLoading) {
           return this.loadingText || this.t('el.select.loading');
         } else {
           if (this.remote && this.query === '' && this.options.length === 0) return false;
@@ -255,6 +267,22 @@
     props: {
       name: String,
       id: String,
+      optionData: {
+        type: [Function, Array]
+      },
+      triggerMethod: {
+        type: String,
+        default: 'immediate'
+      },
+      isServer: Boolean,
+      labelKey: {
+        type: String,
+        default: 'label'
+      },
+      disabledKey: {
+        type: String,
+        default: 'disabled'
+      },
       value: {
         required: true
       },
@@ -330,7 +358,9 @@
         currentPlaceholder: '',
         menuVisibleOnFocus: false,
         isOnComposition: false,
-        isSilentBlur: false
+        isSilentBlur: false,
+        listData: [], // 数据项
+        customLoading: this.loading // 自定义loading
       };
     },
 
@@ -340,7 +370,9 @@
           this.resetInputHeight();
         });
       },
-
+      loading(val) {
+        this.customLoading = val;
+      },
       propPlaceholder(val) {
         this.cachedPlaceHolder = this.currentPlaceholder = val;
       },
@@ -447,6 +479,32 @@
         if (this.isOnComposition) return;
 
         this.navigateOptions(direction);
+      },
+      onFocus() {
+        if (typeof this.optionData === 'function' && this.isLoad !== true && this.triggerMethod === 'focus') {
+          this.customLoading = true;
+          this.optionData().then(res => {
+            this.listData = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];
+            this.customLoading = false;
+            this.isLoad = true;
+          }).catch(e => {
+            this.customLoading = false;
+            this.listData = [];
+          });
+        }
+      },
+      getData() {
+        if (typeof this.optionData === 'function' && this.triggerMethod === 'immediate') {
+          this.customLoading = true;
+          return this.optionData().then(res => {
+            this.listData = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];
+            this.customLoading = false;
+          }).catch(e => {
+            this.customLoading = false;
+            this.listData = [];
+            return e;
+          });
+        }
       },
       handleComposition(event) {
         const text = event.target.value;
@@ -569,7 +627,6 @@
           this.resetInputHeight();
         });
       },
-
       handleFocus(event) {
         if (!this.softFocus) {
           if (this.automaticDropdown || this.filterable) {
@@ -578,6 +635,7 @@
             }
             this.visible = true;
           }
+          this.onFocus();
           this.$emit('focus', event);
         } else {
           this.softFocus = false;
@@ -846,6 +904,9 @@
     },
 
     created() {
+      if (!this.$isServer && !this.isServer) {
+        this.getData();
+      }
       this.cachedPlaceHolder = this.currentPlaceholder = this.propPlaceholder;
       if (this.multiple && !Array.isArray(this.value)) {
         this.$emit('input', []);
@@ -864,6 +925,14 @@
 
       this.$on('handleOptionClick', this.handleOptionSelect);
       this.$on('setSelected', this.setSelected);
+    },
+    fetch() {
+      if (this && typeof this.optionData === 'function' && this.isServer) {
+        return this.getData();
+      }
+      if (!this && process.env.NODE_ENV !== 'production') {
+        console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
+      }
     },
 
     mounted() {

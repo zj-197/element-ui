@@ -3,9 +3,10 @@ import ElPagination from 'element-ui/packages/pagination';
 import ElTable from 'element-ui/packages/table';
 import ElEmpty from 'element-ui/packages/empty';
 import ElButton from 'element-ui/packages/button';
-import { isObject } from 'element-ui/src/utils/types';
+import {isObject} from 'element-ui/src/utils/types';
 import ToolBar from './ToolBar.vue';
-import { findIndex } from 'element-ui/src/utils/lodash';
+import {findIndex} from 'element-ui/src/utils/lodash';
+
 export default {
   name: 'ElWpTable',
   props: {
@@ -256,8 +257,11 @@ export default {
   },
   // 服务端渲染
   fetch() {
-    if (this.loadDataIsFn && this.isServer) {
-      this.getTableList(this.pagination);
+    if (this && this.loadDataIsFn && this.isServer) {
+      return this.getTableList(this.pagination);
+    }
+    if (!this && process.env.NODE_ENV !== 'production') {
+      console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
     }
   },
   mounted() {
@@ -403,7 +407,8 @@ export default {
       if (scoped) return scoped;
       if (this.$slots.empty) return this.$slots.empty;
       return (
-        <el-empty class={{'el-wp-table-empty-is-loading': this.isLoading}} description={this.isError ? '加载失败' : this.emptyText} image-size={100} style="line-height: 16px">
+        <el-empty class={{'el-wp-table-empty-is-loading': this.isLoading}}
+          description={this.isError ? '加载失败' : this.emptyText} image-size={100} style="line-height: 16px">
           <el-button type="primary" size="mini"
             on-click={() => {
               if (this.isError) {

@@ -1,16 +1,6 @@
 ## 快速上手
 
-本节将介绍如何在项目中使用 Element。
-
-### 使用 vue-cli@3
-
-我们为新版的 vue-cli 准备了相应的 [Element 插件](https://github.com/ElementUI/vue-cli-plugin-element)，你可以用它们快速地搭建一个基于 Element 的项目。
-
-### 使用 Starter Kit
-
-我们提供了通用的[项目模板](https://github.com/ElementUI/element-starter)，你可以直接使用。对于 Laravel 用户，我们也准备了相应的[模板](https://github.com/ElementUI/element-in-laravel-starter)，同样可以直接下载使用。
-
-如果不希望使用我们提供的模板，请继续阅读。
+本节将介绍如何在项目中使用 WpElement。
 
 ### 引入 Element
 
@@ -22,8 +12,8 @@
 
 ```javascript
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'wp-element-ui';
+import 'wp-element-ui/lib/theme-chalk/index.css';
 import App from './App.vue';
 
 Vue.use(ElementUI);
@@ -55,7 +45,7 @@ npm install babel-plugin-component -D
     [
       "component",
       {
-        "libraryName": "element-ui",
+        "libraryName": "wp-element-ui",
         "styleLibraryName": "theme-chalk"
       }
     ]
@@ -67,7 +57,7 @@ npm install babel-plugin-component -D
 
 ```javascript
 import Vue from 'vue';
-import { Button, Select } from 'element-ui';
+import { Button, Select } from 'wp-element-ui';
 import App from './App.vue';
 
 Vue.component(Button.name, Button);

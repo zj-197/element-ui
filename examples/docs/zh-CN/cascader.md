@@ -37,7 +37,8 @@
             label: '设计原则',
             children: [{
               value: 'yizhi',
-              label: '一致'
+              label: '一致',
+              children: [],  
             }, {
               value: 'fankui',
               label: '反馈'

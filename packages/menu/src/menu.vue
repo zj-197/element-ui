@@ -106,6 +106,10 @@
         type: String,
         default: ''
       },
+      defaultSubActive: {
+        type: String,
+        default: ''
+      },
       defaultOpeneds: Array,
       uniqueOpened: Boolean,
       router: Boolean,
@@ -120,14 +124,16 @@
       collapseTransition: {
         type: Boolean,
         default: true
-      }
+      },
+      hoverBgIsActiveBg: Boolean // hover时的背景是否为激活时的背景
     },
     data() {
       return {
         activeIndex: this.defaultActive,
         openedMenus: (this.defaultOpeneds && !this.collapse) ? this.defaultOpeneds.slice(0) : [],
         items: {},
-        submenus: {}
+        submenus: {},
+        subActiveIndex: this.defaultSubActive
       };
     },
     computed: {
@@ -244,7 +250,7 @@
       handleSubmenuClick(submenu) {
         const { index, indexPath } = submenu;
         let isOpened = this.openedMenus.indexOf(index) !== -1;
-
+        this.subActiveIndex = index;
         if (isOpened) {
           this.closeMenu(index);
           this.$emit('close', index, indexPath);
@@ -272,7 +278,7 @@
           this.routeToItem(item, (error) => {
             this.activeIndex = oldActiveIndex;
             if (error) {
-              // vue-router 3.1.0+ push/replace cause NavigationDuplicated error 
+              // vue-router 3.1.0+ push/replace cause NavigationDuplicated error
               // https://github.com/ElemeFE/element/issues/17044
               if (error.name === 'NavigationDuplicated') return
               console.error(error)

@@ -184,11 +184,11 @@
       },
       resetTabindex(ele) { // 下次tab时组件聚焦元素
         this.removeTabindex();
-        ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
+        ele && ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
       },
       removeTabindex() {
-        this.triggerElm.setAttribute('tabindex', '-1');
-        this.menuItemsArray.forEach((item) => {
+        this.triggerElm && this.triggerElm.setAttribute('tabindex', '-1');
+        this.menuItemsArray && this.menuItemsArray.forEach((item) => {
           item.setAttribute('tabindex', '-1');
         });
       },
@@ -208,7 +208,6 @@
         this.triggerElm = splitButton
           ? this.$refs.trigger.$el
           : this.$slots.default[0].elm;
-
         let dropdownElm = this.dropdownElm;
 
         this.triggerElm.addEventListener('keydown', handleTriggerKeyDown); // triggerElm keydown

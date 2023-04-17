@@ -5,7 +5,7 @@ import ElEmpty from 'element-ui/packages/empty';
 import ElButton from 'element-ui/packages/button';
 import {isObject} from 'element-ui/src/utils/types';
 import ToolBar from './ToolBar.vue';
-import {findIndex} from 'element-ui/src/utils/lodash';
+import {findIndex, assign} from 'element-ui/src/utils/lodash';
 
 export default {
   name: 'ElWpTable',
@@ -190,7 +190,7 @@ export default {
     }
   },
   data(vm) {
-    const realPaginationKey = Object.assign({
+    const realPaginationKey = assign({
       page: 'page',
       pageSize: 'pageSize',
       total: 'total',
@@ -238,7 +238,7 @@ export default {
       }, Object.create(null));
     },
     realPaginationKey() {
-      return Object.assign({
+      return assign({
         page: 'page',
         pageSize: 'pageSize',
         total: 'total',

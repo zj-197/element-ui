@@ -50,7 +50,7 @@ export default {
       type: [String, RegExp],
       default: '',
       validator(val) {
-        return regExp(val) || val === '' || Object.keys(PATTERN).includes(val) || val == null;
+        return val == null || val === '' || Object.keys(PATTERN).includes(val) || regExp(val);
       }
     },
     patternMsg: {
@@ -120,10 +120,18 @@ export default {
         });
       }
       if (pattern) {
-        const obj = Object.assign({
+        const obj = {
           type: valueType,
           trigger: ['blur', 'change']
-        }, regExp(pattern) ? { pattern } : PATTERN[pattern]);
+        };
+        if (regExp(pattern)) {
+          obj.pattern = pattern;
+        } else {
+          if (PATTERN[pattern]) {
+            obj.pattern = PATTERN[pattern].pattern;
+            obj.message = PATTERN[pattern].message;
+          }
+        }
         if (this.patternMsg) {
           obj.message = this.patternMsg;
         }

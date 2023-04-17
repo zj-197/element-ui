@@ -24,12 +24,14 @@
       :class="triggerClass"
       @click="handleFocus">
     </i>
-    <i slot="suffix"
-      class="el-input__icon"
-      @click="handleClickIcon"
-      :class="[showClose ? '' + clearIcon : '']"
-      v-if="haveTrigger">
-    </i>
+    <template slot="suffix">
+      <slot name="suffix" slot="suffix"></slot>
+      <i class="el-input__icon"
+         @click="handleClickIcon"
+         :class="[showClose ? '' + clearIcon : '']"
+         v-if="haveTrigger">
+      </i>
+    </template>
   </el-input>
   <div
     class="el-date-editor el-range-editor el-input__inner"

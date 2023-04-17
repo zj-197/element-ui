@@ -2,10 +2,11 @@
   <li class="el-menu-item"
     role="menuitem"
     tabindex="-1"
-    :style="[paddingStyle, itemStyle, { backgroundColor }]"
+    :style="[paddingStyle, menuItemStyle]"
     :class="{
       'is-active': active,
-      'is-disabled': disabled
+      'is-disabled': disabled,
+      'is-hover-bg': realHoverBgIsActiveBg && active
     }"
     @click="handleClick"
     @mouseenter="onMouseEnter"
@@ -32,6 +33,8 @@
   import Menu from './menu-mixin';
   import ElTooltip from 'element-ui/packages/tooltip';
   import Emitter from 'element-ui/src/mixins/emitter';
+  import {assign} from 'element-ui/src/utils/lodash';
+  import {isObject} from 'element-ui/src/utils/types';
 
   export default {
     name: 'ElMenuItem',
@@ -48,17 +51,48 @@
         validator: val => typeof val === 'string' || val === null
       },
       route: [String, Object],
-      disabled: Boolean
+      disabled: Boolean,
+      itemStyle: Object,
+      activeStyle: Object, // 激活时的样式
+      hoverStyle: Object,
+      hoverBgIsActiveBg: {
+        type: Boolean,
+        default: undefined
+      }
+    },
+    data() {
+      return {
+        isHover: false
+      };
     },
     computed: {
       active() {
         return this.index === this.rootMenu.activeIndex;
       },
-      hoverBackground() {
-        return this.rootMenu.hoverBackground;
+      realHoverBgIsActiveBg() {
+        if (typeof this.hoverBgIsActiveBg === 'boolean') return this.hoverBgIsActiveBg;
+        return this.rootMenu.hoverBgIsActiveBg;
       },
-      backgroundColor() {
-        return this.rootMenu.backgroundColor || '';
+      realHoverStyle() {
+        const style = { background: this.rootMenu.hoverBackground };
+        if (isObject(this.hoverStyle)) return assign({}, this.realItemStyle, style, this.hoverStyle);
+        return assign({}, this.realItemStyle, style);
+      },
+      realItemStyle() {
+        const style = {
+          color: this.textColor,
+          background: this.rootMenu.backgroundColor
+        };
+        if (isObject(this.itemStyle)) return assign(style, this.itemStyle);
+        return style;
+      },
+      realActiveStyle() {
+        const style = { color: this.activeTextColor };
+        if (this.realHoverBgIsActiveBg && this.rootMenu.hoverBackground) {
+          style.background = this.rootMenu.hoverBackground;
+        }
+        if (isObject(this.activeStyle)) return assign({}, this.realItemStyle, style, this.activeStyle);
+        return assign({}, this.realItemStyle, style);
       },
       activeTextColor() {
         return this.rootMenu.activeTextColor || '';
@@ -69,10 +103,13 @@
       mode() {
         return this.rootMenu.mode;
       },
-      itemStyle() {
-        const style = {
-          color: this.active ? this.activeTextColor : this.textColor
-        };
+      menuItemStyle() {
+        const style = this.active ? this.realActiveStyle : this.isHover ? this.realHoverStyle : this.realItemStyle;
+        Object.keys(style).forEach(key => {
+          if (!style[key]) {
+            delete style[key];
+          }
+        });
         if (this.mode === 'horizontal' && !this.isNested) {
           style.borderBottomColor = this.active
             ? (this.rootMenu.activeTextColor ? this.activeTextColor : '')
@@ -86,12 +123,10 @@
     },
     methods: {
       onMouseEnter() {
-        if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return;
-        this.$el.style.backgroundColor = this.hoverBackground;
+        this.isHover = true;
       },
       onMouseLeave() {
-        if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return;
-        this.$el.style.backgroundColor = this.backgroundColor;
+        this.isHover = false;
       },
       handleClick() {
         if (!this.disabled) {

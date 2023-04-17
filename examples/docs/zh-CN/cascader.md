@@ -13,7 +13,8 @@
   <el-cascader
     v-model="value"
     :options="options"
-    @change="handleChange"></el-cascader>
+    @change="handleChange">
+  </el-cascader>
 </div>
 <div class="block">
   <span class="demonstration">hover 触发子菜单</span>
@@ -1922,10 +1923,11 @@
 | getCheckedNodes | 获取选中的节点 | (leafOnly) 是否只是叶子节点，默认值为 `false` |
 
 ### Cascader Slots
-| 名称     | 说明 |
-|---------|-------------|
-| - | 自定义备选项的节点内容，参数为 { node, data }，分别为当前节点的 Node 对象和数据 |
-| empty  | 无匹配选项时的内容 |
+| 名称     | 说明                                                 |
+|--------|----------------------------------------------------|
+| -      | 自定义备选项的节点内容，参数为 { node, data }，分别为当前节点的 Node 对象和数据 |
+| empty  | 无匹配选项时的内容                                          |
+| prefix | 输入框前缀的插入内容                                         |
 
 ### CascaderPanel Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

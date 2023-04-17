@@ -26,6 +26,9 @@
   .el-input__inner {
     cursor: pointer;
     padding-right: 35px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     &:focus {
       border-color: $--select-input-focus-border-color;

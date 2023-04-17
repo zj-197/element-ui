@@ -40,6 +40,7 @@
           ]"
           @click.stop="toggleDropDownVisible()"></i>
       </template>
+      <slot slot="prefix" name="prefix"></slot>
     </el-input>
 
     <div v-if="multiple" class="el-cascader__tags">

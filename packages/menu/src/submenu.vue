@@ -47,6 +47,13 @@
       popperAppendToBody: {
         type: Boolean,
         default: undefined
+      },
+      titleBackground: String,
+      titleHoverBackground: String,
+      titleActiveBackground: String,
+      titleHoverBgIsActiveBg: {
+        type: Boolean,
+        default: undefined
       }
     },
 
@@ -74,6 +81,19 @@
         return this.popperAppendToBody === undefined
           ? this.isFirstLevel
           : this.popperAppendToBody;
+      },
+      realTitleHoverBgIsActiveBg() {
+        if (typeof this.titleHoverBgIsActiveBg === 'boolean') return this.titleHoverBgIsActiveBg;
+        return this.rootMenu.hoverBgIsActiveBg;
+      },
+      realTitleHoverBackground() {
+        return this.titleHoverBackground || this.hoverBackground;
+      },
+      realTitleActiveBackground() {
+        return this.titleActiveBackground || this.realTitleHoverBgIsActiveBg ? this.realTitleHoverBackground : this.titleActiveBackground;
+      },
+      isCurrentActive() {
+        return this.rootMenu.activeIndex ? false : this.rootMenu.subActiveIndex === this.index;
       },
       menuTransitionName() {
         return this.rootMenu.collapse ? 'el-zoom-in-left' : 'el-zoom-in-top';
@@ -121,7 +141,8 @@
       titleStyle() {
         if (this.mode !== 'horizontal') {
           return {
-            color: this.textColor
+            color: this.textColor,
+            background: this.isCurrentActive ? this.realTitleActiveBackground : this.titleBackground || this.backgroundColor
           };
         }
         return {
@@ -222,14 +243,15 @@
         }
       },
       handleTitleMouseenter() {
-        if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return;
+        if (this.mode === 'horizontal' && !this.realTitleHoverBackground) return;
         const title = this.$refs['submenu-title'];
-        title && (title.style.backgroundColor = this.rootMenu.hoverBackground);
+        title && (title.style.background = this.isCurrentActive ? this.realTitleActiveBackground : this.realTitleHoverBackground);
       },
       handleTitleMouseleave() {
-        if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return;
+        const background = this.titleBackground || this.backgroundColor;
+        if (this.mode === 'horizontal' && !background) return;
         const title = this.$refs['submenu-title'];
-        title && (title.style.backgroundColor = this.rootMenu.backgroundColor || '');
+        title && (title.style.background = this.isCurrentActive ? this.realTitleActiveBackground : background);
       },
       updatePlacement() {
         this.currentPlacement = this.mode === 'horizontal' && this.isFirstLevel
@@ -268,7 +290,6 @@
         opened,
         paddingStyle,
         titleStyle,
-        backgroundColor,
         rootMenu,
         currentPlacement,
         menuTransitionName,
@@ -331,12 +352,12 @@
           on-focus={this.handleMouseenter}
         >
           <div
-            class="el-submenu__title"
+            class={['el-submenu__title', this.isCurrentActive && this.realTitleHoverBgIsActiveBg && 'is-hover-bg']}
             ref="submenu-title"
             on-click={this.handleClick}
             on-mouseenter={this.handleTitleMouseenter}
             on-mouseleave={this.handleTitleMouseleave}
-            style={[paddingStyle, titleStyle, { backgroundColor }]}
+            style={[paddingStyle, titleStyle]}
           >
             {$slots.title}
             <i class={[ 'el-submenu__icon-arrow', submenuTitleIcon ]}></i>

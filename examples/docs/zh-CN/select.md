@@ -9,7 +9,8 @@
 ```html
 <template>
   <el-select v-model="value" placeholder="请选择">
-    <el-option v-for="option in options" :label="option.label" :value="option.value" ></el-option>
+    <el-option v-for="option in options" :key="'select-md' + option.value"
+               :label="option.label" :value="option.value" ></el-option>
   </el-select>
 </template>
 

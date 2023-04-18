@@ -30,6 +30,9 @@
     @include when(align-top) {
       align-items: flex-start;
     }
+    @include when(wrap) {
+      flex-wrap: wrap;
+    }
 
     @include when(align-middle) {
       align-items: center;

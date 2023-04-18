@@ -31,6 +31,7 @@
   :default-active="activeIndex2"
   class="el-menu-demo"
   mode="horizontal"
+  menu-trigger="click"
   @select="handleSelect"
   background-color="#545c64"
   text-color="#fff"
@@ -38,7 +39,7 @@
   <el-menu-item index="1">处理中心</el-menu-item>
   <el-submenu index="2">
     <template slot="title">我的工作台</template>
-    <el-menu-item index="2-1">选项1</el-menu-item>
+    <el-menu-item index="2-1" hover-bg-is-active-bg>选项1</el-menu-item>
     <el-menu-item index="2-2">选项2</el-menu-item>
     <el-menu-item index="2-3">选项3</el-menu-item>
     <el-submenu index="2-4">
@@ -80,11 +81,10 @@
   <el-col :span="12">
     <h5>默认颜色</h5>
     <el-menu
-      default-active="2"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose">
-      <el-submenu index="1">
+      <el-submenu index="1" title-background="#f00" title-active-background="#409EFF" title-hover-background="#16487e">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span>导航一</span>
@@ -119,12 +119,12 @@
   <el-col :span="12">
     <h5>自定义颜色</h5>
     <el-menu
-      default-active="2"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       background-color="#545c64"
       text-color="#fff"
+      hover-bg-is-active-bg
       active-text-color="#ffd04b">
       <el-submenu index="1">
         <template slot="title">

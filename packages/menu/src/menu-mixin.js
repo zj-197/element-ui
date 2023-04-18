@@ -23,22 +23,24 @@ export default {
       return parent;
     },
     paddingStyle() {
-      if (this.rootMenu.mode !== 'vertical') return {};
+      const step = this.rootMenu.paddingLrStep;
+      const unit = this.rootMenu.paddingLrUnit;
+      if (this.rootMenu.mode !== 'vertical') return {paddingLeft: step + unit, paddingRight: step + unit};
 
-      let padding = 20;
+      let padding = step;
       let parent = this.$parent;
 
       if (this.rootMenu.collapse) {
-        padding = 20;
+        padding = step;
       } else {
         while (parent && parent.$options.componentName !== 'ElMenu') {
           if (parent.$options.componentName === 'ElSubmenu') {
-            padding += 20;
+            padding += step;
           }
           parent = parent.$parent;
         }
       }
-      return {paddingLeft: padding + 'px'};
+      return {paddingLeft: padding + unit, paddingRight: step + unit};
     }
   }
 };

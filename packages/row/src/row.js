@@ -12,9 +12,18 @@ export default {
     type: String,
     justify: {
       type: String,
-      default: 'start'
+      default: 'start',
+      validator(val) {
+        return ['', null, undefined, 'space-between', 'space-around', 'end', 'center'].indexOf(val) > -1;
+      }
     },
-    align: String
+    isWrap: Boolean,
+    align: {
+      type: String,
+      validator(val) {
+        return ['', null, undefined, 'top', 'middle', 'bottom'].indexOf(val) > -1;
+      }
+    }
   },
 
   computed: {
@@ -36,7 +45,7 @@ export default {
         'el-row',
         this.justify !== 'start' ? `is-justify-${this.justify}` : '',
         this.align ? `is-align-${this.align}` : '',
-        { 'el-row--flex': this.type === 'flex' }
+        { 'el-row--flex': this.type === 'flex', 'is-wrap': this.isWrap }
       ],
       style: this.style
     }, this.$slots.default);

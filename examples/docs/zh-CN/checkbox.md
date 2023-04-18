@@ -76,6 +76,63 @@
 </script>
 ```
 :::
+### 传入option-data生成多选框组
+
+可以传入`option-data`属性来生成多选框组
+
+:::demo `option-data`可以传入一个返回promise的函数也可以传入一个数组，`label-key`作为 label 唯一标识的键名，`value-key`作为 value 唯一标识的键名，`disabled-key`作为 disabled 唯一标识的键名
+
+```html
+<template>
+  <el-row type="flex" justify="space-between">
+    <div>
+      <div style="margin-bottom: 15px">传入一个promise函数</div>  
+      <el-checkbox-group
+        v-model="checkList1" :option-data="getCheckboxes"
+        label-key="label">
+      </el-checkbox-group>
+    </div>
+    <div>
+      <div style="margin-bottom: 15px">传入一个数组</div>
+      <el-checkbox-group
+        v-model="checkList2" :option-data="optionData"
+        label-key="label">
+      </el-checkbox-group>  
+    </div>  
+  </el-row>
+  
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        checkList1: ['A','C','E'],
+        checkList2: ['A','B','E'],
+        optionData: [
+            { label: '复选框 A', value: 'A' },
+            { label: '复选框 B', value: 'B' },
+            { label: '复选框 C', value: 'C', disabled: 0 },
+            { label: '禁用', value: 'D', disabled: true },
+            { label: '选中且禁用', value: 'E', disabled: 1 }
+        ]  
+      };
+    },
+    methods: {
+        getCheckboxes () {
+            return new Promise((resolve, reject) => {
+                // 模拟服务端数据
+                setTimeout(() => {
+                    // 也可以 resolve(this.optionData)
+                    resolve({ data: this.optionData })
+                }, 1000)
+            })
+        }
+    }  
+  };
+</script>
+```
+:::
 
 ### indeterminate 状态
 
@@ -262,6 +319,11 @@
 | value / v-model | 绑定值 | array | — | — |
 | size     | 多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效   | string  | medium / small / mini  |    —     |
 | disabled  | 是否禁用    | boolean   | — | false   |
+| option-data           | 数据项                                                                 | Function:promise<[{label: string, value: string, disabled?: boolean}]> / array | —                 | —        |
+| value-key             | 作为 value 唯一标识的键名，传入`option-data`时为必填                     | string                                                                         | —                 | value    |
+| label-key             | 作为 label 唯一标识的键名                                                    | string                                                                         | —                 | label    |
+| disabled-key          | 作为 disabled 唯一标识的键名                                                 | string                                                                         | —                 | disabled |
+| is-server             | `option-data`为函数时是否服务端渲染, 通过nuxt.js的fetch钩子函数实现，请注意nuxt版本，保证2.15.8以上 | boolean                                                                        | —                 | false    |
 | min     | 可被勾选的 checkbox 的最小数量   | number    |       —        |     —    |
 | max     | 可被勾选的 checkbox 的最大数量   | number    |       —        |     —    |
 | text-color  | 按钮形式的 Checkbox 激活时的文本颜色    | string   | — | #ffffff   |

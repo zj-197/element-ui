@@ -3,12 +3,40 @@
 @include b(container) {
   display: flex;
   flex-direction: row;
-  flex: 1;
-  flex-basis: auto;
   box-sizing: border-box;
   min-width: 0;
 
   @include when(vertical) {
     flex-direction: column;
+  }
+  @include when(auto-flex) {
+    flex: 1;
+    flex-basis: auto;
+  }
+  @include when(wrap) {
+    flex-wrap: wrap;
+  }
+  @include when(justify-center) {
+    justify-content: center;
+  }
+  @include when(justify-end) {
+    justify-content: flex-end;
+  }
+  @include when(justify-space-between) {
+    justify-content: space-between;
+  }
+  @include when(justify-space-around) {
+    justify-content: space-around;
+  }
+
+  @include when(align-top) {
+    align-items: flex-start;
+  }
+
+  @include when(align-middle) {
+    align-items: center;
+  }
+  @include when(align-bottom) {
+    align-items: flex-end;
   }
 }

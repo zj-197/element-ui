@@ -1,8 +1,3 @@
-<template>
-  <section class="el-container" :class="{ 'is-vertical': isVertical }">
-    <slot></slot>
-  </section>
-</template>
 
 <script>
   export default {
@@ -11,7 +6,31 @@
     componentName: 'ElContainer',
 
     props: {
-      direction: String
+      direction: String,
+      isAutoFlex: {
+        type: Boolean,
+        default: true
+      },
+      justify: {
+        type: String,
+        default: 'start',
+        validator(val) {
+          return ['', null, undefined, 'space-between', 'space-around', 'end', 'center'].indexOf(val) > -1;
+        }
+      },
+      align: {
+        type: String,
+        default: '',
+        validator(val) {
+          return ['', null, undefined, 'top', 'middle', 'bottom'].indexOf(val) > -1;
+        }
+      },
+      // 横向的时候是否自动换行
+      isWrap: Boolean,
+      tag: {
+        type: String,
+        default: 'section'
+      }
     },
 
     computed: {
@@ -28,6 +47,16 @@
           })
           : false;
       }
+    },
+    render(h) {
+      return h(this.tag, {
+        class: [
+          'el-container',
+          { 'is-vertical': this.isVertical, 'is-auto-flex': this.isAutoFlex, 'is-wrap': this.isWrap },
+          this.justify !== 'start' ? `is-justify-${this.justify}` : '',
+          this.align ? `is-align-${this.align}` : ''
+        ]
+      }, this.$slots.default);
     }
   };
 </script>

@@ -49,12 +49,23 @@
         default: undefined
       },
       titleBackground: String,
+      titleHeight: String,
       titleHoverBackground: String,
       titleActiveBackground: String,
       titleHoverBgIsActiveBg: {
         type: Boolean,
         default: undefined
-      }
+      },
+      openedClass: {
+        type: [String, Object]
+      },
+      openedStyle: {
+        type: Object
+      },
+      isShowArrowIcon: {
+        type: Boolean,
+        default: true
+      } // 是否显示箭头
     },
 
     data() {
@@ -90,7 +101,7 @@
         return this.titleHoverBackground || this.hoverBackground;
       },
       realTitleActiveBackground() {
-        return this.titleActiveBackground || this.realTitleHoverBgIsActiveBg ? this.realTitleHoverBackground : this.titleActiveBackground;
+        return this.titleActiveBackground || (this.realTitleHoverBgIsActiveBg ? this.realTitleHoverBackground : this.titleActiveBackground);
       },
       isCurrentActive() {
         return this.rootMenu.activeIndex ? false : this.rootMenu.subActiveIndex === this.index;
@@ -142,13 +153,18 @@
         if (this.mode !== 'horizontal') {
           return {
             color: this.textColor,
-            background: this.isCurrentActive ? this.realTitleActiveBackground : this.titleBackground || this.backgroundColor
+            background: this.isCurrentActive ? this.realTitleActiveBackground : this.titleBackground || this.backgroundColor,
+            height: this.titleHeight,
+            lineHeight: this.titleHeight
           };
         }
         return {
           borderBottomColor: this.active
             ? (this.rootMenu.activeTextColor ? this.activeTextColor : '')
             : 'transparent',
+          height: this.titleHeight,
+          lineHeight: this.titleHeight,
+          background: this.isCurrentActive ? this.realTitleActiveBackground : this.titleBackground || this.backgroundColor,
           color: this.active
             ? this.activeTextColor
             : this.textColor
@@ -311,21 +327,20 @@
             on-focus={($event) => this.handleMouseenter($event, 100)}>
             <ul
               role="menu"
-              class={['el-menu el-menu--popup', `el-menu--popup-${currentPlacement}`]}
-              style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+              class={['el-menu el-menu--popup', `el-menu--popup-${currentPlacement}`, this.openedClass]}
+              style={[{ backgroundColor: rootMenu.backgroundColor || '' }, this.openedStyle]}>
               {$slots.default}
             </ul>
           </div>
         </transition>
       );
-
       const inlineMenu = (
         <el-collapse-transition>
           <ul
             role="menu"
-            class="el-menu el-menu--inline"
+            class={['el-menu el-menu--inline', this.openedClass]}
             v-show={opened}
-            style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+            style={[{ backgroundColor: rootMenu.backgroundColor || '' }, this.openedStyle]}>
             {$slots.default}
           </ul>
         </el-collapse-transition>
@@ -357,10 +372,9 @@
             on-click={this.handleClick}
             on-mouseenter={this.handleTitleMouseenter}
             on-mouseleave={this.handleTitleMouseleave}
-            style={[paddingStyle, titleStyle]}
-          >
-            {$slots.title}
-            <i class={[ 'el-submenu__icon-arrow', submenuTitleIcon ]}></i>
+            style={[paddingStyle, titleStyle]}>
+            {typeof this.$scopedSlots.title === 'function' ? this.$scopedSlots.title({ opened: this.opened, active: this.active }) : $slots.title}
+            {this.isShowArrowIcon ? <i style={{right: paddingStyle.paddingRight}} class={['el-submenu__icon-arrow', submenuTitleIcon]}></i> : null}
           </div>
           {this.isMenuPopup ? popupMenu : inlineMenu}
         </li>

@@ -1,6 +1,6 @@
 <template>
   <li class="el-menu-item-group">
-    <div class="el-menu-item-group__title" :style="{paddingLeft: levelPadding + 'px'}">
+    <div class="el-menu-item-group__title" :style="groupStyle">
       <template v-if="!$slots.title">{{title}}</template>
       <slot v-else name="title"></slot>
     </div>
@@ -23,21 +23,28 @@
     },
     data() {
       return {
-        paddingLeft: 20
+        paddingLeft: this.rootMenu.paddingLrStep
       };
     },
     computed: {
       levelPadding() {
-        let padding = 20;
+        let padding = this.rootMenu.paddingLrStep;
         let parent = this.$parent;
-        if (this.rootMenu.collapse) return 20;
+        if (this.rootMenu.collapse) return this.rootMenu.paddingLrStep;
         while (parent && parent.$options.componentName !== 'ElMenu') {
           if (parent.$options.componentName === 'ElSubmenu') {
-            padding += 20;
+            padding += this.rootMenu.paddingLrStep;
           }
           parent = parent.$parent;
         }
         return padding;
+      },
+      groupStyle() {
+        const unit = this.rootMenu.paddingLrUnit;
+        return {
+          paddingLeft: this.levelPadding + unit,
+          paddingRight: this.rootMenu.paddingLrStep + unit
+        };
       }
     }
   };

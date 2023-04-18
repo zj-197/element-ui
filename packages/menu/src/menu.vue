@@ -125,7 +125,15 @@
         type: Boolean,
         default: true
       },
-      hoverBgIsActiveBg: Boolean // hover时的背景是否为激活时的背景
+      hoverBgIsActiveBg: Boolean, // hover时的背景是否为激活时的背景
+      paddingLrStep: {
+        type: Number,
+        default: 16
+      }, // 左右边距步长,
+      paddingLrUnit: {
+        type: String,
+        default: 'px'
+      }, // 左右边距步长单位
     },
     data() {
       return {
@@ -145,6 +153,9 @@
       }
     },
     watch: {
+      defaultSubActive(val) {
+        this.subActiveIndex = val
+      },
       defaultActive(value){
         if(!this.items[value]){
           this.activeIndex = null

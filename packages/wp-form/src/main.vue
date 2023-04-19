@@ -253,7 +253,11 @@ export default {
             if (e && typeof e.stopPropagation === 'function') {
               e.stopPropagation();
             }
-            this.$emit('search', this.openSearching, this.closeSearching);
+            this.validate((valid) => {
+              if (valid) {
+                this.$emit('search', this.openSearching, this.closeSearching);
+              }
+            });
           }
         }
       }, this.searchBtnText);

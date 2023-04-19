@@ -407,6 +407,8 @@
 | clearFilter        | 不传入参数时用于清空所有过滤条件，数据会恢复成未过滤的状态，也可传入由columnKey组成的数组以清除指定列的过滤条件        | columnKey                   |
 | doLayout           | 对 Table 进行重新布局。当 Table 或其祖先元素由隐藏切换为显示时，可能需要调用此方法                    | —                           |
 | sort               | 手动对 Table 进行排序。参数`prop`属性指定排序列，`order`指定排序顺序。                       | prop: string, order: string |
+| getSelected        | 获取当前选择的行`传入max-select`生效                                            |   |
+| setSelected        | 设置当前选择的行`传入max-select`生效                                            | selected:Array<`row-key`>   |
 
 ### Table Slot
 

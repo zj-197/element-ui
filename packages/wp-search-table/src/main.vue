@@ -6,7 +6,7 @@
  * @Description: 带搜索表单的表格,通过json对象配置生成
  */
 import { isObject } from 'element-ui/src/utils/types';
-import { noop, isEmpty } from 'element-ui/src/utils/util';
+import { isEmpty } from 'element-ui/src/utils/util';
 import { assign } from 'element-ui/src/utils/lodash';
 import ElWpTable from 'element-ui/packages/wp-table';
 import ElWpTableColumn from 'element-ui/packages/wp-table-column';
@@ -33,7 +33,13 @@ export default {
     // 搜索表单间隔
     gutter: [String, Number],
     // 尺寸
-    size: String,
+    size: {
+      type: String,
+      default: 'medium'
+    },
+    // 每页条数
+    pageSize: Number,
+    isServer: Boolean,
     maxSelect: Number,
     rowKey: String,
     paginationKey: Object,
@@ -62,20 +68,19 @@ export default {
   computed: {
     formConfig() {
       return this.columns.filter(item => item.hiddenInForm !== true).map(item => {
-        const {tag, label, prop, pattern, required, formItemProps, transform, tagProps, tagInitValue} = item;
+        const {tag, label, prop, pattern, required, formItemProps, tagProps, tagInitValue} = item;
         return {
           formItemProps: assign({label, prop, pattern, required}, formItemProps || Object.create(null)),
           tagProps: assign({ label, prop }, tagProps || Object.create(null)),
-          transform: typeof transform === 'function' ? transform : noop,
           tag,
           tagInitValue
         };
       });
     },
-    tableConfig() {
+    tableColumnsConfig() {
       return this.columns.filter(item => item.hiddenInTable !== true).map(item => {
-        const { label, prop, columnProps } = item;
-        return assign({label, prop}, isObject(columnProps) ? columnProps : Object.create(null));
+        const { label, prop, width, align, minWidth, columnProps } = item;
+        return assign({ label, prop, width, align, minWidth }, isObject(columnProps) ? columnProps : Object.create(null));
       });
     }
   },
@@ -92,9 +97,7 @@ export default {
     renderForm(h) {
       const formContent = this.formConfig.reduce((preVal, curVal) => {
         preVal.push(h('el-wp-form-item', {
-          props: assign({
-            labelWidth: this.formProps.labelWidth
-          }, curVal.formItemProps)
+          props: curVal.formItemProps
         }, [h(curVal.tag, {
           props: assign({
             value: this.model[curVal.formItemProps.prop]
@@ -115,7 +118,10 @@ export default {
           model: this.model,
           size: this.size,
           isShowCollapse: true,
-          align: position === 'top' ? 'middle' : 'top'
+          isInitCollapse: this.isInitCollapse,
+          labelPosition: this.labelPosition,
+          labelWidth: this.labelWidth,
+          align: !position || position === 'top' ? 'middle' : 'top'
         }, this.formProps),
         on: {
           search: this.onSearch,
@@ -125,7 +131,7 @@ export default {
       }, formContent);
     },
     renderTable(h) {
-      const columns = this.tableConfig.reduce((preVal, curVal) => {
+      const columns = this.tableColumnsConfig.reduce((preVal, curVal) => {
         let scopedSlot = null;
         if (typeof this.$scopedSlots[curVal.prop] === 'function') {
           scopedSlot = { default: this.$scopedSlots[curVal.prop] };
@@ -142,11 +148,17 @@ export default {
           rowKey: this.rowKey,
           maxSelect: this.maxSelect,
           loadData: this.realLoadData,
-          paginationKey: this.paginationKey
+          pageSize: this.pageSize,
+          paginationKey: this.paginationKey,
+          isServer: this.isServer,
+          paginationProps: { align: 'center' }
         }, this.tableProps),
         style: { marginTop: '20px' },
         ref: 'wpTable'
-      }, columns);
+      }, columns.concat([
+        h('template', {slot: 'toolbar-prefix'}, this.$slots.toolbarPrefix || this.$slots['toolbar-prefix']),
+        h('template', {slot: 'toolbar-suffix'}, this.$slots.toolbarSuffix || this.$slots['toolbar-suffix'])
+      ]));
     },
     // 获取搜索表单的初始值
     getTagInitValues() {

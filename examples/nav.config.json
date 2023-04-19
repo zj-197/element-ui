@@ -162,6 +162,10 @@
               "title": "WpTable 维普表格"
             },
             {
+              "path": "/wp-search-table",
+              "title": "WpSearchTable 维普搜索表单"
+            },
+            {
               "path": "/tag",
               "title": "Tag 标签"
             },
@@ -645,6 +649,10 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
+            },
+            {
+              "path": "/wp-search-table",
+              "title": "WpSearchTable"
             }
           ]
         }
@@ -971,6 +979,10 @@
             {
               "path": "/wp-form",
               "title": "WpForm"
+            },
+            {
+              "path": "/wp-search-table",
+              "title": "WpSearchTable"
             }
           ]
         }
@@ -1297,6 +1309,10 @@
             {
               "path": "/wp-table",
               "title": "WpTable"
+            },
+            {
+              "path": "/wp-search-table",
+              "title": "WpSearchTable"
             }
           ]
         }

@@ -12,17 +12,11 @@ export default {
     type: String,
     justify: {
       type: String,
-      default: 'start',
-      validator(val) {
-        return ['', null, undefined, 'space-between', 'space-around', 'end', 'center'].indexOf(val) > -1;
-      }
+      default: 'start'
     },
     isWrap: Boolean,
     align: {
-      type: String,
-      validator(val) {
-        return ['', null, undefined, 'top', 'middle', 'bottom'].indexOf(val) > -1;
-      }
+      type: String
     }
   },
 

@@ -3,6 +3,7 @@ import ElForm from 'element-ui/packages/form';
 import ElButton from 'element-ui/packages/button';
 import ElRow from 'element-ui/packages/row';
 import ElCol from 'element-ui/packages/col';
+import { noop } from 'element-ui/src/utils/util';
 export default {
   name: 'ElWpForm',
   components: {
@@ -24,6 +25,16 @@ export default {
       type: Boolean,
       default: true
     },
+    // 是否需要展开收起
+    isShowCollapse: {
+      type: Boolean,
+      default: true
+    },
+    // 默认是否展开
+    isInitCollapse: {
+      type: Boolean,
+      default: true
+    },
     searchBtnText: {
       type: String,
       default: '搜 索'
@@ -42,11 +53,6 @@ export default {
       validator(val) {
         return val == null || val === '' || /^[0-9]+$/.test(String(val));
       }
-    },
-    // 是否需要展开收起
-    isCollapse: {
-      type: Boolean,
-      default: true
     },
     // 收起文字
     collapseText: {
@@ -102,7 +108,7 @@ export default {
       return Math.floor(24 / this.span) - 1;
     },
     isShowActions() {
-      return this.isCollapse || this.isShowSearchBtn || this.isShowResetBtn;
+      return this.isShowCollapse || this.isShowSearchBtn || this.isShowResetBtn;
     },
     toolMarginTop() {
       const obj = {
@@ -117,14 +123,14 @@ export default {
   },
   data() {
     return {
-      toggleCollapse: true, // 是否收起, 默认为收起
+      toggleCollapse: this.isInitCollapse, // 是否收起, 默认为收起
       isResetting: false,
       isSearching: false
     };
   },
   render(h) {
     const children = (Array.isArray(this.$slots.default) ? this.$slots.default : []).filter(item => item.tag).reduce((preVal, curVal, index) => {
-      const display = this.isCollapse && this.toggleCollapse && (index >= this.contentSpan) ? 'none' : undefined;
+      const display = this.isShowCollapse && this.toggleCollapse && (index >= this.contentSpan) ? 'none' : undefined;
       if (/ElCol$/g.test(curVal.tag)) {
         preVal.push(h('div', {
           style: { display }
@@ -158,9 +164,9 @@ export default {
       props: {
         gutter: this.gutter,
         type: 'flex',
-        align: this.align
-      },
-      style: { flexWrap: 'wrap' }
+        align: this.align,
+        isWrap: true
+      }
     }, children);
     return h('el-form', {
       props: {
@@ -178,14 +184,14 @@ export default {
         validateOnRuleChange: this.validateOnRuleChange,
         hideRequiredAsterisk: this.hideRequiredAsterisk
       },
-      ref: 'ZjForm',
+      ref: 'wpForm',
       class: 'el-wp-form',
-      on: this.$listeners
+      on: this.$listeners.validate || noop
     }, [rowNode]);
   },
   methods: {
     renderCollapse(h) {
-      if (!this.isCollapse) return;
+      if (!this.isShowCollapse) return;
       return h('span', {
         on: {
           click: (e) => {
@@ -271,7 +277,7 @@ export default {
     },
     // 获取表单实例
     getFormInstance() {
-      return this.$refs.ZjForm;
+      return this.$refs.wpForm;
     }
   }
 };

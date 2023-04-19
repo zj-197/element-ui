@@ -91,5 +91,6 @@
   "wp-form": "./packages/wp-form/index.js",
   "wp-form-item": "./packages/wp-form-item/index.js",
   "wp-table": "./packages/wp-table/index.js",
-  "wp-table-column": "./packages/wp-table/index.js"
+  "wp-table-column": "./packages/wp-table/index.js",
+  "wp-search-table": "./packages/wp-search-table/index.js"
 }

@@ -80,7 +80,7 @@ export default {
     tableColumnsConfig() {
       return this.columns.filter(item => item.hiddenInTable !== true).map(item => {
         const { label, prop, width, align, minWidth, columnProps } = item;
-        return assign({ label, prop, width, align, minWidth }, isObject(columnProps) ? columnProps : Object.create(null));
+        return assign({ label, prop, width, align: align || 'center', minWidth }, isObject(columnProps) ? columnProps : Object.create(null));
       });
     }
   },
@@ -124,8 +124,8 @@ export default {
           align: !position || position === 'top' ? 'middle' : 'top'
         }, this.formProps),
         on: {
-          search: this.onSearch,
-          reset: this.onReset
+          search: this.handleSearch,
+          reset: this.handleReset
         },
         ref: 'wpForm'
       }, formContent);
@@ -191,11 +191,11 @@ export default {
       return this.$refs.wpForm;
     },
     // 搜索
-    onSearch(openSearching, closeSearching) {
+    handleSearch(openSearching, closeSearching) {
       openSearching();
       this.refresh(true).then(closeSearching).catch(closeSearching);
     },
-    onReset(openResetting, closeResetting) {
+    handleReset(openResetting, closeResetting) {
       openResetting();
       this.model = this.getTagInitValues();
       this.refresh(true).then(closeResetting).catch(closeResetting);

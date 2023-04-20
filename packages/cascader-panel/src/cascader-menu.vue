@@ -21,7 +21,9 @@ export default {
       type: Array,
       required: true
     },
-    index: Number
+    index: Number,
+    isLoading: Boolean,
+    loadingText: String
   },
 
   data() {
@@ -76,7 +78,7 @@ export default {
 
     renderEmptyText(h) {
       return (
-        <div class="el-cascader-menu__empty-text">{ this.t('el.cascader.noData') }</div>
+        <div class="el-cascader-menu__empty-text">{this.isLoading ? (this.loadingText || this.t('el.cascader.loading')) : this.t('el.cascader.noData') }</div>
       );
     },
     renderNodeList(h) {
@@ -130,7 +132,7 @@ export default {
           'is-empty': isEmpty
         }}
         { ...events }>
-        { isEmpty ? this.renderEmptyText(h) : this.renderNodeList(h) }
+        { (isEmpty || this.isLoading) ? this.renderEmptyText(h) : this.renderNodeList(h) }
       </el-scrollbar>
     );
   }

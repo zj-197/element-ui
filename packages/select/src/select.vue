@@ -490,6 +490,7 @@
           }).catch(e => {
             this.customLoading = false;
             this.listData = [];
+            throw e;
           });
         }
       },
@@ -502,7 +503,7 @@
           }).catch(e => {
             this.customLoading = false;
             this.listData = [];
-            return e;
+            throw e;
           });
         }
       },

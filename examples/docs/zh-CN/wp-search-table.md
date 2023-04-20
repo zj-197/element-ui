@@ -135,8 +135,10 @@
 传入el-wp-table中的`max-select`即可
 
 :::demo 当传入`max-select`属性后，可通过调用`this.$refs.wpSearchTable.getSelected()`方法来获取选择的`row-key`的集合
+
 ```html
-  <template>
+
+<template>
     <el-wp-search-table
             size="medium"
             ref="wpSearchTable"
@@ -149,9 +151,10 @@
             :columns="columns"
             :load-data="getList">
     </el-wp-search-table>
-  </template>
+</template>
 
-  <script>
+<script>
+
     export default {
         data() {
             return {
@@ -172,11 +175,44 @@
                         hiddenInForm: true // 在表单中隐藏
                     },
                     {
+                        prop: 'major',
+                        label: '专业',
+                        tag: 'el-cascader',
+                        hiddenInTable: true,
+                        tagProps: {
+                            optionData: function () {
+                                return new Promise(resolve => {
+                                    setTimeout(() => {
+                                        resolve([
+                                            {
+                                                label: '重庆大学',
+                                                value: 'cqdx',
+                                                children: [
+                                                    {
+                                                        label: '马克思主义学院',
+                                                        value: 'mks',
+                                                        children: [{label: '政治', value: 'zz'}]
+                                                    },
+                                                    {
+                                                        label: '信息工程学院',
+                                                        value: 'xxgg',
+                                                        children: [{label: '计算机应用', value: 'jsjyy'}]
+                                                    }
+                                                ]
+                                            }
+                                        ])
+                                    }, 1000)
+                                })
+                            },
+                            triggerMethod: 'focus'
+                        }
+                    },
+                    {
                         prop: 'nick_name',
                         tagInitValue: '张三',
                         tag: 'el-input',
-                        formItemProps: { label: '表单中的昵称' },
-                        columnProps: { label: '表格中的昵称' },
+                        formItemProps: {label: '表单中的昵称'},
+                        columnProps: {label: '表格中的昵称'},
                         pattern: 'chinese' // 正则校验
                     },
                     {
@@ -206,12 +242,12 @@
             }
         },
         methods: {
-            getList (searchParams, formatSearchParams) {
-                const { page, pageSize } = formatSearchParams
+            getList(searchParams, formatSearchParams) {
+                const {page, pageSize} = formatSearchParams
                 return new Promise((resolve, reject) => {
                     // 模拟后端数据
                     setTimeout(() => {
-                        const list = Array.from({ length: pageSize }, (_, i) => {
+                        const list = Array.from({length: pageSize}, (_, i) => {
                             const index = ((page - 1) * pageSize) + (i + 1)
                             return {
                                 id: Math.floor(Math.random() * 10000),
@@ -237,15 +273,15 @@
                 })
             },
             // 获取选择的
-            getSelected () {
+            getSelected() {
                 this.$refs.wpSearchTable.getSelected()
             },
             // 获取el-wp-table实例
             getTableInstance() {
-               const instance =  this.$refs.wpSearchTable.getTableInstance()
+                const instance = this.$refs.wpSearchTable.getTableInstance()
             },
             // 获取form表单实例
-            getFormInstance () {
+            getFormInstance() {
                 const instance = this.$refs.wpSearchTable.getFormInstance()
             }
         }

@@ -78,6 +78,8 @@
           :options="options"
           :props="config"
           :border="false"
+          :is-loading="isLoading"
+          :loading-text="loadingText"
           :render-label="$scopedSlots.default"
           @expand-change="handleExpandChange"
           @close="toggleDropDownVisible(false)"></el-cascader-panel>
@@ -129,6 +131,7 @@ import { isUndefined, isFunction } from 'element-ui/src/utils/types';
 import { isDef } from 'element-ui/src/utils/shared';
 import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
 import debounce from 'throttle-debounce/debounce';
+import { isObject } from 'element-ui/src/utils/types';
 
 const { keys: KeyCode } = AriaUtils;
 const MigratingProps = {
@@ -199,7 +202,15 @@ export default {
 
   props: {
     value: {},
-    options: Array,
+    optionData: [Array, Function],
+    isServer: Boolean,
+    triggerMethod: {
+      type: String,
+      default: 'immediate',
+      validator(val) {
+        return ['', null, undefined, 'immediate', 'focus'].indexOf(val) > -1;
+      }
+    },
     props: Object,
     size: String,
     placeholder: {
@@ -227,7 +238,9 @@ export default {
       type: Function,
       default: () => (() => {})
     },
-    popperClass: String
+    popperClass: String,
+    loadingText: String,
+    loading: Boolean
   },
 
   data() {
@@ -242,7 +255,9 @@ export default {
       filtering: false,
       suggestions: [],
       inputInitialHeight: 0,
-      pressDeleteCount: 0
+      pressDeleteCount: 0,
+      isLoading: this.loading,
+      nodeList: []
     };
   },
 
@@ -298,10 +313,29 @@ export default {
     },
     panel() {
       return this.$refs.panel;
+    },
+    options() {
+      if (typeof this.optionData === 'function') return this.nodeList;
+      return this.optionData;
     }
   },
-
+  created() {
+    if (!this.$isServer && !this.isServer) {
+      this.getData();
+    }
+  },
+  fetch() {
+    if (this && typeof this.optionData === 'function' && this.isServer) {
+      return this.getData();
+    }
+    if (!this && process.env.NODE_ENV !== 'production') {
+      console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
+    }
+  },
   watch: {
+    loading(val) {
+      this.isLoading = val;
+    },
     disabled() {
       this.computePresentContent();
     },
@@ -434,6 +468,7 @@ export default {
       }
     },
     handleFocus(e) {
+      this.onFocus();
       this.$emit('focus', e);
     },
     handleBlur(e) {
@@ -657,6 +692,33 @@ export default {
     */
     getCheckedNodes(leafOnly) {
       return this.panel.getCheckedNodes(leafOnly);
+    },
+    getData() {
+      if (typeof this.optionData === 'function' && this.triggerMethod === 'immediate') {
+        this.isLoading = true;
+        return this.optionData().then(res => {
+          this.nodeList = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];
+          this.isLoading = false;
+        }).catch(e => {
+          this.isLoading = false;
+          this.nodeList = [];
+          throw e;
+        });
+      }
+    },
+    onFocus() {
+      if (typeof this.optionData === 'function' && this.isLoad !== true && this.triggerMethod === 'focus') {
+        this.isLoading = true;
+        this.optionData().then(res => {
+          this.nodeList = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];
+          this.isLoading = false;
+          this.isLoad = true;
+        }).catch(e => {
+          this.isLoading = false;
+          this.nodeList = [];
+          throw e;
+        });
+      }
     }
   }
 };

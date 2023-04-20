@@ -12,7 +12,7 @@
             size="medium"
             label-position="top"
             align="middle"
-            :col-count="3" is-collapse>
+            :col-count="3" is-show-collapse>
   <!--  中文验证-->
   <el-wp-form-item label="活动名称" pattern="chinese" prop="name">
     <el-input v-model="form.name"></el-input>
@@ -97,7 +97,8 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
             label-position="left"
             label-width="100px"
             align="top"
-            :col-count="3" is-collapse>
+            :is-init-collapse="false"
+            :col-count="3">
   <el-wp-form-item label="活动名称">
     <el-input v-model="form.name"></el-input>
   </el-wp-form-item>
@@ -166,7 +167,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
             @search="onSubmit"
             label-position="left"
             label-width="100px"
-            :is-collapse="false"
+            :is-show-collapse="false"
             :is-show-reset-btn="false"
             :is-show-search-btn="false"
             :col-count="3">
@@ -237,7 +238,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
             :gutter="20"
             label-position="left"
             label-width="100px"
-            :is-collapse="false"
+            :is-show-collapse="false"
             :is-show-reset-btn="false"
             :is-show-search-btn="false"
             :col-count="3">
@@ -311,7 +312,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
             :gutter="20"
             label-position="left"
             label-width="140px"
-            :is-collapse="false"
+            :is-show-collapse="false"
             :is-show-reset-btn="false"
             :is-show-search-btn="false"
             :col-count="1">
@@ -401,18 +402,19 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 
 ### Wp-Form New Attributes 新增的prop
 
-| 参数                      | 说明                                                           | 类型            | 可选值                   | 默认值   |
-|-------------------------|--------------------------------------------------------------|---------------|-----------------------|-------|
-| col-count               | 表单列数                                                         | number/string | —                     | 3     |
-| gutter                  | 表单每列间隔                                                       | number/string | —                     | 20    |
-| is-show-reset-btn       | 是否显示重置按钮                                                     | boolean       | —                     | true  |
-| reset-btn-text          | 重置按钮文字                                                       | string        | —                     | 重 置   |
-| is-show-search-btn      | 是否展示搜索按钮                                                     | boolean       | —                     | true  |
-| search-btn-text         | 搜索按钮文字                                                       | string        | —                     | 搜 索   |
-| is-collapse             | 是否显示展开收起                                                     | boolean       | —                     | true  |
-| collapse-text           | 收起文字                                                         | string        | —                     | 收起    |
-| spread-text             | 展开文字                                                         | string        | —                     | 展开    |
-| align                   | 垂直方向对齐方式                                                     | string        | top/middle/bottom     | top   |
+| 参数                 | 说明         | 类型            | 可选值                   | 默认值   |
+|--------------------|------------|---------------|-----------------------|-------|
+| col-count          | 表单列数       | number/string | —                     | 3     |
+| gutter             | 表单每列间隔     | number/string | —                     | 20    |
+| is-show-reset-btn  | 是否显示重置按钮   | boolean       | —                     | true  |
+| reset-btn-text     | 重置按钮文字     | string        | —                     | 重 置   |
+| is-show-search-btn | 是否展示搜索按钮   | boolean       | —                     | true  |
+| search-btn-text    | 搜索按钮文字     | string        | —                     | 搜 索   |
+| is-show-collapse   | 是否显示展开收起   | boolean       | —                     | true  |
+| is-init-collapse   | 初始默认值是否为收起 | boolean       | —                     | true  |
+| collapse-text      | 收起文字       | string        | —                     | 收起    |
+| spread-text        | 展开文字       | string        | —                     | 展开    |
+| align              | 垂直方向对齐方式   | string        | top/middle/bottom     | top   |
 
 ### Form Attributes
 

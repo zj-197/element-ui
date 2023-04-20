@@ -13,17 +13,11 @@
       },
       justify: {
         type: String,
-        default: 'start',
-        validator(val) {
-          return ['', null, undefined, 'space-between', 'space-around', 'end', 'center'].indexOf(val) > -1;
-        }
+        default: 'start'
       },
       align: {
         type: String,
-        default: '',
-        validator(val) {
-          return ['', null, undefined, 'top', 'middle', 'bottom'].indexOf(val) > -1;
-        }
+        default: ''
       },
       // 横向的时候是否自动换行
       isWrap: Boolean,

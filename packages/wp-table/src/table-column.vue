@@ -81,7 +81,7 @@ export default {
   data() {
     return {
       customFixed: this.fixed,
-      columnUUid: Math.floor(Math.random() * 10000),
+      columnUUid: Math.floor(Math.random() * 100000),
       isShow: !this.hidden
     };
   },

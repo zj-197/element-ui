@@ -17,7 +17,7 @@
         </el-tooltip>
       </template>
     </slot>
-    <template slot="error" slot-scope="{ error }">
+    <template slot="error" slot-scope="{ error }" v-if="$scopedSlots.error || $slots.error">
       <slot name="error" :error="error"/>
     </template>
   </el-form-item>

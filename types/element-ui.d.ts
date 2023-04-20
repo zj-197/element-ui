@@ -91,6 +91,7 @@ import { ElResult } from './result'
 import { ElStatistic } from './statistic'
 import { ElWpForm } from './wp-form'
 import { ElWpTable } from './wp-table'
+import { ElWpSearchTable } from './wp-search-table'
 
 export interface InstallationOptions {
   locale: any,
@@ -387,3 +388,6 @@ export class WpForm extends ElWpForm {}
 
 /** WpTable Component */
 export class WpTable extends ElWpTable {}
+
+/** WpSearchTable Component */
+export class WpSearchTable extends ElWpSearchTable {}

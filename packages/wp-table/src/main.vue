@@ -6,6 +6,7 @@ import ElButton from 'element-ui/packages/button';
 import {isObject} from 'element-ui/src/utils/types';
 import ToolBar from './ToolBar.vue';
 import {findIndex, assign} from 'element-ui/src/utils/lodash';
+import { noop } from 'element-ui/src/utils/util';
 
 export default {
   name: 'ElWpTable',
@@ -67,7 +68,7 @@ export default {
     },
 
     width: {
-      type: [String, Number],
+      type: String,
       default: '100%'
     },
 
@@ -298,10 +299,9 @@ export default {
         if (this.isError) {
           this.isError = false;
         }
-        this.$emit('loaded', this.isError, {
-          ...this.pagination,
+        this.$emit('loaded', this.isError, assign({
           [this.realPaginationKey.tableList]: this.tableList
-        });
+        }, this.pagination));
         this.isLoading = false;
         return {
           isError: this.isError
@@ -309,12 +309,11 @@ export default {
       }).catch(e => {
         this.tableList = [];
         this.isError = true;
-        this.$emit('loaded', this.isError, {
-          ...this.pagination,
+        this.$emit('loaded', this.isError, assign({
           [this.realPaginationKey.tableList]: this.tableList
-        });
+        }, this.pagination));
         this.isLoading = false;
-        return e;
+        throw e;
       });
     },
     // 强制刷新表格数据
@@ -427,12 +426,11 @@ export default {
     // 渲染分页
     renderPagination(h) {
       return h('el-pagination', {
-        props: {
-          ...this.paginationProps,
+        props: assign({
           total: this.pagination[this.realPaginationKey.total],
           pageSize: this.pagination[this.realPaginationKey.pageSize],
           currentPage: this.pagination[this.realPaginationKey.page]
-        },
+        }, this.paginationProps),
         on: {
           'size-change': val => this.handlePagination({
             page: this.pagination[this.realPaginationKey.page],
@@ -562,9 +560,22 @@ export default {
           element-loading-background="rgba(255, 255, 255, 0.7)"
           v-loading={this.isLoading}
           on-selection-change={this.handleSelectionChange}
-          {...{
-            on: this.$listeners
-          }}
+          on-select={this.$listeners.select || noop }
+          on-select-all={this.$listeners['select-all'] || this.$listeners.selectAll || noop}
+          on-cell-mouse-enter={this.$listeners['cell-mouse-enter'] || this.$listeners.cellMouseEnter || noop}
+          on-cell-mouse-leave={this.$listeners['cell-mouse-leave'] || this.$listeners.cellMouseLeave || noop}
+          on-cell-click={this.$listeners['cell-click'] || this.$listeners.cellClick || noop}
+          on-cell-dblclick={this.$listeners['cell-dblclick'] || this.$listeners.cellDblclick || noop}
+          on-row-click={this.$listeners['row-click'] || this.$listeners.rowClick || noop}
+          on-row-contextmenu={this.$listeners['row-contextmenu'] || this.$listeners.rowContextmenu || noop}
+          on-row-dblclick={this.$listeners['row-dblclick'] || this.$listeners.rowDblclick || noop}
+          on-header-click={this.$listeners['header-click'] || this.$listeners.headerClick || noop}
+          on-header-contextmenu={this.$listeners['header-contextmenu'] || this.$listeners.headerContextmenu || noop}
+          on-sort-change={this.$listeners['sort-change'] || this.$listeners.sortChange || noop}
+          on-filter-change={this.$listeners['filter-change'] || this.$listeners.filterChange || noop}
+          on-current-change={this.$listeners['current-change'] || this.$listeners.currentChange || noop}
+          on-header-dragend={this.$listeners['header-dragend'] || this.$listeners.headerDragend || noop}
+          on-expand-change={this.$listeners['expand-change'] || this.$listeners.expandChange || noop}
           data={this.listData}
           size={this.tableSize}
           height={this.height}

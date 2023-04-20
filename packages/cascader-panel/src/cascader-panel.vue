@@ -9,6 +9,8 @@
       ref="menu"
       v-for="(menu, index) in menus"
       :index="index"
+      :is-loading="isLoading"
+      :loading-text="loadingText"
       :key="index"
       :nodes="menu"></cascader-menu>
   </div>
@@ -94,7 +96,9 @@ export default {
       type: Boolean,
       default: true
     },
-    renderLabel: Function
+    renderLabel: Function,
+    isLoading: Boolean,
+    loadingText: String
   },
 
   provide() {

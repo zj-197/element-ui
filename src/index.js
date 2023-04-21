@@ -94,6 +94,7 @@ import WpFormItem from '../packages/wp-form-item/index.js';
 import WpTable from '../packages/wp-table/index.js';
 import WpTableColumn from '../packages/wp-table-column/index.js';
 import WpSearchTable from '../packages/wp-search-table/index.js';
+import WpDatePicker from '../packages/wp-date-picker/index.js';
 import locale from 'element-ui/src/locale';
 import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
 
@@ -187,6 +188,7 @@ const components = [
   WpTable,
   WpTableColumn,
   WpSearchTable,
+  WpDatePicker,
   CollapseTransition
 ];
 
@@ -320,5 +322,6 @@ export default {
   WpFormItem,
   WpTable,
   WpTableColumn,
-  WpSearchTable
+  WpSearchTable,
+  WpDatePicker
 };

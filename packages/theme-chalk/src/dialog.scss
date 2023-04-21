@@ -12,14 +12,6 @@
   box-sizing: border-box;
   width: 50%;
 
-  @include when(fullscreen) {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    height: 100%;
-    overflow: auto;
-  }
-
   @include e(wrapper) {
     position: fixed;
     top: 0;
@@ -91,7 +83,19 @@
     }
   }
 }
-
+@include b(dialog-custom) {
+  position: relative;
+  margin: 0 auto 50px;
+  box-sizing: border-box;
+  width: 50%;
+}
+@include b(dialog--fullscreen) {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  overflow: auto;
+}
 .dialog-fade-enter-active {
   animation: dialog-fade-in .3s;
 }

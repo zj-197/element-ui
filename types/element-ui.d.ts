@@ -92,6 +92,7 @@ import { ElStatistic } from './statistic'
 import { ElWpForm } from './wp-form'
 import { ElWpTable } from './wp-table'
 import { ElWpSearchTable } from './wp-search-table'
+import { ElWpDatePicker } from './wp-date-picker'
 
 export interface InstallationOptions {
   locale: any,
@@ -391,3 +392,6 @@ export class WpTable extends ElWpTable {}
 
 /** WpSearchTable Component */
 export class WpSearchTable extends ElWpSearchTable {}
+
+/** WpDatePicker Component */
+export class WpDatePicker extends ElWpDatePicker {}

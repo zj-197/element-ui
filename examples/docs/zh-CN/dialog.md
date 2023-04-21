@@ -13,13 +13,11 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
 <el-dialog
   title="提示"
   :visible.sync="dialogVisible"
-  width="30%"
+  width="60%"
+  center
+  @confirm="onConfirm"
   :before-close="handleClose">
   <span>这是一段信息</span>
-  <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-  </span>
 </el-dialog>
 
 <script>
@@ -36,6 +34,10 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
             done();
           })
           .catch(_ => {});
+      }, 
+      onConfirm (open, close) {
+          open()
+          setTimeout(close, 1500)
       }
     }
   };

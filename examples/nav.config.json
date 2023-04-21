@@ -125,6 +125,10 @@
               "title": "DateTimePicker 日期时间选择器"
             },
             {
+              "path": "/wp-date-picker",
+              "title": "WpDatePicker 维普日期时间选择器"
+            },
+            {
               "path": "/upload",
               "title": "Upload 上传"
             },
@@ -653,6 +657,10 @@
             {
               "path": "/wp-search-table",
               "title": "WpSearchTable"
+            },
+            {
+              "path": "/wp-date-picker",
+              "title": "WpDatePicker 维普日期时间选择器"
             }
           ]
         }
@@ -983,6 +991,10 @@
             {
               "path": "/wp-search-table",
               "title": "WpSearchTable"
+            },
+            {
+              "path": "/wp-date-picker",
+              "title": "WpDatePicker 维普日期时间选择器"
             }
           ]
         }
@@ -1313,6 +1325,10 @@
             {
               "path": "/wp-search-table",
               "title": "WpSearchTable"
+            },
+            {
+              "path": "/wp-date-picker",
+              "title": "WpDatePicker 维普日期时间选择器"
             }
           ]
         }

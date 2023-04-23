@@ -10,6 +10,7 @@ export type VertialAlignment = 'top' | 'middle' | 'bottom'
 export declare class ElRow extends ElementUIComponent {
   /** Grid spacing */
   gutter: number
+  isWrap: boolean
 
   /** Layout mode. You can use flex. Works in modern browsers */
   type: string

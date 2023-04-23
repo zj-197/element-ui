@@ -11,6 +11,7 @@
         role="dialog"
         :key="key"
         aria-modal="true"
+        v-drag="isDrag"
         :aria-label="title || 'dialog'"
         :class="[custom ? 'el-dialog-custom' : 'el-dialog', { 'el-dialog--fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
         ref="dialog"
@@ -66,6 +67,7 @@
   import ElRow from 'element-ui/packages/row';
   import ElButton from 'element-ui/packages/button';
   import { t } from 'element-ui/src/locale';
+  import drag from './drag';
   const PopupMixins = {
     props: Popup.props,
     beforeMount: Popup.beforeMount,
@@ -85,12 +87,14 @@
       ElRow,
       ElButton
     },
-
+    directives: {
+      drag
+    },
     props: {
       // 是否可以进行拖拽
       isDrag: {
         type: Boolean,
-        default: true
+        default: false
       },
       // 是否完全自定义
       custom: Boolean,
@@ -230,10 +234,10 @@
         return style;
       },
       bodyHeight() {
-        const footerHeight = this.isShowFooter ? '66px' : '0px';
-        const titleHeight = '55px';
-        const paddingTB = (30 + 30) + 'px'; // 上下padding
-        return `calc(100vh - ${this.top} - ${this.top} - ${footerHeight} - ${titleHeight} - ${paddingTB})`;
+        const footerHeight = this.isShowFooter && !this.$slots.footer ? '76px' : '0px';
+        const titleHeight = '66px';
+        const paddingTop = 0 + 'px'; // 上padding
+        return `calc(100vh - ${this.top} - ${this.top} - ${footerHeight} - ${titleHeight} - ${paddingTop})`;
       }
     },
 
@@ -251,7 +255,9 @@
       },
       handleClose() {
         if (typeof this.beforeClose === 'function') {
-          this.beforeClose(this.hide);
+          if (!this.isLoading) {
+            this.beforeClose(this.hide);
+          }
         } else {
           this.hide(!this.isLoading);
         }
@@ -274,7 +280,7 @@
       afterLeave() {
         this.$emit('closed');
       },
-      show() {
+      showDialog() {
         this.customVisible = true;
         if (this.isLoading) {
           this.isLoading = false;

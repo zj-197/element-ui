@@ -1,4 +1,4 @@
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { ElementUIComponent, ElementUIComponentSize, ElementUIFormComponentOptionData, ElementUIFormComponentTriggerMethod } from './component'
 
 export interface QueryChangeHandler {
   /**
@@ -7,10 +7,16 @@ export interface QueryChangeHandler {
   (queryString: string): void
 }
 
+// @ts-ignore
 /** Dropdown Select Component */
 export declare class ElSelect extends ElementUIComponent {
   /** The form input value */
   value: any
+  optionData: ElementUIFormComponentOptionData
+  triggerMethod: ElementUIFormComponentTriggerMethod
+  isServer: boolean
+  labelKey: string
+  disabledKey: string
 
   /** Whether multiple-select is activated */
   multiple: boolean

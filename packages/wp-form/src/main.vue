@@ -4,6 +4,7 @@ import ElButton from 'element-ui/packages/button';
 import ElRow from 'element-ui/packages/row';
 import ElCol from 'element-ui/packages/col';
 import { noop } from 'element-ui/src/utils/util';
+import { t } from 'element-ui/src/locale';
 export default {
   name: 'ElWpForm',
   components: {
@@ -19,7 +20,7 @@ export default {
     },
     resetBtnText: {
       type: String,
-      default: '重 置'
+      default: t('el.table.resetFilter')
     },
     isShowSearchBtn: {
       type: Boolean,
@@ -37,7 +38,7 @@ export default {
     },
     searchBtnText: {
       type: String,
-      default: '搜 索'
+      default: t('el.table.confirmFilter')
     },
     gutter: {
       type: [Number, String],
@@ -186,7 +187,9 @@ export default {
       },
       ref: 'wpForm',
       class: 'el-wp-form',
-      on: this.$listeners.validate || noop
+      on: {
+        validate: this.$listeners.validate || noop
+      }
     }, [rowNode]);
   },
   methods: {

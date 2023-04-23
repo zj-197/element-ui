@@ -28,10 +28,7 @@ export default {
     },
     // 当表格多选时rowKey为必填
     maxSelect: {
-      type: Number,
-      validator(val) {
-        return val ? val > 0 : true;
-      }
+      type: Number
     },
     // 多选表格时是否保存之前选中的
     reserveSelection: {

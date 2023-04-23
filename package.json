@@ -1,6 +1,6 @@
 {
   "name": "wp-element-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "element-ui二开版",
   "main": "lib/element-ui.common.js",
   "files": [
@@ -39,7 +39,8 @@
   "keywords": [
     "eleme",
     "vue",
-    "components"
+    "components",
+    "wp-element-ui"
   ],
   "license": "MIT",
   "unpkg": "lib/index.js",

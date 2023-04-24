@@ -8,8 +8,13 @@
     "src",
     "packages",
     "types",
-    "web-types.json"
+    "web-types.json",
+    "vetur"
   ],
+  "vetur": {
+    "tags": "vetur/element-tags.json",
+    "attributes": "vetur/element-attributes.json"
+  },
   "typings": "types/index.d.ts",
   "scripts": {
     "bootstrap": "yarn || npm i",

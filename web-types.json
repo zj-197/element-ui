@@ -594,9 +594,19 @@
               "type": "number"
             },
             {
-              "name": "options",
+              "name": "optionData",
               "description": "Data of the options",
-              "type": "CascaderOption[]"
+              "type": "function | CascaderOption[]"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "triggerMethod",
+              "description": "Trigger method",
+              "type": "string"
             },
             {
               "name": "filterable",
@@ -797,6 +807,31 @@
             {
               "name": "fill",
               "description": "Border and background color when button is active",
+              "type": "string"
+            },
+            {
+              "name": "optionData",
+              "description": "Option Data",
+              "type": "function | array"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "labelKey",
+              "description": "Label key",
+              "type": "string"
+            },
+            {
+              "name": "disabledKey",
+              "description": "DisabledKey",
+              "type": "string"
+            },
+            {
+              "name": "valueKey",
+              "description": "Value key",
               "type": "string"
             },
             {
@@ -1314,6 +1349,41 @@
             {
               "name": "closeOnPressEscape",
               "description": "Whether the Dialog can be closed by pressing ESC",
+              "type": "boolean"
+            },
+            {
+              "name": "custom",
+              "description": "Fully Customize dialog box",
+              "type": "boolean"
+            },
+            {
+              "name": "cancelBtnText",
+              "description": "Cancel button text",
+              "type": "string"
+            },
+            {
+              "name": "confirmBtnText",
+              "description": "Confirm button text",
+              "type": "string"
+            },
+            {
+              "name": "footerJustify",
+              "description": "Confirm button text",
+              "type": "HorizontalAlignment"
+            },
+            {
+              "name": "isShowFooter",
+              "description": "Whether to display footer",
+              "type": "boolean"
+            },
+            {
+              "name": "isShowConfirmBtn",
+              "description": "Whether to display confirmBtn",
+              "type": "boolean"
+            },
+            {
+              "name": "isShowCancelBtn",
+              "description": "Whether to display cancelBtn",
               "type": "boolean"
             },
             {
@@ -2892,6 +2962,31 @@
               "type": "string"
             },
             {
+              "name": "optionData",
+              "description": "Option Data",
+              "type": "function | array"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "labelKey",
+              "description": "Label key",
+              "type": "string"
+            },
+            {
+              "name": "disabledKey",
+              "description": "DisabledKey",
+              "type": "string"
+            },
+            {
+              "name": "valueKey",
+              "description": "Value key",
+              "type": "string"
+            },
+            {
               "name": "textColor",
               "description": "Font color when button is active",
               "type": "string"
@@ -3074,6 +3169,31 @@
               "name": "remoteMethod",
               "description": "Custom remote search method",
               "type": "QueryChangeHandler"
+            },
+            {
+              "name": "optionData",
+              "description": "Option Data",
+              "type": "function | array"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "labelKey",
+              "description": "LabelKey",
+              "type": "string"
+            },
+            {
+              "name": "disabledKey",
+              "description": "DisabledKey",
+              "type": "string"
+            },
+            {
+              "name": "triggerMethod",
+              "description": "optionData trigger method",
+              "type": "string"
             },
             {
               "name": "remote",

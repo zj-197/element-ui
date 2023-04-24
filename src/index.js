@@ -95,8 +95,8 @@ import WpTable from '../packages/wp-table/index.js';
 import WpTableColumn from '../packages/wp-table-column/index.js';
 import WpSearchTable from '../packages/wp-search-table/index.js';
 import WpDatePicker from '../packages/wp-date-picker/index.js';
-import locale from 'element-ui/src/locale';
-import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
+import locale from 'wp-element-ui/src/locale';
+import CollapseTransition from 'wp-element-ui/src/transitions/collapse-transition';
 
 const components = [
   Pagination,
@@ -224,7 +224,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.0',
+  version: '1.0.1',
   locale: locale.use,
   i18n: locale.i18n,
   install,

@@ -243,3 +243,53 @@ export function objToArray(obj) {
 export const isMac = function() {
   return !Vue.prototype.$isServer && /macintosh|mac os x/i.test(navigator.userAgent);
 };
+
+/**
+ * @param {Array} actual
+ * @returns {Array}
+ */
+export function cleanArray(actual) {
+  const newArray = [];
+  for (let i = 0; i < actual.length; i++) {
+    if (actual[i]) {
+      newArray.push(actual[i]);
+    }
+  }
+  return newArray;
+}
+
+/**
+ * @param json {Object}
+ * @param [prefix] {String}  拼接字符串
+ * @param [encrypt] {Boolean}  是否加密
+ * @returns {string}
+ * json 生成后端需要的序列化字符串
+ */
+export function param(json, encrypt, prefix = '?') {
+  if (!json) return '';
+  return prefix + cleanArray(
+    Object.keys(json).map(key => {
+      if (json[key] === undefined) return '';
+      return (encrypt ? encodeURIComponent(key) : key) + '=' + (encrypt ? encodeURIComponent(json[key]) : json[key]);
+    })
+  ).join('&');
+}
+
+/**
+ * @param {String} url
+ * @returns {Object}
+ * 获取查询字符串并将其转换为对象
+ */
+export function getQueryObject(url) {
+  if (typeof window === 'undefined') return Object.create(null);
+  url = (url == null || url === '') ? window.location.href : url;
+  const search = url.slice(url.lastIndexOf('?') + 1);
+  const obj = {};
+  const reg = /([^?&=]+)=([^?&=]*)/g;
+  search.replace(reg, (rs, $1, $2) => {
+    const name = decodeURIComponent($1);
+    obj[name] = decodeURIComponent($2) + '';
+    return rs;
+  });
+  return obj;
+}

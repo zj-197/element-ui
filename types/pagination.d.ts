@@ -1,9 +1,11 @@
-import { ElementUIComponent } from './component'
+import { ElementUIComponent, ElementUIHorizontalAlignment } from './component'
 
 /** Pagination Component */
 export declare class ElPagination extends ElementUIComponent {
   /** Whether to use small pagination */
   small: boolean
+  align: ElementUIHorizontalAlignment
+  hidden: boolean
 
   /** Item count of each page */
   pageSize: number
@@ -38,6 +40,6 @@ export declare class ElPagination extends ElementUIComponent {
   /** Text for the prev button */
   nextText: string
 
-  /** Whether to hide when thers's only one page */ 
+  /** Whether to hide when thers's only one page */
   hideOnSinglePage: boolean
 }

@@ -85,7 +85,7 @@ export default {
     disabled: {
       type: [Boolean, String],
       validator(val) {
-        return [true, false, undefined, 'before', 'after'].indexOf(val) > -1;
+        return [true, false, undefined, 'before', 'after', ''].indexOf(val) > -1;
       },
       default: false
     },

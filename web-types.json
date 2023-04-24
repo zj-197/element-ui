@@ -2408,6 +2408,21 @@
               "type": "string[]"
             },
             {
+              "name": "hoverBgIsActiveBg",
+              "description": "Hover color is the background",
+              "type": "boolean"
+            },
+            {
+              "name": "paddingLrStep",
+              "description": "paddingLrStep",
+              "type": "string"
+            },
+            {
+              "name": "paddingLrUnit",
+              "description": "Padding lr unit",
+              "type": "string"
+            },
+            {
               "name": "mode",
               "description": "Menu display mode",
               "type": "MenuDisplayMode"
@@ -2472,6 +2487,26 @@
               "name": "route",
               "description": "Vue Router object",
               "type": "object"
+            },
+            {
+              "name": "itemStyle",
+              "description": "Menu item style",
+              "type": "object"
+            },
+            {
+              "name": "activeStyle",
+              "description": "Menu item active style",
+              "type": "object"
+            },
+            {
+              "name": "hoverStyle",
+              "description": "Menu item hover style",
+              "type": "object"
+            },
+            {
+              "name": "hoverBgIsActiveBg",
+              "description": "Hover color is the background",
+              "type": "boolean"
             }
           ]
         },
@@ -2558,6 +2593,16 @@
             {
               "name": "small",
               "description": "Whether to use small pagination",
+              "type": "boolean"
+            },
+            {
+              "name": "align",
+              "description": "Horizontal arrangement",
+              "type": "string"
+            },
+            {
+              "name": "hidden",
+              "description": "Hidden or not",
               "type": "boolean"
             },
             {

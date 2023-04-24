@@ -6,6 +6,7 @@ import {FormItemLabelPosition} from './form'
 import { ElementUIHorizontalAlignment, ElementUIComponentSize } from './component'
 import { ElWpForm } from "./wp-form";
 import {VNode} from "vue";
+import {TableColumn} from "./table-column";
 export interface WpSearchTableSlots {
     /* default slot:  Custom bottom content */
     default: VNode[]
@@ -31,7 +32,8 @@ type Columns = {
     required?: boolean,
     align?: ElementUIHorizontalAlignment,
     width?: string | number
-    minWidth?: string | number
+    minWidth?: string | number,
+    formatter?: (row: object, column: TableColumn, cellValue:any, index:number) => any
 }
 /** WpSearchTable Component */
 export declare class ElWpSearchTable extends ElementUIComponent {

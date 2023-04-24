@@ -20,7 +20,7 @@
     "description": "Single selection among multiple options."
   },
   "el-radio-group": {
-    "attributes": ["size", "fill", "text-color", "change"],
+    "attributes": ["label-key","disabled-key","option-data","is-server","value-key","size", "fill", "text-color", "change"],
     "defaults": ["v-model"],
     "subtags": ["el-radio"]
   },
@@ -34,7 +34,7 @@
     "description": "A group of options for multiple choices."
   },
   "el-checkbox-group": {
-    "attributes": ["size", "fill", "text-color", "min", "max", "change"],
+    "attributes": ["label-key","disabled-key","option-data","is-server","value-key","size", "fill", "text-color", "min", "max", "change"],
     "defaults": ["v-model"],
     "subtags": ["el-checkbox"]
   },
@@ -56,7 +56,7 @@
     "defaults": ["v-model", "placeholder"]
   },
   "el-select": {
-    "attributes": ["multiple", "disabled", "value-key", "size", "clearable", "collapse-tags", "multiple-limit", "name", "auto-complete", "placeholder", "filterable", "allow-create", "filter-method", "remote", "remote-method", "loading", "loading-text", "no-match-text", "no-data-text", "popper-class", "reserve-keyword", "default-first-option", "popper-append-to-body", "change", "visible-change", "remote-tag", "clear", "blur", "focus"],
+    "attributes": ["label-key","disabled-key","option-data","is-server","trigger-method","multiple", "disabled", "value-key", "size", "clearable", "collapse-tags", "multiple-limit", "name", "auto-complete", "placeholder", "filterable", "allow-create", "filter-method", "remote", "remote-method", "loading", "loading-text", "no-match-text", "no-data-text", "popper-class", "reserve-keyword", "default-first-option", "popper-append-to-body", "change", "visible-change", "remote-tag", "clear", "blur", "focus"],
     "defaults": ["v-model", "placeholder"],
     "subtags": ["el-option"],
     "description": "When there are plenty of options, use a drop-down menu to display and select desired ones."
@@ -71,7 +71,7 @@
     "defaults": ["v-for", ":key"]
   },
   "el-cascader": {
-    "attributes": ["options", "props", "value", "separator", "popper-class", "placeholder", "disabled", "clearable", "expand-trigger", "show-all-levels", "filterable", "debounce", "change-on-select", "size", "change", "active-item-change", "blur", "focus"],
+    "attributes": ["trigger-method","option-data", "props", "value", "separator", "popper-class", "placeholder", "disabled", "clearable", "expand-trigger", "show-all-levels", "filterable", "debounce", "change-on-select", "size", "change", "active-item-change", "blur", "focus"],
     "defaults": [":options", "v-model"],
     "description": "If the options have a clear hierarchical structure, Cascader can be used to view and select them."
   },
@@ -152,7 +152,7 @@
     "description": "Display a set of data with hierarchies."
   },
   "el-pagination": {
-    "attributes": ["small", "background", "page-size", "total", "page-count", "current-page", "layout", "page-sizes", "popper-class", "prev-text", "next-text", "disabled", "size-change", "current-page"],
+    "attributes": ["align","hidden","small", "background", "page-size", "total", "page-count", "current-page", "layout", "page-sizes", "popper-class", "prev-text", "next-text", "disabled", "size-change", "current-page"],
     "defaults": [":total", ":current-page", ":page-size", "@current-change", "layout"],
     "description": "If you have too much data to display in one page, use pagination."
   },
@@ -167,12 +167,12 @@
     "description": "Displays important alert messages."
   },
   "el-menu": {
-    "attributes": ["mode", "collapse", "background-color", "text-color", "active-text-color", "theme", "default-active", "default-openeds", "unique-opened", "menu-trigger", "router", "collapse-transition", "select", "open", "close"],
+    "attributes": ["mode","padding-lr-step","padding-lr-unit","hover-bg-is-active-bg","collapse", "background-color", "text-color", "active-text-color", "theme", "default-active", "default-openeds", "unique-opened", "menu-trigger", "router", "collapse-transition", "select", "open", "close"],
     "defaults": ["default-active"],
     "subtags": ["el-submenu", "el-menu-item"]
   },
   "el-submenu": {
-    "attributes": ["index", "popper-class", "show-timeout", "hide-timeout", "disabled"],
+    "attributes": ["title-height","opened-class","opened-style","is-show-arrow-icon","title-hover-background","title-active-background","title-hover-bg-is-active-bg","title-background","index", "popper-class", "show-timeout", "hide-timeout", "disabled"],
     "defaults": ["index"],
     "subtags": ["el-menu-item"]
   },
@@ -181,7 +181,7 @@
     "subtags": ["el-menu-item"]
   },
   "el-menu-item": {
-    "attributes": ["index", "route", "disabled"],
+    "attributes": ["index", "route", "disabled","item-style", "active-style", "hover-style", "hover-bg-is-active-bg"],
     "defaults": ["index"]
   },
   "el-tabs": {
@@ -220,7 +220,7 @@
     "defaults": ["title"]
   },
   "el-dialog": {
-    "attributes": ["title", "top", "visible", "width", "fullscreen", "modal", "modal-append-to-body", "append-to-body", "lock-scroll", "custom-class", "close-on-click-modal", "show-close", "before-close", "center", "close", "open"],
+    "attributes": ["is-drag","custom","cancel-btn-text","confirm-btn-text","footer-justify","is-show-footer","is-show-confirm-btn","is-show-cancel-btn","title", "top", "visible", "width", "fullscreen", "modal", "modal-append-to-body", "append-to-body", "lock-scroll", "custom-class", "close-on-click-modal", "show-close", "before-close", "center", "close", "open"],
     "defaults": ["title"],
     "description": "Informs users while preserving the current page state."
   },
@@ -255,8 +255,33 @@
     "defaults": ["name", "title"]
   },
   "el-wp-search-table": {
-    "attributes": ["columns", "loadData", "colCount", "gutter", "size", "pageSize", "isServer", "maxSelect", "rowKey", "paginationKey", "tableProps", "formProps", "labelPosition", "labelWidth", "isInitCollapse"],
+    "attributes": ["columns", "load-data", "col-count", "gutter", "size", "page-size", "is-server", "max-select", "row-key", "pagination-key", "table-props", "form-props", "label-position", "label-width", "is-init-collapse"],
     "defaults": ["columns", "loadData"],
     "description": "A table with a search form"
+  },
+  "el-wp-date-picker": {
+    "attributes": ["current-date-add-minutes", "week-value-format", "readonly", "editable", "disabled", "clearable", "size", "placeholder", "start-placeholde", "end-placeholde", "time-arrow-control", "type", "format", "align", "popper-class", "picker-options", "range-separator", "default-value", "default-time", "name", "unlink-panels", "prefix-icon", "clear-icon", "change"],
+    "defaults": ["v-model", "placeholder"],
+    "description": "A table with a search form"
+  },
+  "el-wp-form-item": {
+    "attributes": ["tooltip", "valueType", "label", "prop", "pattern", "pattern-msg", "validator", "tooltip-placement", "label-width", "required", "rules", "error", "show-message", "inline-message", "size"],
+    "defaults": ["label"]
+  },
+  "el-wp-form": {
+    "attributes": ["is-show-reset-btn","reset-btn-text","is-show-search-btn", "is-show-collapse", "is-init-collapse","search-btn-text","gutter","col-count","collapse-text","spread-text","align","model", "rules", "inline", "label-position", "label-width", "label-suffix", "show-message", "inline-message", "status-icon", "validate-on-rule-change", "size", "disabled", "validate"],
+    "defaults": [":model"],
+    "subtags": ["el-wp-form-item"],
+    "description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data."
+  },
+  "el-wp-table": {
+    "attributes": ["load-data", "width", "is-server","is-show-refresh-tool", "empty-btn-text","is-show-setting-tool", "on-empty-btn-click","is-show-size-tool", "tool-align","page-size","max-select","pagination-props", "pagination-key", "reserve-selection","height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
+    "defaults": [":load-data"],
+    "subtags": ["el-wp-table-column"],
+    "description": "Display multiple data with similar format. You can sort, filter, compare your data in a table."
+  },
+  "el-wp-table-column": {
+    "attributes": ["hidden","isAddToolBar","type", "column-key", "index", "label", "prop", "width", "min-width", "fixed", "render-header", "sortable", "sort-method", "sort-by", "resizable", "formatter", "show-overflow-tooltip", "align", "header-align", "class-name", "label-class-name", "selectable", "reserve-selection", "filters", "filter-placement", "filter-multiple", "filter-method", "filtered-value"],
+    "defaults": ["label"]
   }
 }

@@ -42,7 +42,7 @@ export default {
         return Object.create(null);
       }
     },
-    // 分页布局方式
+    // 分页组件的props
     paginationProps: {
       type: Object,
       default() {

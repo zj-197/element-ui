@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -1081,6 +1081,114 @@
           ]
         },
         {
+          "name": "ElWpDatePicker",
+          "description": "Use Date Picker for date input.",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/date-picker",
+          "props": [
+            {
+              "name": "defaultValue",
+              "description": "Default date of the calendar",
+              "type": "Date|number|string"
+            },
+            {
+              "name": "weekValueFormat",
+              "description": "Select week time formatting",
+              "type": "string"
+            },
+            {
+              "name": "currentDateAddMinutes",
+              "description": "How much further back or forward the current time depends on disabled",
+              "type": "string"
+            },
+            {
+              "name": "type",
+              "description": "Type of the picker",
+              "type": "DatePickerType"
+            },
+            {
+              "name": "align",
+              "description": "Alignment",
+              "type": "ElementUIHorizontalAlignment"
+            },
+            {
+              "name": "readonly",
+              "description": "Whether DatePicker is read only",
+              "type": "boolean"
+            },
+            {
+              "name": "format",
+              "description": "Format of the picker",
+              "type": "string"
+            },
+            {
+              "name": "size",
+              "description": "Size of Input",
+              "type": "ElementUIComponentSize"
+            },
+            {
+              "name": "popperClass",
+              "description": "Custom class name for DatePicker's dropdown",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "description": "name for the inner native input",
+              "type": "string"
+            },
+            {
+              "name": "startPlaceholder",
+              "description": "Placeholder for the start date in range mode",
+              "type": "string"
+            },
+            {
+              "name": "disabled",
+              "description": "Whether DatePicker is disabled",
+              "type": "boolean|string"
+            },
+            {
+              "name": "placeholder",
+              "description": "Placeholder",
+              "type": "string"
+            },
+            {
+              "name": "endPlaceholder",
+              "description": "Placeholder for the end date in range mode",
+              "type": "string"
+            },
+            {
+              "name": "value",
+              "description": "The value of the date picker",
+              "type": "Date|string|Date[]|string[]"
+            },
+            {
+              "name": "rangeSeparator",
+              "description": "Range separator",
+              "type": "string"
+            },
+            {
+              "name": "clearable",
+              "description": "Whether to show clear button",
+              "type": "boolean"
+            },
+            {
+              "name": "editable",
+              "description": "Whether the input is editable",
+              "type": "boolean"
+            },
+            {
+              "name": "pickerOptions",
+              "description": "Additional options, check the table below",
+              "type": "DatePickerOptions"
+            }
+          ],
+          "slots": [
+            {
+              "name": "range-separator",
+              "description": "Custom range separator content"
+            }
+          ]
+        },
+        {
           "name": "ElDescriptions",
           "description": "Display multiple fields in list form.",
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/descriptions",
@@ -1597,6 +1705,128 @@
           ]
         },
         {
+          "name": "ElWpForm",
+          "description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data.",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/form",
+          "props": [
+            {
+              "name": "rules",
+              "description": "Validation rules of form",
+              "type": "object"
+            },
+            {
+              "name": "isShowResetBtn",
+              "description": "Whether the reset button is displayed",
+              "type": "boolean"
+            },
+            {
+              "name": "resetBtnText",
+              "description": "Reset button text",
+              "type": "string"
+            },
+            {
+              "name": "isShowSearchBtn",
+              "description": "Whether to display the search button",
+              "type": "boolean"
+            },
+            {
+              "name": "searchBtnText",
+              "description": "Search button text",
+              "type": "string"
+            },
+            {
+              "name": "gutter",
+              "description": "Gutter value",
+              "type": "number"
+            },
+            {
+              "name": "colCount",
+              "description": "Column count",
+              "type": "number"
+            },
+            {
+              "name": "collapseText",
+              "description": "Collapse text",
+              "type": "string"
+            },
+            {
+              "name": "spreadText",
+              "description": "Spread text",
+              "type": "string"
+            },
+            {
+              "name": "isShowCollapse",
+              "description": "Whether to display expansion and collapse",
+              "type": "boolean"
+            },
+            {
+              "name": "isInitCollapse",
+              "description": "Default expansion or not",
+              "type": "boolean"
+            },
+            {
+              "name": "labelWidth",
+              "description": "Width of label, and all form items will inherit from Form",
+              "type": "string"
+            },
+            {
+              "name": "model",
+              "description": "Data of form component",
+              "type": "object"
+            },
+            {
+              "name": "inlineMessage",
+              "description": "Whether to display the error message inline with the form item",
+              "type": "boolean"
+            },
+            {
+              "name": "size",
+              "description": "Controls the size of components in this form",
+              "type": "ElementUIComponentSize"
+            },
+            {
+              "name": "showMessage",
+              "description": "Whether to show the error message",
+              "type": "boolean"
+            },
+            {
+              "name": "statusIcon",
+              "description": "Whether to display an icon indicating the validation result",
+              "type": "boolean"
+            },
+            {
+              "name": "labelPosition",
+              "description": "Position of label",
+              "type": "FormItemLabelPosition"
+            },
+            {
+              "name": "labelSuffix",
+              "description": "Suffix of the label",
+              "type": "string"
+            },
+            {
+              "name": "disabled",
+              "description": "Whether the form is disabled",
+              "type": "boolean"
+            },
+            {
+              "name": "validate",
+              "description": "Validate the whole form",
+              "type": "{(ValidateCallback): void, (): Promise<boolean>}"
+            },
+            {
+              "name": "validateOnRuleChange",
+              "description": "Whether to trigger validation when the `rules` prop is changed",
+              "type": "boolean"
+            },
+            {
+              "name": "inline",
+              "description": "Whether the form is inline",
+              "type": "boolean"
+            }
+          ]
+        },
+        {
           "name": "ElFormItem",
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/form#form-item-attributes",
           "props": [
@@ -1609,6 +1839,102 @@
               "name": "rules",
               "description": "Validation rules of form",
               "type": "object"
+            },
+            {
+              "name": "required",
+              "description": "Whether the field is required or not, will be determined by validation rules if omitted",
+              "type": "boolean"
+            },
+            {
+              "name": "inlineMessage",
+              "description": "Whether to display the error message inline with the form item",
+              "type": "boolean"
+            },
+            {
+              "name": "size",
+              "description": "Controls the size of components in this form",
+              "type": "ElementUIComponentSize"
+            },
+            {
+              "name": "showMessage",
+              "description": "Whether to show the error message",
+              "type": "boolean"
+            },
+            {
+              "name": "error",
+              "description": "Field error message, set its value and the field will validate error and show this message immediately",
+              "type": "string"
+            },
+            {
+              "name": "prop",
+              "description": "A key of `model` of the enclosing `el-form` component",
+              "type": "string"
+            },
+            {
+              "name": "label",
+              "description": "Label",
+              "type": "string"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Content of Form Item"
+            },
+            {
+              "name": "label",
+              "description": "Content of label"
+            },
+            {
+              "name": "error",
+              "description": "Custom content to display validation message.",
+              "type": "{error: string}"
+            }
+          ]
+        },
+        {
+          "name": "ElWpFormItem",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/form#form-item-attributes",
+          "props": [
+            {
+              "name": "labelWidth",
+              "description": "Width of label, e.g. '50px'",
+              "type": "string"
+            },
+            {
+              "name": "tooltip",
+              "description": "Tooltip text",
+              "type": "string"
+            },
+            {
+              "name": "rules",
+              "description": "Validation rules of form",
+              "type": "object"
+            },
+            {
+              "name": "valueType",
+              "description": "The type of the binding value",
+              "type": "string"
+            },
+            {
+              "name": "pattern",
+              "description": "Built-in verification key",
+              "type": "string|RegExp"
+            },
+            {
+              "name": "patternMsg",
+              "description": "Verification message",
+              "type": "string"
+            },
+            {
+              "name": "validator",
+              "description": "Validator",
+              "type": "function"
+            },
+            {
+              "name": "tooltipPlacement",
+              "description": "Tooltip placement",
+              "type": "string"
             },
             {
               "name": "required",
@@ -3414,6 +3740,318 @@
           ]
         },
         {
+          "name": "ElWpTable",
+          "description": "Display multiple data with similar format. You can sort, filter, compare your data in a table.",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/table",
+          "props": [
+            {
+              "name": "showSummary",
+              "description": "Whether to display a summary row",
+              "type": "boolean"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "toolAlign",
+              "description": "The toolbar is arranged horizontally",
+              "type": "string"
+            },
+            {
+              "name": "isShowRefreshTool",
+              "description": "Whether to display the refresh toolbar",
+              "type": "boolean"
+            },
+            {
+              "name": "isShowSizeTool",
+              "description": "Whether to display the size toolbar",
+              "type": "boolean"
+            },
+            {
+              "name": "isShowSettingTool",
+              "description": "Whether to display the Settings toolbar",
+              "type": "boolean"
+            },
+            {
+              "name": "emptyBtnText",
+              "description": "Is the space-time button text",
+              "type": "string"
+            },
+            {
+              "name": "onEmptyBtnClick",
+              "description": "Click event of an empty button",
+              "type": "function"
+            },
+            {
+              "name": "maxSelect",
+              "description": "Maximum number of choices",
+              "type": "number"
+            },
+            {
+              "name": "paginationKey",
+              "description": "Page-related keys",
+              "type": "object"
+            },
+            {
+              "name": "paginationProps",
+              "description": "props for the pagination component",
+              "type": "object"
+            },
+            {
+              "name": "pageSize",
+              "description": "Number of pages",
+              "type": "number"
+            },
+            {
+              "name": "loadData",
+              "description": "Load data function",
+              "type": "array|(function():Promise<any>)"
+            },
+            {
+              "name": "width",
+              "description": "width",
+              "type": "string"
+            },
+            {
+              "name": "rowStyle",
+              "description": "Function that returns custom style for a row, or an object assigning custom style for every row",
+              "type": "object|(function(rowCallbackParams): object)"
+            },
+            {
+              "name": "defaultSort",
+              "description": "Set the default sort column and order",
+              "type": "DefaultSortOptions"
+            },
+            {
+              "name": "fit",
+              "description": "Whether width of column automatically fits its container",
+              "type": "boolean"
+            },
+            {
+              "name": "headerRowStyle",
+              "description": "Function that returns custom style for a row in table header, or an object assigning custom style for every row in table header",
+              "type": "object|(function(rowCallbackParams): object)"
+            },
+            {
+              "name": "stripe",
+              "description": "Whether table is striped",
+              "type": "boolean"
+            },
+            {
+              "name": "defaultExpandAll",
+              "description": "Whether expand all rows by default. Only works when the table has a column `type=\"expand\"`",
+              "type": "Boolean"
+            },
+            {
+              "name": "height",
+              "description": "Table's height. By default it has an auto height. If its value is a number, the height is measured in pixels; if its value is a string, the height is affected by external styles",
+              "type": "string|number"
+            },
+            {
+              "name": "border",
+              "description": "Whether table has vertical border",
+              "type": "boolean"
+            },
+            {
+              "name": "sumText",
+              "description": "Displayed text for the first column of summary row",
+              "type": "string"
+            },
+            {
+              "name": "selectOnIndeterminate",
+              "description": "Controls the behavior of master checkbox in multi-select tables when only some rows are selected",
+              "type": "boolean"
+            },
+            {
+              "name": "rowClassName",
+              "description": "Function that returns custom class names for a row, or a string assigning class names for every row",
+              "type": "string|(function(rowCallbackParams): string)"
+            },
+            {
+              "name": "headerRowClassName",
+              "description": "Function that returns custom class names for a row in table header, or a string assigning class names for every row in table header",
+              "type": "string|(function(rowCallbackParams): string)"
+            },
+            {
+              "name": "currentRowKey",
+              "description": "Key of current row, a set only prop",
+              "type": "string|number"
+            },
+            {
+              "name": "indent",
+              "description": "Horizontal indentation of nodes in adjacent levels in pixels",
+              "type": "number"
+            },
+            {
+              "name": "lazy",
+              "description": "Whether to lazy load tree structure data, used with load attribute",
+              "type": "boolean"
+            },
+            {
+              "name": "emptyText",
+              "description": "Displayed text when data is empty. You can customize this area with `slot=\"empty\"`",
+              "type": "String"
+            },
+            {
+              "name": "maxHeight",
+              "description": "Table's max-height. The height of the table starts from auto until it reaches the maxHeight limit. The maxHeight is measured in pixels, same as height",
+              "type": "string|number"
+            },
+            {
+              "name": "tooltipEffect",
+              "description": "Tooltip effect property",
+              "type": "TooltipEffect"
+            },
+            {
+              "name": "showHeader",
+              "description": "Whether table header is visible",
+              "type": "boolean"
+            },
+            {
+              "name": "highlightCurrentRow",
+              "description": "Whether current row is highlighted",
+              "type": "boolean"
+            },
+            {
+              "name": "cellStyle",
+              "description": "Function that returns custom style for a cell, or an object assigning custom style for every cell",
+              "type": "object|(function(cellCallbackParams): object)"
+            },
+            {
+              "name": "headerCellClassName",
+              "description": "Function that returns custom class names for a cell in table header, or a string assigning class names for every cell in table header",
+              "type": "string|(function(cellCallbackParams): string)"
+            },
+            {
+              "name": "headerCellStyle",
+              "description": "Function that returns custom style for a cell in table header, or an object assigning custom style for every cell in table header",
+              "type": "object|(function(cellCallbackParams): object)"
+            },
+            {
+              "name": "cellClassName",
+              "description": "Function that returns custom class names for a cell, or a string assigning class names for every cell",
+              "type": "string|(function(cellCallbackParams): string)"
+            },
+            {
+              "name": "expandRowKeys",
+              "description": "Set expanded rows by this prop. Prop's value is the keys of expand rows, you should set row-key before using this prop",
+              "type": "any[]"
+            }
+          ],
+          "slots": [
+            {
+              "name": "append",
+              "description": "Contents to be inserted after the last row. You may need this slot if you want to implement infinite scroll for the table. This slot will be displayed above the summary row if there is one."
+            },
+            {
+              "name": "toolbar-prefix",
+              "description": "Toolbar prefix content"
+            },
+            {
+              "name": "toolbar-suffix",
+              "description": "Toolbar suffix content"
+            },
+            {
+              "name": "empty",
+              "description": "Empty content"
+            }
+          ]
+        },
+        {
+          "name": "ElWpSearchTable",
+          "description": "A table with a search form",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/table",
+          "props": [
+            {
+              "name": "columns",
+              "description": "Column configuration object",
+              "type": "Array<object>"
+            },
+            {
+              "name": "loadData",
+              "description": "Load data",
+              "type": "function"
+            },
+            {
+              "name": "colCount",
+              "description": "Number of search form columns",
+              "type": "number|string"
+            },
+            {
+              "name": "gutter",
+              "description": "gutter",
+              "type": "number|string"
+            },
+            {
+              "name": "size",
+              "description": "Size",
+              "type": "string"
+            },
+            {
+              "name": "pageSize",
+              "description": "PageSize",
+              "type": "number"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "maxSelect",
+              "description": "Maximum number of choices",
+              "type": "number"
+            },
+            {
+              "name": "rowKey",
+              "description": "RowKey",
+              "type": "string"
+            },
+            {
+              "name": "paginationKey",
+              "description": "Pagination key",
+              "type": "object"
+            },
+            {
+              "name": "tableProps",
+              "description": "Table props",
+              "type": "object"
+            },
+            {
+              "name": "formProps",
+              "description": "Form props",
+              "type": "object"
+            },
+            {
+              "name": "labelPosition",
+              "description": "Position of label",
+              "type": "FormItemLabelPosition"
+            },
+            {
+              "name": "labelWidth",
+              "description": "Width of label",
+              "type": "string"
+            },
+            {
+              "name": "isInitCollapse",
+              "description": "Default expansion or not",
+              "type": "boolean"
+            }
+          ],
+          "slots": [
+            {
+              "name": "toolbar-prefix",
+              "description": "Toolbar prefix content"
+            },
+            {
+              "name": "toolbar-suffix",
+              "description": "Toolbar suffix content"
+            }
+          ]
+        },
+        {
           "name": "ElTableColumn",
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/table#table-column-attributes",
           "props": [
@@ -3421,6 +4059,134 @@
               "name": "type",
               "description": "Type of the column. If set to `selection`, the column will display checkbox. If set to `index`, the column will display index of the row (staring from 1). If set to `expand`, the column will display expand icon.",
               "type": "TableColumnType"
+            },
+            {
+              "name": "align",
+              "description": "Alignment",
+              "type": "ElementUIHorizontalAlignment"
+            },
+            {
+              "name": "headerAlign",
+              "description": "Alignment of the table header. If omitted, the value of the `align` attribute will be applied",
+              "type": "ElementUIHorizontalAlignment"
+            },
+            {
+              "name": "sortOrders",
+              "description": "The order of the sorting strategies used when sorting the data. Works when `sortable` is `true`.",
+              "type": "SortOrders[]"
+            },
+            {
+              "name": "filterPlacement",
+              "description": "Placement for the filter dropdown",
+              "type": "PopoverPlacement"
+            },
+            {
+              "name": "reserveSelection",
+              "description": "Whether to reserve selection after data refreshing, works when `type` is `'selection'`",
+              "type": "boolean"
+            },
+            {
+              "name": "fixed",
+              "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
+              "type": "boolean|TableColumnFixedType"
+            },
+            {
+              "name": "columnKey",
+              "description": "Column's key. If you need to use the filter-change event, you need this attribute to identify which column is being filtered",
+              "type": "string"
+            },
+            {
+              "name": "labelClassName",
+              "description": "Class name of the label of this column",
+              "type": "string"
+            },
+            {
+              "name": "className",
+              "description": "Class name of cells in the column",
+              "type": "string"
+            },
+            {
+              "name": "prop",
+              "description": "Field name. You can also use its alias: property",
+              "type": "string"
+            },
+            {
+              "name": "showOverflowTooltip",
+              "description": "Whether to hide extra content and show them in a tooltip when hovering on the cell",
+              "type": "boolean"
+            },
+            {
+              "name": "filterMultiple",
+              "description": "Whether data filtering supports multiple options",
+              "type": "Boolean"
+            },
+            {
+              "name": "resizable",
+              "description": "Whether column width can be resized. Works when border of `el-table` is `true`",
+              "type": "boolean"
+            },
+            {
+              "name": "filteredValue",
+              "description": "Filter value for selected data, might be useful when table header is rendered with `render-header`",
+              "type": "TableColumnFilter[]"
+            },
+            {
+              "name": "minWidth",
+              "description": "Column minimum width. Columns with `width` has a fixed width, while columns with `min-width` has a width that is distributed in proportion",
+              "type": "string"
+            },
+            {
+              "name": "label",
+              "description": "Column label",
+              "type": "string"
+            },
+            {
+              "name": "sortable",
+              "description": "Whether column can be sorted",
+              "type": "boolean|\"custom\""
+            },
+            {
+              "name": "filters",
+              "description": "An array of data filtering options",
+              "type": "TableColumnFilter[]"
+            },
+            {
+              "name": "width",
+              "description": "Column width",
+              "type": "string"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Custom content for table columns.",
+              "type": "{ row: any, column: any, $index: any }"
+            },
+            {
+              "name": "header",
+              "description": "Custom content for table header.",
+              "type": "{ column: any, $index: any }"
+            }
+          ]
+        },
+        {
+          "name": "ElWpTableColumn",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/table#table-column-attributes",
+          "props": [
+            {
+              "name": "type",
+              "description": "Type of the column. If set to `selection`, the column will display checkbox. If set to `index`, the column will display index of the row (staring from 1). If set to `expand`, the column will display expand icon.",
+              "type": "TableColumnType"
+            },
+            {
+              "name": "hidden",
+              "description": "Hidden or not",
+              "type": "boolean"
+            },
+            {
+              "name": "isAddToolBar",
+              "description": "Whether to display it on the toolbar",
+              "type": "boolean"
             },
             {
               "name": "align",

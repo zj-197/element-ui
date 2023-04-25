@@ -95,10 +95,19 @@ export default {
           style.color = this.theme;
           style.backgroundColor = this.shadeColor;
           style.borderColor = this.plainBorderColor;
+          if (this.disabled) {
+            style.color = this.mixColor(this.theme, 0.4);
+            style.borderColor = this.mixColor(this.theme, 0.8);
+          }
         } else {
           style.color = '#fff';
           style.backgroundColor = this.theme;
           style.borderColor = this.theme;
+          if (this.disabled) {
+            const disabledColor = this.mixColor(this.theme, 0.5);
+            style.borderColor = disabledColor;
+            style.backgroundColor = disabledColor;
+          }
         }
       }
       return style;

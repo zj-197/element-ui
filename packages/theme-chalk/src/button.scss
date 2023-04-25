@@ -3,6 +3,69 @@
 @import "mixins/button";
 @import "mixins/mixins";
 @import "mixins/utils";
+.el-button, .el-button-custom {
+  @include when(loading) {
+    position: relative;
+    pointer-events: none;
+
+    &:before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: rgba(255,255,255,.35);
+    }
+  }
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 23px;
+  }
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $--button-padding-vertical;
+  }
+}
+@include b(button-custom) {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  color: $--button-default-font-color;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: $--button-font-weight;
+  border-width: $--border-width-base;
+  border-style: $--border-style-base;
+  border-color: $--button-default-border-color;
+  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
+  @include utils-user-select(none);
+  & + &, & + .el-button {
+    margin-left: 10px;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  &:active, &:hover, &:focus {
+    outline: none;
+  }
+
+  & [class*="el-icon-"] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+  @include when(disabled) {
+    cursor: not-allowed;
+  }
+}
 
 @include b(button) {
   display: inline-block;
@@ -95,31 +158,6 @@
         color: $--button-disabled-font-color;
       }
     }
-  }
-
-  @include when(loading) {
-    position: relative;
-    pointer-events: none;
-
-    &:before {
-      pointer-events: none;
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
-      border-radius: inherit;
-      background-color: rgba(255,255,255,.35);
-    }
-  }
-  @include when(round) {
-    border-radius: 20px;
-    padding: 12px 23px;
-  }
-  @include when(circle) {
-    border-radius: 50%;
-    padding: $--button-padding-vertical;
   }
   @include m(primary) {
     @include button-variant($--button-primary-font-color, $--button-primary-background-color, $--button-primary-border-color);
@@ -269,61 +307,6 @@
     &:not(:first-child):not(:last-child) {
       border-left-color: rgba($--color-white, 0.5);
       border-right-color: rgba($--color-white, 0.5);
-    }
-  }
-}
-
-@include b(button-custom) {
-  display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  color: $--button-default-font-color;
-  -webkit-appearance: none;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
-  margin: 0;
-  transition: .1s;
-  font-weight: $--button-font-weight;
-  border-width: $--border-width-base;
-  border-style: $--border-style-base;
-  border-color: $--button-default-border-color;
-  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
-  @include utils-user-select(none);
-  & + &, & + .el-button {
-    margin-left: 10px;
-  }
-  &::-moz-focus-inner {
-    border: 0;
-  }
-  &:active, &:hover, &:focus {
-    outline: none;
-  }
-
-  & [class*="el-icon-"] {
-    & + span {
-      margin-left: 5px;
-    }
-  }
-  @include when(disabled) {
-    &,
-    &:hover,
-    &:focus {
-      cursor: not-allowed;
-      background-image: none;
-      position: relative;
-    }
-    &:before {
-      pointer-events: none;
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
-      border-radius: inherit;
-      background-color: rgba(255,255,255,.5);
     }
   }
 }

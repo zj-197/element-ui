@@ -695,6 +695,21 @@
               "type": "CascaderProps<any, CascaderOption>"
             },
             {
+              "name": "isLoading",
+              "description": "Loading or not",
+              "type": "boolean"
+            },
+            {
+              "name": "loadingText",
+              "description": "Loading text",
+              "type": "string"
+            },
+            {
+              "name": "renderLabel",
+              "type": "function",
+              "description": "Custom render label"
+            },
+            {
               "name": "value",
               "description": "Selected value",
               "type": "any"
@@ -2408,6 +2423,11 @@
               "type": "string[]"
             },
             {
+              "name": "defaultSubActive",
+              "description": "The submenu selected by default",
+              "type": "string"
+            },
+            {
               "name": "hoverBgIsActiveBg",
               "description": "Hover color is the background",
               "type": "boolean"
@@ -3917,6 +3937,11 @@
             {
               "name": "isServer",
               "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "reserveSelection",
+              "description": "Whether to keep the previous choice",
               "type": "boolean"
             },
             {

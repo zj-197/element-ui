@@ -38,6 +38,7 @@
           <i class="doc-icon-gitter elementdoc"></i>
         </a>
       </div>
+      <div style="text-align: center">本网站基于element-ui搭建</div>
     </div>
   </footer>
 </template>

@@ -155,7 +155,7 @@ import {
   MessageBox,
   Message,
   Notification
-} from 'element-ui';
+} from 'wp-element-ui';
 
 Vue.use(Pagination);
 Vue.use(Dialog);
@@ -250,7 +250,7 @@ Vue.prototype.$message = Message;
 
 ```js
 import Vue from 'vue';
-import Element from 'element-ui';
+import Element from 'wp-element-ui';
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 ```
 
@@ -258,7 +258,7 @@ Vue.use(Element, { size: 'small', zIndex: 3000 });
 
 ```js
 import Vue from 'vue';
-import { Button } from 'element-ui';
+import { Button } from 'wp-element-ui';
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 Vue.use(Button);

@@ -75,6 +75,11 @@
     "defaults": [":options", "v-model"],
     "description": "If the options have a clear hierarchical structure, Cascader can be used to view and select them."
   },
+  "el-cascader-panel": {
+    "attributes": ["options", "value", "props", "render-label", "border", "loading-text", "is-loading"],
+    "defaults": [":options", "v-model"],
+    "description": "If the options have a clear hierarchical structure, Cascader can be used to view and select them."
+  },
   "el-switch": {
     "attributes": ["disabled", "width", "active-icon-class", "inactive-icon-class", "active-text", "inactive-text", "active-value", "inactive-value", "active-color", "inactive-color", "on-icon-class", "off-icon-class", "on-text", "off-text", "on-value", "off-value", "on-color", "off-color", "name", "change"],
     "defaults": ["v-model"],
@@ -167,7 +172,7 @@
     "description": "Displays important alert messages."
   },
   "el-menu": {
-    "attributes": ["mode","padding-lr-step","padding-lr-unit","hover-bg-is-active-bg","collapse", "background-color", "text-color", "active-text-color", "theme", "default-active", "default-openeds", "unique-opened", "menu-trigger", "router", "collapse-transition", "select", "open", "close"],
+    "attributes": ["mode","default-sub-active","padding-lr-step","padding-lr-unit","hover-bg-is-active-bg","collapse", "background-color", "text-color", "active-text-color", "theme", "default-active", "default-openeds", "unique-opened", "menu-trigger", "router", "collapse-transition", "select", "open", "close"],
     "defaults": ["default-active"],
     "subtags": ["el-submenu", "el-menu-item"]
   },

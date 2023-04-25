@@ -128,7 +128,7 @@
       hoverBgIsActiveBg: Boolean, // hover时的背景是否为激活时的背景
       paddingLrStep: {
         type: Number,
-        default: 16
+        default: 20
       }, // 左右边距步长,
       paddingLrUnit: {
         type: String,

@@ -223,7 +223,7 @@
       style="width: 100%">
       <el-wp-table-column
         label="序号"
-        prop="index"
+        prop="order"    
         width="180">
       </el-wp-table-column>
       <el-wp-table-column
@@ -281,8 +281,8 @@
                   const list = Array.from({ length: pageSize }, (_, i) => {
                       const index = ((page - 1) * pageSize) + (i + 1)
                       return {
-                          order: i,
-                          id: Math.floor(Math.random() * 10000),
+                          order: index,
+                          id: Math.floor(Math.random() * 100000),
                           nick_name: '昵称' + index,
                           address: '重庆' + Math.random() > 0.5 ? '渝北' : '江北',
                           sex: {text: Math.random() > 0.5 ? '女' : '男'},
@@ -317,7 +317,7 @@
 ```
 :::
 
-### WpTable New Attributes WpTable新增的prop属性
+### WpTable New Attributes 新增的prop属性
 
 | 参数                   | 说明                                                                                                                                                       | 类型                                                                             | 可选值        | 默认值                                                                |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|------------|--------------------------------------------------------------------|
@@ -333,6 +333,7 @@
 | is-show-refresh-tool | 是否显示工具栏中的刷新                                                                                                                                              | boolean                                                                        | —          | true                                                               |
 | is-show-setting-tool | 是否显示工具栏中的设置                                                                                                                                              | boolean                                                                        | —          | true                                                               |
 | is-show-size-tool    | 是否显示工具栏中的密度                                                                                                                                              | boolean                                                                        | —          | true                                                               |
+| reserve-selection    | 多选表格是否保留之前选中的数据（需指定 `row-key`）                                                                                                                                             | boolean                                                                        | —          | true                                                               |
 | tool-align           | 工具栏水平显示位置                                                                                                                                                | string                                                                         | left/right | right                                                              |
 
 ### Table Attributes
@@ -425,11 +426,11 @@
 |----------------|------------------------------------------------------|
 | empty | 表格数据为空或者加载错误的时候展示的内容参数为 { isLoading, isError } |
 
-### Wp-Table-column New Attributes 维普表格列新增属性
+### Wp-Table-column New Attributes 新增属性
 
 | 参数              | 说明                                | 类型      | 可选值 | 默认值   |
 |-----------------|-----------------------------------|---------|---|-------|
-| hidden          | 是否显示当前列(支持.sync)，用于代替v-if或者v-show | boolean | —  | false |
+| hidden          | 是否显示当前列(支持.sync)，用于代替v-if | boolean | —  | false |
 | is-add-tool-bar | 是否添加到  工具栏                        | boolean | —  | true  |
 
 ### Table-column Attributes

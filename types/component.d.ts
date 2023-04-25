@@ -11,3 +11,9 @@ export type ElementUIComponentSize = 'large' | 'medium' | 'small' | 'mini'
 
 /** Horizontal alignment */
 export type ElementUIHorizontalAlignment = 'left' | 'center' | 'right'
+/** OptionData */
+type OptionData = object
+
+export type ElementUIFormComponentOptionData<T = OptionData> = (() => Promise<any>) | Array<T>
+/** triggerMethod */
+export type ElementUIFormComponentTriggerMethod = 'immediate' | 'focus'

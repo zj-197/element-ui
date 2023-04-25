@@ -5,20 +5,12 @@
 
 @include b(dialog) {
   position: relative;
-  margin: 0 auto 50px;
+  margin: 0 auto;
   background: $--dialog-background-color;
   border-radius: $--border-radius-small;
   box-shadow: $--dialog-box-shadow;
   box-sizing: border-box;
   width: 50%;
-
-  @include when(fullscreen) {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    height: 100%;
-    overflow: auto;
-  }
 
   @include e(wrapper) {
     position: fixed;
@@ -32,7 +24,6 @@
 
   @include e(header) {
     padding: $--dialog-padding-primary;
-    padding-bottom: 10px;
   }
 
   @include e(headerbtn) {
@@ -44,7 +35,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: $--message-close-size;
+    font-size: 18px;
 
     .el-dialog__close {
       color: $--color-info;
@@ -64,7 +55,7 @@
   }
 
   @include e(body) {
-    padding: ($--dialog-padding-primary + 10px) $--dialog-padding-primary;
+    padding: 0 $--dialog-padding-primary;
     color: $--color-text-regular;
     font-size: $--dialog-content-font-size;
     word-break: break-all;
@@ -72,7 +63,6 @@
 
   @include e(footer) {
     padding: $--dialog-padding-primary;
-    padding-top: 10px;
     text-align: right;
     box-sizing: border-box;
   }
@@ -83,7 +73,6 @@
 
     @include e(body) {
       text-align: initial;
-      padding: 25px ($--dialog-padding-primary + 5px) 30px;
     }
 
     @include e(footer) {
@@ -91,7 +80,19 @@
     }
   }
 }
-
+@include b(dialog-custom) {
+  position: relative;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 50%;
+}
+@include b(dialog--fullscreen) {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  overflow: auto;
+}
 .dialog-fade-enter-active {
   animation: dialog-fade-in .3s;
 }

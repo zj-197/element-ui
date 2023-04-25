@@ -1,9 +1,15 @@
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { ElementUIComponent, ElementUIComponentSize, ElementUIFormComponentTriggerMethod, ElementUIFormComponentOptionData } from './component'
 
 /** Checkbox Group Component */
 export declare class ElCheckboxGroup extends ElementUIComponent {
   /** Size of checkbox buttons or bordered checkboxes */
   size: ElementUIComponentSize
+  optionData: ElementUIFormComponentOptionData
+  labelKey: string
+  isServer: boolean
+  triggerMethod: ElementUIFormComponentTriggerMethod
+  valueKey: string
+  disabledKey: string
 
   /** Whether the nesting checkboxes are disabled */
   disabled: boolean

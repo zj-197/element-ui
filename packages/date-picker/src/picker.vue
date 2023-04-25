@@ -25,7 +25,6 @@
       @click="handleFocus">
     </i>
     <template slot="suffix">
-      <slot name="suffix" slot="suffix"></slot>
       <i class="el-input__icon"
          @click="handleClickIcon"
          :class="[showClose ? '' + clearIcon : '']"

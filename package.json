@@ -1,6 +1,6 @@
 {
   "name": "wp-element-ui",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "element-ui二开版",
   "main": "lib/element-ui.common.js",
   "files": [
@@ -8,8 +8,13 @@
     "src",
     "packages",
     "types",
-    "web-types.json"
+    "web-types.json",
+    "vetur"
   ],
+  "vetur": {
+    "tags": "vetur/element-tags.json",
+    "attributes": "vetur/element-attributes.json"
+  },
   "typings": "types/index.d.ts",
   "scripts": {
     "bootstrap": "yarn || npm i",
@@ -39,7 +44,8 @@
   "keywords": [
     "eleme",
     "vue",
-    "components"
+    "components",
+    "wp-element-ui"
   ],
   "license": "MIT",
   "unpkg": "lib/index.js",

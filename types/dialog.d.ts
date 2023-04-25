@@ -1,6 +1,6 @@
 import { VNode } from 'vue'
 import { ElementUIComponent } from './component'
-
+import { HorizontalAlignment } from './row'
 export interface DialogSlots {
   /** Content of the Dialog */
   default: VNode[],
@@ -18,6 +18,15 @@ export interface DialogSlots {
 export declare class ElDialog extends ElementUIComponent {
   /** Title of Dialog */
   title: string
+
+  isDrag: boolean
+  custom: boolean
+  cancelBtnText: string
+  confirmBtnText: string
+  footerJustify: HorizontalAlignment
+  isShowFooter: boolean
+  isShowConfirmBtn: boolean
+  isShowCancelBtn: boolean
 
   /** Width of Dialog */
   width: string

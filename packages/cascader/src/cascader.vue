@@ -697,7 +697,7 @@ export default {
       if (typeof this.optionData === 'function' && this.triggerMethod === 'immediate') {
         this.isLoading = true;
         return this.optionData().then(res => {
-          this.nodeList = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];
+          this.nodeList = (isObject(res) && Array.isArray(res.data) ? res.data : res) || [];
           this.isLoading = false;
         }).catch(e => {
           this.isLoading = false;

@@ -7,6 +7,9 @@ export type MenuTheme = 'light' | 'dark'
 export declare class ElMenu extends ElementUIComponent {
   /** Menu display mode */
   mode: MenuDisplayMode
+  paddingLrStep: number
+  paddingLrUnit: string
+  hoverBgIsActiveBg: boolean
 
   /** Whether the menu is collapsed (available only in vertical mode) */
   collapse: boolean
@@ -37,7 +40,7 @@ export declare class ElMenu extends ElementUIComponent {
 
   /** Whether the menu collapse transition is active */
   collapseTransition: boolean
-  
+
   /** Open the specified sub-menu */
   open (index: string): void
 

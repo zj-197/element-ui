@@ -7,6 +7,7 @@ import {isObject} from 'element-ui/src/utils/types';
 import ToolBar from './ToolBar.vue';
 import {findIndex, assign} from 'element-ui/src/utils/lodash';
 import { noop } from 'element-ui/src/utils/util';
+import Locale from 'element-ui/src/mixins/locale';
 
 export default {
   name: 'ElWpTable',
@@ -27,10 +28,7 @@ export default {
     },
     // 当表格多选时rowKey为必填
     maxSelect: {
-      type: Number,
-      validator(val) {
-        return val ? val > 0 : true;
-      }
+      type: Number
     },
     // 多选表格时是否保存之前选中的
     reserveSelection: {
@@ -44,7 +42,7 @@ export default {
         return Object.create(null);
       }
     },
-    // 分页布局方式
+    // 分页组件的props
     paginationProps: {
       type: Object,
       default() {
@@ -190,6 +188,7 @@ export default {
       }
     }
   },
+  mixins: [Locale],
   data(vm) {
     const realPaginationKey = assign({
       page: 'page',
@@ -407,7 +406,7 @@ export default {
       if (this.$slots.empty) return this.$slots.empty;
       return (
         <el-empty class={{'el-wp-table-empty-is-loading': this.isLoading}}
-          description={this.isError ? '加载失败' : this.emptyText} image-size={100} style="line-height: 16px">
+          description={this.isError ? this.t('el.image.error') : this.emptyText} image-size={100} style="line-height: 16px">
           <el-button type="primary" size="mini"
             on-click={() => {
               if (this.isError) {

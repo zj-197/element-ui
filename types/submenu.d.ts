@@ -7,6 +7,14 @@ export declare class ElSubmenu extends ElementUIComponent {
 
   /** Delay time before showing a sub-menu */
   showTimeout: number
+  titleBackground: string
+  titleHeight: string
+  titleHoverBackground: string
+  titleActiveBackground: string
+  titleHoverBgIsActiveBg: string
+  openedClass: string
+  openedStyle: object
+  isShowArrowIcon: boolean
 
   /** Delay time before hiding a sub-menu */
   hideTimeout: number

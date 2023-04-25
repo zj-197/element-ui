@@ -79,8 +79,8 @@ export default {
     },
     tableColumnsConfig() {
       return this.columns.filter(item => item.hiddenInTable !== true).map(item => {
-        const { label, prop, width, align, minWidth, columnProps } = item;
-        return assign({ label, prop, width, align: align || 'center', minWidth }, isObject(columnProps) ? columnProps : Object.create(null));
+        const { label, prop, width, align, minWidth, formatter, columnProps } = item;
+        return assign({ label, prop, width, align: align || 'center', minWidth, formatter }, isObject(columnProps) ? columnProps : Object.create(null));
       });
     }
   },

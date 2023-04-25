@@ -1,6 +1,6 @@
 ﻿# Guía para Contribuidores a `Element UI`
 
-¡Hola! Gracias por elegir [Element UI](http://element.eleme.io/#/en-US).
+¡Hola! Gracias por elegir [Element UI](https://zj-197.github.io/element-ui).
 
 `Element UI` es un archivo de componentes para desarrolladores y para gerentes de productos ‘web’ basado en [Vue 2.0](https://vuejs.org/)
 

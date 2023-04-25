@@ -1,4 +1,4 @@
-import { ElementUIComponent } from './component'
+import { ElementUIComponent, ElementUIFormComponentTriggerMethod, ElementUIFormComponentOptionData } from './component'
 
 export type RadioGroupSize = 'large' | 'small'
 
@@ -6,6 +6,12 @@ export type RadioGroupSize = 'large' | 'small'
 export declare class ElRadioGroup extends ElementUIComponent {
   /** The size of radio buttons */
   size: RadioGroupSize
+  optionData: ElementUIFormComponentOptionData
+  labelKey: string
+  isServer: boolean
+  triggerMethod: ElementUIFormComponentTriggerMethod
+  valueKey: string
+  disabledKey: string
 
   /** Border and background color when button is active */
   fill: string

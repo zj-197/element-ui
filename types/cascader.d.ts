@@ -1,5 +1,5 @@
 import { VNode } from 'vue';
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { ElementUIComponent, ElementUIComponentSize, ElementUIFormComponentOptionData, ElementUIFormComponentTriggerMethod } from './component'
 import { CascaderOption, CascaderProps, CascaderNode } from './cascader-panel';
 
 export { CascaderOption, CascaderProps, CascaderNode };
@@ -17,7 +17,9 @@ export interface CascaderSlots {
 /** Cascader Component */
 export declare class ElCascader<V = any, D = CascaderOption> extends ElementUIComponent {
   /** Data of the options */
-  options: CascaderOption[]
+  optionData: ElementUIFormComponentOptionData<CascaderOption>
+  isServer: boolean
+  triggerMethod: ElementUIFormComponentTriggerMethod
 
   /** Configuration options */
   props: CascaderProps<V, D>

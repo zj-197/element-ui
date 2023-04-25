@@ -1,6 +1,7 @@
 <template>
   <button
       @click="handleClick"
+      class="el-button-reset"
       @mouseenter.stop="mouseenter"
       @mouseleave.stop="mouseleave"
       @mousedown.stop="mousedown"
@@ -148,9 +149,37 @@ export default {
     mousedown(evt) {
       if (!this.theme) return;
       const customButton = this.getElCustomButton(evt.target);
-      const deepTheme = this.deepColor(this.theme, 0.1);
-      customButton.style.backgroundColor = deepTheme;
-      customButton.style.borderColor = deepTheme;
+      if (customButton) {
+        const deepTheme = this.deepColor(this.theme, 0.1);
+        customButton.style.backgroundColor = deepTheme;
+        customButton.style.borderColor = deepTheme;
+      }
+    },
+    mouseup(evt) {
+      if (!this.theme) return;
+      const customButton = this.getElCustomButton(evt.target);
+      if (customButton) {
+        if (this.plain) {
+          customButton.style.backgroundColor = this.theme;
+          customButton.style.borderColor = this.theme;
+        } else {
+          customButton.style.backgroundColor = this.hoverColor;
+          customButton.style.borderColor = this.hoverColor;
+        }
+      }
+    },
+    onBlur(evt) {
+      if (!this.theme) return;
+      this.isFocus = false;
+      const target = evt.target;
+      if (this.plain) {
+        target.style.backgroundColor = this.shadeColor;
+        target.style.borderColor = this.plainBorderColor;
+        target.style.color = this.theme;
+      } else {
+        target.style.backgroundColor = this.theme;
+        target.style.borderColor = this.theme;
+      }
     },
     mixColor(color, tint) {
       let { red, green, blue } = this.getColorChannels(color);
@@ -209,7 +238,7 @@ export default {
       let parent = el;
       while (parent) {
         if ([window, document, document.documentElement].includes(parent)) {
-          return window;
+          return undefined;
         }
         if (hasClass(parent, 'el-button-custom')) {
           return parent;
@@ -217,30 +246,6 @@ export default {
         parent = parent.parentNode;
       }
       return parent;
-    },
-    mouseup(evt) {
-      if (!this.theme) return;
-      const customButton = this.getElCustomButton(evt.target);
-      if (this.plain) {
-        customButton.style.backgroundColor = this.theme;
-        customButton.style.borderColor = this.theme;
-      } else {
-        customButton.style.backgroundColor = this.hoverColor;
-        customButton.style.borderColor = this.hoverColor;
-      }
-    },
-    onBlur(evt) {
-      if (!this.theme) return;
-      this.isFocus = false;
-      const target = evt.target;
-      if (this.plain) {
-        target.style.backgroundColor = this.shadeColor;
-        target.style.borderColor = this.plainBorderColor;
-        target.style.color = this.theme;
-      } else {
-        target.style.backgroundColor = this.theme;
-        target.style.borderColor = this.theme;
-      }
     }
   }
 };

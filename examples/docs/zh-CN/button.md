@@ -10,12 +10,14 @@
 ```html
 <el-row>
   <el-button>默认按钮</el-button>
-<!--  <el-button type="primary" autofocus>主要按钮</el-button>-->
-<!--  <el-button type="success">成功按钮</el-button>-->
-<!--  <el-button type="info">信息按钮</el-button>-->
+  <el-button type="primary" autofocus>主要按钮</el-button>
+  <el-button type="success">成功按钮</el-button>
+  <el-button type="info">信息按钮</el-button>
+    <el-button type="warning" size="medium">警告按钮</el-button>
    <el-button type="danger">危险按钮</el-button>
-   <el-button type="warning" size="medium" circle loading>警告按钮</el-button>
-   <el-button theme="#E6A23C" size="medium" circle loading>警告按钮</el-button>
+   
+   <el-button theme="#f66" size="medium">自定义按钮1</el-button>
+   <el-button theme="#f99" size="medium" icon="el-icon-search">自定义按钮2</el-button>
 </el-row>
 
 <el-row>

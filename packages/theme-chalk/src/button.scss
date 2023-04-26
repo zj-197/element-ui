@@ -3,30 +3,77 @@
 @import "mixins/button";
 @import "mixins/mixins";
 @import "mixins/utils";
-
-@include b(button) {
+@include b(button-reset) {
   display: inline-block;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  background: $--button-default-background-color;
-  border: $--border-base;
-  border-color: $--button-default-border-color;
-  color: $--button-default-font-color;
   -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;
   outline: none;
   margin: 0;
-  transition: .1s;
   font-weight: $--button-font-weight;
+  transition: .1s;
   @include utils-user-select(none);
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  &:active, &:hover, &:focus {
+    outline: none;
+  }
+}
+.el-button, .el-button-custom {
+  color: $--button-default-font-color;
+  border-width: $--border-width-base;
+  border-style: $--border-style-base;
+  border-color: $--button-default-border-color;
+  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
+  & [class*="el-icon-"] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+  @include when(loading) {
+    position: relative;
+    pointer-events: none;
+
+    &:before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: rgba(255,255,255,.35);
+    }
+  }
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 23px;
+  }
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $--button-padding-vertical;
+  }
+
+}
+@include b(button-custom) {
+  & + &, & + .el-button {
+    margin-left: 10px;
+  }
+  @include when(disabled) {
+    cursor: not-allowed;
+  }
+}
+
+@include b(button) {
+  background-color: $--color-white;
   & + &, & + .el-button-custom {
     margin-left: 10px;
   }
-
-  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
-
   &:hover,
   &:focus {
     color: $--color-primary;
@@ -38,16 +85,6 @@
     color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
     border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
     outline: none;
-  }
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  & [class*="el-icon-"] {
-    & + span {
-      margin-left: 5px;
-    }
   }
 
   @include when(plain) {
@@ -95,31 +132,6 @@
         color: $--button-disabled-font-color;
       }
     }
-  }
-
-  @include when(loading) {
-    position: relative;
-    pointer-events: none;
-
-    &:before {
-      pointer-events: none;
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
-      border-radius: inherit;
-      background-color: rgba(255,255,255,.35);
-    }
-  }
-  @include when(round) {
-    border-radius: 20px;
-    padding: 12px 23px;
-  }
-  @include when(circle) {
-    border-radius: 50%;
-    padding: $--button-padding-vertical;
   }
   @include m(primary) {
     @include button-variant($--button-primary-font-color, $--button-primary-background-color, $--button-primary-border-color);
@@ -186,10 +198,10 @@
   display: inline-block;
   vertical-align: middle;
 
-  & > .el-button, & > .el-button-custom {
+  & > .el-button-reset {
     float: left;
     position: relative;
-    & + .el-button {
+    & + .el-button-reset {
       margin-left: 0;
     }
     &.is-disabled {
@@ -238,7 +250,7 @@
   }
 
   & > .el-dropdown {
-    & > .el-button, & > .el-button-custom {
+    & > .el-button-reset {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       border-left-color: rgba($--color-white, 0.5);
@@ -261,69 +273,14 @@
   }
   .el-button-custom {
     &:first-child {
-      border-right-color: rgba($--color-white, 0.5);
+      border-right-color: rgba($--color-white, 0.5) !important;
     }
     &:last-child {
-      border-left-color: rgba($--color-white, 0.5);
+      border-left-color: rgba($--color-white, 0.5) !important;
     }
     &:not(:first-child):not(:last-child) {
-      border-left-color: rgba($--color-white, 0.5);
-      border-right-color: rgba($--color-white, 0.5);
-    }
-  }
-}
-
-@include b(button-custom) {
-  display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  color: $--button-default-font-color;
-  -webkit-appearance: none;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
-  margin: 0;
-  transition: .1s;
-  font-weight: $--button-font-weight;
-  border-width: $--border-width-base;
-  border-style: $--border-style-base;
-  border-color: $--button-default-border-color;
-  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
-  @include utils-user-select(none);
-  & + &, & + .el-button {
-    margin-left: 10px;
-  }
-  &::-moz-focus-inner {
-    border: 0;
-  }
-  &:active, &:hover, &:focus {
-    outline: none;
-  }
-
-  & [class*="el-icon-"] {
-    & + span {
-      margin-left: 5px;
-    }
-  }
-  @include when(disabled) {
-    &,
-    &:hover,
-    &:focus {
-      cursor: not-allowed;
-      background-image: none;
-      position: relative;
-    }
-    &:before {
-      pointer-events: none;
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
-      border-radius: inherit;
-      background-color: rgba(255,255,255,.5);
+      border-left-color: rgba($--color-white, 0.5) !important;
+      border-right-color: rgba($--color-white, 0.5) !important;
     }
   }
 }

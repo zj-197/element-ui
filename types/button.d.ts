@@ -13,6 +13,8 @@ export declare class ElButton extends ElementUIComponent {
 
   /** Button type */
   type: ButtonType
+  /** Customize the theme color */
+  theme: string
 
   /** Determine whether it's a plain button */
   plain: boolean

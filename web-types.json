@@ -374,6 +374,11 @@
               "type": "'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'"
             },
             {
+              "name": "theme",
+              "description": "Customize the theme color",
+              "type": "string"
+            },
+            {
               "name": "plain",
               "description": "Determine whether it's a plain button",
               "type": "boolean",

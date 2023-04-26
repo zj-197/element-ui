@@ -1,0 +1,44 @@
+@import "mixins/mixins";
+
+$--edges: (
+        'mini': 5px,
+        'xs': 10px,
+        'sm': 20px,
+        'md': 30px,
+        'lg': 40px,
+);
+@each $edge, $value in $--edges {
+  @include b(margin-#{$edge}) {
+    margin: $value;
+  }
+  @include b(padding-#{$edge}) {
+    padding: $value;
+  }
+  @each $direction in 'top', 'bottom', 'left', 'right' {
+    @include b(margin-#{$direction}-#{$edge}) {
+      margin-#{$direction}: $value;
+    }
+    @include b(padding-#{$direction}-#{$edge}) {
+      padding-#{$direction}: $value;
+    }
+  }
+}
+
+@each $edge, $value in $--edges {
+  @include b(margin-lr-#{$edge}) {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  @include b(padding-lr-#{$edge}) {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  @include b(margin-tb-#{$edge}) {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  @include b(padding-tb-#{$edge}) {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}

@@ -1,0 +1,118 @@
+/*! common-class 公共类 */
+@import "common/var";
+@import "mixins/mixins";
+
+$--themes: (
+        'primary' : $--color-primary,
+        'danger' : $--color-danger,
+        'info': $--color-info,
+        'warning': $--color-warning,
+        'success' : $--color-success,
+        'p-light' : $--color-primary-light-8,
+        'p-lighter' : $--color-primary-light-9,
+        'p-dark' : mix($--color-black, $--color-primary, 10%),
+        'p-darker' : mix($--color-black, $--color-primary, 20%),
+        'd-light': $--color-danger-light,
+        'd-lighter': $--color-danger-lighter,
+        'd-dark': mix($--color-black, $--color-danger, 10%),
+        'd-darker': mix($--color-black, $--color-danger, 20%),
+        'i-light': $--color-info-light,
+        'i-lighter': $--color-info-lighter,
+        'i-dark': mix($--color-black, $--color-info, 10%),
+        'i-darker': mix($--color-black, $--color-info, 20%),
+        'w-light': $--color-warning-light,
+        'w-lighter': $--color-warning-lighter,
+        'w-dark': mix($--color-black, $--color-warning, 10%),
+        'w-darker': mix($--color-black, $--color-warning, 20%),
+        's-light': $--color-success-light,
+        's-lighter': $--color-success-lighter,
+        's-dark': mix($--color-black, $--color-warning, 10%),
+        's-darker': mix($--color-black, $--color-warning, 20%),
+        'white': $--color-white
+);
+@each $theme, $value in $--themes {
+  @include b(color-#{$theme}) {
+    color: $value;
+  }
+  @include b(bgc-#{$theme}) {
+    background-color: $value;
+  }
+}
+
+$--font-sizes: (
+        'mini' : $--font-size-extra-small,
+        'xs' : $--font-size-small,
+        'base': $--font-size-base,
+        'sm': 15px,
+        'md': $--font-size-medium,
+        'lg' : $--font-size-large,
+);
+@each $size, $value in $--font-sizes {
+  @include b(font-#{$size}) {
+    font-size: $value;
+  }
+}
+
+
+@include b(color-text-primary) {
+  color: $--color-text-primary;
+}
+@include b(color-text-regular) {
+  color: $--color-text-regular;
+}
+@include b(color-text-secondary) {
+  color: $--color-text-secondary;
+}
+@include b(border-base) {
+  border: $--border-base;
+}
+@include b(color-p-hover) {
+  &:hover{
+    color: $--color-primary !important;
+  }
+}
+@include b(text-right) {
+  text-align: right;
+}
+@include b(text-left) {
+  text-align: left;
+}
+@include b(text-center) {
+  text-align: center;
+}
+@include b(shadow-base) {
+  box-shadow: $--box-shadow-base;
+}
+@include b(shadow-light) {
+  box-shadow: $--box-shadow-light;
+}
+@include b(shadow-dark) {
+  box-shadow: $--box-shadow-dark;
+}
+@include b(vertical-m) {
+  vertical-align: middle;
+}
+@include b(float-l) {
+  float: left;
+}
+@include b(float-r) {
+  float: right;
+}
+@include b(title-decoration) {
+  position: relative;
+  padding-left: 18px;
+  &::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 8px;
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    background-color: $--color-primary;
+    vertical-align: middle;
+  }
+}
+@include b(common-scrollbar-style) {
+  @include scroll-bar
+}

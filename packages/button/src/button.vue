@@ -199,7 +199,7 @@ export default {
       if (this.$isServer) return;
       let parent = el;
       while (parent) {
-        if ([window, document, document.documentElement].includes(parent)) {
+        if ([window, document, document.documentElement].indexOf(parent) > -1) {
           return window;
         }
         if (hasClass(parent, 'el-button-custom')) {

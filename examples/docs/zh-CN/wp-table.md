@@ -11,34 +11,54 @@
   <template>
     <el-wp-table
       row-key="id"
-      :default-sort = "{prop: 'id', order: 'descending'}"
+      :default-sort = "{prop: 'id', order: 'aescending'}"
       :load-data="getList"
       style="width: 100%">
       <el-wp-table-column
-        label="序号"
-        type="index"
-        width="180">
-      </el-wp-table-column>
-      <el-wp-table-column
         prop="id"
-        label="id"
+        label="学号"
         sortable
         width="180">
       </el-wp-table-column>
       <el-wp-table-column
-        prop="nick_name"
-        min-width="100"
-        label="昵称">
-      </el-wp-table-column>
-      <el-wp-table-column 
-        prop="sex"
-        min-width="100"
-        :formatter="row => row.sex ? row.sex.text : ''"
-        label="性别">
+                prop="name"
+                min-width="100"
+                label="姓名">
       </el-wp-table-column>
       <el-wp-table-column
+         prop="sex"
+         min-width="100"
+         :formatter="row => row.sex ? row.sex.text : ''"
+         label="性别">
+      </el-wp-table-column>  
+      <el-wp-table-column
+                prop="classes"
+                min-width="100"
+                label="班级">
+      </el-wp-table-column>  
+      <el-wp-table-column
+        prop="chineseScore"
+        min-width="100"
+        label="语文成绩">
+      </el-wp-table-column>
+      <el-wp-table-column
+         prop="mathScore"
+         min-width="100"
+         label="数学成绩">
+      </el-wp-table-column>
+      <el-wp-table-column
+          prop="englishScore"
+          min-width="100"
+          label="英语成绩">
+      </el-wp-table-column>
+      <el-wp-table-column
+         prop="totalScore"
+         min-width="100"
+         label="总分">
+      </el-wp-table-column>  
+      <el-wp-table-column
         prop="address"
-        label="地址">
+        label="家庭住址">
         <template slot-scope="{row}">
             {{row.address}}
         </template>  
@@ -81,13 +101,17 @@
                   const list = Array.from({ length: pageSize }, (_, i) => {
                       const index = ((page - 1) * pageSize) + (i + 1)
                       return {
-                          id: Math.floor(Math.random() * 10000),
-                          nick_name: '昵称' + index,
+                          id: index,
                           address: '重庆' + Math.random() > 0.5 ? '渝北' : '江北',
                           sex: {text: Math.random() > 0.5 ? '女' : '男'},
                           mobile: (Math.random() * Math.pow(10, 11)).toString(),
                           card: (Math.random() * Math.pow(10, 18)).toString(),
-                          name: Math.random() > 0.4 ? '张三' : '李四'
+                          name: Math.random() > 0.4 ? '张' + index : '李' + index,
+                          classes: '一年级' + (Math.ceil(Math.random() * 10)) + '班',
+                          chineseScore: Math.floor(Math.random() * 100),
+                          mathScore: Math.floor(Math.random() * 100),
+                          englishScore: Math.floor(Math.random() * 100),
+                          totalScore: Math.ceil(Math.random() * 100)
                       }
                   })
                   if (page < 5) {
@@ -190,7 +214,7 @@
                           sex: {text: Math.random() > 0.5 ? '女' : '男'},
                           mobile: (Math.random() * Math.pow(10, 11)).toString(),
                           card: (Math.random() * Math.pow(10, 18)).toString(),
-                          name: Math.random() > 0.4 ? '张三' : '李四'
+                          name: Math.random() > 0.4 ? '张' + index : '李' + index
                       }
                   })
                   // 加载失败

@@ -466,7 +466,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 |-------------------|------------------------------------------------------|---------------|-----------------------------------------|--------|
 | prop              | 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的 | string        | 传入 Form 组件的 `model` 中的字段                | —      |
 | label             | 标签文本                                                 | string        | —                                       | —      |
-| pattern           | 内置正则验证的key                                           | string/regExp | —  详见下面pattern可选值                       | —      |
+| pattern           | 内置正则验证的key                                           | string/RegExp | —  详见下面pattern可选值                       | —      |
 | pattern-msg       | 内置正则验证的key对应的message                                 | string        | —                         | —      |
 | tooltip           | tooltip的content提示文字                                  | string        | —            详见tool-tip                 | bottom |
 | tooltip-placement | tooltip的placement                                    | string        | —                                       | —      |

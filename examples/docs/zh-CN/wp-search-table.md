@@ -312,23 +312,23 @@
 
 ### Columns Type
 
-| 参数            | 说明                                                  | 类型                           | 可选值               | 默认值    |
-|---------------|-----------------------------------------------------|------------------------------|-------------------|--------|
-| tag           | 搜索表单项的组件tag(需要为全局注册过的组件), eg: `el-input`, `el-select` .... | string                       | —                 | —      |
-| tagProps      | tag组件的props配置对象                                     | object                       | —                 | —      |
-| label         | 搜索表单项，以及表格列的label                                   | string                       | —                 | —      |
-| prop          | 搜索表单项，以及表格列的prop                                    | string                       | —                 | —      |                                                        |
-| formItemProps | 搜索表单项`el-form-item`的props属性                         | object                       | —                 | —      |
-| columnProps   | 该表格列`el-table-column`的props属性                       | object                       | —                 | —      |
-| tagInitValue  | 搜索表单项组件的默认值                                         | string/number/object/boolean | —                 |        |
-| pattern       | 表单项验证的pattern，即`el-wp-form-item`的pattern            | object                       | —                 |        |
-| hiddenInForm  | 是否在搜索表单中隐藏该项                                        | boolean                      | —                 | —      |
-| hiddenInTable | 是否在表格当中隐藏该列                                         | boolean                      | —                 | —      |
-| required      | 表单项是否必填                                             | boolean                      | —                 | —      |
+| 参数            | 说明                                                  | 类型                           | 可选值              | 默认值    |
+|---------------|-----------------------------------------------------|------------------------------|------------------|--------|
+| tag           | 搜索表单项的组件tag(需要为全局注册过的组件), eg: `el-input`, `el-select` .... | string                       | —                | —      |
+| tagProps      | tag组件的props配置对象                                     | object                       | —                | —      |
+| label         | 搜索表单项，以及表格列的label                                   | string                       | —                | —      |
+| prop          | 搜索表单项，以及表格列的prop                                    | string                       | —                | —      |                                                        |
+| formItemProps | 搜索表单项`el-form-item`的props属性                         | object                       | —                | —      |
+| columnProps   | 该表格列`el-table-column`的props属性                       | object                       | —                | —      |
+| tagInitValue  | 搜索表单项组件的默认值                                         | string/number/object/boolean | —                |        |
+| pattern       | 表单项验证的pattern，即`el-wp-form-item`的pattern            | RegExp/string                | —                 |        |
+| hiddenInForm  | 是否在搜索表单中隐藏该项                                        | boolean                      | —                | —      |
+| hiddenInTable | 是否在表格当中隐藏该列                                         | boolean                      | —                | —      |
+| required      | 表单项是否必填                                             | boolean                      | —                | —      |
 | align         | 该表格列横向对齐方式                                          | string                       | left/center/right | center |
-| width         | 该表格列的宽度                                             | string                       | — | — |
-| minWidth      | 该表格列的最小宽度                                           | string                       | — | — |
-| formatter     | 该表格列的`formatter`函数                                  | Function                     | — | — |
+| width         | 该表格列的宽度                                             | string                       | —                | — |
+| minWidth      | 该表格列的最小宽度                                           | string                       | —                | — |
+| formatter     | 该表格列的`formatter`函数                                  | Function                     | —                | — |
 
 ### WpSearchTable Slot
 

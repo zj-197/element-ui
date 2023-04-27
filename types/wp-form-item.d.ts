@@ -3,7 +3,7 @@ import { PopoverPlacement } from './popover'
 import {ElementUIComponentSize} from "./component";
 
 export type Pattern = 'number' | 'mobile' | 'email' | 'strongPasswd' | 'middlePasswd'
-    | 'weakPasswd' | 'number10' | 'landline' | 'code' | 'code4' | 'chinese' | 'letter' | 'money' | 'card' | 'enOrNum'
+    | 'weakPasswd' | 'number10' | 'landline' | 'code' | 'code4' | 'chinese' | 'letter' | 'money' | 'card' | 'enOrNum' | RegExp
 
 export type FormItemProps = {
     prop?: string

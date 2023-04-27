@@ -8,7 +8,8 @@ Element will stay with Vue 2.x
 
 ## Links
 - 文档
-  - [中国用户](https://zj-197.github.io/element-ui)
+  - [github](https://zj-197.github.io/element-ui)
+  - [gitee](https://zzzjjj197.gitee.io/element-ui)
 ## Install
 ```shell
 npm install wp-element-ui -S

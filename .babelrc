@@ -25,13 +25,14 @@
               "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
             }
           }
-        ],
+        ]
       ],
       "plugins": [
         ["module-resolver", {
           "root": ["element-ui"],
           "alias": {
-            "element-ui/src": "element-ui/lib"
+            "element-ui/src": "wp-element-ui/lib",
+            "wp-element-ui/src": "wp-element-ui/lib"
           }
         }]
       ]

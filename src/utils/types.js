@@ -38,3 +38,10 @@ export const isUndefined = (val)=> {
 export const isDefined = (val) => {
   return val !== undefined && val !== null;
 };
+export const isPromise = (val) => {
+  return (
+    isDefined(val) &&
+    typeof val.then === 'function' &&
+    typeof val.catch === 'function'
+  );
+};

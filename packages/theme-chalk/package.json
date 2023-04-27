@@ -1,7 +1,7 @@
 {
   "name": "element-theme-chalk",
-  "version": "2.15.13",
-  "description": "Element component chalk theme.",
+  "version": "1.0.5",
+  "description": "element-ui二开版 component chalk theme.",
   "main": "lib/index.css",
   "style": "lib/index.css",
   "files": [
@@ -13,13 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElementUI/theme-chalk.git"
+    "url": "git+https://github.com/zj-197/element-ui/tree/dev/packages/theme-chalk"
   },
   "keywords": [
     "element",
-    "theme"
+    "theme",
+    "wp-element"
   ],
-  "author": "yi.shyang@ele.me",
+  "author": "yi.shyang@ele.me and zj-197",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ElementUI/theme-chalk/issues"

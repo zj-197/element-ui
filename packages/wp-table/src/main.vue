@@ -22,6 +22,10 @@ export default {
       type: String,
       default: '重新加载'
     },
+    // 为空时的图片
+    emptyImage: {
+      type: String
+    },
     // 加载按钮点击事件的处理
     onEmptyBtnClick: {
       type: Function
@@ -406,6 +410,7 @@ export default {
       if (this.$slots.empty) return this.$slots.empty;
       return (
         <el-empty class={{'el-wp-table-empty-is-loading': this.isLoading}}
+          image={this.emptyImage}
           description={this.isError ? this.t('el.image.error') : this.emptyText} image-size={100} style="line-height: 16px">
           <el-button type="primary" size="mini"
             on-click={() => {

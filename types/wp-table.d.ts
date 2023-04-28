@@ -27,6 +27,7 @@ export type LoadData = (() => Promise<any>) | Array<object>
 export declare class ElWpTable extends ElementUIComponent {
     isServer: boolean
     emptyBtnText: string
+    emptyImage: string
     onEmptyBtnClick():void
     maxSelect: number
     reserveSelection: boolean

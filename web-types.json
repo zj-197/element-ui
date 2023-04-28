@@ -501,6 +501,53 @@
           ]
         },
         {
+          "name": "ElScrollbar",
+          "description": "Scroll bar",
+          "props": [
+            {
+              "name": "wrapStyle",
+              "description": "Wrap the elements in style",
+              "type": "object|string|array"
+            },
+            {
+              "name": "native",
+              "description": "Whether to enable native scroll bars",
+              "type": "boolean"
+            },
+            {
+              "name": "wrapClass",
+              "description": "Wrap the elements in class",
+              "type": "string|object|array"
+            },
+            {
+              "name": "viewClass",
+              "description": "View the elements in class",
+              "type": "string|object|array"
+            },
+            {
+              "name": "viewStyle",
+              "description": "View the elements in Style",
+              "type": "array<object>"
+            },
+            {
+              "name": "tag",
+              "description": "Rendered tag",
+              "type": "div"
+            },
+            {
+              "name": "noresize",
+              "description": "Whether to monitor size changes",
+              "type": "boolean"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "Content of the card"
+            }
+          ]
+        },
+        {
           "name": "ElCarousel",
           "description": "Loop a series of images or texts in a limited space",
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/carousel",
@@ -1029,6 +1076,31 @@
               "name": "direction",
               "description": "Layout direction for child elements",
               "type": "\"horizontal\"|\"vertical\""
+            },
+            {
+              "name": "isAutoFlex",
+              "description": "Whether to open automatically",
+              "type": "boolean"
+            },
+            {
+              "name": "align",
+              "description": "Vertical alignment of flex layout",
+              "type": "VertialAlignment"
+            },
+            {
+              "name": "justify",
+              "description": "Horizontal alignment of flex layout",
+              "type": "HorizontalAlignment"
+            },
+            {
+              "name": "tag",
+              "description": "Custom element tag",
+              "type": "string"
+            },
+            {
+              "name": "isWrap",
+              "description": "Whether to wrap lines automatically",
+              "type": "boolean"
             }
           ]
         },
@@ -3227,6 +3299,11 @@
               "name": "gutter",
               "description": "Grid spacing",
               "type": "number"
+            },
+            {
+              "name": "isWrap",
+              "description": "Whether to wrap lines automatically",
+              "type": "boolean"
             }
           ]
         },
@@ -3972,6 +4049,11 @@
             {
               "name": "emptyBtnText",
               "description": "Is the space-time button text",
+              "type": "string"
+            },
+            {
+              "name": "emptyImage",
+              "description": "Is the picture displayed in space time",
               "type": "string"
             },
             {

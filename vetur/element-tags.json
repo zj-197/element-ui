@@ -1,6 +1,6 @@
 {
   "el-row": {
-    "attributes": ["gutter", "type", "justify", "align", "tag"],
+    "attributes": ["gutter", "type", "justify", "align", "tag", "is-wrap"],
     "subtags": ["el-col"],
     "description": "A row in grid system"
   },
@@ -280,7 +280,7 @@
     "description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data."
   },
   "el-wp-table": {
-    "attributes": ["load-data", "width", "is-server","is-show-refresh-tool", "empty-btn-text","is-show-setting-tool", "on-empty-btn-click","is-show-size-tool", "tool-align","page-size","max-select","pagination-props", "pagination-key", "reserve-selection","height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
+    "attributes": ["load-data", "width", "emptyImage", "is-server","is-show-refresh-tool", "empty-btn-text","is-show-setting-tool", "on-empty-btn-click","is-show-size-tool", "tool-align","page-size","max-select","pagination-props", "pagination-key", "reserve-selection","height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
     "defaults": [":load-data"],
     "subtags": ["el-wp-table-column"],
     "description": "Display multiple data with similar format. You can sort, filter, compare your data in a table."
@@ -288,5 +288,35 @@
   "el-wp-table-column": {
     "attributes": ["hidden","isAddToolBar","type", "column-key", "index", "label", "prop", "width", "min-width", "fixed", "render-header", "sortable", "sort-method", "sort-by", "resizable", "formatter", "show-overflow-tooltip", "align", "header-align", "class-name", "label-class-name", "selectable", "reserve-selection", "filters", "filter-placement", "filter-multiple", "filter-method", "filtered-value"],
     "defaults": ["label"]
+  },
+  "el-scrollbar": {
+    "attributes": ["native","wrap-style","wrap-class","view-class","view-style","noresize", "tag"],
+    "defaults": ["view-style"],
+    "description": "Scroll bar"
+  },
+  "el-icon": {
+    "attributes": ["name"],
+    "defaults": ["name"],
+    "description": "Element provides a set of common icons."
+  },
+  "el-container": {
+    "attributes": ["direction", "is-auto-flex", "align", "justify", "tag", "is-wrap"],
+    "defaults": ["direction"],
+    "description": "Wrapper container. When nested with a `<el-header>` or `<el-footer>`, all its child elements will be vertically arranged. Otherwise horizontally."
+  },
+  "el-aside": {
+    "attributes": ["width"],
+    "defaults": ["width"],
+    "description": "Container for side sections (usually a side nav)."
+  },
+  "el-header": {
+    "attributes": ["height"],
+    "defaults": ["height"],
+    "description": "Container for headers."
+  },
+  "el-footer": {
+    "attributes": ["height"],
+    "defaults": ["height"],
+    "description": "Container for footers."
   }
 }

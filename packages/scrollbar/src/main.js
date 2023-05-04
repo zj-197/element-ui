@@ -238,7 +238,7 @@ export default {
 
   beforeDestroy() {
     if (this.native) return;
-    this.$el.removeEventListener(isFirefox ? 'DOMMouseScroll' : 'mousewheel', this.handleWheelScroll);
+    this.$el && this.$el.removeEventListener(isFirefox ? 'DOMMouseScroll' : 'mousewheel', this.handleWheelScroll);
     !this.noresize && removeResizeListener(this.$refs.resize, this.update);
   }
 };

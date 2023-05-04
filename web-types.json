@@ -3842,6 +3842,21 @@
               "type": "boolean"
             },
             {
+              "name": "navItemHeight",
+              "description": "Height Tab is navItem",
+              "type": "string"
+            },
+            {
+              "name": "navItemPadding",
+              "description": "padding Tab is navItem",
+              "type": "string"
+            },
+            {
+              "name": "navItemClass",
+              "description": "Class Tab is navItem",
+              "type": "string"
+            },
+            {
               "name": "lazy",
               "description": "Whether Tab is lazily rendered",
               "type": "boolean"
@@ -4583,6 +4598,31 @@
               "name": "type",
               "description": "Type of Tab",
               "type": "TabType"
+            },
+            {
+              "name": "activeBarHeight",
+              "description": "Height of activeBar",
+              "type": "string"
+            },
+            {
+              "name": "activeBarWidth",
+              "description": "Width of activeBar",
+              "type": "string"
+            },
+            {
+              "name": "activeBarRatio",
+              "description": "Ratio of activeBar",
+              "type": "number"
+            },
+            {
+              "name": "activeBarColor",
+              "description": "Color of activeBar",
+              "type": "string"
+            },
+            {
+              "name": "hiddenActiveBarBottomBorder",
+              "description": "Whether to hide the activeBarBottomBorder",
+              "type": "Boolean"
             },
             {
               "name": "closable",

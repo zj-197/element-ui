@@ -10,11 +10,42 @@
 
 ```html
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs v-model="activeName" tab-position="top" @tab-click="handleClick">
     <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
     <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
     <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
     <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+  </el-tabs>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        activeName: 'second'
+      };
+    },
+    methods: {
+      handleClick(tab, event) {
+        console.log(tab, event);
+      }
+    }
+  };
+</script>
+```
+:::
+### 自定义导航栏样式
+
+可以设置导航烂样式。
+
+:::demo 设置`active-bar-color`可以设置活跃时导航条颜色, 设置`nav-item-height`可以设置导航条高度
+
+```html
+<template>
+  <el-tabs v-model="activeName" tab-position="top" active-bar-color="#f00" active-bar-width="30px" hidden-active-bar-bottom-border @tab-click="handleClick">
+    <el-tab-pane label="用户管理" name="first" nav-item-height="50px">用户管理</el-tab-pane>
+    <el-tab-pane label="配置管理" name="second" nav-item-height="50px">配置管理</el-tab-pane>
+    <el-tab-pane label="角色管理" name="third" nav-item-height="50px">角色管理</el-tab-pane>
+    <el-tab-pane label="定时任务补偿" name="fourth" nav-item-height="50px">定时任务补偿</el-tab-pane>
   </el-tabs>
 </template>
 <script>
@@ -274,16 +305,21 @@
 :::
 
 ### Tabs Attributes
-| 参数       | 说明     | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| value / v-model  | 绑定值，选中选项卡的 name  | string   |  —  |  第一个选项卡的 name |
-| type     | 风格类型   | string   | card/border-card  |     —    |
-| closable  | 标签是否可关闭   | boolean   | — |  false  |
-| addable  | 标签是否可增加   | boolean   | — |  false  |
-| editable  | 标签是否同时可增加和关闭   | boolean   | — |  false  |
-| tab-position  | 选项卡所在位置 | string   |  top/right/bottom/left  |  top |
-| stretch  | 标签的宽度是否自撑开 | boolean   |  -  |  false |
-| before-leave | 切换标签之前的钩子，若返回 false 或者返回 Promise 且被 reject，则阻止切换。 | Function(activeName, oldActiveName) | — | — |
+| 参数                              | 说明                                                | 类型                                  | 可选值       | 默认值   |
+|---------------------------------|---------------------------------------------------|-------------------------------------|-------------  |-------- |
+| value / v-model                 | 绑定值，选中选项卡的 name                                   | string                              |  —  |  第一个选项卡的 name |
+| active-bar-height               | 激活时的导航条的高度                                        | string                              |  —  | —  |
+| active-bar-width                | 激活时的导航条的宽度                                        | string                              |  —  | —  |
+| active-bar-color                | 激活时的导航条的背景色                                       | string                              |  —  |  — |
+| hidden-active-bar-bottom-border | 是否隐藏激活时导航条的下边框                                    | boolean                             |  —  | —  |
+| active-bar-ratio                | 实际`tab-nav-item`与激活导航条与的比率                        | number                              |  —  | —  |
+| type                            | 风格类型                                              | string                              | card/border-card  |     —    |
+| closable                        | 标签是否可关闭                                           | boolean                             | — |  false  |
+| addable                         | 标签是否可增加                                           | boolean                             | — |  false  |
+| editable                        | 标签是否同时可增加和关闭                                      | boolean                             | — |  false  |
+| tab-position                    | 选项卡所在位置                                           | string                              |  top/right/bottom/left  |  top |
+| stretch                         | 标签的宽度是否自撑开                                        | boolean                             |  -  |  false |
+| before-leave                    | 切换标签之前的钩子，若返回 false 或者返回 Promise 且被 reject，则阻止切换。 | Function(activeName, oldActiveName) | — | — |
 
 ### Tabs Events
 | 事件名称 | 说明 | 回调参数 |
@@ -294,10 +330,13 @@
 | edit  | 点击 tabs 的新增按钮或 tab 被关闭后触发  | (targetName, action) |
 
 ### Tab-pane Attributes
-| 参数       | 说明     | 类型      | 可选值       | 默认值   |
-|---------- |-------- |---------- |-------------  |-------- |
-| label     | 选项卡标题   | string   | — |    —     |
-| disabled | 是否禁用 | boolean | — | false |
-| name      | 与选项卡绑定值 value 对应的标识符，表示选项卡别名 | string | — | 该选项卡在选项卡列表中的顺序值，如第一个选项卡则为'1' |
-| closable  | 标签是否可关闭   | boolean   | — |  false  |
-| lazy  | 标签是否延迟渲染   | boolean   | — |  false  |
+| 参数               | 说明                           | 类型      | 可选值       | 默认值   |
+|------------------|------------------------------|---------- |-------------  |-------- |
+| label            | 选项卡标题                        | string   | — |    —     |
+| nav-item-height  | 选项卡`nav-item`高度              | string   | — |    —     |
+| nav-item-padding | 选项卡`nav-item`内边距             | string   | — |    —     |
+| nav-item-class   | 选项卡`nav-item`的类名             | string   | — |    —     |
+| disabled         | 是否禁用                         | boolean | — | false |
+| name             | 与选项卡绑定值 value 对应的标识符，表示选项卡别名 | string | — | 该选项卡在选项卡列表中的顺序值，如第一个选项卡则为'1' |
+| closable         | 标签是否可关闭                      | boolean   | — |  false  |
+| lazy             | 标签是否延迟渲染                     | boolean   | — |  false  |

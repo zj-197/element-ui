@@ -20,7 +20,12 @@
         default: 'top'
       },
       beforeLeave: Function,
-      stretch: Boolean
+      stretch: Boolean,
+      activeBarHeight: String,
+      activeBarRatio: Number,
+      activeBarWidth: String,
+      activeBarColor: String,
+      hiddenActiveBarBottomBorder: Boolean
     },
 
     provide() {
@@ -171,7 +176,7 @@
         </div>
       );
     },
-  
+
     created() {
       if (!this.currentName) {
         this.setCurrentName('0');

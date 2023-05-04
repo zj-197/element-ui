@@ -4,6 +4,9 @@ import { ElementUIComponent } from './component'
 export declare class ElTabPane extends ElementUIComponent {
   /** Title of the tab */
   label: string
+  navItemHeight: string
+  navItemPadding: string
+  navItemClass: string
 
   /** Whether Tab is disabled */
   disabled: boolean

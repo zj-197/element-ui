@@ -5,7 +5,7 @@ import ElEmpty from 'element-ui/packages/empty';
 import ElButton from 'element-ui/packages/button';
 import {isObject} from 'element-ui/src/utils/types';
 import ToolBar from './ToolBar.vue';
-import {findIndex, assign} from 'element-ui/src/utils/lodash';
+import {findIndex, assign, find} from 'element-ui/src/utils/lodash';
 import { noop } from 'element-ui/src/utils/util';
 import Locale from 'element-ui/src/mixins/locale';
 
@@ -369,7 +369,7 @@ export default {
         const tableVm = this.getTableVm();
         tableVm.clearSelection();
         list.forEach(item => {
-          const currentRow = this.tableList.find(row => {
+          const currentRow = find(this.tableList, row => {
             const value = isObject(item) ? item[this.rowKey] : item;
             return value + '' === row[this.rowKey] + '';
           });
@@ -479,7 +479,7 @@ export default {
       return this.$slots.default;
     },
     getTableColumnVmByUUid(columnUUid) {
-      return this.getElTableColumns().find(vnode => vnode.componentInstance.columnUUid === columnUUid);
+      return find(this.getElTableColumns(), vnode => vnode.componentInstance.columnUUid === columnUUid);
     },
     // 渲染工具栏
     renderToolBar(h) {
@@ -547,7 +547,7 @@ export default {
       return /ElWpTableColumn$/g.test(vnode.tag) && (vnode.componentInstance ? !!vnode.componentInstance.label && vnode.componentInstance.isAddToolBar : false);
     },
     onTableColumnPropChange(columnUUid, {prop, value}) {
-      const selectItem = this.controlTableColumns.find(item => item.columnUUid === columnUUid);
+      const selectItem = find(this.controlTableColumns, item => item.columnUUid === columnUUid);
       if (selectItem) {
         selectItem[prop] = value;
       }

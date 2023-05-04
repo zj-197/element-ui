@@ -231,12 +231,14 @@
           <div
             class={{
               'el-tabs__item': true,
+              [pane.navItemClass]: Boolean(pane.navItemClass),
               [`is-${ this.rootTabs.tabPosition }`]: true,
               'is-active': pane.active,
               'is-disabled': pane.disabled,
               'is-closable': closable,
               'is-focus': this.isFocus
             }}
+            style={{height: pane.navItemHeight, lineHeight: pane.navItemHeight, padding: pane.navItemPadding}}
             id={`tab-${tabName}`}
             key={`tab-${tabName}`}
             aria-controls={`pane-${tabName}`}
@@ -256,7 +258,7 @@
         );
       });
       return (
-        <div class={['el-tabs__nav-wrap', scrollable ? 'is-scrollable' : '', `is-${ this.rootTabs.tabPosition }`]}>
+        <div class={['el-tabs__nav-wrap', scrollable ? 'is-scrollable' : '', `is-${ this.rootTabs.tabPosition }`, this.rootTabs.hiddenActiveBarBottomBorder ? 'is-hidden-active-bar-bottom-border' : '']}>
           {scrollBtn}
           <div class={['el-tabs__nav-scroll']} ref="navScroll">
             <div

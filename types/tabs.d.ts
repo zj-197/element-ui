@@ -7,6 +7,11 @@ export type TabPosition = 'top' | 'right' | 'bottom' | 'left'
 export declare class ElTabs extends ElementUIComponent {
   /** Type of Tab */
   type: TabType
+  activeBarHeight: string
+  activeBarRatio: number
+  activeBarWidth: string
+  activeBarColor: string
+  hiddenActiveBarBottomBorder: boolean
 
   /** Whether Tab is closable */
   closable: boolean

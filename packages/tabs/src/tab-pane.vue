@@ -23,7 +23,10 @@
       name: String,
       closable: Boolean,
       disabled: Boolean,
-      lazy: Boolean
+      lazy: Boolean,
+      navItemHeight: String, // 导航条高度
+      navItemPadding: String, // 导航条padding
+      navItemClass: String // 导航条class
     },
 
     data() {

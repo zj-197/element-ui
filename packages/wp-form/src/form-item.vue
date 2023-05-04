@@ -43,14 +43,14 @@ export default {
       type: String,
       default: 'string',
       validator(val) {
-        return ['string', 'number', 'boolean', 'array', 'object', 'date'].includes(val);
+        return ['string', 'number', 'boolean', 'array', 'object', 'date'].indexOf(val) > -1;
       }
     },
     pattern: {
       type: [String, RegExp],
       default: '',
       validator(val) {
-        return val == null || val === '' || Object.keys(PATTERN).includes(val) || regExp(val);
+        return val == null || val === '' || Object.keys(PATTERN).indexOf(val) > -1 || regExp(val);
       }
     },
     patternMsg: {
@@ -109,7 +109,7 @@ export default {
       if (rules) return rules;
       const rulesArray = [];
       if (required) {
-        const isSelect = componentTag ? !(['el-input-number', 'el-input'].includes(componentTag)) : false;
+        const isSelect = componentTag ? !(['el-input-number', 'el-input'].indexOf(componentTag) > -1) : false;
         const prefix = isSelect ? '请选择' : '请输入';
         rulesArray.push({
           type: valueType,
@@ -160,7 +160,7 @@ export default {
       if (allChildren.length) {
         for (let i = 0; i < allChildren.length; i++) {
           const child = allChildren[i];
-          if (select.includes(child.$options._componentTag)) {
+          if (select.indexOf(child.$options._componentTag) > -1) {
             ch = child;
             break;
           } else {

@@ -7,7 +7,9 @@
     position: relative;
     margin: 0 0 15px;
   }
-  @include e(active-bar) {
+  @include e(active-bar)
+
+  {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -58,6 +60,11 @@
     @include when(scrollable) {
       padding: 0 20px;
       box-sizing: border-box;
+    }
+    @include when(hidden-active-bar-bottom-border) {
+      &::after {
+        content: none;
+      }
     }
   }
   @include e(nav-scroll) {

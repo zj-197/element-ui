@@ -44,7 +44,35 @@
           });
 
           const transform = `translate${firstUpperCase(sizeDir)}(${offset}px)`;
+          const ratio = (this.rootTabs && this.rootTabs.activeBarRatio) || 0;
+          const width = (this.rootTabs && this.rootTabs.activeBarWidth) || '';
+          const height = (this.rootTabs && this.rootTabs.activeBarHeight) || '';
+          const color = (this.rootTabs && this.rootTabs.activeBarColor) || '';
           style[sizeName] = tabSize + 'px';
+          if (ratio > 1) {
+            style[sizeName] = Math.floor(tabSize / ratio) + 'px';
+            const ratioSize = Math.floor((tabSize - parseInt(style[sizeName], 10)) / 2);
+            if (sizeDir === 'x') {
+              style.left = ratioSize;
+            } else {
+              style.top = ratioSize;
+            }
+          }
+          if (width) {
+            style.width = width;
+          }
+          if (height) {
+            style.height = height;
+          }
+          if (color) {
+            style.background = color;
+          }
+          if (width && sizeDir === 'x') {
+            style.left = Math.floor((tabSize - parseInt(width, 10)) / 2) + 'px';
+          }
+          if (height && sizeDir === 'y') {
+            style.top = Math.floor((tabSize - parseInt(height, 10)) / 2) + 'px';
+          }
           style.transform = transform;
           style.msTransform = transform;
           style.webkitTransform = transform;

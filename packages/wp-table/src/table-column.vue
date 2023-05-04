@@ -1,6 +1,7 @@
 
 <script>
 import ElTableColumn from 'element-ui/packages/table-column';
+import {uniqueId} from 'element-ui/src/utils/lodash';
 /**
  * @Author: 左建
  * @Date: 2023/3/21 15:07
@@ -81,7 +82,7 @@ export default {
   data() {
     return {
       customFixed: this.fixed,
-      columnUUid: Math.floor(Math.random() * 1000000),
+      columnUUid: uniqueId('el-wp-table-column'),
       isShow: !this.hidden
     };
   },

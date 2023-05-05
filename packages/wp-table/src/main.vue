@@ -290,7 +290,7 @@ export default {
         [this.realPaginationKey.pageSize]: pageSize
       }).then(res => {
         if (res && isObject(res) && Object.keys(res).length > 0) {
-          this.tableList = res[this.realPaginationKey.tableList];
+          this.tableList = res[this.realPaginationKey.tableList] || [];
           Object.keys(this.pagination).forEach(key => {
             if (Object.prototype.hasOwnProperty.call(res, key)) {
               this.setPagination(key, res[key]);

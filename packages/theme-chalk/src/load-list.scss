@@ -1,0 +1,28 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(load-list) {
+  box-sizing: border-box;
+  padding: 20px;
+  position: relative;
+}
+@include b(load-list-empty-is-loading) {
+  opacity: 0;
+}
+@include b(load-list-empty) {
+  height: 100%;
+}
+@include b(load-list-empty-container) {
+  height: 100%;
+  box-sizing: border-box;
+  @include b(empty-btn-container) {
+    text-align: center;
+  }
+  @include b(load-list-empty) {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+}
+@include b(load-list-pagination) {
+  margin-top: 20px;
+}

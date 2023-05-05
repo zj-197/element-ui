@@ -170,6 +170,10 @@
               "title": "WpSearchTable 维普搜索表单"
             },
             {
+              "path": "/load-list",
+              "title": "LoadList 加载分页列表"
+            },
+            {
               "path": "/tag",
               "title": "Tag 标签"
             },
@@ -661,6 +665,10 @@
             {
               "path": "/wp-date-picker",
               "title": "WpDatePicker 维普日期时间选择器"
+            },
+            {
+              "path": "/load-list",
+              "title": "LoadList"
             }
           ]
         }
@@ -995,6 +1003,10 @@
             {
               "path": "/wp-date-picker",
               "title": "WpDatePicker 维普日期时间选择器"
+            },
+            {
+              "path": "/load-list",
+              "title": "LoadList"
             }
           ]
         }
@@ -1329,6 +1341,10 @@
             {
               "path": "/wp-date-picker",
               "title": "WpDatePicker 维普日期时间选择器"
+            },
+            {
+              "path": "/load-list",
+              "title": "LoadList"
             }
           ]
         }

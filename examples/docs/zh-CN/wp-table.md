@@ -360,6 +360,7 @@
 | is-show-size-tool    | 是否显示工具栏中的密度                                                                                                                                              | boolean                                                                        | —          | true                                                               |
 | reserve-selection    | 多选表格是否保留之前选中的数据（需指定 `row-key`）                                                                                                                           | boolean                                                                        | —          | true                                                               |
 | tool-align           | 工具栏水平显示位置                                                                                                                                                | string                                                                         | left/right | right                                                              |
+| loading-text         | 加载中的文字                                                                                                                                                   | string                                                                         | —  | 加载中                                                                |
 
 ### Table Attributes
 

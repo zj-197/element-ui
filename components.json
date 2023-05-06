@@ -94,5 +94,6 @@
   "wp-table-column": "./packages/wp-table/index.js",
   "wp-search-table": "./packages/wp-search-table/index.js",
   "wp-date-picker": "./packages/wp-date-picker/index.js",
-  "load-list": "./packages/load-list/index.js"
+  "load-list": "./packages/load-list/index.js",
+  "render-empty-cpn": "./packages/render-empty-cpn/index.js"
 }

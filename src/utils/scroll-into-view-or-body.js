@@ -1,7 +1,7 @@
 import { getScrollContainer } from 'wp-element-ui/src/utils/dom';
 import Vue from 'vue';
-function getPosition() {
-  return Math.floor(document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop || 0);
+function getPosition(scrollDirection) {
+  return Math.floor(document.documentElement[scrollDirection] || document.body.parentNode[scrollDirection] || document.body[scrollDirection] || 0);
 }
 function isDocument(container) {
   return [document.body, document, window, document.documentElement].indexOf(container) >= 0;
@@ -34,46 +34,6 @@ function easeInOutQuad(t, b, c, d) {
 }
 /**
  * @description 跳转到指定位置
- * @param {Element} [container] - 容器元素
- * @param {Element} [selected] - 要跳转到element元素, 如果不传就回到顶部
- * @param {number} [duration] - 动画持续时间
- * @param {'horizontal'|'vertical'} [direction] - 滚动方向 vertical or horizontal
- * @param {Function} [callback] - 滚动到指定selected结束后的回调
- * @return {undefined}
- */
-function scrollIntoView(container, selected, duration, direction, callback) {
-  if (Vue.prototype.$isServer) return;
-  container = getScrollContainer(container);
-  if (!container) return;
-  const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
-  const offsetDirection = direction === 'horizontal' ? 'offsetLeft' : 'offsetTop';
-  const offsetReact = direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight';
-  const clientReact = direction === 'horizontal' ? 'clientWidth' : 'clientHeight';
-  if (!selected) {
-    this.scrollTo(0, duration, direction, callback);
-    return;
-  }
-  const offsetParents = [];
-  let pointer = selected.offsetParent;
-  while (pointer && container !== pointer && container.contains(pointer)) {
-    offsetParents.push(pointer);
-    pointer = pointer.offsetParent;
-  }
-  const top = selected[offsetDirection] + offsetParents.reduce((prev, curr) => (prev + curr[offsetDirection]), 0);
-  const bottom = top + selected[offsetReact];
-  const viewRectTop = isDocument(container) >= 0 ? getPosition() : container.scrollTop;
-  const viewRectBottom = viewRectTop + container[clientReact];
-
-  if (top < viewRectTop) {
-    // container[scrollDirection] = top
-    this.scrollTo(top, duration, direction, callback);
-  } else if (bottom > viewRectBottom) {
-    // container[scrollDirection] = bottom - container[clientReact]
-    this.scrollTo(bottom - container[clientReact], duration, direction, callback);
-  }
-}
-/**
- * @description 跳转到指定位置
  * @param {HTMLElement}  [element]
  * @param {number}  [to]- 跳转位置
  * @param {number} [duration] - 动画持续时间
@@ -81,9 +41,10 @@ function scrollIntoView(container, selected, duration, direction, callback) {
  * @param {Function} [callback] - 滚动到指定selected结束后的回调
  * @return {undefined}
  */
-function scrollTo(element, to, duration = 250, direction, callback) {
+export function scrollTo(element, to, duration, direction, callback) {
   to = to || 0;
   element = element || document.body;
+  duration = duration || 400;
   const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
   const start = element[scrollDirection];
   const change = to - start;
@@ -110,4 +71,46 @@ function scrollTo(element, to, duration = 250, direction, callback) {
     }
   };
   animateScroll();
+}
+
+/**
+ * @description 跳转到指定位置
+ * @param {Element} [container] - 容器元素
+ * @param {Element} [scrollContainer] - 滚动容器元素
+ * @param {Element} [selected] - 要跳转到element元素, 如果不传就回到顶部
+ * @param {number} [duration] - 动画持续时间
+ * @param {'horizontal'|'vertical'} [direction] - 滚动方向 vertical or horizontal
+ * @param {Function} [callback] - 滚动到指定selected结束后的回调
+ * @return {undefined}
+ */
+export function scrollIntoView(container, scrollContainer, selected, duration, direction, callback) {
+  if (Vue.prototype.$isServer) return;
+  container = scrollContainer ? container : getScrollContainer(container, direction !== 'horizontal');
+  if (!container) return;
+  const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
+  const offsetDirection = direction === 'horizontal' ? 'offsetLeft' : 'offsetTop';
+  const offsetReact = direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight';
+  const clientReact = direction === 'horizontal' ? 'clientWidth' : 'clientHeight';
+  if (!selected) {
+    scrollTo(scrollContainer || container, 0, duration, direction, callback);
+    return;
+  }
+  const offsetParents = [];
+  let pointer = selected.offsetParent;
+  while (pointer && container !== pointer && container.contains(pointer)) {
+    offsetParents.push(pointer);
+    pointer = pointer.offsetParent;
+  }
+  const top = selected[offsetDirection] + offsetParents.reduce((prev, curr) => (prev + curr[offsetDirection]), 0);
+  const bottom = top + selected[offsetReact];
+  const viewRectTop = isDocument(container) ? getPosition(scrollDirection) : container[scrollDirection];
+  const viewRectBottom = viewRectTop + container[clientReact];
+
+  if (top < viewRectTop) {
+    // container[scrollDirection] = top
+    scrollTo(scrollContainer || container, top, duration, direction, callback);
+  } else if (bottom > viewRectBottom) {
+    // container[scrollDirection] = bottom - container[clientReact]
+    scrollTo(scrollContainer || container, bottom - container[clientReact], duration, direction, callback);
+  }
 }

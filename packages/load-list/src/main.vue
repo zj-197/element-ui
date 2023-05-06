@@ -31,6 +31,7 @@ import ElPagination from 'element-ui/packages/pagination';
 import ElEmpty from 'element-ui/packages/empty';
 import ElButton from 'element-ui/packages/button';
 import { t } from 'element-ui/src/locale';
+import {scrollIntoView} from 'element-ui/src/utils/scroll-into-view-or-body';
 const PAGINATION_KEY = Object.freeze({
   page: 'page',
   pageSize: 'pageSize',
@@ -83,7 +84,10 @@ export default {
       type: String,
       default: t('el.select.loading')
     },
-    autoScrollTop: Boolean // 是否点击分页组件时自动回到el-load-list的顶部
+    autoScrollTop: {
+      type: Boolean,
+      default: true
+    } // 是否点击分页组件时自动回到el-load-list的顶部
   },
   components: {
     ElPagination,
@@ -198,28 +202,25 @@ export default {
         });
       }
     },
-    // 处理分页
-    handlePagination(pagination) {
-      if (this.loadDataIsFn) {
-        this.getList({
-          [this.realPaginationKey.page]: pagination.page,
-          [this.realPaginationKey.pageSize]: pagination.pageSize
-        });
-      }
-    },
     // 设置pagination数据
     setPagination(key, value) {
       this.$set(this.pagination, key, value);
     },
     onPaginationSizeChange(val) {
       this.setPagination(this.realPaginationKey.pageSize, val);
+      this.scrollListTop();
       this.refresh(false);
     },
     onPaginationPageChange(val) {
       this.setPagination(this.realPaginationKey.page, val);
+      this.scrollListTop();
       this.refresh(false);
     },
-
+    scrollListTop() {
+      if (this.autoScrollTop) {
+        scrollIntoView(this.$el, undefined, this.$el);
+      }
+    }
   }
 };
 </script>

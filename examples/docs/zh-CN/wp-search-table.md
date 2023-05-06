@@ -309,6 +309,7 @@
 | label-position   | el-wp-form的`label-position` label的排列方式                                                                                                                   | string                                                                                             | left/right/top | top                                                              |
 | label-width      | el-wp-form的`label-width` label的宽度                                                                                                                        | string                                                                                             | —              |  —                                                                |
 | is-init-collapse | el-wp-form的`is-init-collapse`属性, 初始默认值是否为收起                                                                                                              | boolean                                                                                            | —                     | true  |
+| auto-scroll-top  | 点击分页时是否自动滚动到顶部                                                                                                                                           | boolean                                                                                            | —                     | true  |
 
 ### Columns Type
 

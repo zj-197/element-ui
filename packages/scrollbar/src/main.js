@@ -5,27 +5,7 @@ import scrollbarWidth from 'element-ui/src/utils/scrollbar-width';
 import { toObject } from 'element-ui/src/utils/util';
 import { isFirefox } from 'element-ui/src/utils/util';
 import Bar from './bar';
-function requestAnimFrame(callback) {
-  if (typeof window === 'undefined') {
-    setTimeout(callback, 1000 / 60);
-  } else {
-    const fn = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
-    if (typeof fn === 'function') {
-      fn(callback);
-    } else {
-      setTimeout(callback, 1000 / 60);
-    }
-  }
-}
-// 缓动函数
-function easeInOutQuad(t, b, c, d) {
-  t /= d / 2;
-  if (t < 1) {
-    return c / 2 * t * t + b;
-  }
-  t--;
-  return -c / 2 * (t * (t - 2) - 1) + b;
-}
+import {scrollIntoView, scrollTo} from 'element-ui/src/utils/scroll-into-view-or-body';
 /* istanbul ignore next */
 export default {
   name: 'ElScrollbar',
@@ -124,7 +104,17 @@ export default {
       this.moveY = ((wrap.scrollTop * 100) / wrap.clientHeight);
       this.moveX = ((wrap.scrollLeft * 100) / wrap.clientWidth);
     },
-
+    /**
+     * @description 跳转到指定位置
+     * @param {Element} [selected] - 要跳转到element元素, 如果不传就回到顶部
+     * @param {number} [duration] - 动画持续时间
+     * @param {'horizontal'|'vertical'} [direction] - 滚动方向 vertical or horizontal
+     * @param {Function} [callback] - 滚动到指定selected结束后的回调
+     * @return {undefined}
+     */
+    scrollIntoView(selected, duration, direction, callback) {
+      scrollIntoView(this.$el, this.wrap, selected, duration, direction, callback);
+    },
     update() {
       let heightPercentage, widthPercentage;
       const wrap = this.wrap;
@@ -151,84 +141,10 @@ export default {
         e.preventDefault();
         const eventDelta = -(e.wheelDelta || -e.deltaY * 40);
         const scrollLeft = wrapEL.scrollLeft + (eventDelta / 4);
-        this.scrollTo(scrollLeft, 30, 'horizontal');
+        scrollTo(this.wrap, scrollLeft, 30, 'horizontal');
       }
-    },
-    /**
-     * @description 跳转到指定位置
-     * @param {Element} [selected] - 要跳转到element元素, 如果不传就回到顶部
-     * @param {number} [duration] - 动画持续时间
-     * @param {'horizontal'|'vertical'} [direction] - 滚动方向 vertical or horizontal
-     * @param {Function} [callback] - 滚动到指定selected结束后的回调
-     * @return {undefined}
-     */
-    scrollIntoView(selected, duration, direction, callback) {
-      if (this.$isServer) return;
-      const container = this.$el;
-      if (!container) return;
-      const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
-      const offsetDirection = direction === 'horizontal' ? 'offsetLeft' : 'offsetTop';
-      const offsetReact = direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight';
-      const clientReact = direction === 'horizontal' ? 'clientWidth' : 'clientHeight';
-      if (!selected) {
-        this.scrollTo(0, duration, direction, callback);
-        return;
-      }
-      const offsetParents = [];
-      let pointer = selected.offsetParent;
-      while (pointer && container !== pointer && container.contains(pointer)) {
-        offsetParents.push(pointer);
-        pointer = pointer.offsetParent;
-      }
-      const top = selected[offsetDirection] + offsetParents.reduce((prev, curr) => (prev + curr[offsetDirection]), 0);
-      const bottom = top + selected[offsetReact];
-      const viewRectTop = container[scrollDirection];
-      const viewRectBottom = viewRectTop + container[clientReact];
-
-      if (top < viewRectTop) {
-        // container[scrollDirection] = top
-        this.scrollTo(top, duration, direction, callback);
-      } else if (bottom > viewRectBottom) {
-        // container[scrollDirection] = bottom - container[clientReact]
-        this.scrollTo(bottom - container[clientReact], duration, direction, callback);
-      }
-    },
-    /**
-     * @description 跳转到指定位置
-     * @param {number}  [to]- 跳转位置
-     * @param {number} [duration] - 动画持续时间
-     * @param {'horizontal'|'vertical'} [direction] - 滚动方向 vertical or horizontal
-     * @param {Function} [callback] - 滚动到指定selected结束后的回调
-     * @return {undefined}
-     */
-    scrollTo(to, duration = 250, direction, callback) {
-      to = to || 0;
-      const element = this.wrap;
-      if (!element) return;
-      const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
-      const start = element[scrollDirection];
-      const change = to - start;
-      const increment = 20;
-      let currentTime = 0;
-      const animateScroll = function() {
-        // increment the time
-        currentTime += increment;
-        // find the value with the quadratic in-out easing function
-        element[scrollDirection] = easeInOutQuad(currentTime, start, change, duration);
-        // do the animation unless its over
-        if (currentTime < duration) {
-          requestAnimFrame(animateScroll);
-        } else {
-          if (callback && typeof callback === 'function') {
-            // the animation is done so lets callback
-            callback();
-          }
-        }
-      };
-      animateScroll();
     }
   },
-
   mounted() {
     if (this.native) return;
     this.$nextTick(this.update);

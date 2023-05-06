@@ -38,6 +38,7 @@ type Columns = {
 /** WpSearchTable Component */
 export declare class ElWpSearchTable extends ElementUIComponent {
     columns: Array<Columns>
+    autoScrollTop: boolean
     loadData():Promise<any>
     colCount: string | number
     gutter: string | number

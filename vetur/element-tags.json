@@ -260,7 +260,7 @@
     "defaults": ["name", "title"]
   },
   "el-wp-search-table": {
-    "attributes": ["columns", "load-data", "col-count", "gutter", "size", "page-size", "is-server", "max-select", "row-key", "pagination-key", "table-props", "form-props", "label-position", "label-width", "is-init-collapse"],
+    "attributes": ["columns", "auto-scroll-top","load-data", "col-count", "gutter", "size", "page-size", "is-server", "max-select", "row-key", "pagination-key", "table-props", "form-props", "label-position", "label-width", "is-init-collapse"],
     "defaults": ["columns", "loadData"],
     "description": "A table with a search form"
   },
@@ -280,7 +280,7 @@
     "description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data."
   },
   "el-wp-table": {
-    "attributes": ["load-data", "width", "emptyImage", "is-server","is-show-refresh-tool", "empty-btn-text","is-show-setting-tool", "on-empty-btn-click","is-show-size-tool", "tool-align","page-size","max-select","pagination-props", "pagination-key", "reserve-selection","height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
+    "attributes": ["load-data", "loading-text", "width", "emptyImage", "is-server","is-show-refresh-tool", "empty-btn-text","is-show-setting-tool", "on-empty-btn-click","is-show-size-tool", "tool-align","page-size","max-select","pagination-props", "pagination-key", "reserve-selection","height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
     "defaults": [":load-data"],
     "subtags": ["el-wp-table-column"],
     "description": "Display multiple data with similar format. You can sort, filter, compare your data in a table."
@@ -318,5 +318,15 @@
     "attributes": ["height"],
     "defaults": ["height"],
     "description": "Container for footers."
+  },
+  "el-load-list": {
+    "attributes": ["load-data", "page-size", "pagination-key", "pagination-props", "is-server", "empty-text", "empty-btn-text", "empty-image", "error-text", "error-btn-text", "error-image", "loading-text", "auto-scroll-top"],
+    "defaults": ["load-data"],
+    "description": "Recorded data list."
+  },
+  "el-render-empty-cpn": {
+    "attributes": ["render-fn"],
+    "defaults": ["render-fn"],
+    "description": "Render an empty component."
   }
 }

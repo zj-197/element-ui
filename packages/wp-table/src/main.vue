@@ -190,7 +190,8 @@ export default {
       validator(val) {
         return [undefined, '', 'left', 'right'].indexOf(val) > -1;
       }
-    }
+    },
+    loadingText: String
   },
   mixins: [Locale],
   data(vm) {
@@ -198,7 +199,7 @@ export default {
       page: 'page',
       pageSize: 'pageSize',
       total: 'total',
-      tableList: 'list' // 列表记录字段key
+      list: 'list' // 列表记录字段key
     }, vm.paginationKey);
     return {
       tableList: [], // 列表数据
@@ -246,7 +247,7 @@ export default {
         page: 'page',
         pageSize: 'pageSize',
         total: 'total',
-        tableList: 'list' // 列表记录字段key
+        list: 'list' // 列表记录字段key
       }, this.paginationKey);
     }
   },
@@ -560,7 +561,7 @@ export default {
         <el-table
           ref="wpTable"
           class="el-wp-table"
-          element-loading-text="加载中..."
+          element-loading-text={this.loadingText || this.t('el.select.loading')}
           element-loading-background="rgba(255, 255, 255, 0.7)"
           v-loading={this.isLoading}
           on-selection-change={this.handleSelectionChange}

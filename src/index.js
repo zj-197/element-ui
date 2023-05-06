@@ -96,6 +96,7 @@ import WpTableColumn from '../packages/wp-table-column/index.js';
 import WpSearchTable from '../packages/wp-search-table/index.js';
 import WpDatePicker from '../packages/wp-date-picker/index.js';
 import LoadList from '../packages/load-list/index.js';
+import RenderEmptyCpn from '../packages/render-empty-cpn/index.js';
 import locale from 'wp-element-ui/src/locale';
 import CollapseTransition from 'wp-element-ui/src/transitions/collapse-transition';
 
@@ -191,6 +192,7 @@ const components = [
   WpSearchTable,
   WpDatePicker,
   LoadList,
+  RenderEmptyCpn,
   CollapseTransition
 ];
 
@@ -226,7 +228,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.6',
+  version: '1.0.7',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -326,5 +328,6 @@ export default {
   WpTableColumn,
   WpSearchTable,
   WpDatePicker,
-  LoadList
+  LoadList,
+  RenderEmptyCpn
 };

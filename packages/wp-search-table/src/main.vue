@@ -12,6 +12,7 @@ import ElWpTable from 'element-ui/packages/wp-table';
 import ElWpTableColumn from 'element-ui/packages/wp-table-column';
 import ElWpForm from 'element-ui/packages/wp-form';
 import ElWpFormItem from 'element-ui/packages/wp-form-item';
+import {scrollIntoView} from 'element-ui/src/utils/scroll-into-view-or-body';
 export default {
   name: 'ElWpSearchTable',
   props: {
@@ -57,7 +58,11 @@ export default {
     },
     labelPosition: String,
     labelWidth: String,
-    isInitCollapse: Boolean
+    isInitCollapse: Boolean,
+    autoScrollTop: {
+      type: Boolean,
+      default: true
+    }
   },
   components: {
     ElWpTable,
@@ -154,7 +159,14 @@ export default {
           paginationProps: { align: 'center' }
         }, this.tableProps),
         style: { marginTop: '20px' },
-        ref: 'wpTable'
+        ref: 'wpTable',
+        on: {
+          pagination: () => {
+            if (this.autoScrollTop) {
+              scrollIntoView(this.$el, undefined, this.$el);
+            }
+          }
+        }
       }, columns.concat([
         h('template', {slot: 'toolbar-prefix'}, this.$slots.toolbarPrefix || this.$slots['toolbar-prefix']),
         h('template', {slot: 'toolbar-suffix'}, this.$slots.toolbarSuffix || this.$slots['toolbar-suffix'])

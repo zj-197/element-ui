@@ -94,6 +94,7 @@ import { ElWpTable } from './wp-table'
 import { ElWpSearchTable } from './wp-search-table'
 import { ElWpDatePicker } from './wp-date-picker'
 import { ElLoadList } from './load-list'
+import { ElRenderEmptyCpn } from './render-empty-cpn'
 
 export interface InstallationOptions {
   locale: any,
@@ -399,3 +400,6 @@ export class WpDatePicker extends ElWpDatePicker {}
 
 /** LoadList Component */
 export class LoadList extends ElLoadList {}
+
+/** RenderEmptyCpn Component */
+export class RenderEmptyCpn extends ElRenderEmptyCpn {}

@@ -1,0 +1,7 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(render-empty-cpn) {
+  font-size: $--font-size-base;
+  color: $--color-text-regular;
+}

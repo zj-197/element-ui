@@ -70,16 +70,34 @@
               }, 3000)
           })
         },
-        // 编辑  
-        edit (row) {
-            
-        },
-        // 删除  
-        del (row) {
-            
-        },
       }  
     }
   </script>
 ```
 :::
+
+### LoadList Attribute
+| 参数               | 说明                                                                                                                                                       | 类型       | 可选值       | 默认值                                                                |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------  |--------------------------------------------------------------------|
+| load-data        | 记载数据项的promise函数(必传)                                                                                                                                      | Function | — | —                                                                  |
+| page-size        | 每页条数                                                                                                                                                     | number   | — | 20                                                                 |
+| pagination-key   | 分页相关key，比如服务端返回的是{page: 1, pageSize: 20, list: [{}], total: 100 }, 那么paginationKey就是: {page: 'page', pageSize: 'pageSize', total: 'total', list: 'list'} | object   | — | {page: 'page', pageSize: 'pageSize', total: 'total', list: 'list'} |
+| pagination-props | 分页组件的prop 详见pagination                                                                                                                                   | object   | — | —                                                                  |
+| is-server        | 是否服务端渲染                                                                                                                                                  | boolean  | — | —                                                                  |
+| empty-text       | 列表为空时的描述文字                                                                                                                                               | string   |—| 暂无数据                                                               |
+| empty-btn-text   | 列表为空时按钮的文字                                                                                                                                               | string   | — | 重新加载                                                               |
+| empty-image      | 列表为空时的图片                                                                                                                                                 | string   | — | —                                                                  |
+| error-text       | 列表加载错误时的描述文字                                                                                                                                             | string   | — | —                                                                  |
+| error-btn-text   | 列表加载错误时按钮文字                                                                                                                                              | string   | — | —                                                                  |
+| error-image      | 列表加载错误时的图片                                                                                                                                               | string   | — | —                                                                  |
+| loading-text     | 加载中的文字                                                                                                                                                   | string   | — | 加载中                                                                |
+| auto-scroll-top  | 是否自动滚动到顶部                                                                                                                                                | boolean  | — | true                                                               |
+
+
+### LoadList SlotScoped
+
+| name | 说明                        |
+|------|---------------------------|
+| ---- | 默认插槽参数为 { list, isError } |
+| empty | 参数为 { isError } |
+| empty-btn | 参数为 { isError } |

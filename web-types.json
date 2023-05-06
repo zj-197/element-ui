@@ -7,6 +7,97 @@
     "html": {
       "vue-components": [
         {
+          "name": "ElLoadList",
+          "description": "Recorded data list",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/load-list",
+          "props": [
+            {
+              "name": "loadData",
+              "description": "A function that loads a list of data",
+              "type": "Function"
+            },
+            {
+              "name": "pageSize",
+              "description": "Item count of each page",
+              "type": "number",
+              "default": "20"
+            },
+            {
+              "name": "paginationKey",
+              "description": "Page-related key",
+              "type": "object"
+            },
+            {
+              "name": "paginationProps",
+              "description": "Page-related props",
+              "type": "object"
+            },
+            {
+              "name": "isServer",
+              "description": "Server rendering or not",
+              "type": "boolean"
+            },
+            {
+              "name": "emptyText",
+              "description": "Empty Text",
+              "type": "string"
+            },
+            {
+              "name": "emptyBtnText",
+              "description": "Empty btnText",
+              "type": "string"
+            },
+            {
+              "name": "emptyImage",
+              "description": "Empty image",
+              "type": "string"
+            },
+            {
+              "name": "errorText",
+              "description": "Error text",
+              "type": "string"
+            },
+            {
+              "name": "errorBtnText",
+              "description": "Error btnText",
+              "type": "string"
+            },
+            {
+              "name": "errorImage",
+              "description": "Error image",
+              "type": "string"
+            },
+            {
+              "name": "loadingText",
+              "description": "Loading text",
+              "type": "string"
+            },
+            {
+              "name": "autoScrollTop",
+              "description": "auto-scroll-top",
+              "type": "boolean"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "description"
+            },
+            {
+              "name": "title",
+              "description": "content of the Alert title"
+            }
+          ],
+          "js": {
+            "events": [
+              {
+                "name": "close",
+                "description": "fires when alert is closed"
+              }
+            ]
+          }
+        },
+        {
           "name": "ElAlert",
           "description": "Displays important alert messages.",
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/alert",
@@ -4032,6 +4123,11 @@
               "type": "boolean"
             },
             {
+              "name": "loadingText",
+              "description": "loading Text",
+              "type": "string"
+            },
+            {
               "name": "isServer",
               "description": "Server rendering or not",
               "type": "boolean"
@@ -4260,6 +4356,11 @@
               "name": "columns",
               "description": "Column configuration object",
               "type": "Array<object>"
+            },
+            {
+              "name": "autoScrollTop",
+              "description": "Whether to scrollTop",
+              "type": "boolean"
             },
             {
               "name": "loadData",
@@ -5233,6 +5334,18 @@
             {
               "name": "tip",
               "description": "Content of tips"
+            }
+          ]
+        },
+        {
+          "name": "ElRenderEmptyCpn",
+          "description": "Render an empty component",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/render-empty-cpn",
+          "props": [
+            {
+              "name": "renderFn",
+              "description": "Render function",
+              "type": "Function"
             }
           ]
         }

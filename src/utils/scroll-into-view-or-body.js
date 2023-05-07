@@ -44,7 +44,7 @@ function easeInOutQuad(t, b, c, d) {
 export function scrollTo(element, to, duration, direction, callback) {
   to = to || 0;
   element = element || document.body;
-  duration = duration || 400;
+  duration = duration || 500;
   const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
   const start = element[scrollDirection];
   const change = to - start;
@@ -86,13 +86,14 @@ export function scrollTo(element, to, duration, direction, callback) {
 export function scrollIntoView(container, scrollContainer, selected, duration, direction, callback) {
   if (Vue.prototype.$isServer) return;
   container = scrollContainer ? container : getScrollContainer(container, direction !== 'horizontal');
+  scrollContainer = scrollContainer || container;
   if (!container) return;
   const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
   const offsetDirection = direction === 'horizontal' ? 'offsetLeft' : 'offsetTop';
   const offsetReact = direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight';
   const clientReact = direction === 'horizontal' ? 'clientWidth' : 'clientHeight';
   if (!selected) {
-    scrollTo(scrollContainer || container, 0, duration, direction, callback);
+    scrollTo(scrollContainer, 0, duration, direction, callback);
     return;
   }
   const offsetParents = [];
@@ -103,14 +104,14 @@ export function scrollIntoView(container, scrollContainer, selected, duration, d
   }
   const top = selected[offsetDirection] + offsetParents.reduce((prev, curr) => (prev + curr[offsetDirection]), 0);
   const bottom = top + selected[offsetReact];
-  const viewRectTop = isDocument(container) ? getPosition(scrollDirection) : container[scrollDirection];
-  const viewRectBottom = viewRectTop + container[clientReact];
+  const viewRectTop = isDocument(scrollContainer) ? getPosition(scrollDirection) : Math.floor(scrollContainer[scrollDirection]);
+  const viewRectBottom = viewRectTop + scrollContainer[clientReact];
 
   if (top < viewRectTop) {
     // container[scrollDirection] = top
-    scrollTo(scrollContainer || container, top, duration, direction, callback);
+    scrollTo(scrollContainer, top, duration, direction, callback);
   } else if (bottom > viewRectBottom) {
     // container[scrollDirection] = bottom - container[clientReact]
-    scrollTo(scrollContainer || container, bottom - container[clientReact], duration, direction, callback);
+    scrollTo(scrollContainer, bottom - scrollContainer[clientReact], duration, direction, callback);
   }
 }

@@ -158,6 +158,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景，内置了f
             虽体解吾犹未变兮，岂余心之可惩。
 
             女嬃之婵媛兮，申申其詈予。
+            <div ref="testSkip" style="height: 200px; background: #f00"></div>
 
             曰：“鲧婞直以亡身兮，终然夭乎羽之野。
 
@@ -175,7 +176,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景，内置了f
 
             启《九辩》与《九歌》兮，夏康娱以自纵。
         </pre>
-        <div ref="testSkip" style="height: 200px; background: #f00"></div>
+        
     </el-scrollbar>
   </template>  
  

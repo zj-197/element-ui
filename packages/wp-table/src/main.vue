@@ -60,8 +60,7 @@ export default {
     },
     // 加载数据
     loadData: {
-      type: [Array, Function],
-      required: true
+      type: [Array, Function]
     },
 
     size: {
@@ -95,7 +94,6 @@ export default {
 
     rowKey: {
       type: String,
-      required: true,
       default: 'id'
     },
 
@@ -271,12 +269,14 @@ export default {
   },
   mounted() {
     const children = this.$vnode.componentOptions ? this.$vnode.componentOptions.children : [];
-    children.forEach((vnode, index) => {
-      if (vnode.componentInstance) {
-        vnode.componentInstance.originOrder = index;
-      }
-    });
-    this.setControlTableColumns();
+    if (Array.isArray(children) && children.length > 0) {
+      children.forEach((vnode, index) => {
+        if (vnode.componentInstance) {
+          vnode.componentInstance.originOrder = index;
+        }
+      });
+      this.setControlTableColumns();
+    }
   },
   methods: {
     // 这点需要根据实际开发进行修改

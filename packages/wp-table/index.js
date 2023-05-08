@@ -1,8 +1,8 @@
-import WpTable from './src/main';
+import ElWpTable from './src/main';
 
 /* istanbul ignore next */
-WpTable.install = function(Vue) {
-  Vue.component(WpTable.name, WpTable);
+ElWpTable.install = function(Vue) {
+  Vue.component(ElWpTable.name, ElWpTable);
 };
 
-export default WpTable;
+export default ElWpTable;

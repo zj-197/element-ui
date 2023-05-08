@@ -3820,6 +3820,46 @@
               "type": "string|null"
             },
             {
+              "name": "titleBackground",
+              "description": "Title background",
+              "type": "string"
+            },
+            {
+              "name": "titleHeight",
+              "description": "Title height",
+              "type": "string"
+            },
+            {
+              "name": "titleHoverBackground",
+              "description": "Title hover background",
+              "type": "string"
+            },
+            {
+              "name": "titleActiveBackground",
+              "description": "Title active background",
+              "type": "string"
+            },
+            {
+              "name": "titleHoverBgIsActiveBg",
+              "description": "Title hoverBg is background",
+              "type": "string"
+            },
+            {
+              "name": "openedClass",
+              "description": "Opened class",
+              "type": "string"
+            },
+            {
+              "name": "openedStyle",
+              "description": "Opened Style",
+              "type": "object"
+            },
+            {
+              "name": "isShowArrowIcon",
+              "description": "Show arrow or not",
+              "type": "boolean"
+            },
+            {
               "name": "popperClass",
               "description": "Custom class name for the popup menu",
               "type": "string"

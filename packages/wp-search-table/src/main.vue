@@ -26,8 +26,7 @@ export default {
     },
     // 返回一个promise
     loadData: {
-      type: Function,
-      required: true
+      type: Function
     },
     // 搜索表单列数
     colCount: [String, Number],

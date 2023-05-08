@@ -91,7 +91,7 @@
   "wp-form": "./packages/wp-form/index.js",
   "wp-form-item": "./packages/wp-form-item/index.js",
   "wp-table": "./packages/wp-table/index.js",
-  "wp-table-column": "./packages/wp-table/index.js",
+  "wp-table-column": "./packages/wp-table-column/index.js",
   "wp-search-table": "./packages/wp-search-table/index.js",
   "wp-date-picker": "./packages/wp-date-picker/index.js",
   "load-list": "./packages/load-list/index.js",

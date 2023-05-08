@@ -1,8 +1,8 @@
-import WpTableColumn from '../wp-table/src/table-column.vue';
+import ElWpTableColumn from '../wp-table/src/table-column';
 
 /* istanbul ignore next */
-WpTableColumn.install = function(Vue) {
-  Vue.component(WpTableColumn.name, WpTableColumn);
+ElWpTableColumn.install = function(Vue) {
+  Vue.component(ElWpTableColumn.name, ElWpTableColumn);
 };
 
-export default WpTableColumn;
+export default ElWpTableColumn;

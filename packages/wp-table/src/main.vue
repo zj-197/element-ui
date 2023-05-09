@@ -51,7 +51,7 @@ export default {
     // 默认的pageSize
     pageSize: {
       type: Number,
-      default: 10
+      default: 20
     },
     // 加载数据
     loadData: {

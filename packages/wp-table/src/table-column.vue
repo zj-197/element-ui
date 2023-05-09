@@ -116,6 +116,7 @@ export default {
         default: this.$scopedSlots.default,
         header: this.$scopedSlots.header
       },
+      class: 'el-wp-table-column',
       key: this.columnUUid
     }, [h('template', { slot: 'append' }, this.$slots.append)]);
   },

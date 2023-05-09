@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.0.2",
+  "version": "1.1.3",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -454,6 +454,95 @@
           "description": "Commonly used button.",
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/button",
           "props": [
+            {
+              "name": "type",
+              "description": "Button type",
+              "type": "'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'"
+            },
+            {
+              "name": "theme",
+              "description": "Customize the theme color",
+              "type": "string"
+            },
+            {
+              "name": "plain",
+              "description": "Determine whether it's a plain button",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "loading",
+              "description": "Determine whether it's loading",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "Button size",
+              "type": "'medium' | 'small' | 'mini'"
+            },
+            {
+              "name": "icon",
+              "description": "icon class name",
+              "type": "string"
+            },
+            {
+              "name": "disabled",
+              "description": "Disable the button",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "autofocus",
+              "description": "Same as native button's `autofocus`",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "round",
+              "description": "Determine whether it's a round button",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "circle",
+              "description": "Determine whether it's a circle button",
+              "type": "boolean",
+              "default": "false"
+            },
+            {
+              "name": "nativeType",
+              "description": "Same as native button's `type`",
+              "type": "'button' | 'submit' | 'reset'",
+              "default": "'button'"
+            }
+          ]
+        },
+        {
+          "name": "ElSugarButton",
+          "description": "Commonly used button.",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/sugar-button",
+          "props": [
+            {
+              "name": "autoLoading",
+              "description": "Automatic loading or not",
+              "type": "boolean"
+            },
+            {
+              "name": "tooltip",
+              "description": "Tooltip component content",
+              "type": "string"
+            },
+            {
+              "name": "tooltipPlacement",
+              "description": "Tooltip component placement",
+              "type": "PopoverPlacement"
+            },
+            {
+              "name": "popconfirmTitle",
+              "description": "Popconfirm component Title",
+              "type": "string"
+            },
             {
               "name": "type",
               "description": "Button type",
@@ -1517,6 +1606,16 @@
             {
               "name": "closeOnPressEscape",
               "description": "Whether the Dialog can be closed by pressing ESC",
+              "type": "boolean"
+            },
+            {
+              "name": "visible",
+              "description": "Whether the Dialog can be visible",
+              "type": "boolean"
+            },
+            {
+              "name": "appendToBody",
+              "description": "Whether the Dialog to body",
               "type": "boolean"
             },
             {

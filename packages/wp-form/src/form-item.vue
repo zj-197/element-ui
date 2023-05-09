@@ -5,6 +5,7 @@
                 :prop="prop"
                 :rules="realRules"
                 :error="error"
+                class="el-wp-form-item"
                 :validate-status="validateStatus"
                 :inline-message="inlineMessage"
                 :show-message="showMessage">

@@ -1,6 +1,8 @@
+import Vue from 'vue';
+
 export default {
   bind(el, binding, vnode) {
-    if (binding.value === false) return;
+    if (binding.value === false || Vue.prototype.$isServer) return;
     const dialogHeaderEl = el.querySelector('.el-dialog__header');
     const dragDom = el;
     if (!dialogHeaderEl) return;

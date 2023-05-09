@@ -14,6 +14,11 @@
     "defaults": ["type"],
     "description": "Commonly used button."
   },
+  "el-sugar-button": {
+    "attributes": ["auto-loading", "tooltip","popconfirm-title", "tooltip-placement","type", "theme", "size", "plain", "loading", "disabled", "icon", "autofocus", "native-type", "round", "circle"],
+    "defaults": ["type"],
+    "description": "Commonly used sugar button."
+  },
   "el-radio": {
     "attributes": ["label", "disabled", "border", "size", "name"],
     "defaults": ["label"],

@@ -219,7 +219,7 @@ export default {
     }
   },
   render(h) {
-    return h('div', null, [this.renderForm(h), this.renderTable(h)]);
+    return h('div', {class: 'el-wp-search-table'}, [this.renderForm(h), this.renderTable(h)]);
   }
 };
 </script>

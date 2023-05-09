@@ -95,6 +95,7 @@ import { ElWpSearchTable } from './wp-search-table'
 import { ElWpDatePicker } from './wp-date-picker'
 import { ElLoadList } from './load-list'
 import { ElRenderEmptyCpn } from './render-empty-cpn'
+import { ElSugarButton } from './sugar-button'
 
 export interface InstallationOptions {
   locale: any,
@@ -403,3 +404,6 @@ export class LoadList extends ElLoadList {}
 
 /** RenderEmptyCpn Component */
 export class RenderEmptyCpn extends ElRenderEmptyCpn {}
+
+/** SugarButton Component */
+export class SugarButton extends ElSugarButton {}

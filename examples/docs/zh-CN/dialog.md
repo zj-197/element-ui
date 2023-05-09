@@ -466,3 +466,11 @@ Dialog 的内容是懒渲染的，即在第一次被打开之前，传入的默�
 | opened  | Dialog 打开动画结束时的回调 | — |
 | close  | Dialog 关闭的回调 | — |
 | closed | Dialog 关闭动画结束时的回调 | — |
+
+### Methods
+| 方法名  | 说明                     | 参数      |
+|------|------------------------|---------- |
+| closeDialog | 关闭dialog               | — |
+| showDialog     | 打开dialog               | — |
+| closeLoading | 打开`footer`确定按钮的loading | — |
+| openLoading | 关闭`footer`确定按钮的loading | — |

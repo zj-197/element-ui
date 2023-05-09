@@ -72,6 +72,10 @@
               "title": "Button 按钮"
             },
             {
+              "path": "/sugar-button",
+              "title": "SugarButton 实用按钮"
+            },
+            {
               "path": "/link",
               "title": "Link 文字链接"
             }
@@ -677,6 +681,10 @@
             {
               "path": "/render-empty-cpn",
               "title": "RenderEmptyCpn"
+            },
+            {
+              "path": "/sugar-button",
+              "title": "SugarButton"
             }
           ]
         }
@@ -1019,6 +1027,10 @@
             {
               "path": "/render-empty-cpn",
               "title": "RenderEmptyCpn"
+            },
+            {
+              "path": "/sugar-button",
+              "title": "SugarButton"
             }
           ]
         }
@@ -1361,6 +1373,10 @@
             {
               "path": "/render-empty-cpn",
               "title": "RenderEmptyCpn"
+            },
+            {
+              "path": "/sugar-button",
+              "title": "SugarButton"
             }
           ]
         }

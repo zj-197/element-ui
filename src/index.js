@@ -97,6 +97,7 @@ import WpSearchTable from '../packages/wp-search-table/index.js';
 import WpDatePicker from '../packages/wp-date-picker/index.js';
 import LoadList from '../packages/load-list/index.js';
 import RenderEmptyCpn from '../packages/render-empty-cpn/index.js';
+import SugarButton from '../packages/sugar-button/index.js';
 import locale from 'wp-element-ui/src/locale';
 import CollapseTransition from 'wp-element-ui/src/transitions/collapse-transition';
 
@@ -193,6 +194,7 @@ const components = [
   WpDatePicker,
   LoadList,
   RenderEmptyCpn,
+  SugarButton,
   CollapseTransition
 ];
 
@@ -228,7 +230,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.1.2',
+  version: '1.1.3',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -329,5 +331,6 @@ export default {
   WpSearchTable,
   WpDatePicker,
   LoadList,
-  RenderEmptyCpn
+  RenderEmptyCpn,
+  SugarButton
 };

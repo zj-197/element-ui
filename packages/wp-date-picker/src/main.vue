@@ -1,6 +1,7 @@
 <template>
   <el-date-picker :value="realValue"
                   :type="type"
+                  class="el-wp-date-picker"
                   :size="size"
                   :format="realFormat"
                   :value-format="realValueFormat"

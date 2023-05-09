@@ -18,6 +18,8 @@ export interface DialogSlots {
 export declare class ElDialog extends ElementUIComponent {
   /** Title of Dialog */
   title: string
+  visible: boolean
+  appendToBody: boolean
 
   isDrag: boolean
   custom: boolean
@@ -66,6 +68,10 @@ export declare class ElDialog extends ElementUIComponent {
 
   /** Whether to destroy elements in Dialog when closed */
   destroyOnClose: boolean
+  openLoading():void
+  closeLoading():void
+  closeDialog():void
+  showDialog():void
 
   $slots: DialogSlots
 }

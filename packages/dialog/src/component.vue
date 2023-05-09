@@ -297,7 +297,7 @@
         this.handleClose();
       },
       handleConfirm() {
-        this.$emit('confirm', this.openLoading, this.closeDialog);
+        this.$emit('confirm', this.openLoading, this.closeDialog, this.closeLoading);
       }
     },
 

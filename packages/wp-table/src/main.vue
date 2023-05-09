@@ -8,7 +8,7 @@ import ToolBar from './ToolBar.vue';
 import {findIndex, assign, find} from 'element-ui/src/utils/lodash';
 import { noop } from 'element-ui/src/utils/util';
 import Locale from 'element-ui/src/mixins/locale';
-
+import ElWpTableColumn from 'element-ui/packages/wp-table-column';
 export default {
   name: 'ElWpTable',
   props: {
@@ -220,7 +220,8 @@ export default {
     ToolBar,
     ElTable,
     ElButton,
-    ElEmpty
+    ElEmpty,
+    ElWpTableColumn
   },
   computed: {
     // loadData是否是函数
@@ -603,18 +604,19 @@ export default {
           load={this.load}
           tree-props={this.treeProps}>
           {this.maxSelect && (
-            <el-table-column
+            <el-wp-table-column
               type="selection"
               width="50"
               fixed
               align="center"
+              is-add-tool-bar={false}
               selectable={this.onSelectable}
               reserve-selection={this.reserveSelection}
               resizable={false}/>
           )}
+          {this.renderDefault(h)}
           <template slot="append">{this.$slots.append}</template>
           <template slot="empty">{this.renderEmpty(h)}</template>
-          <template slot="default">{this.renderDefault(h)}</template>
         </el-table>
         {this.renderPagination(h)}
       </div>

@@ -2,6 +2,7 @@
   <el-row type="flex" justify="start" align="middle" style="margin-bottom: 20px">
     <slot name="toolbar-prefix"/>
     <div :class="'el-table-tools-bar-' + justify" v-if="isShowRefreshTool || isShowSizeTool || isShowSettingTool">
+      <slot name="toolbar-suffix"/>
       <i v-if="isShowRefreshTool"
          title="刷新"
          @click.stop="handleRefresh"
@@ -68,7 +69,6 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-    <slot name="toolbar-suffix"/>
   </el-row>
 </template>
 

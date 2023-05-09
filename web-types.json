@@ -4000,6 +4000,11 @@
               "type": "boolean"
             },
             {
+              "name": "rowKey",
+              "description": "Row Key",
+              "type": "string | function"
+            },
+            {
               "name": "data",
               "description": "Table data",
               "type": "object[]"
@@ -4146,6 +4151,11 @@
               "name": "showSummary",
               "description": "Whether to display a summary row",
               "type": "boolean"
+            },
+            {
+              "name": "rowKey",
+              "description": "Row Key",
+              "type": "string"
             },
             {
               "name": "loadingText",

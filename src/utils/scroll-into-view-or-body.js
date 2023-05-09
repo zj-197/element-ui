@@ -46,7 +46,7 @@ export function scrollTo(element, to, duration, direction, callback) {
   element = element || document.body;
   duration = duration || 500;
   const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
-  const start = element[scrollDirection];
+  const start = isDocument(element) ? getPosition(scrollDirection) : element[scrollDirection];
   const change = to - start;
   const increment = 20;
   let currentTime = 0;

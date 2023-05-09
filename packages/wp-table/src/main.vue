@@ -279,7 +279,7 @@ export default {
         [this.realPaginationKey.pageSize]: pageSize
       }).then(res => {
         if (res && isObject(res) && Object.keys(res).length > 0) {
-          this.tableList = res[this.realPaginationKey.tableList] || [];
+          this.tableList = res[this.realPaginationKey.list] || [];
           Object.keys(this.pagination).forEach(key => {
             if (Object.prototype.hasOwnProperty.call(res, key)) {
               this.setPagination(key, res[key]);
@@ -292,7 +292,7 @@ export default {
           this.isError = false;
         }
         this.$emit('loaded', this.isError, assign({
-          [this.realPaginationKey.tableList]: this.tableList
+          [this.realPaginationKey.list]: this.tableList
         }, this.pagination));
         this.isLoading = false;
         return {
@@ -302,7 +302,7 @@ export default {
         this.tableList = [];
         this.isError = true;
         this.$emit('loaded', this.isError, assign({
-          [this.realPaginationKey.tableList]: this.tableList
+          [this.realPaginationKey.list]: this.tableList
         }, this.pagination));
         this.isLoading = false;
         throw e;

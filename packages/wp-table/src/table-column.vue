@@ -1,7 +1,7 @@
 
 <script>
 import ElTableColumn from 'element-ui/packages/table-column';
-import {uniqueId} from 'element-ui/src/utils/lodash';
+import {uniqueId, assign} from 'element-ui/src/utils/lodash';
 /**
  * @Author: 左建
  * @Date: 2023/3/21 15:07
@@ -111,10 +111,7 @@ export default {
   render(h) {
     if (!this.isShow) return null;
     return h('el-table-column', {
-      props: {
-        ...this.$props,
-        fixed: this.customFixed
-      },
+      props: assign({}, this.$props, { fixed: this.customFixed }),
       scopedSlots: {
         default: this.$scopedSlots.default,
         header: this.$scopedSlots.header

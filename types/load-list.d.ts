@@ -6,7 +6,6 @@ export declare class ElLoadList extends ElementUIComponent {
     pageSize: number
     paginationKey: object
     paginationProps: object
-    isServer: boolean
     emptyText: string
     emptyBtnText: string
     emptyImage: string

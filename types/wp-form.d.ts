@@ -5,6 +5,8 @@ import { VertialAlignment } from "./row";
 /** WpForm Component */
 export declare class ElWpForm extends ElForm {
     isShowResetBtn: boolean
+    searchBtnProps: object
+    resetBtnProps: object
     isShowSearchBtn: boolean
     isShowCollapse: boolean
     isInitCollapse: boolean

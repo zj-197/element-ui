@@ -256,7 +256,6 @@
 | value-key             | 作为 value 唯一标识的键名，传入`option-data`时为必填                     | string                                                                         | —                 | value    |
 | label-key             | 作为 label 唯一标识的键名                                                    | string                                                                         | —                 | label    |
 | disabled-key          | 作为 disabled 唯一标识的键名                                                 | string                                                                         | —                 | disabled |
-| is-server             | `option-data`为函数时是否服务端渲染, 通过nuxt.js的fetch钩子函数实现，请注意nuxt版本，保证2.15.8以上 | boolean    
 | disabled  | 是否禁用    | boolean   | — | false   |
 | text-color  | 按钮形式的 Radio 激活时的文本颜色    | string   | — | #ffffff   |
 | fill  | 按钮形式的 Radio 激活时的填充色和边框色    | string   | — | #409EFF   |

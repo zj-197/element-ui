@@ -25,7 +25,6 @@ export interface WpTableSlots {
 export type LoadData = (() => Promise<any>) | Array<object>
 /** WpTable Component */
 export declare class ElWpTable extends ElementUIComponent {
-    isServer: boolean
     emptyBtnText: string
     loadingText: string
     emptyImage: string

@@ -8,7 +8,6 @@ export declare class ElRadioGroup extends ElementUIComponent {
   size: RadioGroupSize
   optionData: ElementUIFormComponentOptionData
   labelKey: string
-  isServer: boolean
   triggerMethod: ElementUIFormComponentTriggerMethod
   valueKey: string
   disabledKey: string

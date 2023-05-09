@@ -402,19 +402,21 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 
 ### Wp-Form New Attributes 新增的prop
 
-| 参数                 | 说明         | 类型            | 可选值                   | 默认值   |
-|--------------------|------------|---------------|-----------------------|-------|
-| col-count          | 表单列数       | number/string | —                     | 3     |
-| gutter             | 表单每列间隔     | number/string | —                     | 20    |
-| is-show-reset-btn  | 是否显示重置按钮   | boolean       | —                     | true  |
-| reset-btn-text     | 重置按钮文字     | string        | —                     | 重 置   |
-| is-show-search-btn | 是否展示搜索按钮   | boolean       | —                     | true  |
-| search-btn-text    | 搜索按钮文字     | string        | —                     | 搜 索   |
-| is-show-collapse   | 是否显示展开收起   | boolean       | —                     | true  |
-| is-init-collapse   | 初始默认值是否为收起 | boolean       | —                     | true  |
-| collapse-text      | 收起文字       | string        | —                     | 收起    |
-| spread-text        | 展开文字       | string        | —                     | 展开    |
-| align              | 垂直方向对齐方式   | string        | top/middle/bottom     | top   |
+| 参数                 | 说明          | 类型            | 可选值                   | 默认值   |
+|--------------------|-------------|---------------|-----------------------|-------|
+| col-count          | 表单列数        | number/string | —                     | 3     |
+| gutter             | 表单每列间隔      | number/string | —                     | 20    |
+| is-show-reset-btn  | 是否显示重置按钮    | boolean       | —                     | true  |
+| reset-btn-text     | 重置按钮文字      | string        | —                     | 重 置   |
+| is-show-search-btn | 是否展示搜索按钮    | boolean       | —                     | true  |
+| search-btn-text    | 搜索按钮文字      | string        | —                     | 搜 索   |
+| is-show-collapse   | 是否显示展开收起    | boolean       | —                     | true  |
+| is-init-collapse   | 初始默认值是否为收起  | boolean       | —                     | true  |
+| collapse-text      | 收起文字        | string        | —                     | 收起    |
+| spread-text        | 展开文字        | string        | —                     | 展开    |
+| align              | 垂直方向对齐方式    | string        | top/middle/bottom     | top   |
+| search-btn-props   | 搜索按钮props配置 | object        |  —    | —   |
+| reset-btn-props    | 重置按钮props配置 | object        |  —    | —   |
 
 ### Form Attributes
 

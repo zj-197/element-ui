@@ -12,11 +12,6 @@ import Locale from 'element-ui/src/mixins/locale';
 export default {
   name: 'ElWpTable',
   props: {
-    // 是否服务器渲染
-    isServer: {
-      type: Boolean,
-      default: false
-    },
     // 加载按钮的文字
     emptyBtnText: {
       type: String,
@@ -60,7 +55,8 @@ export default {
     },
     // 加载数据
     loadData: {
-      type: [Array, Function]
+      type: [Array, Function],
+      required: true
     },
 
     size: {
@@ -94,7 +90,8 @@ export default {
 
     rowKey: {
       type: String,
-      default: 'id'
+      default: 'id',
+      required: true
     },
 
     context: {},
@@ -250,21 +247,12 @@ export default {
     }
   },
   created() {
-    if (this.loadDataIsFn && !this.$isServer && !this.isServer) {
+    if (!this.$isServer && this.loadDataIsFn) {
       this.getTableList(this.pagination);
     }
     if (!this.$isServer) {
       // 监听来自tableColumn的变化
       this.$on('columnPropValueChange', this.onTableColumnPropChange);
-    }
-  },
-  // 服务端渲染
-  fetch() {
-    if (this && this.loadDataIsFn && this.isServer) {
-      return this.getTableList(this.pagination);
-    }
-    if (!this && process.env.NODE_ENV !== 'production') {
-      console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
     }
   },
   mounted() {

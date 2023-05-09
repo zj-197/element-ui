@@ -14,7 +14,6 @@ export declare class ElSelect extends ElementUIComponent {
   value: any
   optionData: ElementUIFormComponentOptionData
   triggerMethod: ElementUIFormComponentTriggerMethod
-  isServer: boolean
   labelKey: string
   disabledKey: string
 

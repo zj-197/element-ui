@@ -44,7 +44,6 @@ export declare class ElWpSearchTable extends ElementUIComponent {
     gutter: string | number
     size: ElementUIComponentSize
     pageSize: number
-    isServer: boolean
     maxSelect: number
     rowKey: string
     paginationKey: PaginationKey

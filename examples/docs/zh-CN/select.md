@@ -596,7 +596,6 @@
 | value-key             | 作为 value 唯一标识的键名，绑定值为对象类型时或者传入`option-data`时为必填                     | string                                                                         | —                 | value    |
 | label-key             | 作为 label 唯一标识的键名                                                    | string                                                                         | —                 | label    |
 | disabled-key          | 作为 disabled 唯一标识的键名                                                 | string                                                                         | —                 | disabled |
-| is-server             | `option-data`为函数时是否服务端渲染, 通过nuxt.js的fetch钩子函数实现，请注意nuxt版本，保证2.15.8以上 | boolean                                                                        | —                 | false    |
 | trigger-method        | `option-data`为函数时的触发方式, immediate为立即触发, focus为聚焦时触发                 | string                                                                         | immediate / focus | immediate    |
 | size                  | 输入框尺寸                                                               | string                                                                         | medium/small/mini | —        |
 | clearable             | 是否可以清空选项                                                            | boolean                                                                        | —                 | false    |

@@ -61,7 +61,6 @@ export default {
         return Object.create(null);
       }
     }, // 分页组件相关配置
-    isServer: Boolean,
     emptyText: {
       type: String,
       default: t('el.empty.description')
@@ -125,17 +124,8 @@ export default {
     }
   },
   created() {
-    if (this.loadDataIsFn && !this.$isServer && !this.isServer) {
+    if (!this.$isServer && this.loadDataIsFn) {
       this.getList(this.pagination);
-    }
-  },
-  // 服务端渲染
-  fetch() {
-    if (this && this.loadDataIsFn && this.isServer) {
-      return this.getList(this.pagination);
-    }
-    if (!this && process.env.NODE_ENV !== 'production') {
-      console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
     }
   },
   methods: {

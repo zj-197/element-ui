@@ -274,7 +274,6 @@
         type: String,
         default: 'immediate'
       },
-      isServer: Boolean,
       labelKey: {
         type: String,
         default: 'label'
@@ -905,7 +904,7 @@
     },
 
     created() {
-      if (!this.$isServer && !this.isServer) {
+      if (!this.$isServer) {
         this.getData();
       }
       this.cachedPlaceHolder = this.currentPlaceholder = this.propPlaceholder;
@@ -926,14 +925,6 @@
 
       this.$on('handleOptionClick', this.handleOptionSelect);
       this.$on('setSelected', this.setSelected);
-    },
-    fetch() {
-      if (this && typeof this.optionData === 'function' && this.isServer) {
-        return this.getData();
-      }
-      if (!this && process.env.NODE_ENV !== 'production') {
-        console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
-      }
     },
 
     mounted() {

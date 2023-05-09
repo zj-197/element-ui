@@ -33,11 +33,6 @@
               "type": "object"
             },
             {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
-            },
-            {
               "name": "emptyText",
               "description": "Empty Text",
               "type": "string"
@@ -742,11 +737,6 @@
               "type": "function | CascaderOption[]"
             },
             {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
-            },
-            {
               "name": "triggerMethod",
               "description": "Trigger method",
               "type": "string"
@@ -971,11 +961,6 @@
               "name": "optionData",
               "description": "Option Data",
               "type": "function | array"
-            },
-            {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
             },
             {
               "name": "labelKey",
@@ -1965,6 +1950,16 @@
             {
               "name": "rules",
               "description": "Validation rules of form",
+              "type": "object"
+            },
+            {
+              "name": "searchBtnProps",
+              "description": "Search btn props",
+              "type": "object"
+            },
+            {
+              "name": "resetBtnProps",
+              "description": "reset btn props",
               "type": "object"
             },
             {
@@ -3200,11 +3195,6 @@
               "type": "function | array"
             },
             {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
-            },
-            {
               "name": "labelKey",
               "description": "Label key",
               "type": "string"
@@ -3412,11 +3402,6 @@
               "name": "optionData",
               "description": "Option Data",
               "type": "function | array"
-            },
-            {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
             },
             {
               "name": "labelKey",
@@ -4168,11 +4153,6 @@
               "type": "string"
             },
             {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
-            },
-            {
               "name": "reserveSelection",
               "description": "Whether to keep the previous choice",
               "type": "boolean"
@@ -4426,11 +4406,6 @@
               "name": "pageSize",
               "description": "PageSize",
               "type": "number"
-            },
-            {
-              "name": "isServer",
-              "description": "Server rendering or not",
-              "type": "boolean"
             },
             {
               "name": "maxSelect",

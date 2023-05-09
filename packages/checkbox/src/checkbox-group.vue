@@ -16,16 +16,8 @@
     },
 
     created() {
-      if (!this.$isServer && !this.isServer) {
+      if (!this.$isServer) {
         this.getData();
-      }
-    },
-    fetch() {
-      if (this && typeof this.optionData === 'function' && this.isServer) {
-        return this.getData();
-      }
-      if (!this && process.env.NODE_ENV !== 'production') {
-        console.error('fetch函数里面的逻辑不会被执行，请查看nuxt版本，建议使用2.15.8及以上的版本');
       }
     },
 
@@ -48,7 +40,6 @@
       optionData: {
         type: [Function, Array]
       },
-      isServer: Boolean,
       labelKey: {
         type: String,
         default: 'label'

@@ -39,7 +39,6 @@ export default {
     },
     // 每页条数
     pageSize: Number,
-    isServer: Boolean,
     maxSelect: Number,
     rowKey: String,
     paginationKey: Object,
@@ -154,7 +153,6 @@ export default {
           loadData: this.realLoadData,
           pageSize: this.pageSize,
           paginationKey: this.paginationKey,
-          isServer: this.isServer,
           paginationProps: { align: 'center' }
         }, this.tableProps),
         style: { marginTop: '20px' },

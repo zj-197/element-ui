@@ -466,10 +466,6 @@
     "type": "method | array",
     "description": "load data"
   },
-  "is-server": {
-    "type": "flag",
-    "description": "Server rendering or not"
-  },
   "option-data": {
     "type": "method | array",
     "description": "Load option data"

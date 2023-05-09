@@ -6,7 +6,6 @@ export declare class ElCheckboxGroup extends ElementUIComponent {
   size: ElementUIComponentSize
   optionData: ElementUIFormComponentOptionData
   labelKey: string
-  isServer: boolean
   triggerMethod: ElementUIFormComponentTriggerMethod
   valueKey: string
   disabledKey: string

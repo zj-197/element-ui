@@ -5,6 +5,7 @@ import ElRow from 'element-ui/packages/row';
 import ElCol from 'element-ui/packages/col';
 import { noop } from 'element-ui/src/utils/util';
 import { t } from 'element-ui/src/locale';
+import {assign} from 'element-ui/src/utils/lodash';
 export default {
   name: 'ElWpForm',
   components: {
@@ -99,6 +100,18 @@ export default {
     hideRequiredAsterisk: {
       type: Boolean,
       default: false
+    },
+    searchBtnProps: {
+      type: Object,
+      default() {
+        return Object.create(null);
+      }
+    },
+    resetBtnProps: {
+      type: Object,
+      default() {
+        return Object.create(null);
+      }
     }
   },
   computed: {
@@ -223,13 +236,13 @@ export default {
     renderBtnReset(h) {
       if (!this.isShowResetBtn) return;
       return h('el-button', {
-        props: {
+        props: assign({
           type: 'default',
           size: this.size,
           loading: this.isResetting,
           disabled: this.isSearching,
           icon: 'el-icon-refresh-right'
-        },
+        }, this.resetBtnProps),
         on: {
           click: (e) => {
             if (e && typeof e.stopPropagation === 'function') {
@@ -244,13 +257,13 @@ export default {
     renderBtnSearch(h) {
       if (!this.isShowSearchBtn) return;
       return h('el-button', {
-        props: {
+        props: assign({
           type: 'primary',
           size: this.size,
           loading: this.isSearching,
           disabled: this.isResetting,
           icon: 'el-icon-search'
-        },
+        }, this.searchBtnProps),
         on: {
           click: (e) => {
             if (e && typeof e.stopPropagation === 'function') {

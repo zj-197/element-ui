@@ -18,7 +18,6 @@ export interface CascaderSlots {
 export declare class ElCascader<V = any, D = CascaderOption> extends ElementUIComponent {
   /** Data of the options */
   optionData: ElementUIFormComponentOptionData<CascaderOption>
-  isServer: boolean
   triggerMethod: ElementUIFormComponentTriggerMethod
 
   /** Configuration options */

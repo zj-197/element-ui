@@ -28,6 +28,7 @@ import Popper from 'element-ui/src/utils/vue-popper';
 import { on, off } from 'element-ui/src/utils/dom';
 import { addClass, removeClass } from 'element-ui/src/utils/dom';
 import { generateId } from 'element-ui/src/utils/util';
+import {isHtmlElement} from 'element-ui/src/utils/types';
 
 export default {
   name: 'ElPopover',
@@ -92,6 +93,7 @@ export default {
     if (!reference && this.$refs.wrapper.children) {
       reference = this.referenceElm = this.$refs.wrapper.children[0];
     }
+    if (!reference) return;
     // 可访问性
     if (reference) {
       addClass(reference, 'el-popover__reference');
@@ -193,9 +195,14 @@ export default {
     handleDocumentClick(e) {
       let reference = this.reference || this.$refs.reference;
       const popper = this.popper || this.$refs.popper;
-
-      if (!reference && this.$refs.wrapper.children) {
-        reference = this.referenceElm = this.$refs.wrapper.children[0];
+      const children = this.$refs.wrapper.children || [];
+      if (!reference && children.length > 0) {
+        reference = this.referenceElm = children[0];
+      }
+      if (!reference && children.length === 0) {
+        if (this.referenceElm) {
+          reference = this.referenceElm;
+        }
       }
       if (!this.$el ||
         !reference ||
@@ -216,22 +223,27 @@ export default {
       if (this.openDelay || this.closeDelay) {
         clearTimeout(this._timer);
       }
+    },
+    offEvents() {
+      const reference = this.reference;
+      if (isHtmlElement(reference)) {
+        off(reference, 'click', this.doToggle);
+        off(reference, 'mouseup', this.doClose);
+        off(reference, 'mousedown', this.doShow);
+        off(reference, 'focusin', this.doShow);
+        off(reference, 'focusout', this.doClose);
+        off(reference, 'mousedown', this.doShow);
+        off(reference, 'mouseup', this.doClose);
+        off(reference, 'mouseleave', this.handleMouseLeave);
+        off(reference, 'mouseenter', this.handleMouseEnter);
+        off(reference, 'keydown', this.handleKeydown);
+      }
+      off(document, 'click', this.handleDocumentClick);
     }
   },
 
   destroyed() {
-    const reference = this.reference;
-
-    off(reference, 'click', this.doToggle);
-    off(reference, 'mouseup', this.doClose);
-    off(reference, 'mousedown', this.doShow);
-    off(reference, 'focusin', this.doShow);
-    off(reference, 'focusout', this.doClose);
-    off(reference, 'mousedown', this.doShow);
-    off(reference, 'mouseup', this.doClose);
-    off(reference, 'mouseleave', this.handleMouseLeave);
-    off(reference, 'mouseenter', this.handleMouseEnter);
-    off(document, 'click', this.handleDocumentClick);
+    this.offEvents();
   }
 };
 </script>

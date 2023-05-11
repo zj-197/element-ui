@@ -11,20 +11,23 @@
 ```html
 
 <template>
-    <el-wp-search-table
-            size="medium"
-            row-key="id"
-            :columns="columns"
-            :load-data="getList">
-        <template slot="actions" slot-scope="{row}">
-            <el-button type="primary" icon="el-icon-edit" size="medium" @click="edit(row)">编辑</el-button>
-            <el-button type="danger" icon="el-icon-delete" size="medium" @click="del(row)">删除</el-button>
-        </template>
-        <template slot="toolbar-prefix">
-            <el-button type="primary" size="medium" icon="el-icon-plus">新增</el-button>
-            <el-button type="danger" size="medium" icon="el-icon-delete">删除</el-button>
-        </template>
-    </el-wp-search-table>
+    <div>
+        <el-wp-search-table
+                size="medium"
+                row-key="id"
+                :columns="columns"
+                :load-data="getList">
+            <template slot="actions" slot-scope="{row}">
+                <el-button type="primary" icon="el-icon-edit" size="medium" @click="edit(row)" v-popover-mul:popover="'click'">编辑</el-button>
+                <el-button type="danger" icon="el-icon-delete" size="medium" @click="del(row)">删除</el-button>
+            </template>
+            <template slot="toolbar-prefix">
+                <el-button type="primary" size="medium" icon="el-icon-plus">新增</el-button>
+                <el-button type="danger" size="medium" icon="el-icon-delete">删除</el-button>
+            </template>
+        </el-wp-search-table>
+    </div>
+    
 </template>
 
 <script>
@@ -92,7 +95,7 @@
         },
         methods: {
             getList(searchParams, formatSearchParams) {
-                alert(`这是searchParams：${JSON.stringify(searchParams)}，这是formatSearchParams：${JSON.stringify(formatSearchParams)}`)
+                // alert(`这是searchParams：${JSON.stringify(searchParams)}，这是formatSearchParams：${JSON.stringify(formatSearchParams)}`)
                 const {page, pageSize} = searchParams
                 return new Promise((resolve, reject) => {
                     // 模拟后端数据

@@ -18,7 +18,7 @@
                 :columns="columns"
                 :load-data="getList">
             <template slot="actions" slot-scope="{row}">
-                <el-button type="primary" icon="el-icon-edit" size="medium" @click="edit(row)" v-popover-mul:popover="'click'">编辑</el-button>
+                <el-button type="primary" icon="el-icon-edit" size="medium" @click="edit(row)">编辑</el-button>
                 <el-button type="danger" icon="el-icon-delete" size="medium" @click="del(row)">删除</el-button>
             </template>
             <template slot="toolbar-prefix">

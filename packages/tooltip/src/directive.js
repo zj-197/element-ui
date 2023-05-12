@@ -9,7 +9,7 @@ import {on, off} from 'element-ui/src/utils/dom';
 import Vue from 'vue';
 function resisterEvents(el, binding, vnode) {
   el.__ElementToolTipTriggerFn = debounce(50, tooltip => tooltip.handleShowPopper());
-  const tooltipContent = binding.value || el.dataset.tooltipContent; // 在元素上通过data-tooltip-content进行设置
+  const tooltipContent = binding.value || (el.dataset ? el.dataset.tooltipContent : undefined) || ''; // 在元素上通过data-tooltip-content进行设置
   const tooltip = vnode.context.$refs[binding.arg];
   el.__ElTooltipEnterEvent__ = () => {
     if (tooltip) {

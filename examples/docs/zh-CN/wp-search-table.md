@@ -95,7 +95,7 @@
         },
         methods: {
             getList(searchParams, formatSearchParams) {
-                // alert(`这是searchParams：${JSON.stringify(searchParams)}，这是formatSearchParams：${JSON.stringify(formatSearchParams)}`)
+                alert(`这是searchParams：${JSON.stringify(searchParams)}，这是formatSearchParams：${JSON.stringify(formatSearchParams)}`)
                 const {page, pageSize} = searchParams
                 return new Promise((resolve, reject) => {
                     // 模拟后端数据

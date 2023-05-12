@@ -49,7 +49,7 @@ export type TableColumnProps = {
     resizable?: boolean
 
     /** Function that formats content */
-    formatter?: (row: object, column: TableColumn) => any
+    formatter?: (row: object, column: TableColumn, cellValue: any, $index: number, h) => any
 
     /** Whether to hide extra content and show them in a tooltip when hovering on the cell */
     showOverflowTooltip?: boolean

@@ -33,7 +33,7 @@ type Columns = {
     align?: ElementUIHorizontalAlignment,
     width?: string | number
     minWidth?: string | number,
-    formatter?: (row: object, column: TableColumn, cellValue:any, index:number) => any
+    formatter?: (row: object, column: TableColumn,cellValue:any, $index:number, h) => any
 }
 /** WpSearchTable Component */
 export declare class ElWpSearchTable extends ElementUIComponent {

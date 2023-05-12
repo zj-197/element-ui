@@ -59,7 +59,8 @@ export default {
     return {
       tooltipId: `el-tooltip-${generateId()}`,
       timeoutPending: null,
-      focusing: false
+      focusing: false,
+      customContent: ''
     };
   },
   beforeCreate() {
@@ -92,7 +93,7 @@ export default {
             class={
               ['el-tooltip__popper', 'is-' + this.effect, this.popperClass]
             }>
-            { this.$slots.content || this.content }
+            { this.$slots.content || this.content || this.customContent }
           </div>
         </transition>);
     }
@@ -222,6 +223,9 @@ export default {
         };
       }
       return element;
+    },
+    setContent(val) {
+      this.customContent = val;
     }
   },
 

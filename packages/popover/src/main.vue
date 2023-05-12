@@ -18,7 +18,7 @@
         <slot>{{ content }}</slot>
       </div>
     </transition>
-    <span class="el-popover__reference-wrapper" ref="wrapper" >
+    <span class="el-popover__reference-wrapper" ref="wrapper">
       <slot name="reference"></slot>
     </span>
   </span>

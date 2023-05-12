@@ -1,14 +1,30 @@
 import {on, off} from 'element-ui/src/utils/dom';
+import {isObject} from 'element-ui/src/utils/types';
 import Vue from 'vue';
 /** 给绑定元素注册mouseenter事件 */
 function registEvent(el, binding, vnode) {
-  const {arg} = binding;
+  const {arg, value} = binding;
   const _this = vnode.context;
   let popper = _this.$refs[arg];
   const componentOptions = popper ? popper.$vnode.componentOptions : null;
   const isPopConfirm = componentOptions ? componentOptions.tag === 'el-popconfirm' : false;
   if (isPopConfirm) {
+    const title = value || (el.dataset ? el.dataset.popconfirmTitle : '');
+    if (!componentOptions.propsData.title) {
+      popper.setTitle(title);
+    }
     popper = popper.$children[0];
+  } else {
+    if (!componentOptions.propsData.title) {
+      const popoverTitle = el.dataset ? el.dataset.popoverTitle : '';
+      const title = isObject(value) ? (value.title || popoverTitle) : popoverTitle;
+      popper.setTitle(title);
+    }
+    if (!componentOptions.propsData.content) {
+      const popoverContent = el.dataset ? el.dataset.popoverContent : '';
+      const content = isObject(value) ? (value.content || popoverContent) : value || popoverContent;
+      popper.setContent(content);
+    }
   }
   const reference = el;
   _this.$nextTick(() => {
@@ -94,20 +110,7 @@ function offEvent(el) {
       off(el, 'mouseup', el.__ElPopoverMulLeaveEvent__);
     }
   }
-  if (el.__ElPopoverHandleDocumentClick__) {
-    el.__ElPopoverHandleDocumentClick__ = null;
-  }
-  if (el.__ElPopoverHandleKeydown__) {
-    el.__ElPopoverHandleKeydown__ = null;
-  }
-  if (el.__ElPopoverMulEnterEvent__) {
-    el.__ElPopoverMulEnterEvent__ = null;
-  }
-  if (el.__ElPopoverMulLeaveEvent__) {
-    el.__ElPopoverMulLeaveEvent__ = null;
-  }
 }
-
 export default {
   bind(el, binding, vnode) {
     if (Vue.prototype.$isServer) return;

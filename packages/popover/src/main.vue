@@ -14,8 +14,8 @@
         :id="tooltipId"
         :aria-hidden="(disabled || !showPopper) ? 'true' : 'false'"
       >
-        <div class="el-popover__title" v-if="title" v-text="title"></div>
-        <slot>{{ content }}</slot>
+        <div class="el-popover__title" v-if="title || customTitle" v-text="title || customTitle"></div>
+        <slot>{{ content || customContent }}</slot>
       </div>
     </transition>
     <span class="el-popover__reference-wrapper" ref="wrapper">
@@ -70,6 +70,12 @@ export default {
       type: Number,
       default: 0
     }
+  },
+  data() {
+    return {
+      customTitle: '',
+      customContent: ''
+    };
   },
 
   computed: {
@@ -223,6 +229,12 @@ export default {
       if (this.openDelay || this.closeDelay) {
         clearTimeout(this._timer);
       }
+    },
+    setContent(val) {
+      this.customContent = val;
+    },
+    setTitle(val) {
+      this.customTitle = val;
     },
     offEvents() {
       const reference = this.reference;

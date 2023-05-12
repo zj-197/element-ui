@@ -12,19 +12,19 @@
       class="el-popconfirm__icon"
       :style="{color: iconColor}"
     ></i>
-      {{title}}
+      {{title || customTitle}}
     </p>
     <div class="el-popconfirm__action">
-      <el-button 
-        size="mini" 
-        :type="cancelButtonType" 
+      <el-button
+        size="mini"
+        :type="cancelButtonType"
         @click="cancel"
       >
         {{ displayCancelButtonText }}
       </el-button>
-      <el-button 
-        size="mini" 
-        :type="confirmButtonType" 
+      <el-button
+        size="mini"
+        :type="confirmButtonType"
         @click="confirm"
       >
         {{ displayConfirmButtonText }}
@@ -79,7 +79,8 @@ export default {
   },
   data() {
     return {
-      visible: false
+      visible: false,
+      customTitle: ''
     };
   },
   computed: {
@@ -98,6 +99,9 @@ export default {
     cancel() {
       this.visible = false;
       this.$emit('cancel');
+    },
+    setTitle(val) {
+      this.customTitle = val;
     }
   }
 };

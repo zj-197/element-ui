@@ -28,6 +28,7 @@ export declare class ElWpTable extends ElementUIComponent {
     emptyBtnText: string
     loadingText: string
     emptyImage: string
+    errorImage: string
     onEmptyBtnClick():void
     maxSelect: number
     reserveSelection: boolean

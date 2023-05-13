@@ -69,7 +69,9 @@ export default {
       type: String,
       default: 'top'
     },
-    popconfirmTitle: String
+    popconfirmTitle: String,
+    iconLoadingClass: {},
+    iconLoadingStyle: {}
   },
   computed: {
     btnProps() {
@@ -84,7 +86,9 @@ export default {
         plain: this.plain,
         autofocus: this.autofocus,
         round: this.round,
-        circle: this.circle
+        circle: this.circle,
+        iconLoadingClass: this.iconLoadingClass,
+        iconLoadingStyle: this.iconLoadingStyle
       };
     }
   },

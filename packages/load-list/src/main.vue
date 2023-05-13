@@ -8,7 +8,7 @@
       <slot name="empty" :isError="isError">
         <el-empty class="el-load-list-empty"
                   :description="isError ? errorText : emptyText"
-                  :image="isError ? (errorImage || emptyImage) : emptyImage">
+                  :image="isError ? realErrorImage: realEmptyImage">
         </el-empty>
         <div class="el-empty-btn-container">
           <slot name="empty-btn" :isError="isError">
@@ -112,6 +112,12 @@ export default {
     },
     loadDataIsFn() {
       return typeof this.loadData === 'function';
+    },
+    realEmptyImage() {
+      return this.emptyImage || (this.$ELEMENT ? this.$ELEMENT.emptyImage : undefined);
+    },
+    realErrorImage() {
+      return this.errorImage || (this.$ELEMENT ? this.$ELEMENT.errorImage : undefined) || this.realEmptyImage;
     },
     realPaginationProps() {
       return assign({

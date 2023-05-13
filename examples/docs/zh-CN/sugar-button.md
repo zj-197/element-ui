@@ -169,4 +169,6 @@ SugarButton 组件提供除了默认值以外的三种尺寸，可以在不同�
 | icon              | 图标类名                | string  |  —  |  —  |
 | autofocus         | 是否默认聚焦              | boolean |  —  |  false  |
 | native-type       | 原生 type 属性          | string  | button / submit / reset | button |
+| icon-loading-style | loading状态下的icon样式 | string/object/array | —                                                  |—|
+| icon-loading-class | loading状态下的icon类  | string/object/array | —                                                  | — |
 

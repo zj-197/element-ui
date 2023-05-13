@@ -89,7 +89,8 @@ import { ElDescriptions } from './descriptions'
 import { ElDescriptionsItem } from './descriptions-item'
 import { ElResult } from './result'
 import { ElStatistic } from './statistic'
-import { ElWpForm } from './wp-form'
+
+import { ElWpForm } from './wp-form'
 import { ElWpTable } from './wp-table'
 import { ElWpSearchTable } from './wp-search-table'
 import { ElWpDatePicker } from './wp-date-picker'
@@ -100,7 +101,10 @@ import { ElSugarButton } from './sugar-button'
 export interface InstallationOptions {
   locale: any,
   i18n: any,
-  size: string
+  size: string,
+  zIndex: number,
+  emptyImage: string,
+  errorImage: string
 }
 
 /** The version of element-ui */

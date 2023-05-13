@@ -515,6 +515,16 @@
               "description": "Same as native button's `type`",
               "type": "'button' | 'submit' | 'reset'",
               "default": "'button'"
+            },
+            {
+              "name": "iconLoadingStyle",
+              "description": "icon loading style",
+              "type": "string | object | array"
+            },
+            {
+              "name": "iconLoadingClass",
+              "description": "icon loading class",
+              "type": "string | object | array"
             }
           ]
         },
@@ -604,6 +614,16 @@
               "description": "Same as native button's `type`",
               "type": "'button' | 'submit' | 'reset'",
               "default": "'button'"
+            },
+            {
+              "name": "iconLoadingStyle",
+              "description": "icon loading style",
+              "type": "string | object | array"
+            },
+            {
+              "name": "iconLoadingClass",
+              "description": "icon loading class",
+              "type": "string | object | array"
             }
           ]
         },
@@ -1939,7 +1959,12 @@
             {
               "name": "imageSize",
               "description": "image size (width)",
-              "type": "number"
+              "type": "number | string"
+            },
+            {
+              "name": "imageHeight",
+              "description": "image size (width)",
+              "type": "number | string"
             }
           ],
           "slots": [
@@ -5498,6 +5523,22 @@
               "type": "boolean"
             }
           ]
+        },
+        {
+          "name": "popover-mul",
+          "description": "Multiple components share a popover",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/popover",
+          "attribute-value": {
+            "type": "string | object"
+          }
+        },
+        {
+          "name": "tooltip-mul",
+          "description": "Multiple components share a tooltip",
+          "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/tootip",
+          "attribute-value": {
+            "type": "string | object"
+          }
         },
         {
           "name": "infinite-scroll",

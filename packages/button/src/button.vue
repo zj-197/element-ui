@@ -24,7 +24,7 @@
       }
     ]"
   >
-    <i class="el-icon-loading" v-if="loading"></i>
+    <i class="el-icon-loading" v-if="loading" :class="iconLoadingClass" :style="iconLoadingStyle"></i>
     <i :class="icon" v-if="icon && !loading"></i>
     <span v-if="$slots.default"><slot></slot></span>
   </button>
@@ -67,7 +67,9 @@ export default {
     plain: Boolean,
     autofocus: Boolean,
     round: Boolean,
-    circle: Boolean
+    circle: Boolean,
+    iconLoadingClass: {},
+    iconLoadingStyle: {}
   },
 
   computed: {

@@ -21,6 +21,7 @@ export default {
     emptyImage: {
       type: String
     },
+    errorImage: String, // 错误时的图片
     // 加载按钮点击事件的处理
     onEmptyBtnClick: {
       type: Function
@@ -228,6 +229,13 @@ export default {
     loadDataIsFn({loadData}) {
       return typeof loadData === 'function';
     },
+    realEmptyImage() {
+      console.log(this.$ELEMENT.emptyImage, 'this.$ELEMENT.emptyImage');
+      return this.emptyImage || (this.$ELEMENT ? this.$ELEMENT.emptyImage : undefined);
+    },
+    realErrorImage() {
+      return this.errorImage || (this.$ELEMENT ? this.$ELEMENT.errorImage : undefined) || this.realEmptyImage;
+    },
     // 表格列表数据
     listData({loadDataIsFn}) {
       return loadDataIsFn ? this.tableList : this.loadData;
@@ -400,7 +408,7 @@ export default {
       if (this.$slots.empty) return this.$slots.empty;
       return (
         <el-empty class={{'el-wp-table-empty-is-loading': this.isLoading}}
-          image={this.emptyImage}
+          image={this.isError ? this.realErrorImage : this.realEmptyImage}
           description={this.isError ? this.t('el.image.error') : this.emptyText} image-size={100} style="line-height: 16px">
           <el-button type="primary" size="mini"
             on-click={() => {

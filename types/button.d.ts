@@ -36,4 +36,6 @@ export declare class ElButton extends ElementUIComponent {
 
   /** Same as native button's type */
   nativeType: ButtonNativeType
+  iconLoadingStyle: string | object | Array<object|string>
+  iconLoadingClass: string | object | Array<object|string>
 }

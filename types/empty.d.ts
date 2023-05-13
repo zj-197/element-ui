@@ -19,10 +19,11 @@ interface ELEmptySlots {
 export declare class ElEmpty extends ElementUIComponent {
   /* image URL */
   image: string
-  	
+
   /* image size (width) */
-  imageSize: number
-  
+  imageSize: number | string
+  imageHeight: number | string
+
   /* description */
   description: string
 

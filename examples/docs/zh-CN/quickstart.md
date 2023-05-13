@@ -251,7 +251,7 @@ Vue.prototype.$message = Message;
 ```js
 import Vue from 'vue';
 import Element from 'wp-element-ui';
-Vue.use(Element, { size: 'small', zIndex: 3000 });
+Vue.use(Element, { size: 'small', zIndex: 3000, emptyImage: '', errorImage: '' });
 ```
 
 按需引入 Element：
@@ -260,7 +260,11 @@ Vue.use(Element, { size: 'small', zIndex: 3000 });
 import Vue from 'vue';
 import { Button } from 'wp-element-ui';
 
-Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
+Vue.prototype.$ELEMENT = { 
+  size: 'small', zIndex: 3000,
+  emptyImage: '', //数据为空时展示的图片，格式为base64或者网络地址
+  errorImage: '' //数据加载错误时展示的图片，图片格式为base64或者网络地址
+};
 Vue.use(Button);
 ```
 

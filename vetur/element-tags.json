@@ -10,12 +10,12 @@
     "description": "A column in grid system"
   },
   "el-button": {
-    "attributes": ["type", "theme", "size", "plain", "loading", "disabled", "icon", "autofocus", "native-type", "round", "circle"],
+    "attributes": ["type", "theme", "size", "plain", "loading", "disabled", "icon", "autofocus", "native-type", "round", "circle", "icon-loading-class", "icon-loading-style"],
     "defaults": ["type"],
     "description": "Commonly used button."
   },
   "el-sugar-button": {
-    "attributes": ["auto-loading", "tooltip","popconfirm-title", "tooltip-placement","type", "theme", "size", "plain", "loading", "disabled", "icon", "autofocus", "native-type", "round", "circle"],
+    "attributes": ["auto-loading", "tooltip","popconfirm-title", "tooltip-placement","type", "theme", "size", "plain", "loading", "disabled", "icon", "autofocus", "native-type", "round", "circle", "icon-loading-style", "icon-loading-class"],
     "defaults": ["type"],
     "description": "Commonly used sugar button."
   },
@@ -333,5 +333,10 @@
     "attributes": ["render-fn"],
     "defaults": ["render-fn"],
     "description": "Render an empty component."
+  },
+  "el-empty": {
+    "attributes": ["image","image-size", "image-height", "description"],
+    "defaults": ["description"],
+    "description": "Render an empty status component."
   }
 }

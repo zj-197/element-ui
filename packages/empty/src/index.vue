@@ -1,7 +1,7 @@
 <template>
   <div class="el-empty">
     <div class="el-empty__image" :style="imageStyle">
-      <img v-if="image" :src="image" ondragstart="return false">
+      <img v-if="image" :src="image" ondragstart="return false" alt="emptyImage">
       <slot v-else name="image">
         <img-empty />
       </slot>
@@ -30,7 +30,8 @@ export default {
       type: String,
       default: ''
     },
-    imageSize: Number,
+    imageSize: [Number, String],
+    imageHeight: [Number, String],
     description: {
       type: String,
       default: ''
@@ -42,7 +43,8 @@ export default {
     },
     imageStyle() {
       return {
-        width: this.imageSize ? `${this.imageSize}px` : ''
+        width: typeof this.imageSize === 'number' ? `${this.imageSize}px` : this.imageSize,
+        height: typeof this.imageHeight === 'number' ? `${this.imageHeight}px` : this.imageHeight
       };
     }
   }

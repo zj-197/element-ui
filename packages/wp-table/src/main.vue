@@ -230,7 +230,6 @@ export default {
       return typeof loadData === 'function';
     },
     realEmptyImage() {
-      console.log(this.$ELEMENT.emptyImage, 'this.$ELEMENT.emptyImage');
       return this.emptyImage || (this.$ELEMENT ? this.$ELEMENT.emptyImage : undefined);
     },
     realErrorImage() {

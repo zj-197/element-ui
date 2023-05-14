@@ -12,6 +12,7 @@ export declare class ElTabs extends ElementUIComponent {
   activeBarWidth: string
   activeBarColor: string
   hiddenActiveBarBottomBorder: boolean
+  hiddenActiveBar: boolean
 
   /** Whether Tab is closable */
   closable: boolean

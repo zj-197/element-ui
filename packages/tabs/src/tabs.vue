@@ -25,7 +25,8 @@
       activeBarRatio: Number,
       activeBarWidth: String,
       activeBarColor: String,
-      hiddenActiveBarBottomBorder: Boolean
+      hiddenActiveBarBottomBorder: Boolean,
+      hiddenActiveBar: Boolean
     },
 
     provide() {
@@ -149,7 +150,8 @@
           editable,
           type,
           panes,
-          stretch
+          stretch,
+          hiddenActiveBar: this.hiddenActiveBar
         },
         ref: 'nav'
       };

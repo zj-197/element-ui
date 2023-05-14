@@ -195,7 +195,7 @@
     "defaults": ["index"]
   },
   "el-tabs": {
-    "attributes": ["type", "active-bar-height", "active-bar-ratio", "hidden-active-bar-bottom-border", "active-bar-width", "active-bar-color", "closable", "addable", "editable", "value", "activate-name", "tab-position", "tab-click", "tab-remove", "tab-add", "edit"],
+    "attributes": ["type", "hidden-active-bar","active-bar-height", "active-bar-ratio", "hidden-active-bar-bottom-border", "active-bar-width", "active-bar-color", "closable", "addable", "editable", "value", "activate-name", "tab-position", "tab-click", "tab-remove", "tab-add", "edit"],
     "subtags": ["el-tab-pane"],
     "description": "Divide data collections which are related yet belong to different types."
   },

@@ -99,12 +99,13 @@ import { ElRenderEmptyCpn } from './render-empty-cpn'
 import { ElSugarButton } from './sugar-button'
 
 export interface InstallationOptions {
-  locale: any,
-  i18n: any,
-  size: string,
-  zIndex: number,
-  emptyImage: string,
-  errorImage: string
+  locale?: any,
+  i18n?: any,
+  size?: string,
+  zIndex?: number,
+  emptyImage?: string,
+  errorImage?: string,
+  tabsActiveBarBg?: string
 }
 
 /** The version of element-ui */

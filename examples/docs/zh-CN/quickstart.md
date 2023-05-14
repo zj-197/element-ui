@@ -244,14 +244,16 @@ Vue.prototype.$message = Message;
 
 ### 全局配置
 
-在引入 Element 时，可以传入一个全局配置对象。该对象目前支持 `size` 与 `zIndex` 字段。`size` 用于改变组件的默认尺寸，`zIndex` 设置弹框的初始 z-index（默认值：2000）。按照引入 Element 的方式，具体操作如下：
+在引入 Element 时，可以传入一个全局配置对象。该对象目前支持 `size` ， `zIndex` `emptyImage`, `errorImage`, `tabsActiveBarBg`, `tabsActiveBarHeight` 字段。`size` 用于改变组件的默认尺寸，`zIndex` 设置弹框的初始 z-index（默认值：2000），
+`emptyImage`表示为空时显示的图片，`errorImage`为错误时显示的图片，`tabsActiveBarBg` 表示tabs激活时导航条的背景（可以是颜色，背景图片）
+按照引入 Element 的方式，具体操作如下：
 
 完整引入 Element：
 
 ```js
 import Vue from 'vue';
 import Element from 'wp-element-ui';
-Vue.use(Element, { size: 'small', zIndex: 3000, emptyImage: '', errorImage: '' });
+Vue.use(Element, { size: 'small', zIndex: 3000, emptyImage: '', errorImage: '', tabsActiveBarBg: '' });
 ```
 
 按需引入 Element：
@@ -263,7 +265,8 @@ import { Button } from 'wp-element-ui';
 Vue.prototype.$ELEMENT = { 
   size: 'small', zIndex: 3000,
   emptyImage: '', //数据为空时展示的图片，格式为base64或者网络地址
-  errorImage: '' //数据加载错误时展示的图片，图片格式为base64或者网络地址
+  errorImage: '', //数据加载错误时展示的图片，图片格式为base64或者网络地址
+  tabsActiveBarBg: '' // 表示tabs激活时导航条的尺寸
 };
 Vue.use(Button);
 ```

@@ -29,7 +29,8 @@
         default: noop
       },
       type: String,
-      stretch: Boolean
+      stretch: Boolean,
+      hiddenActiveBar: Boolean
     },
 
     data() {
@@ -268,7 +269,7 @@
               role="tablist"
               on-keydown={ changeTab }
             >
-              {!type ? <tab-bar tabs={panes}></tab-bar> : null}
+              {(!type && !this.hiddenActiveBar) ? <tab-bar tabs={panes}></tab-bar> : null}
               {tabs}
             </div>
           </div>

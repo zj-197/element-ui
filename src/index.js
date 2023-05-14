@@ -211,7 +211,10 @@ const install = function(Vue, opts = {}) {
 
   Vue.prototype.$ELEMENT = {
     size: opts.size || '',
-    zIndex: opts.zIndex || 2000
+    zIndex: opts.zIndex || 2000,
+    emptyImage: opts.emptyImage,
+    errorImage: opts.errorImage,
+    tabsActiveBarBg: opts.tabsActiveBarBg
   };
 
   Vue.prototype.$loading = Loading.service;

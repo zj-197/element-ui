@@ -47,7 +47,7 @@
           const ratio = (this.rootTabs && this.rootTabs.activeBarRatio) || 0;
           const width = (this.rootTabs && this.rootTabs.activeBarWidth) || '';
           const height = (this.rootTabs && this.rootTabs.activeBarHeight) || '';
-          const color = (this.rootTabs && this.rootTabs.activeBarColor) || '';
+          const color = (this.rootTabs && this.rootTabs.activeBarColor) || (this.$ELEMENT ? this.$ELEMENT.tabsActiveBarBg : '');
           style[sizeName] = tabSize + 'px';
           if (ratio > 1) {
             style[sizeName] = Math.floor(tabSize / ratio) + 'px';

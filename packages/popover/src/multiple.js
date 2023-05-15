@@ -6,6 +6,7 @@ function registEvent(el, binding, vnode) {
   const {arg, value} = binding;
   const _this = vnode.context;
   let popper = _this.$refs[arg];
+  if (!popper) return;
   const componentOptions = popper ? popper.$vnode.componentOptions : null;
   const isPopConfirm = componentOptions ? componentOptions.tag === 'el-popconfirm' : false;
   if (isPopConfirm) {
@@ -111,15 +112,20 @@ function offEvent(el) {
     }
   }
 }
+
+function init(el, binding, vnode) {
+  const popper = vnode.context.$refs[binding.arg];
+  if (!popper) return;
+  const componentOptions = popper.$vnode.componentOptions;
+  const isPopConfirm = componentOptions ? componentOptions.tag === 'el-popconfirm' : false;
+  if (componentOptions) {
+    el.__ElPopoverTrigger__ = isPopConfirm ? 'click' : componentOptions.propsData.trigger || 'click';
+  }
+  bindEvent(el);
+}
 export default {
   bind(el, binding, vnode) {
     if (Vue.prototype.$isServer) return;
-    const popper = vnode.context.$refs[binding.arg];
-    const componentOptions = popper ? popper.$vnode.componentOptions : null;
-    const isPopConfirm = componentOptions ? componentOptions.tag === 'el-popconfirm' : false;
-    if (componentOptions) {
-      el.__ElPopoverTrigger__ = isPopConfirm ? 'click' : componentOptions.propsData.trigger || 'click';
-    }
     // 给el添加方法，方便销毁事件
     el.__ElPopoverMulEnterEvent__ = (e) => {
       registEvent(el, binding, vnode);
@@ -127,10 +133,10 @@ export default {
     el.__ElPopoverMulLeaveEvent__ = (e) => {
       registLeaveEvent(el, binding, vnode);
     };
-    bindEvent(el);
+    init(el, binding, vnode);
   },
-  inserted(el) {
-    bindEvent(el);
+  inserted(el, binding, vnode) {
+    init(el, binding, vnode);
   },
   unbind(el) {
     offEvent(el);

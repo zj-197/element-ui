@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -1626,6 +1626,11 @@
             {
               "name": "closeOnPressEscape",
               "description": "Whether the Dialog can be closed by pressing ESC",
+              "type": "boolean"
+            },
+            {
+              "name": "isDrag",
+              "description": "Whether the Dialog can be drag",
               "type": "boolean"
             },
             {

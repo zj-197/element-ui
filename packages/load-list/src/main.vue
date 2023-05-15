@@ -4,7 +4,8 @@
        element-loading-background="rgba(255, 255, 255, 0.7)"
        v-loading="isLoading">
     <slot :list="list" :isError="isError"></slot>
-    <div v-if="list.length === 0" class="el-load-list-empty-container" :class="{ 'el-load-list-empty-is-loading': isLoading }">
+    <div v-if="list.length === 0" class="el-load-list-empty-container"
+         :class="{ 'el-load-list-empty-is-loading': isLoading }">
       <slot name="empty" :isError="isError">
         <el-empty class="el-load-list-empty"
                   :description="isError ? errorText : emptyText"
@@ -12,7 +13,9 @@
         </el-empty>
         <div class="el-empty-btn-container">
           <slot name="empty-btn" :isError="isError">
-            <el-button type="primary" size="small" @click.stop="refresh(false)">{{isError ? errorBtnText : emptyBtnText}}</el-button>
+            <el-button type="primary" size="small" @click.stop="refresh(false)">
+              {{ isError ? errorBtnText : emptyBtnText }}
+            </el-button>
           </slot>
         </div>
       </slot>
@@ -30,8 +33,9 @@ import {isObject} from 'element-ui/src/utils/types';
 import ElPagination from 'element-ui/packages/pagination';
 import ElEmpty from 'element-ui/packages/empty';
 import ElButton from 'element-ui/packages/button';
-import { t } from 'element-ui/src/locale';
+import {t} from 'element-ui/src/locale';
 import {scrollIntoView} from 'element-ui/src/utils/scroll-into-view-or-body';
+
 const PAGINATION_KEY = Object.freeze({
   page: 'page',
   pageSize: 'pageSize',
@@ -41,6 +45,8 @@ const PAGINATION_KEY = Object.freeze({
 export default {
   name: 'ElLoadList',
   props: {
+    initValue: Array, // 初始化值，之所以设置这个，是为了兼容nuxt的seo
+    total: Number, // 传入initValue时，此属性必传
     loadData: {
       type: Function,
       required: true
@@ -96,13 +102,13 @@ export default {
   data(vm) {
     const realPaginationKey = assign(Object.create(null), PAGINATION_KEY, vm.paginationKey);
     return {
-      list: [],
-      isLoading: false, // 是否加载中
+      list: vm.initValue || [],
+      isLoading: Array.isArray(vm.initValue) ? vm.initValue.length === 0 : true, // 是否加载中
       isError: false, // 是否加载错误
       pagination: {
         [realPaginationKey.page]: 1,
         [realPaginationKey.pageSize]: vm.pageSize,
-        [realPaginationKey.total]: 0
+        [realPaginationKey.total]: vm.total || 0
       }
     };
   },
@@ -130,8 +136,13 @@ export default {
     }
   },
   created() {
-    if (!this.$isServer && this.loadDataIsFn) {
+    if (!this.$isServer && this.loadDataIsFn && !this.initValue) {
       this.getList(this.pagination);
+    }
+  },
+  mounted() {
+    if (Array.isArray(this.initValue) && this.isLoading) {
+      this.isLoading = false;
     }
   },
   methods: {

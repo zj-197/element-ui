@@ -1,6 +1,6 @@
 
 import {ElForm, ValidateCallback, ValidateFieldCallback} from "./form";
-import { VertialAlignment } from "./row";
+import { VertialAlignment } from "./component";
 import {VNode} from "vue";
 
 /** WpForm Component */

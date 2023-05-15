@@ -1,5 +1,5 @@
 import Vue, { PluginObject } from 'vue'
-import { ElementUIComponent, ElementUIComponentSize, ElementUIHorizontalAlignment } from './component'
+import { ElementUIComponent, ElementUIComponentSize,  ElementUIHorizontalAlignment as ElementUIRowAlignment, VertialAlignment as VerticalAlignment, HorizontalAlignment as RowHorizontalAlignment } from './component'
 
 import { ElAlert } from './alert'
 import { ElAside } from './aside'
@@ -125,7 +125,10 @@ export type Component = ElementUIComponent
 export type ComponentSize = ElementUIComponentSize
 
 /** Horizontal alignment */
-export type HorizontalAlignment = ElementUIHorizontalAlignment
+export type ElementUIHorizontalAlignment = ElementUIRowAlignment
+export type VertialAlignment = VerticalAlignment
+
+export type RowLayout = RowHorizontalAlignment
 
 /** Show animation while loading data */
 export const Loading: ElLoading

@@ -56,7 +56,7 @@ export default {
     },
     // 加载数据
     loadData: {
-      type: [Array, Function],
+      type: Function,
       required: true
     },
 
@@ -205,7 +205,7 @@ export default {
         [realPaginationKey.total]: 0
       },
       isError: false, // 是否加载错误
-      isLoading: false, // 是否加载中
+      isLoading: true, // 是否加载中
       selected: [], // 默认选中的selected
       tableSize: this.size,
       controlTableColumns: [] // 受控制的el-tableColumns

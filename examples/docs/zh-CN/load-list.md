@@ -32,8 +32,24 @@
   <script>
     export default {
       data() {
+          const list = Array.from({ length: 20 }, (_, i) => {
+              const index = (i + 1)
+              return {
+                  id: index,
+                  address: '重庆' + Math.random() > 0.5 ? '渝北' : '江北',
+                  sex: {text: Math.random() > 0.5 ? '女' : '男'},
+                  mobile: (Math.random() * Math.pow(10, 11)).toString(),
+                  card: (Math.random() * Math.pow(10, 18)).toString(),
+                  name: Math.random() > 0.4 ? '张' + index : '李' + index,
+                  classes: '一年级' + (Math.ceil(Math.random() * 10)) + '班',
+                  chineseScore: Math.floor(Math.random() * 100),
+                  mathScore: Math.floor(Math.random() * 100),
+                  englishScore: Math.floor(Math.random() * 100),
+                  totalScore: Math.ceil(Math.random() * 100)
+              }
+          })
         return {
-          
+          list
         }
       },
       methods: {
@@ -91,6 +107,8 @@
 | error-image      | 列表加载错误时的图片                                                                                                                                               | string   | — | —                                                                  |
 | loading-text     | 加载中的文字                                                                                                                                                   | string   | — | 加载中                                                                |
 | auto-scroll-top  | 是否自动滚动到顶部                                                                                                                                                | boolean  | — | true                                                               |
+| init-value       | 初始列表值                                                                                                                                                    | array    | — |       —                                                         |
+| total            | 分页总条数，传入`init-value`的时候此属性必传                                                                                                                             | number   | — |       —                                                         |
 
 
 ### LoadList SlotScoped

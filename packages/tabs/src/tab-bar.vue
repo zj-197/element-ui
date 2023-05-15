@@ -53,9 +53,9 @@
             style[sizeName] = Math.floor(tabSize / ratio) + 'px';
             const ratioSize = Math.floor((tabSize - parseInt(style[sizeName], 10)) / 2);
             if (sizeDir === 'x') {
-              style.left = ratioSize;
+              style.left = ratioSize + 'px';
             } else {
-              style.top = ratioSize;
+              style.top = ratioSize + 'px';
             }
           }
           if (width) {

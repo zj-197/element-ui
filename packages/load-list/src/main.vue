@@ -73,7 +73,7 @@ export default {
     },
     emptyBtnText: {
       type: String,
-      default: '重新加载'
+      default: t('el.wpCommon.reload')
     },
     emptyImage: String, // base64或者网络地址
     errorText: {
@@ -82,7 +82,7 @@ export default {
     },
     errorBtnText: {
       type: String,
-      default: '重新加载'
+      default: t('el.wpCommon.reload')
     },
     errorImage: String, // base64或者网络地址
     loadingText: {

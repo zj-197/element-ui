@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'தரவு இல்லை'
+    },
+    wpCommon: {
+      reload: 'மீளேற்று'
     }
   }
 };

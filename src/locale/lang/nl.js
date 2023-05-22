@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Geen data'
+    },
+    wpCommon: {
+      reload: 'Herladen'
     }
   }
 };

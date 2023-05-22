@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Няма данни'
+    },
+    wpCommon: {
+      reload: 'Презареждане'
     }
   }
 };

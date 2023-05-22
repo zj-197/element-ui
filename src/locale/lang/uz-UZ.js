@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Boʻsh'
+    },
+    wpCommon: {
+      reload: 'Qayta yuklang'
     }
   }
 };

@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'ไม่พบข้อมูล'
+    },
+    wpCommon: {
+      reload: 'โหลดใหม่'
     }
   }
 };

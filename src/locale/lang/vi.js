@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Không có dữ liệu'
+    },
+    wpCommon: {
+      reload: 'Tải lại'
     }
   }
 };

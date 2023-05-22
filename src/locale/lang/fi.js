@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Ei tietoja'
+    },
+    wpCommon: {
+      reload: 'Lataa uudelleen'
     }
   }
 };

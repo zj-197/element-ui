@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Inga Data'
+    },
+    wpCommon: {
+      reload: 'Ladda om'
     }
   }
 };

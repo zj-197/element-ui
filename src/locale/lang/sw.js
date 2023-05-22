@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Hakuna Data'
+    },
+    wpCommon: {
+      reload: 'upya tena'
     }
   }
 };

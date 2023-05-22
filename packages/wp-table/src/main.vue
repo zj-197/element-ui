@@ -8,6 +8,7 @@ import ToolBar from './ToolBar.vue';
 import {findIndex, assign, find} from 'element-ui/src/utils/lodash';
 import { noop } from 'element-ui/src/utils/util';
 import Locale from 'element-ui/src/mixins/locale';
+import { t } from 'element-ui/src/locale';
 import ElWpTableColumn from 'element-ui/packages/wp-table-column';
 export default {
   name: 'ElWpTable',
@@ -15,7 +16,7 @@ export default {
     // 加载按钮的文字
     emptyBtnText: {
       type: String,
-      default: '重新加载'
+      default: t('el.wpCommon.reload')
     },
     // 为空时的图片
     emptyImage: {
@@ -420,7 +421,7 @@ export default {
                   this.refresh(false);
                 }
               }
-            }}>{this.isError ? '重新加载' : this.emptyBtnText}</el-button>
+            }}>{this.isError ? this.t('el.wpCommon.reload') : this.emptyBtnText}</el-button>
         </el-empty>
       );
     },

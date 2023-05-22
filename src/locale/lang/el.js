@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Χωρίς Δεδομένα'
+    },
+    wpCommon: {
+      reload: 'Επαναφόρτωση'
     }
   }
 };

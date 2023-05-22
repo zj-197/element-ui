@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Ni podatkov'
+    },
+    wpCommon: {
+      reload: 'Ponovno naloži'
     }
   }
 };

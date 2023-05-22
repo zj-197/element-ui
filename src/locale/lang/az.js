@@ -121,6 +121,9 @@ exports.default = {
     },
     empty: {
       description: 'Məlumat yoxdur'
+    },
+    wpCommon: {
+      reload: 'Qeyd Et'
     }
   }
 };

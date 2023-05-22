@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'Tiada maklumat'
+    },
+    wpCommon: {
+      reload: 'Muat Semula'
     }
   }
 };

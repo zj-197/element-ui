@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Veri yok'
+    },
+    wpCommon: {
+      reload: 'Yeniden yükle'
     }
   }
 };

@@ -120,6 +120,9 @@ export default {
     },
     empty: {
       description: 'Žádná data'
+    },
+    wpCommon: {
+      reload: 'Znovu načíst'
     }
   }
 };

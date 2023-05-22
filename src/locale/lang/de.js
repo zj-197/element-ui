@@ -119,6 +119,9 @@ export default {
     },
     empty: {
       description: 'Keine Daten'
+    },
+    wpCommon: {
+      reload: 'Neu laden'
     }
   }
 };

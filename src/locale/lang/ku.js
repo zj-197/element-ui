@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Agahî tune'
+    },
+    wpCommon: {
+      reload: 'Nû Bar Bike'
     }
   }
 };

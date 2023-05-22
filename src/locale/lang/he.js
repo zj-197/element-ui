@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'אין נתונים'
+    },
+    wpCommon: {
+      reload: 'טען מחדש'
     }
   }
 };

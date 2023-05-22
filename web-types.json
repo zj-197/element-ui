@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -878,7 +878,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1002,7 +1002,7 @@
             {
               "name": "size",
               "description": "Size of the Checkbox, only works when border is true",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "name",
@@ -1104,7 +1104,7 @@
             {
               "name": "size",
               "description": "Size of checkbox buttons or bordered checkboxes",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "min",
@@ -1244,7 +1244,7 @@
             {
               "name": "size",
               "description": "Size of ColorPicker",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1332,7 +1332,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1445,7 +1445,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1896,7 +1896,7 @@
             {
               "name": "size",
               "description": "menu size, also works on the split button",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "placement",
@@ -2057,7 +2057,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2189,7 +2189,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2265,7 +2265,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2361,7 +2361,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2513,7 +2513,7 @@
             {
               "name": "size",
               "description": "Size of Input, works when type is not 'textarea'",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "name",
@@ -3610,7 +3610,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -4974,7 +4974,7 @@
             {
               "name": "size",
               "description": "Tag size",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "effect",
@@ -5011,7 +5011,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -5087,7 +5087,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",

@@ -102,8 +102,8 @@ export default {
   data(vm) {
     const realPaginationKey = assign(Object.create(null), PAGINATION_KEY, vm.paginationKey);
     return {
-      list: vm.initValue || [],
-      isLoading: Array.isArray(vm.initValue) ? vm.initValue.length === 0 : true, // 是否加载中
+      list: Array.isArray(vm.initValue) ? vm.initValue : [],
+      isLoading: !Array.isArray(vm.initValue), // 是否加载中
       isError: false, // 是否加载错误
       pagination: {
         [realPaginationKey.page]: 1,
@@ -136,13 +136,8 @@ export default {
     }
   },
   created() {
-    if (!this.$isServer && this.loadDataIsFn && !this.initValue) {
+    if (!this.$isServer && this.loadDataIsFn && !Array.isArray(this.initValue)) {
       this.getList(this.pagination);
-    }
-  },
-  mounted() {
-    if (Array.isArray(this.initValue) && this.isLoading) {
-      this.isLoading = false;
     }
   },
   methods: {

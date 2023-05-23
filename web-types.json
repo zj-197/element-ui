@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -3523,7 +3523,7 @@
             {
               "name": "type",
               "description": "Layout mode. You can use flex. Works in modern browsers",
-              "type": "string"
+              "type": "'flex'|string"
             },
             {
               "name": "align",

@@ -3,6 +3,8 @@
     <transition
       :name="transition"
       @after-enter="handleAfterEnter"
+      @before-leave="$emit('before-leave')"
+      @leave="$emit('leave')"
       @after-leave="handleAfterLeave">
       <div
         class="el-popover el-popper"

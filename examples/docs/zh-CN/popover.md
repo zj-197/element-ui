@@ -23,7 +23,7 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
     ref="mulPopver">
   </el-popover>
   <el-button v-popover-mul:mulPopver="'这是一段内容,这是一段内容,这是一段内容,这是一段内容。'">click 激活</el-button>
-  
+  <el-button v-popover-mul:mulPopver="'这是一段内容,这是一段内容,这是一段内容,这是一段内容。'">click 激活2</el-button>
 
   <el-popover
     ref="popover"

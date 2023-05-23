@@ -19,7 +19,7 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
     placement="bottom"
     title="标题"
     width="200"
-    trigger="hover"
+    trigger="click"
     ref="mulPopver">
   </el-popover>
   <el-button v-popover-mul:mulPopver="'这是一段内容,这是一段内容,这是一段内容,这是一段内容。'">click 激活</el-button>

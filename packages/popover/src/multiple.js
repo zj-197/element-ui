@@ -28,6 +28,11 @@ function registEvent(el, binding, vnode) {
     }
   }
   const reference = el;
+  // 这点当存在多个referenceElm指向同一个popover时，点击其中一个如果popover是显示状态的话，会出现闪现的问题
+  let flag = true;
+  if (popper.showPopper && popper.referenceElm !== el) {
+    flag = false;
+  }
   _this.$nextTick(() => {
     // 修改参照属性为当前悬浮元素
     popper.referenceElm = reference;
@@ -50,7 +55,9 @@ function registEvent(el, binding, vnode) {
       });
     } else if (el.__ElPopoverTrigger__ === 'click') {
       popper.handleClick();
-      popper.doToggle();
+      if (flag) {
+        popper.doToggle();
+      }
       el.__ElPopoverHandleDocumentClick__ = popper.handleDocumentClick;
       el.__ElPopoverHandleKeydown__ = popper.handleKeydown;
       on(document, 'click', el.__ElPopoverHandleDocumentClick__);

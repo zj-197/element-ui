@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'គ្មានទិន្ន័យ'
+    },
+    wpCommon: {
+      reload: 'ផ្ទុកឡើងវិញ'
     }
   }
 };

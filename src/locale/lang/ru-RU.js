@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Нет данных'
+    },
+    wpCommon: {
+      reload: 'Перезагрузить'
     }
   }
 };

@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Деректер жоқ'
+    },
+    wpCommon: {
+      reload: 'Қайта жүктеңіз'
     }
   }
 };

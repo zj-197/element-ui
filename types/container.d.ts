@@ -1,5 +1,5 @@
 import { ElementUIComponent } from './component'
-import { HorizontalAlignment, VertialAlignment } from './row'
+import { HorizontalAlignment, VertialAlignment } from './component'
 /** Container Component */
 export declare class ElContainer extends ElementUIComponent {
   /** Layout direction for child elements */

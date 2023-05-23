@@ -121,6 +121,9 @@ exports.default = {
     },
     empty: {
       description: 'কোন তথ্য নেই'
+    },
+    wpCommon: {
+      reload: 'পুনরায় লোড করো'
     }
   }
 };

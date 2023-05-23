@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Өгөгдөл байхгүй'
+    },
+    wpCommon: {
+      reload: 'Дахин ачаалах'
     }
   }
 };

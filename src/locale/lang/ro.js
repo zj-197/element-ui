@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Nu există date'
+    },
+    wpCommon: {
+      reload: 'Reîncarcă'
     }
   }
 };

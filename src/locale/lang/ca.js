@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'Sense Dades'
+    },
+    wpCommon: {
+      reload: 'Recargar'
     }
   }
 };

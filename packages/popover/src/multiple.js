@@ -41,6 +41,13 @@ function registEvent(el, binding, vnode) {
       popper.handleMouseEnter();
       el.__ElPopoverHandleKeydown__ = popper.handleKeydown;
       on(reference, 'keydown', el.__ElPopoverHandleKeydown__);
+      on(popper.$refs.popper, 'mouseenter', popper.handleMouseEnter);
+      on(popper.$refs.popper, 'mouseleave', popper.handleMouseLeave);
+
+      _this.$once('hook:beforeDestroy', () => {
+        off(popper.$refs.popper, 'mouseenter', popper.handleMouseEnter);
+        off(popper.$refs.popper, 'mouseleave', popper.handleMouseLeave);
+      });
     } else if (el.__ElPopoverTrigger__ === 'click') {
       popper.handleClick();
       popper.doToggle();

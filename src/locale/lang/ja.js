@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'データなし'
+    },
+    wpCommon: {
+      reload: '再ロード'
     }
   }
 };

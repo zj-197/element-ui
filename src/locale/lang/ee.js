@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Andmed puuduvad'
+    },
+    wpCommon: {
+      reload: 'Laadi uuesti'
     }
   }
 };

@@ -120,6 +120,9 @@ export default {
     },
     empty: {
       description: 'Žiadne dáta'
+    },
+    wpCommon: {
+      reload: 'Sinhalská'
     }
   }
 };

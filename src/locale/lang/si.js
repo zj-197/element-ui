@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'දත්ත නැත'
+    },
+    wpCommon: {
+      reload: 'නැවත පූරණය කරන්න'
     }
   }
 };

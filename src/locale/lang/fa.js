@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'اطلاعاتی وجود ندارد'
+    },
+    wpCommon: {
+      reload: 'بارگذاری'
     }
   }
 };

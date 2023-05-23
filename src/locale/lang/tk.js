@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Maglumat ýok'
+    },
+    wpCommon: {
+      reload: '_Ýene Ýükle'
     }
   }
 };

@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'Ingen Data'
+    },
+    wpCommon: {
+      reload: 'Reload'
     }
   }
 };

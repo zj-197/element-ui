@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'Nincs adat'
+    },
+    wpCommon: {
+      reload: 'Újratöltés'
     }
   }
 };

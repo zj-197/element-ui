@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'ئۇچۇر يوق'
+    },
+    wpCommon: {
+      reload: 'قايتا يۈكلەش'
     }
   }
 };

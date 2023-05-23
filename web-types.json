@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.1.5",
+  "version": "1.1.8",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -15,6 +15,16 @@
               "name": "loadData",
               "description": "A function that loads a list of data",
               "type": "Function"
+            },
+            {
+              "name": "initValue",
+              "description": "List init value",
+              "type": "array"
+            },
+            {
+              "name": "total",
+              "description": "List total count",
+              "type": "number"
             },
             {
               "name": "pageSize",
@@ -86,8 +96,8 @@
           "js": {
             "events": [
               {
-                "name": "close",
-                "description": "fires when alert is closed"
+                "name": "loaded",
+                "description": "Refresh success emit"
               }
             ]
           }
@@ -868,7 +878,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -992,7 +1002,7 @@
             {
               "name": "size",
               "description": "Size of the Checkbox, only works when border is true",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "name",
@@ -1094,7 +1104,7 @@
             {
               "name": "size",
               "description": "Size of checkbox buttons or bordered checkboxes",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "min",
@@ -1234,7 +1244,7 @@
             {
               "name": "size",
               "description": "Size of ColorPicker",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1275,7 +1285,7 @@
             {
               "name": "justify",
               "description": "Horizontal alignment of flex layout",
-              "type": "HorizontalAlignment"
+              "type": "RowLayout"
             },
             {
               "name": "tag",
@@ -1322,7 +1332,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1435,7 +1445,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -1661,7 +1671,7 @@
             {
               "name": "footerJustify",
               "description": "Confirm button text",
-              "type": "HorizontalAlignment"
+              "type": "RowLayout"
             },
             {
               "name": "isShowFooter",
@@ -1752,7 +1762,27 @@
               "name": "title",
               "description": "Content of the Dialog title"
             }
-          ]
+          ],
+          "js": {
+            "methods": [
+              {
+                "name": "closeDialog",
+                "description": "Close dialog"
+              },
+              {
+                "name": "showDialog",
+                "description": "Show dialog"
+              },
+              {
+                "name": "closeLoading",
+                "description": "Close confirm btn loading"
+              },
+              {
+                "name": "openLoading",
+                "description": "Close confirm btn loading"
+              }
+            ]
+          }
         },
         {
           "name": "ElDivider",
@@ -1866,7 +1896,7 @@
             {
               "name": "size",
               "description": "menu size, also works on the split button",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "placement",
@@ -2027,7 +2057,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2159,7 +2189,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2200,6 +2230,11 @@
               "name": "inline",
               "description": "Whether the form is inline",
               "type": "boolean"
+            },
+            {
+              "name": "align",
+              "description": "Vertical align",
+              "type": "VertialAlignment"
             }
           ]
         },
@@ -2230,7 +2265,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2326,7 +2361,7 @@
             {
               "name": "size",
               "description": "Controls the size of components in this form",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "showMessage",
@@ -2478,7 +2513,7 @@
             {
               "name": "size",
               "description": "Size of Input, works when type is not 'textarea'",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "name",
@@ -3488,7 +3523,7 @@
             {
               "name": "type",
               "description": "Layout mode. You can use flex. Works in modern browsers",
-              "type": "string"
+              "type": "'flex'|string"
             },
             {
               "name": "align",
@@ -3498,7 +3533,7 @@
             {
               "name": "justify",
               "description": "Horizontal alignment of flex layout",
-              "type": "HorizontalAlignment"
+              "type": "RowLayout"
             },
             {
               "name": "tag",
@@ -3575,7 +3610,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -4939,7 +4974,7 @@
             {
               "name": "size",
               "description": "Tag size",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "effect",
@@ -4976,7 +5011,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",
@@ -5052,7 +5087,7 @@
             {
               "name": "size",
               "description": "Size of Input",
-              "type": "ElementUIComponentSize"
+              "type": "ComponentSize"
             },
             {
               "name": "popperClass",

@@ -1,6 +1,5 @@
 import { VNode } from 'vue'
-import { ElementUIComponent } from './component'
-import { HorizontalAlignment } from './row'
+import { ElementUIComponent, HorizontalAlignment } from './component'
 export interface DialogSlots {
   /** Content of the Dialog */
   default: VNode[],

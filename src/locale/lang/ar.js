@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'لايوجد بيانات'
+    },
+    wpCommon: {
+      reload: 'إعادة تحميل'
     }
   }
 };

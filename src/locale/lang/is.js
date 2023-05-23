@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Engin gögn'
+    },
+    wpCommon: {
+      reload: 'Endurhlaða'
     }
   }
 };

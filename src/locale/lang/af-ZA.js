@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Geen Data'
+    },
+    wpCommon: {
+      reload: 'Herlaai'
     }
   }
 };

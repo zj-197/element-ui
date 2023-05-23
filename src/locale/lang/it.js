@@ -117,6 +117,9 @@ export default {
     },
     empty: {
       description: 'Nessun dato'
+    },
+    wpCommon: {
+      reload: 'Ricarica'
     }
   }
 };

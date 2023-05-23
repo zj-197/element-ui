@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Duomenų nerasta'
+    },
+    wpCommon: {
+      reload: 'Pakeisti'
     }
   }
 };

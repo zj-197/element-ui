@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Տուեալներ չկան'
+    },
+    wpCommon: {
+      reload: 'Reload'
     }
   }
 };

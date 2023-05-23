@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Daturik ez'
+    },
+    wpCommon: {
+      reload: 'Berriro kargatu'
     }
   }
 };

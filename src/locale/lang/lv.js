@@ -118,6 +118,9 @@ export default {
     },
     empty: {
       description: 'Nav datu'
+    },
+    wpCommon: {
+      reload: 'Pārlādēt'
     }
   }
 };

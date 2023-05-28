@@ -21,6 +21,7 @@
       </slot>
     </div>
     <el-pagination v-bind="realPaginationProps"
+                   v-if="!hiddenPagination"
                    class="el-load-list-pagination"
                    @size-change="onPaginationSizeChange"
                    @current-change="onPaginationPageChange"/>
@@ -92,7 +93,8 @@ export default {
     autoScrollTop: {
       type: Boolean,
       default: true
-    } // 是否点击分页组件时自动回到el-load-list的顶部
+    }, // 是否点击分页组件时自动回到el-load-list的顶部
+    hiddenPagination: Boolean // 是否隐藏分页
   },
   components: {
     ElPagination,

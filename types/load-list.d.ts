@@ -9,6 +9,7 @@ export declare class ElLoadList extends ElementUIComponent {
     emptyText: string
     emptyBtnText: string
     emptyImage: string
+    hiddenPagination: boolean
     errorText: string
     errorBtnText: string
     errorImage: string

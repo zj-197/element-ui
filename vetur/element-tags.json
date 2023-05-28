@@ -325,7 +325,7 @@
     "description": "Container for footers."
   },
   "el-load-list": {
-    "attributes": ["load-data", "total", "init-value", "page-size", "pagination-key", "pagination-props", "empty-text", "empty-btn-text", "empty-image", "error-text", "error-btn-text", "error-image", "loading-text", "auto-scroll-top"],
+    "attributes": ["load-data", "hidden-pagination", "total", "init-value", "page-size", "pagination-key", "pagination-props", "empty-text", "empty-btn-text", "empty-image", "error-text", "error-btn-text", "error-image", "loading-text", "auto-scroll-top"],
     "defaults": ["load-data"],
     "description": "Recorded data list."
   },

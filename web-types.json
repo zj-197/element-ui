@@ -328,7 +328,7 @@
             },
             {
               "name": "size",
-              "type": "'large'|'medium'|'small'|number",
+              "type": "'large' | 'medium' | 'small' | number",
               "description": "Avatar size",
               "default": "'large'"
             },
@@ -365,7 +365,7 @@
             {
               "name": "bottom",
               "description": "Backtop bottom position",
-              "type": "string|number"
+              "type": "string | number"
             },
             {
               "name": "visibilityHeight",
@@ -4675,7 +4675,7 @@
             {
               "name": "fixed",
               "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
-              "type": "boolean|TableColumnFixedType"
+              "type": "boolean | TableColumnFixedType"
             },
             {
               "name": "columnKey",
@@ -4730,7 +4730,7 @@
             {
               "name": "sortable",
               "description": "Whether column can be sorted",
-              "type": "boolean|\"custom\""
+              "type": "boolean | \"custom\""
             },
             {
               "name": "filters",
@@ -4803,7 +4803,7 @@
             {
               "name": "fixed",
               "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
-              "type": "boolean|TableColumnFixedType"
+              "type": "boolean | TableColumnFixedType"
             },
             {
               "name": "columnKey",
@@ -4858,7 +4858,7 @@
             {
               "name": "sortable",
               "description": "Whether column can be sorted",
-              "type": "boolean|\"custom\""
+              "type": "boolean | \"custom\""
             },
             {
               "name": "filters",
@@ -5046,7 +5046,7 @@
             {
               "name": "value",
               "description": "Value of the picker",
-              "type": "string|Date"
+              "type": "string | Date"
             },
             {
               "name": "rangeSeparator",
@@ -5112,7 +5112,7 @@
             {
               "name": "value",
               "description": "Value of the picker",
-              "type": "string|Date"
+              "type": "string | Date"
             },
             {
               "name": "clearable",

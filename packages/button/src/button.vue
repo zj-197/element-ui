@@ -2,10 +2,10 @@
   <button
       @click="handleClick"
       class="el-button-reset"
-      @mouseenter.stop="mouseenter"
-      @mouseleave.stop="mouseleave"
-      @mousedown.stop="mousedown"
-      @mouseup.stop="mouseup"
+      @mouseenter="mouseenter"
+      @mouseleave="mouseleave"
+      @mousedown="mousedown"
+      @mouseup="mouseup"
       :disabled="buttonDisabled || loading"
       @blur="onBlur"
       :style="btnStyle"
@@ -30,7 +30,6 @@
   </button>
 </template>
 <script>
-import {hasClass} from 'element-ui/src/utils/dom';
 
 export default {
   name: 'ElButton',
@@ -126,7 +125,7 @@ export default {
     },
     mouseenter(evt) {
       if (!this.theme || this.isFocus) return;
-      const target = evt.target;
+      const target = evt.currentTarget;
       if (this.plain) {
         target.style.backgroundColor = this.theme;
         target.style.borderColor = this.theme;
@@ -138,7 +137,7 @@ export default {
     },
     mouseleave(evt) {
       if (!this.theme || this.isFocus) return;
-      const target = evt.target;
+      const target = evt.currentTarget;
       if (this.plain) {
         target.style.backgroundColor = this.shadeColor;
         target.style.borderColor = this.plainBorderColor;
@@ -150,7 +149,7 @@ export default {
     },
     mousedown(evt) {
       if (!this.theme) return;
-      const customButton = this.getElCustomButton(evt.target);
+      const customButton = evt.currentTarget;
       if (customButton) {
         const deepTheme = this.deepColor(this.theme, 0.1);
         customButton.style.backgroundColor = deepTheme;
@@ -159,7 +158,7 @@ export default {
     },
     mouseup(evt) {
       if (!this.theme) return;
-      const customButton = this.getElCustomButton(evt.target);
+      const customButton = evt.currentTarget;
       if (customButton) {
         if (this.plain) {
           customButton.style.backgroundColor = this.theme;
@@ -173,7 +172,7 @@ export default {
     onBlur(evt) {
       if (!this.theme) return;
       this.isFocus = false;
-      const target = evt.target;
+      const target = evt.currentTarget;
       if (this.plain) {
         target.style.backgroundColor = this.shadeColor;
         target.style.borderColor = this.plainBorderColor;
@@ -234,20 +233,6 @@ export default {
         blue += (255 - blue) * percent;
       }
       return `rgb(${ Math.round(red) }, ${ Math.round(green) }, ${ Math.round(blue) })`;
-    },
-    getElCustomButton(el) {
-      if (this.$isServer) return;
-      let parent = el;
-      while (parent) {
-        if ([window, document, document.documentElement].indexOf(parent) > -1) {
-          return undefined;
-        }
-        if (hasClass(parent, 'el-button-custom')) {
-          return parent;
-        }
-        parent = parent.parentNode;
-      }
-      return parent;
     }
   }
 };

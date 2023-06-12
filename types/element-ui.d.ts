@@ -124,6 +124,8 @@ import { ElResult } from './result'
 import { ElStatistic } from './statistic'
 
 import { ElWpForm } from './wp-form'
+import { ElWpFormItem } from "./wp-form-item";
+export { WpFormItemValueType, Pattern as WpFormItemPattern } from "./wp-form-item"
 import { ElWpTable } from './wp-table'
 import { ElWpSearchTable } from './wp-search-table'
 import { ElWpDatePicker } from './wp-date-picker'
@@ -431,6 +433,7 @@ export class Result extends ElResult {}
 export class Statistic extends ElStatistic {}
 /** WpForm Component */
 export class WpForm extends ElWpForm {}
+export class WpFormItem extends ElWpFormItem {}
 
 /** WpTable Component */
 export class WpTable extends ElWpTable {}

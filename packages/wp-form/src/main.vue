@@ -3,9 +3,10 @@ import ElForm from 'element-ui/packages/form';
 import ElButton from 'element-ui/packages/button';
 import ElRow from 'element-ui/packages/row';
 import ElCol from 'element-ui/packages/col';
-import { noop } from 'element-ui/src/utils/util';
-import { t } from 'element-ui/src/locale';
+import {noop} from 'element-ui/src/utils/util';
+import {t} from 'element-ui/src/locale';
 import {assign} from 'element-ui/src/utils/lodash';
+
 export default {
   name: 'ElWpForm',
   components: {
@@ -143,27 +144,37 @@ export default {
     };
   },
   render(h) {
-    const children = (Array.isArray(this.$slots.default) ? this.$slots.default : []).filter(item => item.tag).reduce((preVal, curVal, index) => {
+    if (!this.$slots.default) return this.$slots.default;
+    const slotDefault = this.$slots.default;
+    let index = 0;
+    const slotDefaultContent = [];
+    for (let i = 0; i < slotDefault.length; i++) {
+      const item = slotDefault[i];
+      if (!item.tag) {
+        slotDefaultContent.push(item);
+        continue;
+      }
       const display = this.isShowCollapse && this.toggleCollapse && (index >= this.contentSpan) ? 'none' : undefined;
-      if (/ElCol$/g.test(curVal.tag)) {
-        preVal.push(h('div', {
-          style: { display }
-        }, []));
+      if (/ElCol$/g.test(item.tag)) {
+        slotDefaultContent.push(h('div', {
+          style: {display},
+          class: 'el-form-item-col-outer'
+        }, [item]));
       } else {
-        preVal.push(h('el-col', {
+        slotDefaultContent.push(h('el-col', {
           props: {
             span: this.span
           },
-          style: { display }
-        }, [curVal]));
+          style: {display}
+        }, [item]));
       }
-      return preVal;
-    }, []);
+      index++;
+    }
     // 如果需要展开收起
     if (this.isShowActions || Array.isArray(this.$slots.actions)) {
       const actions = (Array.isArray(this.$slots.actions) ? this.$slots.actions : [])
         .concat([this.renderBtnSearch(h), this.renderBtnReset(h), this.renderCollapse(h)]);
-      children.push(h('el-col', {
+      slotDefaultContent.push(h('el-col', {
         props: {
           span: this.span
         },
@@ -181,7 +192,7 @@ export default {
         align: this.align,
         isWrap: true
       }
-    }, children);
+    }, slotDefaultContent);
     return h('el-form', {
       props: {
         model: this.model,
@@ -217,7 +228,7 @@ export default {
         class: 'el-wp-form-collapse-wrapper'
       }, [
         h('span', this.toggleCollapse ? this.spreadText : this.collapseText),
-        h('i', { class: ['el-icon-arrow-down', 'el-wp-form-collapse-icon', !this.toggleCollapse && 'is-spread'] })
+        h('i', {class: ['el-icon-arrow-down', 'el-wp-form-collapse-icon', !this.toggleCollapse && 'is-spread']})
       ]);
     },
     openResetting() {

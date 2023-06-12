@@ -5,6 +5,8 @@ import {ElementUIComponentSize} from "./component";
 export type Pattern = 'number' | 'mobile' | 'email' | 'strongPasswd' | 'middlePasswd'
     | 'weakPasswd' | 'number10' | 'landline' | 'code' | 'code4' | 'chinese' | 'letter' | 'money' | 'card' | 'enOrNum' | RegExp
 
+export type WpFormItemValueType = 'string' | 'number' | 'boolean' | 'object' | 'array' | 'date' | string
+
 export type FormItemProps = {
     prop?: string
 
@@ -32,7 +34,7 @@ export type FormItemProps = {
     /** Controls the size of components in this form */
     size?: ElementUIComponentSize,
     tooltip?: string
-    valueType?: 'string' | 'number' | 'boolean' | 'object' | 'array' | 'date' | string
+    valueType?: WpFormItemValueType
     pattern?: RegExp | Pattern
     patternMsg?: string
     validator?: (rule: object, value: any, callback:() => void) => void

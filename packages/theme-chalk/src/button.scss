@@ -14,7 +14,7 @@
   outline: none;
   margin: 0;
   font-weight: $--button-font-weight;
-  transition: .1s;
+  transition: all .1s;
   @include utils-user-select(none);
   &::-moz-focus-inner {
     border: 0;

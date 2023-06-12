@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -2331,12 +2331,12 @@
             {
               "name": "valueType",
               "description": "The type of the binding value",
-              "type": "string"
+              "type": "WpFormItemValueType"
             },
             {
               "name": "pattern",
               "description": "Built-in verification key",
-              "type": "string|RegExp"
+              "type": "WpFormItemPattern"
             },
             {
               "name": "patternMsg",
@@ -4675,7 +4675,7 @@
             {
               "name": "fixed",
               "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
-              "type": "boolean | 'left' | 'right'"
+              "type": "TableColumnFixedType | boolean"
             },
             {
               "name": "columnKey",
@@ -4803,7 +4803,7 @@
             {
               "name": "fixed",
               "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
-              "type": "boolean | 'left' | 'right'"
+              "type": "TableColumnFixedType | boolean"
             },
             {
               "name": "columnKey",

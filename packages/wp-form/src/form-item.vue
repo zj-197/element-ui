@@ -9,7 +9,7 @@
                 :validate-status="validateStatus"
                 :inline-message="inlineMessage"
                 :show-message="showMessage">
-    <slot/>
+    <slot v-if="$slots.default"/>
     <slot name="label" slot="label">
       {{ label }}
       <template v-if="tooltip">

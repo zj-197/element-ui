@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -4675,7 +4675,7 @@
             {
               "name": "fixed",
               "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
-              "type": "TableColumnFixedType | boolean"
+              "type": "\"left\" | \"right\" | boolean"
             },
             {
               "name": "columnKey",
@@ -4803,7 +4803,7 @@
             {
               "name": "fixed",
               "description": "Whether column is fixed at left/right. Will be fixed at left if `true`",
-              "type": "TableColumnFixedType | boolean"
+              "type": "\"left\" | \"right\" | boolean"
             },
             {
               "name": "columnKey",

@@ -483,23 +483,24 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 | size              | 用于控制该表单域下组件的尺寸                                       | string        | medium / small / mini                   | -      |
 
 ### Wp-Form-Item pattern 可选值
-| key       | 说明（所有验证均可为空）                                 |
-|-----------|----------------------------------------------|
-| number    | 只能输入数字                                       |
-| mobile    | 手机号                                          |
-| email     | 邮箱                                           |
+| key          | 说明（所有验证均可为空）                                 |
+|--------------|----------------------------------------------|
+| number       | 只能输入数字                                       |
+| mobile       | 手机号                                          |
+| email        | 邮箱                                           |
 | strongPasswd | 密码强度校验，长度6-12位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符 |
 | middlePasswd | 密码强度校验，长度6-12位，同时包含大小写字母及数字                  |
-| weakPasswd | 密码强度校验，长度6-12位，由大小写字母或数字组成                   |
-| number10  | 十进制数字，比如 12.00, 12, 12.22                    |
-| landline  | 固定电话 比如 86-10-66778899                       |
-| code      | 6位验证码                                        |
-| code4     | 4位验证码                                        |
-| chinese   | 中文                                           |
-| letter    | 字母 比如 a, A, B, c                             |
-| money    | 金额                                           |
-| card    | 身份证                                          |
-| enOrNum    | 字母或者数字                                         |
+| weakPasswd   | 密码强度校验，长度6-12位，由大小写字母或数字组成                   |
+| number10     | 十进制数字，比如 12.00, 12, 12.22                    |
+| landline     | 固定电话 比如 86-10-66778899                       |
+| code         | 6位验证码                                        |
+| code4        | 4位验证码                                        |
+| chinese      | 中文                                           |
+| letter       | 字母 比如 a, A, B, c                             |
+| money        | 金额                                           |
+| card         | 身份证                                          |
+| enOrNum      | 字母或者数字                                       |
+| url          | 链接地址                                         |
 
 ### Wp-Form-Item Slot
 | name | 说明 |

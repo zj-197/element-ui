@@ -1,49 +1,64 @@
 <template>
   <div>
-    <el-wp-form ref="form" :model="form"
-                :gutter="20"
-                @search="onSubmit"
-                size="medium"
-                label-position="top"
-                align="middle"
-                :col-count="3" is-show-collapse>
-      <!--  中文验证-->
-      <el-wp-form-item label="活动名称" required pattern="chinese" prop="name" v-if="isShowActiveArea">
-        <el-input v-model="form.name"></el-input>
+    <el-form label-position="top" :model="form" size="medium" ref="form">
+      <!-- S 标题 -->
+      <el-wp-form-item required label="标题" prop="title">
+        <el-input v-model="form.title" type="text" placeholder="请输入标题"></el-input>
       </el-wp-form-item>
-      <el-wp-form-item label="活动区域">
-        <el-select v-model="form.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
-        </el-select>
+      <!-- E 标题 -->
+
+      <!-- S 资源分类 -->
+      <el-wp-form-item required label="资源分类" prop="sourceType">
+        <el-radio-group v-model="form.sourceType"
+                        :option-data="[{label: '自制资源', value: 'CREATE'}, {label: '网络资源', value: 'ONLINE'}]"></el-radio-group>
       </el-wp-form-item>
-      <el-wp-form-item label="活动时间">
-        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
-      </el-wp-form-item>
-      <el-wp-form-item label="即时配送">
-        <el-switch v-model="form.delivery"></el-switch>
-      </el-wp-form-item>
-      <el-wp-form-item label="活动性质">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-          <el-checkbox label="地推活动" name="type"></el-checkbox>
-          <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-          <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+      <!-- E 资源分类 -->
+      <!-- S 资源链接 -->
+      <template v-if="form.sourceType === 'ONLINE'">
+        <el-wp-form-item label="资源链接" prop="assetsLink"
+                         required>
+          <el-input placeholder="请输入资源链接" v-model="form.assetsLink" type="text"></el-input>
+        </el-wp-form-item>
+      </template>
+      <!-- E 资源链接 -->
+
+      <!-- S 栏目分类 -->
+      <el-wp-form-item required label="栏目分类" prop="clumnTypes" value-type="array">
+        <el-checkbox-group v-model="form.clumnTypes">
+          <el-checkbox v-for="item in Columns" :key="item.id" :label="item.id">{{item.name}}</el-checkbox>
         </el-checkbox-group>
       </el-wp-form-item>
-      <el-wp-form-item label="特殊资源">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="线上品牌商赞助"></el-radio>
-          <el-radio label="线下场地免费"></el-radio>
-        </el-radio-group>
+      <!-- E 栏目分类 -->
+
+      <!-- S 在线课程分类 -->
+      <el-wp-form-item required label="在线视频分类" prop="videoTypes" value-type="array">
+        <el-checkbox-group v-model="form.videoTypes" label-key="name" value-key="id"
+                           :option-data="Videos"></el-checkbox-group>
       </el-wp-form-item>
-      <el-col :span="24">
-        <el-wp-form-item label="活动形式">
-          <el-input type="textarea" v-model="form.desc"></el-input>
-        </el-wp-form-item>
-      </el-col>
-    </el-wp-form>
-    <el-button @click="isShowActiveArea = !isShowActiveArea">toggle活动名称</el-button>
+      <!-- E 在线课程分类 -->
+
+      <!-- S 积分设置 -->
+      <el-wp-form-item label="积分设置">
+        <div style=" line-height: 1px">
+          <span>学员播放达</span>
+          <el-wp-form-item pattern="number" prop="creditsTime"
+                           style="width: 100px; margin: 0 10px; display: inline-block;">
+            <el-input v-model="form.creditsTime" placeholder="时间" type="text"/>
+          </el-wp-form-item>
+          <span>分钟后，即完成课程，并获得积分</span>
+          <el-wp-form-item pattern="number" prop="credit"
+                           style="width: 100px; margin: 0 10px; display: inline-block;">
+            <el-input v-model="form.credit" placeholder="分数" type="text"/>
+          </el-wp-form-item>
+          分
+        </div>
+      </el-wp-form-item>
+      <!-- E 积分设置 -->
+      <el-wp-form-item class="mt-125">
+        <el-button type="primary" style="min-width: 8rem" @click.stop="handlePublic">{{courseId ? '确定' : '发布资源'}}</el-button>
+      </el-wp-form-item>
+    </el-form>
+    <el-button @click="form.isShowActiveArea = !form.isShowActiveArea">toggle活动名称</el-button>
   </div>
 </template>
 <script>
@@ -51,16 +66,22 @@ export default {
   data() {
     return {
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: '',
+        name: "",
+        creditsTime: "",
+        credit: "",
+        resourceModels: [], // 视频文件
+        videoTypes: [],
+        sourceType: "CREATE",
+        clumnTypes: [],
+        assetsLink: "",
       },
-      isShowActiveArea: false
+      Columns: [],
+      Videos: []
+    }
+  },
+  computed: {
+    courseId () {
+      return 'xxx'
     }
   },
   methods: {

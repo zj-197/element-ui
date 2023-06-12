@@ -125,7 +125,7 @@ import { ElStatistic } from './statistic'
 
 import { ElWpForm } from './wp-form'
 import { ElWpFormItem } from "./wp-form-item";
-export { WpFormItemValueType, Pattern as WpFormItemPattern } from "./wp-form-item"
+export { WpFormItemValueType, WpFormItemPattern } from "./wp-form-item"
 import { ElWpTable } from './wp-table'
 import { ElWpSearchTable } from './wp-search-table'
 import { ElWpDatePicker } from './wp-date-picker'

@@ -1,5 +1,5 @@
 import { ElementUIComponent } from './component'
-import {FormItemProps, Pattern} from './wp-form-item';
+import {FormItemProps, WpFormItemPattern} from './wp-form-item';
 import {TableColumnProps} from './wp-table-column';
 import {ElWpTable, PaginationKey} from "./wp-table";
 import {FormItemLabelPosition} from './form'
@@ -26,7 +26,7 @@ type Columns = {
     formItemProps?: FormItemProps,
     columnProps?: TableColumnProps,
     tagInitValue?: any,
-    pattern?: Pattern,
+    pattern?: WpFormItemPattern,
     hiddenInForm?: boolean,
     hiddenInTable?: boolean,
     required?: boolean,

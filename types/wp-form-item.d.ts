@@ -2,8 +2,8 @@ import { ElFormItem } from "./form-item";
 import { PopoverPlacement } from './popover'
 import {ElementUIComponentSize} from "./component";
 
-export type Pattern = 'number' | 'mobile' | 'email' | 'strongPasswd' | 'middlePasswd'
-    | 'weakPasswd' | 'number10' | 'landline' | 'code' | 'code4' | 'chinese' | 'letter' | 'money' | 'card' | 'enOrNum' | RegExp
+export type WpFormItemPattern = 'number' | 'mobile' | 'email' | 'strongPasswd' | 'middlePasswd'
+    | 'weakPasswd' | 'number10' | 'landline' | 'code' | 'code4' | 'chinese' | 'letter' | 'money' | 'card' | 'enOrNum' | 'url' | RegExp
 
 export type WpFormItemValueType = 'string' | 'number' | 'boolean' | 'object' | 'array' | 'date' | string
 
@@ -35,7 +35,7 @@ export type FormItemProps = {
     size?: ElementUIComponentSize,
     tooltip?: string
     valueType?: WpFormItemValueType
-    pattern?: RegExp | Pattern
+    pattern?: WpFormItemPattern
     patternMsg?: string
     validator?: (rule: object, value: any, callback:() => void) => void
     tooltipPlacement?: PopoverPlacement
@@ -43,7 +43,7 @@ export type FormItemProps = {
 export declare class ElWpFormItem extends ElFormItem {
     tooltip: string
     valueType: 'string' | 'number' | 'boolean' | 'object' | 'array' | 'date' | string
-    pattern: RegExp | Pattern
+    pattern: WpFormItemPattern
     patternMsg: string
     validator: (rule: object, value: any, callback:() => void) => void
     tooltipPlacement: PopoverPlacement

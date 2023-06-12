@@ -87,5 +87,9 @@ export const PATTERN = Object.freeze({
   enOrNum: {
     pattern: /^([0-9a-zA-Z]*)?$/g,
     message: '请输入字母或者数字'
+  },
+  url: {
+    pattern: /^(((ht|f)tps?):\/\/)?[\w\-]+(\.[\w\-]+)+([\w\-.,@?^=%&:\/~+#]*[\w\-@?^=%&\/~+#])?$/,
+    message: '请输入正确的链接地址'
   }
 });

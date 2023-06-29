@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -2003,7 +2003,7 @@
             },
             {
               "name": "imageHeight",
-              "description": "image size (width)",
+              "description": "image size (Height)",
               "type": "number | string"
             }
           ],
@@ -5523,6 +5523,56 @@
               "name": "withCredentials",
               "description": "Whether cookies are sent",
               "type": "boolean"
+            },
+            {
+              "name": "beforeUpload",
+              "description": "before upload hook",
+              "type": "Function"
+            },
+            {
+              "name": "beforeRemove",
+              "description": "before remove hook",
+              "type": "Function"
+            },
+            {
+              "name": "beforeStart",
+              "description": "before file start",
+              "type": "Function"
+            },
+            {
+              "name": "onRemove",
+              "description": "remove hook",
+              "type": "Function"
+            },
+            {
+              "name": "onChange",
+              "description": "file list change hook",
+              "type": "Function"
+            },
+            {
+              "name": "onPreview",
+              "description": "file preview hook",
+              "type": "Function"
+            },
+            {
+              "name": "onSuccess",
+              "description": "file upload success hook",
+              "type": "Function"
+            },
+            {
+              "name": "onProgress",
+              "description": "file upload progress hook",
+              "type": "Function"
+            },
+            {
+              "name": "onError",
+              "description": "file upload error hook",
+              "type": "Function"
+            },
+            {
+              "name": "onExceed",
+              "description": "file upload exceed hook",
+              "type": "Function"
             }
           ],
           "slots": [

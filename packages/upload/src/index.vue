@@ -60,6 +60,7 @@ export default {
     },
     beforeUpload: Function,
     beforeRemove: Function,
+    beforeStart: Function,
     onRemove: {
       type: Function,
       default: noop
@@ -296,6 +297,7 @@ export default {
         action: this.action,
         multiple: this.multiple,
         'before-upload': this.beforeUpload,
+        'before-start': this.beforeStart,
         'with-credentials': this.withCredentials,
         headers: this.headers,
         name: this.name,

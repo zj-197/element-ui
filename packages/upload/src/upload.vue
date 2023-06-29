@@ -27,6 +27,7 @@ export default {
     onSuccess: Function,
     onError: Function,
     beforeUpload: Function,
+    beforeStart: Function,
     drag: Boolean,
     onPreview: {
       type: Function,
@@ -60,8 +61,10 @@ export default {
       return str.indexOf('image') !== -1;
     },
     handleChange(ev) {
-      const files = ev.target.files;
-
+      let files = ev.target.files;
+      if (typeof this.beforeStart === 'function') {
+        files = this.beforeStart(files);
+      }
       if (!files) return;
       this.uploadFiles(files);
     },

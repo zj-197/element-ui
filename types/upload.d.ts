@@ -89,6 +89,9 @@ export declare class ElUpload extends ElementUIComponent {
   /** Hook function before uploading with the file to be uploaded as its parameter. If false or a Promise is returned, uploading will be aborted */
   beforeUpload: (file: ElUploadInternalRawFile) => boolean | Promise<File | Blob | boolean>
 
+  /** Hook function before select file with the file to be select as its parameter. If null will be cancel current select */
+  beforeStart: (files: Array<object>) => Array<object> | null
+
   /** Whether thumbnail is displayed */
   thumbnailMode: boolean
 

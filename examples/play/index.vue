@@ -1,5 +1,8 @@
 <template>
   <div>
+    <el-upload action="" :auto-upload="false" :before-start="handleStart">
+      <el-button>选择文件</el-button>
+    </el-upload>
     <el-form label-position="top" :model="form" size="medium" ref="form">
       <!-- S 标题 -->
       <el-wp-form-item required label="标题" prop="title">
@@ -94,6 +97,11 @@ export default {
           return false;
         }
       })
+    },
+    handleStart (fileList) {
+      console.log(fileList, 'fileList');
+      return fileList
+      // return null
     }
   }
 }

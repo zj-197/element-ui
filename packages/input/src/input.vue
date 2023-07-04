@@ -260,7 +260,8 @@
     },
 
     watch: {
-      value(val) {
+      value(val, oldVal) {
+        if (String(val) === String(oldVal)) return;
         this.$nextTick(this.resizeTextarea);
         if (this.validateEvent) {
           this.dispatch('ElFormItem', 'el.form.change', [val]);
@@ -422,9 +423,11 @@
           (this.validateState && this.needStatusIcon);
       }
     },
-
     created() {
       this.$on('inputSelect', this.select);
+      if (typeof this.value === 'number') {
+        this.$emit('input', this.value.toString());
+      }
     },
 
     mounted() {

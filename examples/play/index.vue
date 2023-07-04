@@ -50,6 +50,7 @@
           </el-wp-form-item>
           <span>分钟后，即完成课程，并获得积分</span>
           <el-wp-form-item pattern="number" prop="credit"
+                           required
                            style="width: 100px; margin: 0 10px; display: inline-block;">
             <el-input v-model="form.credit" placeholder="分数" type="text"/>
           </el-wp-form-item>
@@ -58,7 +59,7 @@
       </el-wp-form-item>
       <!-- E 积分设置 -->
       <el-wp-form-item class="mt-125">
-        <el-button type="primary" style="min-width: 8rem" @click.stop="handlePublic">{{courseId ? '确定' : '发布资源'}}</el-button>
+        <el-button type="primary" style="min-width: 8rem" @click.stop="onSubmit">{{courseId ? '确定' : '发布资源'}}</el-button>
       </el-wp-form-item>
     </el-form>
     <el-button @click="form.isShowActiveArea = !form.isShowActiveArea">toggle活动名称</el-button>
@@ -71,7 +72,7 @@ export default {
       form: {
         name: "",
         creditsTime: "",
-        credit: "",
+        credit: '',
         resourceModels: [], // 视频文件
         videoTypes: [],
         sourceType: "CREATE",

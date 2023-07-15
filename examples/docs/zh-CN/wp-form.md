@@ -99,7 +99,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
             align="top"
             :is-init-collapse="false"
             :col-count="3">
-  <el-wp-form-item label="活动名称">
+  <el-wp-form-item label="活动名称" prop="name" required ref="active">
     <el-input v-model="form.name"></el-input>
   </el-wp-form-item>
   <el-wp-form-item label="活动区域">
@@ -131,11 +131,13 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
   <el-wp-form-item label="活动形式">
     <el-input type="textarea" v-model="form.desc"></el-input>
   </el-wp-form-item>
+  <button type="button" @click="isShowActive = !isShowActive">切换状态</button>  
 </el-wp-form>
 <script>
   export default {
     data() {
       return {
+        isShowActive: false,
         form: {
           name: '',
           region: '',
@@ -152,7 +154,10 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
       onSubmit() {
         console.log('submit!');
       }
-    }
+    },
+    mounted () {
+        console.log(this.$refs.active, 'active');
+    }  
   }
 </script>
 ```

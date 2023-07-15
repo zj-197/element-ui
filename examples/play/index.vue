@@ -3,17 +3,20 @@
     <el-upload action="" :auto-upload="false" :before-start="handleStart">
       <el-button>选择文件</el-button>
     </el-upload>
+    <div v-tooltip-mul:tooltip="'我们不一样随风倒士大夫撒打发塑料袋封口阿拉阿萨啊领导反馈'" style="width:100px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden">
+      我们不一样随风倒士大夫撒打发塑料袋封口阿拉阿萨啊领导反馈
+    </div>
+    <el-tooltip ref="tooltip"></el-tooltip>
     <el-form label-position="top" :model="form" size="medium" ref="form">
       <!-- S 标题 -->
-      <el-wp-form-item required label="标题" prop="title">
+      <el-wp-form-item label="标题" prop="title">
         <el-input v-model="form.title" type="text" placeholder="请输入标题"></el-input>
       </el-wp-form-item>
       <!-- E 标题 -->
 
       <!-- S 资源分类 -->
-      <el-wp-form-item required label="资源分类" prop="sourceType">
-        <el-radio-group v-model="form.sourceType"
-                        :option-data="[{label: '自制资源', value: 'CREATE'}, {label: '网络资源', value: 'ONLINE'}]"></el-radio-group>
+      <el-wp-form-item label="资源分类" prop="sourceType" required>
+        <el-wp-date-picker type="date" v-model="form.sourceType"></el-wp-date-picker>
       </el-wp-form-item>
       <!-- E 资源分类 -->
       <!-- S 资源链接 -->
@@ -28,7 +31,7 @@
       <!-- S 栏目分类 -->
       <el-wp-form-item required label="栏目分类" prop="clumnTypes" value-type="array">
         <el-checkbox-group v-model="form.clumnTypes">
-          <el-checkbox v-for="item in Columns" :key="item.id" :label="item.id">{{item.name}}</el-checkbox>
+          <el-checkbox v-for="item in Columns" :key="item.id" :label="item.id">{{ item.name }}</el-checkbox>
         </el-checkbox-group>
       </el-wp-form-item>
       <!-- E 栏目分类 -->
@@ -59,7 +62,8 @@
       </el-wp-form-item>
       <!-- E 积分设置 -->
       <el-wp-form-item class="mt-125">
-        <el-button type="primary" style="min-width: 8rem" @click.stop="onSubmit">{{courseId ? '确定' : '发布资源'}}</el-button>
+        <el-button type="primary" style="min-width: 8rem" @click.stop="onSubmit">{{ courseId ? '确定' : '发布资源' }}
+        </el-button>
       </el-wp-form-item>
     </el-form>
     <el-button @click="form.isShowActiveArea = !form.isShowActiveArea">toggle活动名称</el-button>
@@ -70,22 +74,22 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        creditsTime: "",
+        name: '',
+        creditsTime: '',
         credit: '',
         resourceModels: [], // 视频文件
         videoTypes: [],
-        sourceType: "CREATE",
+        sourceType: '',
         clumnTypes: [],
-        assetsLink: "",
+        assetsLink: ''
       },
       Columns: [],
       Videos: []
-    }
+    };
   },
   computed: {
-    courseId () {
-      return 'xxx'
+    courseId() {
+      return 'xxx';
     }
   },
   methods: {
@@ -97,13 +101,13 @@ export default {
           console.log('error submit!!');
           return false;
         }
-      })
+      });
     },
-    handleStart (fileList) {
+    handleStart(fileList) {
       console.log(fileList, 'fileList');
-      return fileList
+      return fileList;
       // return null
     }
   }
-}
+};
 </script>

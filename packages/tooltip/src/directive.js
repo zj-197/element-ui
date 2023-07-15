@@ -6,12 +6,13 @@
 */
 import debounce from 'throttle-debounce/debounce';
 import {on, off} from 'element-ui/src/utils/dom';
-import Vue from 'vue';
 function resisterEvents(el, binding, vnode) {
   el.__ElementToolTipTriggerFn = debounce(50, tooltip => tooltip.handleShowPopper());
   const tooltipContent = binding.value || (el.dataset ? el.dataset.tooltipContent : undefined) || ''; // 在元素上通过data-tooltip-content进行设置
   const tooltip = vnode.context.$refs[binding.arg];
+  const isOverflow = binding.modifiers.overflow;
   el.__ElTooltipEnterEvent__ = () => {
+    if (isOverflow && el.scrollWidth <= el.clientWidth) return;
     if (tooltip) {
       tooltip.referenceElm = el;
       tooltip.$refs.popper && (tooltip.$refs.popper.style.display = 'none');
@@ -22,6 +23,7 @@ function resisterEvents(el, binding, vnode) {
     }
   };
   el.__ElTooltipLeaveEvent__ = () => {
+    if (isOverflow && el.scrollWidth <= el.clientWidth) return;
     if (tooltip) {
       tooltip.setExpectedState(false);
       tooltip.handleClosePopper();
@@ -31,10 +33,6 @@ function resisterEvents(el, binding, vnode) {
   on(el, 'mouseleave', el.__ElTooltipLeaveEvent__);
 }
 export default {
-  bind(el, binding, vnode) {
-    if (Vue.prototype.$isServer) return;
-    resisterEvents(el, binding, vnode);
-  },
   inserted(el, binding, vnode) {
     resisterEvents(el, binding, vnode);
   },

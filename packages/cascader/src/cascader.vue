@@ -301,8 +301,18 @@ export default {
     readonly() {
       return !this.filterable || this.multiple;
     },
+    realClearable() {
+      const hasClearable = this.$options.propsData.hasOwnProperty('clearable');
+      if (hasClearable) return this.clearable;
+      if (!this.elFormItem) return true;
+      const elFormItemHasClearable = this.elFormItem.$options.propsData.hasOwnProperty('required');
+      if (elFormItemHasClearable) return !this.elFormItem.required;
+      const rules = this.elFormItem.rules;
+      if (Array.isArray(rules) && rules.length) return !rules.some(item => item.required);
+      return true;
+    },
     clearBtnVisible() {
-      if (!this.clearable || this.isDisabled || this.filtering || !this.inputHover) {
+      if (!this.realClearable || this.isDisabled || this.filtering || !this.inputHover) {
         return false;
       }
 
@@ -699,6 +709,7 @@ export default {
     },
     onFocus() {
       if (typeof this.optionData === 'function' && this.isLoad !== true && this.triggerMethod === 'focus') {
+        if (this.isLoading) return;
         this.isLoading = true;
         this.optionData().then(res => {
           this.nodeList = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];

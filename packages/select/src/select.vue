@@ -200,11 +200,21 @@
         let hasValue = this.multiple
           ? Array.isArray(this.value) && this.value.length > 0
           : this.value !== undefined && this.value !== null && this.value !== '';
-        let criteria = this.clearable &&
+        let criteria = this.realClearable &&
           !this.selectDisabled &&
           this.inputHovering &&
           hasValue;
         return criteria;
+      },
+      realClearable() {
+        const hasClearable = this.$options.propsData.hasOwnProperty('clearable');
+        if (hasClearable) return this.clearable;
+        if (!this.elFormItem) return true;
+        const elFormItemHasClearable = this.elFormItem.$options.propsData.hasOwnProperty('required');
+        if (elFormItemHasClearable) return !this.elFormItem.required;
+        const rules = this.elFormItem.rules;
+        if (Array.isArray(rules) && rules.length) return !rules.some(item => item.required);
+        return true;
       },
 
       iconClass() {
@@ -479,8 +489,9 @@
 
         this.navigateOptions(direction);
       },
-      onFocus() {
+      getOptionData() {
         if (typeof this.optionData === 'function' && this.isLoad !== true && this.triggerMethod === 'focus') {
+          if (this.customLoading) return;
           this.customLoading = true;
           this.optionData().then(res => {
             this.listData = (isObject(res) && (Array.isArray(res.data) || isObject(res.data)) ? res.data : res) || [];
@@ -635,7 +646,7 @@
             }
             this.visible = true;
           }
-          this.onFocus();
+          this.getOptionData();
           this.$emit('focus', event);
         } else {
           this.softFocus = false;

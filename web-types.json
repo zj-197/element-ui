@@ -5638,7 +5638,14 @@
           "doc-url": "https://zj-197.github.io/element-ui/#/zh-CN/component/tootip",
           "attribute-value": {
             "type": "string | object"
-          }
+          },
+          "modifiers": [
+            {
+              "name": "overflow",
+              "description": "Make the tooltip show when text overflow",
+              "type": "boolean"
+            }
+          ]
         },
         {
           "name": "infinite-scroll",

@@ -263,10 +263,14 @@ import Vue from 'vue';
 import { Button } from 'wp-element-ui';
 
 Vue.prototype.$ELEMENT = { 
-  size: 'small', zIndex: 3000,
+  size: 'small', 
+  zIndex: 3000,
   emptyImage: '', //数据为空时展示的图片，格式为base64或者网络地址
   errorImage: '', //数据加载错误时展示的图片，图片格式为base64或者网络地址
-  tabsActiveBarBg: '' // 表示tabs激活时导航条的尺寸
+  tabsActiveBarBg: '', // 表示tabs激活时导航条的背景（可以为背景色或者背景图片）
+  tabsActiveBarHeight: '', // 表示tabs激活时导航条的高度
+  tabsActiveBarRatio: 0, // 表示tabs内容宽度与激活时的tab宽度的比例，比如el-tab-pane lable的宽度为40，ratio为2时，导航条的宽度就为20
+  paginationKey: {page: 'page', pageSize: 'pageSize', total: 'total', list: 'list'}, // el-search-table以及el-load-list的paginationKey
 };
 Vue.use(Button);
 ```

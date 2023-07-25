@@ -35,7 +35,10 @@ const install = function(Vue, opts = {}) {
     zIndex: opts.zIndex || 2000,
     emptyImage: opts.emptyImage,
     errorImage: opts.errorImage,
-    tabsActiveBarBg: opts.tabsActiveBarBg
+    tabsActiveBarBg: opts.tabsActiveBarBg,
+    tabsActiveBarHeight: opts.tabsActiveBarHeight,
+    tabsActiveBarRatio: opts.tabsActiveBarRatio,
+    paginationKey: opts.paginationKey
   };
 
   Vue.prototype.$loading = Loading.service;

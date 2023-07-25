@@ -44,9 +44,9 @@
           });
 
           const transform = `translate${firstUpperCase(sizeDir)}(${offset}px)`;
-          const ratio = (this.rootTabs && this.rootTabs.activeBarRatio) || 0;
+          const ratio = (this.rootTabs && this.rootTabs.activeBarRatio) || (this.$ELEMENT ? this.$ELEMENT.tabsActiveBarRatio : '') || 0;
           const width = (this.rootTabs && this.rootTabs.activeBarWidth) || '';
-          const height = (this.rootTabs && this.rootTabs.activeBarHeight) || '';
+          const height = (this.rootTabs && this.rootTabs.activeBarHeight) || (this.$ELEMENT ? this.$ELEMENT.tabsActiveBarHeight : '') || '';
           const color = (this.rootTabs && this.rootTabs.activeBarColor) || (this.$ELEMENT ? this.$ELEMENT.tabsActiveBarBg : '');
           style[sizeName] = tabSize + 'px';
           if (ratio > 1) {

@@ -141,7 +141,10 @@ export interface InstallationOptions {
   zIndex?: number,
   emptyImage?: string,
   errorImage?: string,
-  tabsActiveBarBg?: string
+  tabsActiveBarBg?: string,
+  tabsActiveBarHeight?: string,
+  tabsActiveBarRatio?: number,
+  paginationKey?: {page?: string, pageSize?: string, total?: string, list?: string}
 }
 
 /** The version of element-ui */

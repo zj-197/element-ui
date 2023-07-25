@@ -192,12 +192,13 @@ export default {
   },
   mixins: [Locale],
   data(vm) {
+    const rootPagination = vm.$ELEMENT ? vm.$ELEMENT.paginationKey || Object.create(null) : Object.create(null);
     const realPaginationKey = assign({
       page: 'page',
       pageSize: 'pageSize',
       total: 'total',
       list: 'list' // 列表记录字段key
-    }, vm.paginationKey);
+    }, rootPagination, vm.paginationKey);
     return {
       tableList: [], // 列表数据
       pagination: {
@@ -247,12 +248,13 @@ export default {
       }, Object.create(null));
     },
     realPaginationKey() {
+      const rootPagination = this.$ELEMENT ? this.$ELEMENT.paginationKey || Object.create(null) : Object.create(null);
       return assign({
         page: 'page',
         pageSize: 'pageSize',
         total: 'total',
         list: 'list' // 列表记录字段key
-      }, this.paginationKey);
+      }, rootPagination, this.paginationKey);
     }
   },
   created() {
@@ -326,6 +328,9 @@ export default {
         return this.getTableList({
           [this.realPaginationKey.page]: 1,
           [this.realPaginationKey.pageSize]: pageSize
+        }).then(res => {
+          this.clearSelection();
+          return res;
         });
       } else {
         return this.getTableList({
@@ -351,6 +356,10 @@ export default {
     // 设置pagination数据
     setPagination(key, value) {
       this.$set(this.pagination, key, value);
+    },
+    clearSelection() {
+      const tableVm = this.getTableVm();
+      tableVm && tableVm.clearSelection();
     },
     onSelectable(row) {
       const selected = this.selected;

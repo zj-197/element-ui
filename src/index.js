@@ -214,7 +214,10 @@ const install = function(Vue, opts = {}) {
     zIndex: opts.zIndex || 2000,
     emptyImage: opts.emptyImage,
     errorImage: opts.errorImage,
-    tabsActiveBarBg: opts.tabsActiveBarBg
+    tabsActiveBarBg: opts.tabsActiveBarBg,
+    tabsActiveBarHeight: opts.tabsActiveBarHeight,
+    tabsActiveBarRatio: opts.tabsActiveBarRatio,
+    paginationKey: opts.paginationKey
   };
 
   Vue.prototype.$loading = Loading.service;
@@ -233,7 +236,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.2.5',
+  version: '1.2.7',
   locale: locale.use,
   i18n: locale.i18n,
   install,

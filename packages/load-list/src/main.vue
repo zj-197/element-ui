@@ -128,9 +128,9 @@ export default {
     },
     realHiddenPagination() {
       const page = this.pagination[this.realPaginationKey.page];
-      const list = this.pagination[this.realPaginationKey.list];
+      const list = this.list;
       const isHidden = page === 1 && (Array.isArray(list) ? list.length === 0 : true);
-      return this.$options.propsData.hasOwnProperty('hiddenPagination') ? this.hiddenPagination : isHidden;
+      return this.$options.propsData.hasOwnProperty('hiddenPagination') ? this.hiddenPagination : !this.isError && isHidden;
     },
     realErrorImage() {
       return this.errorImage || (this.$ELEMENT ? this.$ELEMENT.errorImage : undefined) || this.realEmptyImage;

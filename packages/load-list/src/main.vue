@@ -21,7 +21,7 @@
       </slot>
     </div>
     <el-pagination v-bind="realPaginationProps"
-                   v-if="!hiddenPagination"
+                   v-if="!realHiddenPagination"
                    class="el-load-list-pagination"
                    @size-change="onPaginationSizeChange"
                    @current-change="onPaginationPageChange"/>
@@ -123,6 +123,12 @@ export default {
     },
     realEmptyImage() {
       return this.emptyImage || (this.$ELEMENT ? this.$ELEMENT.emptyImage : undefined);
+    },
+    realHiddenPagination() {
+      const page = this.pagination[this.realPaginationKey.page];
+      const list = this.pagination[this.realPaginationKey.list];
+      const isHidden = page === 1 && (Array.isArray(list) ? list.length === 0 : true);
+      return this.$options.propsData.hasOwnProperty('hiddenPagination') ? this.hiddenPagination : isHidden;
     },
     realErrorImage() {
       return this.errorImage || (this.$ELEMENT ? this.$ELEMENT.errorImage : undefined) || this.realEmptyImage;

@@ -1,6 +1,6 @@
 {
   "name": "wp-element-ui",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "element-ui二开版",
   "main": "lib/element-ui.common.js",
   "files": [

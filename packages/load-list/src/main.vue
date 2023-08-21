@@ -102,7 +102,8 @@ export default {
     ElButton
   },
   data(vm) {
-    const realPaginationKey = assign(Object.create(null), PAGINATION_KEY, vm.paginationKey);
+    const rootPagination = vm.$ELEMENT ? vm.$ELEMENT.paginationKey || Object.create(null) : Object.create(null);
+    const realPaginationKey = assign(Object.create(null), PAGINATION_KEY, rootPagination, vm.paginationKey);
     return {
       list: Array.isArray(vm.initValue) ? vm.initValue : [],
       isLoading: !Array.isArray(vm.initValue), // 是否加载中
@@ -116,7 +117,8 @@ export default {
   },
   computed: {
     realPaginationKey() {
-      return assign(Object.create(null), PAGINATION_KEY, this.paginationKey);
+      const rootPagination = this.$ELEMENT ? this.$ELEMENT.paginationKey || Object.create(null) : Object.create(null);
+      return assign(Object.create(null), PAGINATION_KEY, rootPagination, this.paginationKey);
     },
     loadDataIsFn() {
       return typeof this.loadData === 'function';

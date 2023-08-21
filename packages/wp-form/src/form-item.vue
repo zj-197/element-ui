@@ -94,6 +94,7 @@ export default {
     };
   },
   mounted() {
+    if (this.hidden) return;
     this.selectChild = this.getChildrenByComponentTag(this.$children);
     if (!this.selectChild) return;
     const componentTag = this.selectChild.$options._componentTag;
@@ -107,6 +108,7 @@ export default {
   },
   computed: {
     realRules({ rules, required, valueType, componentTag, pattern }) {
+      if (this.hidden) return;
       if (rules) return rules;
       const rulesArray = [];
       if (required) {

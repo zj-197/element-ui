@@ -92,7 +92,7 @@ export default {
     },
     clearable: {
       type: Boolean,
-      default: true
+      default: false
     },
     id: {
       default: ''

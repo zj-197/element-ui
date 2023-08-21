@@ -9,7 +9,7 @@
       'el-input-group--append': $slots.append,
       'el-input-group--prepend': $slots.prepend,
       'el-input--prefix': $slots.prefix || prefixIcon,
-      'el-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword
+      'el-input--suffix': $slots.suffix || suffixIcon || realClearable || showPassword
     }
     ]"
     @mouseenter="hovering = true"
@@ -193,6 +193,16 @@
     },
 
     computed: {
+      realClearable() {
+        const hasClearable = this.$options.propsData.hasOwnProperty('clearable');
+        if (hasClearable) return this.clearable;
+        if (!this.elFormItem) return true;
+        const elFormItemHasClearable = this.elFormItem.$options.propsData.hasOwnProperty('required');
+        if (elFormItemHasClearable) return !this.elFormItem.required;
+        const rules = this.elFormItem.rules;
+        if (Array.isArray(rules) && rules.length) return !rules.some(item => item.required);
+        return true;
+      },
       _elFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
       },
@@ -222,7 +232,7 @@
         return this.value === null || this.value === undefined ? '' : String(this.value);
       },
       showClear() {
-        return this.clearable &&
+        return this.realClearable &&
           !this.inputDisabled &&
           !this.readonly &&
           this.nativeInputValue &&

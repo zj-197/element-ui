@@ -569,13 +569,11 @@ export default {
       const page = this.pagination[this.realPaginationKey.page];
       const pageSize = this.pagination[this.realPaginationKey.pageSize];
       const total = this.pagination[this.realPaginationKey.total];
-      const listLength = this.listData.length;
-      const isLastPage = page * pageSize >= total;
-      // 如果是最后一页
-      if (isLastPage) {
-        if (delCount >= listLength) {
-          this.setPagination(this.realPaginationKey.page, Math.max(page - 1, 1));
-        }
+      // 删除之后当前最大页数
+      const currentMaxPage = Math.ceil((total - delCount) / pageSize);
+      // 如果删除之前的页数大于删除之后的页数那么就页数重置为删除之后的最大页数
+      if (page > currentMaxPage) {
+        this.setPagination(this.realPaginationKey.page, currentMaxPage);
       }
       return this.refresh(false);
     }

@@ -213,6 +213,10 @@ export default {
     refresh(isForce) {
       return this.getTableInstance().refresh(isForce);
     },
+    // 删除时的刷新
+    refreshOfDelete(delCount) {
+      return this.getTableInstance().refreshOfDelete(delCount);
+    },
     // 获取选择的
     getSelected() {
       return this.getTableInstance().getSelected();

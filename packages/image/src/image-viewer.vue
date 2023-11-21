@@ -36,6 +36,7 @@
       <!-- CANVAS -->
       <div class="el-image-viewer__canvas">
         <img
+          alt="image-viewer"
           v-for="(url, i) in urlList"
           v-if="i === index"
           ref="img"
@@ -43,10 +44,9 @@
           :key="url"
           :src="currentImg"
           :style="imgStyle"
-          referrerpolicy='no-referrer'
           @load="handleImgLoad"
           @error="handleImgError"
-          @mousedown="handleMouseDown">
+          @mousedown="handleMouseDown"/>
       </div>
     </div>
   </transition>

@@ -214,6 +214,26 @@ export default {
         });
       }
     },
+    /**
+     * @description - 表格删除刷新时的方法, 主要作用为当删除最后一页数据时，删除的个数大于当前的pageSize时，当前页数自动减一
+     * @param {number} [delCount] - 删除的个数
+     * @return {Promise<unknown>}
+     */
+    refreshOfDelete(delCount) {
+      delCount = delCount || 1;
+      const page = this.pagination[this.realPaginationKey.page];
+      const pageSize = this.pagination[this.realPaginationKey.pageSize];
+      const total = this.pagination[this.realPaginationKey.total];
+      const listLength = this.list.length;
+      const isLastPage = page * pageSize >= total;
+      // 如果是最后一页
+      if (isLastPage) {
+        if (delCount >= listLength) {
+          this.setPagination(this.realPaginationKey.page, Math.max(page - 1, 1));
+        }
+      }
+      return this.refresh(false);
+    },
     // 设置pagination数据
     setPagination(key, value) {
       this.$set(this.pagination, key, value);

@@ -193,6 +193,7 @@ export default {
               value={ this.$parent.internalPageSize }
               popperClass={ this.$parent.popperClass || '' }
               size="mini"
+              clearable={false}
               on-input={ this.handleChange }
               disabled={ this.$parent.disabled }>
               {

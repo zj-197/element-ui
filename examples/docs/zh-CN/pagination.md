@@ -87,7 +87,7 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage2"
-      :page-sizes="[100, 200, 300, 400]"
+      :page-sizes="[100, 200, 300, 400, 'all']"
       :page-size="100"
       layout="sizes, prev, pager, next"
       :total="1000">

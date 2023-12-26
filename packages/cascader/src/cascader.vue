@@ -75,7 +75,7 @@
           ref="panel"
           v-show="!filtering"
           v-model="checkedValue"
-          :options="options"
+          :options="realOptions"
           :props="config"
           :border="false"
           :is-loading="isLoading"
@@ -203,6 +203,7 @@ export default {
   props: {
     value: {},
     optionData: [Array, Function],
+    options: Array,
     triggerMethod: {
       type: String,
       default: 'immediate',
@@ -323,9 +324,9 @@ export default {
     panel() {
       return this.$refs.panel;
     },
-    options() {
+    realOptions() {
       if (typeof this.optionData === 'function') return this.nodeList;
-      return this.optionData;
+      return this.options || this.optionData;
     }
   },
   created() {
@@ -362,7 +363,7 @@ export default {
         this.dispatch('ElFormItem', 'el.form.change', [val]);
       }
     },
-    options: {
+    realOptions: {
       handler: function() {
         this.$nextTick(this.computePresentContent);
       },

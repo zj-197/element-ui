@@ -199,8 +199,8 @@ export default {
               {
                 this.pageSizes.map(item =>
                   <el-option
-                    value={ item }
-                    label={ item + this.t('el.pagination.pagesize') }>
+                    value={ item === 'all' ? this.$parent.total : item }
+                    label={ isNaN(Number(item)) ? (item === 'all' ? this.t('el.table.clearFilter') : item) : item + this.t('el.pagination.pagesize') }>
                   </el-option>
                 )
               }
@@ -217,7 +217,7 @@ export default {
       methods: {
         handleChange(val) {
           if (val !== this.$parent.internalPageSize) {
-            this.$parent.internalPageSize = val = parseInt(val, 10);
+            this.$parent.internalPageSize = val = isNaN(Number(val)) ? val : Number(val);
             this.$parent.userChangePageSize = true;
             this.$parent.$emit('update:pageSize', val);
             this.$parent.$emit('size-change', val);
@@ -359,7 +359,7 @@ export default {
   computed: {
     internalPageCount() {
       if (typeof this.total === 'number') {
-        return Math.max(1, Math.ceil(this.total / this.internalPageSize));
+        return Math.max(1, Math.ceil(this.total / this.internalPageSize) || 0);
       } else if (typeof this.pageCount === 'number') {
         return Math.max(1, this.pageCount);
       }

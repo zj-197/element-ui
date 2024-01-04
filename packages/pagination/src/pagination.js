@@ -10,7 +10,7 @@ export default {
 
   props: {
     pageSize: {
-      type: Number,
+      type: [Number, String],
       default: 10
     },
     hidden: {
@@ -74,6 +74,7 @@ export default {
     return {
       internalCurrentPage: 1,
       internalPageSize: 0,
+      bindPageSize: 0,
       lastEmittedPage: -1,
       userChangePageSize: false
     };
@@ -178,9 +179,11 @@ export default {
           handler(newVal, oldVal) {
             if (valueEquals(newVal, oldVal)) return;
             if (Array.isArray(newVal)) {
-              this.$parent.internalPageSize = newVal.indexOf(this.$parent.pageSize) > -1
+              const val = newVal.indexOf(this.$parent.pageSize) > -1
                 ? this.$parent.pageSize
                 : this.pageSizes[0];
+              this.$parent.bindPageSize = val === 'all' ? this.$parent.total + val : val;
+              this.$parent.internalPageSize = val === 'all' ? this.$parent.total : (isNaN(parseInt(val, 10)) ? val : parseInt(val, 10));
             }
           }
         }
@@ -190,7 +193,7 @@ export default {
         return (
           <span class="el-pagination__sizes">
             <el-select
-              value={ this.$parent.internalPageSize }
+              value={ this.$parent.bindPageSize }
               popperClass={ this.$parent.popperClass || '' }
               size="mini"
               clearable={false}
@@ -199,7 +202,7 @@ export default {
               {
                 this.pageSizes.map(item =>
                   <el-option
-                    value={ item === 'all' ? this.$parent.total : item }
+                    value={ item === 'all' ? this.$parent.total + item : item }
                     label={ isNaN(Number(item)) ? (item === 'all' ? this.t('el.table.clearFilter') : item) : item + this.t('el.pagination.pagesize') }>
                   </el-option>
                 )
@@ -216,8 +219,9 @@ export default {
 
       methods: {
         handleChange(val) {
-          if (val !== this.$parent.internalPageSize) {
-            this.$parent.internalPageSize = val = isNaN(Number(val)) ? val : Number(val);
+          if (val !== this.$parent.bindPageSize) {
+            this.$parent.bindPageSize = val;
+            this.$parent.internalPageSize = val = isNaN(parseInt(val, 10)) ? val : parseInt(val, 10);
             this.$parent.userChangePageSize = true;
             this.$parent.$emit('update:pageSize', val);
             this.$parent.$emit('size-change', val);
@@ -383,7 +387,8 @@ export default {
     pageSize: {
       immediate: true,
       handler(val) {
-        this.internalPageSize = isNaN(val) ? 10 : val;
+        this.bindPageSize = val === 'all' ? this.total + val : val;
+        this.internalPageSize = val === 'all' ? this.total : (isNaN(parseInt(val, 10)) ? val : parseInt(val, 10));
       }
     },
 

@@ -17,5 +17,6 @@ export declare class ElLoadList extends ElementUIComponent {
     autoScrollTop: boolean
     initValue: Array<any>
     total: number
+    elementLoadingBackground: string
     refresh: (isForce?: boolean) => Promise<any>
 }

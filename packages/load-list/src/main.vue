@@ -1,7 +1,7 @@
 <template>
   <div class="el-load-list"
        :element-loading-text="loadingText"
-       element-loading-background="rgba(255, 255, 255, 0.7)"
+       :element-loading-background="elementLoadingBackground"
        v-loading="isLoading">
     <slot :list="list" :isError="isError"></slot>
     <div v-if="list.length === 0" class="el-load-list-empty-container"
@@ -89,6 +89,10 @@ export default {
     loadingText: {
       type: String,
       default: t('el.select.loading')
+    },
+    elementLoadingBackground: {
+      type: String,
+      default: 'rgba(255, 255, 255, 0.7)'
     },
     autoScrollTop: {
       type: Boolean,

@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -86,16 +86,25 @@
               "name": "hiddenPagination",
               "description": "Hide pagination or not",
               "type": "boolean"
+            },
+            {
+              "name": "elementLoadingBackground",
+              "description": "element loading mask background",
+              "type": "string"
             }
           ],
           "slots": [
             {
               "name": "default",
-              "description": "description"
+              "description": "default slot"
             },
             {
-              "name": "title",
-              "description": "content of the Alert title"
+              "name": "empty",
+              "description": "when content is empty"
+            },
+            {
+              "name": "empty-btn",
+              "description": "empty button"
             }
           ],
           "js": {
@@ -4279,6 +4288,11 @@
               "type": "boolean"
             },
             {
+              "name": "highlightSelectionRow",
+              "description": "是否要高亮复选框选中行（仅针对开启 selection 有效）",
+              "type": "boolean"
+            },
+            {
               "name": "cellStyle",
               "description": "Function that returns custom style for a cell, or an object assigning custom style for every cell",
               "type": "object|(function(cellCallbackParams): object)"
@@ -4499,6 +4513,11 @@
             {
               "name": "highlightCurrentRow",
               "description": "Whether current row is highlighted",
+              "type": "boolean"
+            },
+            {
+              "name": "highlightSelectionRow",
+              "description": "是否要高亮复选框选中行（仅针对开启 selection 有效）",
               "type": "boolean"
             },
             {

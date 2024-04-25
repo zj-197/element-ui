@@ -15,6 +15,7 @@
         <el-wp-search-table
                 size="medium"
                 row-key="id"
+                col-count="3"
                 :columns="columns"
                 :load-data="getList">
             <template slot="actions" slot-scope="{row}">
@@ -31,8 +32,8 @@
 </template>
 
 <script>
-    // import {ElWpSearchTable} from "wp-element-ui";
-    // const columns =  ElWpSearchTable.defineColumnsConfig([{}]) 这样可以获得更好的代码提示
+    // import {WpSearchTable} from "wp-element-ui";
+    // const columns =  WpSearchTable.defineColumnsConfig([{}]) 这样可以获得更好的代码提示
     export default {
         data() {
             return {

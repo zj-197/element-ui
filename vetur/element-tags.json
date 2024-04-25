@@ -137,7 +137,7 @@
     "defaults": ["label"]
   },
   "el-table": {
-    "attributes": ["data", "height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
+    "attributes": ["data", "height", "max-height", "stripe", "border", "fit", "show-header", "highlight-current-row", "highlight-selection-row", "current-row-key", "row-class-name", "cell-class-name", "cell-style", "header-row-class-name", "header-row-style", "header-cell-name", "header-cell-style", "row-style", "row-key", "empty-text", "default-expand-all", "expand-row-keys", "default-sort", "tooltip-effect", "show-summary", "sum-text", "summary-method", "span-method", "select-on-indeterminate", "select", "select-all", "selection-change", "cell-mouse-enter", "cell-mouse-leave", "cell-click", "cell-dbclick", "row-click", "row-contextmenu", "row-dbclick", "header-click", "sort-change", "filter-change", "current-change", "header-draggend", "expand", "expand-change"],
     "defaults": [":data"],
     "subtags": ["el-table-column"],
     "description": "Display multiple data with similar format. You can sort, filter, compare your data in a table."
@@ -325,7 +325,7 @@
     "description": "Container for footers."
   },
   "el-load-list": {
-    "attributes": ["load-data", "hidden-pagination", "total", "init-value", "page-size", "pagination-key", "pagination-props", "empty-text", "empty-btn-text", "empty-image", "error-text", "error-btn-text", "error-image", "loading-text", "auto-scroll-top"],
+    "attributes": ["load-data", "hidden-pagination", "total", "init-value", "page-size", "pagination-key", "pagination-props", "empty-text", "empty-btn-text", "empty-image", "error-text", "error-btn-text", "error-image", "loading-text", "auto-scroll-top", "element-loading-background"],
     "defaults": ["load-data"],
     "description": "Recorded data list."
   },

@@ -129,6 +129,10 @@ export default {
       type: Boolean,
       default: true
     },
+    highlightSelectionRow: {
+      type: Boolean,
+      default: false
+    },
 
     currentRowKey: [String, Number],
 
@@ -627,6 +631,7 @@ export default {
           header-row-class-name={this.headerRowClassName}
           header-row-style={this.headerRowStyle}
           highlight-current-row={this.highlightCurrentRow}
+          highlight-selection-row={this.highlightSelectionRow}
           current-row-key={this.currentRowKey}
           expand-row-keys={this.expandRowKeys}
           default-expand-all={this.defaultExpandAll}

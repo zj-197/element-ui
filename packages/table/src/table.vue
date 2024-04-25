@@ -294,6 +294,10 @@
       headerCellStyle: [Object, Function],
 
       highlightCurrentRow: Boolean,
+      highlightSelectionRow: {
+        type: Boolean,
+        default: false
+      },
 
       currentRowKey: [String, Number],
 

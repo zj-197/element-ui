@@ -6,7 +6,8 @@ import ElCol from 'element-ui/packages/col';
 import {noop} from 'element-ui/src/utils/util';
 import {t} from 'element-ui/src/locale';
 import {assign} from 'element-ui/src/utils/lodash';
-
+import {on, off} from 'element-ui/src/utils/dom';
+import { debounce } from 'throttle-debounce';
 export default {
   name: 'ElWpForm',
   components: {
@@ -116,11 +117,19 @@ export default {
     }
   },
   computed: {
-    span() {
-      return Math.ceil(24 / this.colCount);
-    },
     contentSpan() {
-      return Math.floor(24 / this.span) - 1;
+      return Math.floor(24 / this.span);
+    },
+    spanCol() {
+      const span = Math.ceil(24 / this.colCount);
+      const contentSpan = Math.floor(24 / span);
+      return {
+        xl: span,
+        lg: span,
+        md: Math.ceil(24 / Math.max(contentSpan - 1, 1)),
+        sm: Math.ceil(24 / Math.max(contentSpan - 2, 1)),
+        xs: Math.ceil(24 / Math.max(contentSpan - 3, 1))
+      };
     },
     isShowActions() {
       return this.isShowCollapse || this.isShowSearchBtn || this.isShowResetBtn;
@@ -140,8 +149,44 @@ export default {
     return {
       toggleCollapse: this.isInitCollapse, // 是否收起, 默认为收起
       isResetting: false,
-      isSearching: false
+      isSearching: false,
+      span: Math.ceil(24 / this.colCount)
     };
+  },
+  created() {
+    const obj = {
+      xl: this.contentSpan,
+      lg: this.contentSpan,
+      md: Math.max(this.contentSpan - 1, 1),
+      sm: Math.max(this.contentSpan - 2, 1),
+      xs: Math.max(this.contentSpan - 3, 1)
+    };
+    this.resizeOberverfn = debounce(50, (e) => {
+      const innerWidth = e.target.innerWidth;
+      if (innerWidth >= 1920) {
+        this.span = Math.ceil(24 / obj.xl);
+        return;
+      }
+      if (innerWidth >= 1200) {
+        this.span = Math.ceil(24 / obj.lg);
+        return;
+      }
+      if (innerWidth >= 992) {
+        this.span = Math.ceil(24 / obj.md);
+        return;
+      }
+      if (innerWidth >= 768) {
+        this.span = Math.ceil(24 / obj.sm);
+        return;
+      }
+      if (innerWidth >= 767) {
+        this.span = Math.ceil(24 / obj.xs);
+        return;
+      }
+    });
+    if (!this.$isServer) {
+      on(window, 'resize', this.resizeOberverfn);
+    }
   },
   render(h) {
     if (!this.$slots.default) return this.$slots.default;
@@ -154,7 +199,7 @@ export default {
         slotDefaultContent.push(item);
         continue;
       }
-      const display = this.isShowCollapse && this.toggleCollapse && (index >= this.contentSpan) ? 'none' : undefined;
+      const display = this.isShowCollapse && this.toggleCollapse && (index >= Math.max(this.contentSpan - 1, 1)) ? 'none' : undefined;
       if (/ElCol$/g.test(item.tag)) {
         slotDefaultContent.push(h('div', {
           style: {display},
@@ -163,7 +208,11 @@ export default {
       } else {
         slotDefaultContent.push(h('el-col', {
           props: {
-            span: this.span
+            xl: this.spanCol.xl,
+            lg: this.spanCol.lg,
+            md: this.spanCol.md,
+            sm: this.spanCol.sm,
+            xs: this.spanCol.xs
           },
           style: {display}
         }, [item]));
@@ -176,7 +225,11 @@ export default {
         .concat([this.renderBtnSearch(h), this.renderBtnReset(h), this.renderCollapse(h)]);
       slotDefaultContent.push(h('el-col', {
         props: {
-          span: this.span
+          xl: this.spanCol.xl,
+          lg: this.spanCol.lg,
+          md: this.spanCol.md,
+          sm: this.spanCol.sm,
+          xs: this.spanCol.xs
         },
         style: {
           marginLeft: 'auto',
@@ -215,6 +268,9 @@ export default {
         validate: this.$listeners.validate || noop
       }
     }, [rowNode]);
+  },
+  beforeDestroy() {
+    off(window, 'resize', this.resizeOberverfn);
   },
   methods: {
     renderCollapse(h) {

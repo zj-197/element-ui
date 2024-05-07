@@ -105,6 +105,7 @@ export default {
           props: assign({
             value: this.model[curVal.formItemProps.prop]
           }, curVal.tagProps),
+          attrs: curVal.tagAttrs,
           on: {
             input: (val) => {
               this.model[curVal.formItemProps.prop] = val;

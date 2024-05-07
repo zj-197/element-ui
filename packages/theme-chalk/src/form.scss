@@ -3,19 +3,7 @@
 @import "common/var";
 
 @include b(form) {
-  @include m(label-left) {
-    & .el-form-item__label {
-      text-align: left;
-    }
-  }
-  @include m(label-top) {
-    & .el-form-item__label {
-      float: none;
-      display: inline-block;
-      text-align: left;
-      padding: 0 0 10px 0;
-    }
-  }
+
   @include m(inline) {
     & .el-form-item {
       display: inline-block;
@@ -38,7 +26,19 @@
 @include b(form-item) {
   margin-bottom: 22px;
   @include utils-clearfix;
-
+  @include m(label-left) {
+    & .el-form-item__label {
+      text-align: left;
+    }
+  }
+  @include m(label-top) {
+    & .el-form-item__label {
+      float: none;
+      display: inline-block;
+      text-align: left;
+      padding: 0 0 10px 0;
+    }
+  }
   & .el-form-item {
     margin-bottom: 0;
   }

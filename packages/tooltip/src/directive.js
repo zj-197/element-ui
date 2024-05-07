@@ -8,7 +8,8 @@ import debounce from 'throttle-debounce/debounce';
 import {on, off} from 'element-ui/src/utils/dom';
 function resisterEvents(el, binding, vnode) {
   el.__ElementToolTipTriggerFn = debounce(50, tooltip => tooltip.handleShowPopper());
-  const tooltipContent = binding.value || (el.dataset ? el.dataset.tooltipContent : undefined) || ''; // 在元素上通过data-tooltip-content进行设置
+  const bindValue = el.__ElementToolTipBindingValue__;
+  const tooltipContent = bindValue || (el.dataset ? el.dataset.tooltipContent : undefined) || ''; // 在元素上通过data-tooltip-content进行设置
   const tooltip = vnode.context.$refs[binding.arg];
   const isOverflow = binding.modifiers.overflow;
   el.__ElTooltipEnterEvent__ = () => {
@@ -34,7 +35,11 @@ function resisterEvents(el, binding, vnode) {
 }
 export default {
   inserted(el, binding, vnode) {
+    el.__ElementToolTipBindingValue__ = binding.value;
     resisterEvents(el, binding, vnode);
+  },
+  update(el, binding) {
+    el.__ElementToolTipBindingValue__ = binding.value;
   },
   unbind(el) {
     off(el, 'mouseenter', el.__ElTooltipEnterEvent__);
@@ -42,5 +47,6 @@ export default {
     el.__ElTooltipEnterEvent__ = null;
     el.__ElTooltipLeaveEvent__ = null;
     el.__ElementToolTipTriggerFn = null;
+    el.__ElementToolTipBindingValue__ = null;
   }
 };

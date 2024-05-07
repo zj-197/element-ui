@@ -5,9 +5,10 @@
       'is-validating': validateState === 'validating',
       'is-success': validateState === 'success',
       'is-required': isRequired || required,
-      'is-no-asterisk': elForm && elForm.hideRequiredAsterisk
+      'is-no-asterisk': elForm && elForm.hideRequiredAsterisk,
     },
-    sizeClass ? 'el-form-item--' + sizeClass : ''
+    sizeClass ? 'el-form-item--' + sizeClass : '',
+    realLabelPosition ? 'el-form-item--label-' + realLabelPosition : '',
   ]">
     <label-wrap
       :is-auto-width="labelStyle && labelStyle.width === 'auto'"
@@ -62,6 +63,7 @@
     props: {
       label: String,
       labelWidth: String,
+      labelPosition: String,
       prop: String,
       required: {
         type: Boolean,
@@ -106,9 +108,14 @@
       labelFor() {
         return this.for || this.prop;
       },
+      realLabelPosition() {
+        if (this.labelPosition) return this.labelPosition;
+        if (this.form.labelPosition) return this.form.labelPosition;
+        return '';
+      },
       labelStyle() {
         const ret = {};
-        if (this.form.labelPosition === 'top') return ret;
+        if (this.realLabelPosition === 'top') return ret;
         const labelWidth = this.labelWidth || this.form.labelWidth;
         if (labelWidth) {
           ret.width = labelWidth;
@@ -118,7 +125,7 @@
       contentStyle() {
         const ret = {};
         const label = this.label;
-        if (this.form.labelPosition === 'top' || this.form.inline) return ret;
+        if (this.realLabelPosition === 'top' || this.form.inline) return ret;
         if (!label && !this.labelWidth && this.isNested) return ret;
         const labelWidth = this.labelWidth || this.form.labelWidth;
         if (labelWidth === 'auto') {

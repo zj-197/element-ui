@@ -37,7 +37,7 @@ export default {
     // 默认是否展开
     isInitCollapse: {
       type: Boolean,
-      default: true
+      default: false
     },
     searchBtnText: {
       type: String,

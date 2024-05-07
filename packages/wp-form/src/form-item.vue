@@ -2,6 +2,7 @@
   <el-form-item :label="label"
                 :label-width="labelWidth"
                 :size="size"
+                :label-position="labelPosition"
                 :prop="prop"
                 :rules="realRules"
                 :error="error"
@@ -70,6 +71,7 @@ export default {
       default: ''
     },
     labelWidth: String,
+    labelPosition: String,
     prop: String,
     required: {
       type: Boolean,

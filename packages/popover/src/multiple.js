@@ -3,30 +3,9 @@ import {isObject} from 'element-ui/src/utils/types';
 import Vue from 'vue';
 /** 给绑定元素注册mouseenter事件 */
 function registEvent(el, binding, vnode) {
-  const {arg, value} = binding;
   const _this = vnode.context;
-  let popper = _this.$refs[arg];
+  let popper = getPopperAndSetContent(el, binding, vnode);
   if (!popper) return;
-  const componentOptions = popper ? popper.$vnode.componentOptions : null;
-  const isPopConfirm = componentOptions ? componentOptions.tag === 'el-popconfirm' : false;
-  if (isPopConfirm) {
-    const title = value || (el.dataset ? el.dataset.popconfirmTitle : '');
-    if (!componentOptions.propsData.title) {
-      popper.setTitle(title);
-    }
-    popper = popper.$children[0];
-  } else {
-    if (!componentOptions.propsData.title) {
-      const popoverTitle = el.dataset ? el.dataset.popoverTitle : '';
-      const title = isObject(value) ? (value.title || popoverTitle) : popoverTitle;
-      popper.setTitle(title);
-    }
-    if (!componentOptions.propsData.content) {
-      const popoverContent = el.dataset ? el.dataset.popoverContent : '';
-      const content = isObject(value) ? (value.content || popoverContent) : value || popoverContent;
-      popper.setContent(content);
-    }
-  }
   const reference = el;
   // 这点当存在多个referenceElm指向同一个popover时，点击其中一个如果popover是显示状态的话，会出现闪现的问题
   let flag = true;
@@ -68,6 +47,35 @@ function registEvent(el, binding, vnode) {
       on(reference, 'keydown', el.__ElPopoverHandleKeydown__);
     }
   });
+}
+
+function getPopperAndSetContent(el, binding, vnode) {
+  const {arg} = binding;
+  const value = el.__ElPopoverBidingValue__;
+  const _this = vnode.context;
+  let popper = _this.$refs[arg];
+  if (!popper) return popper;
+  const componentOptions = popper ? popper.$vnode.componentOptions : null;
+  const isPopConfirm = componentOptions ? componentOptions.tag === 'el-popconfirm' : false;
+  if (isPopConfirm) {
+    const title = value || (el.dataset ? el.dataset.popconfirmTitle : '');
+    if (!componentOptions.propsData.title) {
+      popper.setTitle(title);
+    }
+    popper = popper.$children[0];
+  } else {
+    if (!componentOptions.propsData.title) {
+      const popoverTitle = el.dataset ? el.dataset.popoverTitle : '';
+      const title = isObject(value) ? (value.title || popoverTitle) : popoverTitle;
+      popper.setTitle(title);
+    }
+    if (!componentOptions.propsData.content) {
+      const popoverContent = el.dataset ? el.dataset.popoverContent : '';
+      const content = isObject(value) ? (value.content || popoverContent) : value || popoverContent;
+      popper.setContent(content);
+    }
+  }
+  return popper;
 }
 
 /** 给绑定元素注册mouseleave事件 */
@@ -135,6 +143,7 @@ function init(el, binding, vnode) {
   if (componentOptions) {
     el.__ElPopoverTrigger__ = isPopConfirm ? 'click' : componentOptions.propsData.trigger || 'click';
   }
+  el.__ElPopoverBidingValue__ = binding.value;
   bindEvent(el);
 }
 export default {
@@ -151,6 +160,9 @@ export default {
   },
   inserted(el, binding, vnode) {
     init(el, binding, vnode);
+  },
+  update(el, binding) {
+    el.__ElPopoverBidingValue__ = binding.value;
   },
   unbind(el) {
     offEvent(el);

@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -503,7 +503,7 @@
             {
               "name": "size",
               "description": "Button size",
-              "type": "'medium' | 'small' | 'mini'"
+              "type": "'medium' | 'small' | 'mini' | 'default'"
             },
             {
               "name": "icon",
@@ -1479,7 +1479,7 @@
             {
               "name": "disabled",
               "description": "Whether DatePicker is disabled",
-              "type": "boolean|string"
+              "type": "boolean | 'after' |'before'"
             },
             {
               "name": "placeholder",
@@ -2262,6 +2262,11 @@
               "type": "string"
             },
             {
+              "name": "labelPosition",
+              "description": "Position of label",
+              "type": "FormItemLabelPosition"
+            },
+            {
               "name": "rules",
               "description": "Validation rules of form",
               "type": "object"
@@ -2326,6 +2331,11 @@
               "name": "labelWidth",
               "description": "Width of label, e.g. '50px'",
               "type": "string"
+            },
+            {
+              "name": "labelPosition",
+              "description": "Position of label",
+              "type": "FormItemLabelPosition"
             },
             {
               "name": "tooltip",
@@ -4178,6 +4188,11 @@
               "type": "boolean"
             },
             {
+              "name": "size",
+              "description": "Table size",
+              "type": "'medium' | 'small' | 'mini'"
+            },
+            {
               "name": "rowKey",
               "description": "Row Key",
               "type": "string | function"
@@ -4334,6 +4349,11 @@
               "name": "showSummary",
               "description": "Whether to display a summary row",
               "type": "boolean"
+            },
+            {
+              "name": "size",
+              "description": "Table size",
+              "type": "'medium' | 'small' | 'mini'"
             },
             {
               "name": "rowKey",

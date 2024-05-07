@@ -23,6 +23,7 @@ type Columns = {
     tagProps?: object,
     label?: string,
     prop?: string,
+    tagAttrs?: object,
     formItemProps?: FormItemProps,
     columnProps?: TableColumnProps,
     tagInitValue?: any,

@@ -416,12 +416,12 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 | is-show-search-btn | 是否展示搜索按钮    | boolean       | —                     | true  |
 | search-btn-text    | 搜索按钮文字      | string        | —                     | 搜 索   |
 | is-show-collapse   | 是否显示展开收起    | boolean       | —                     | true  |
-| is-init-collapse   | 初始默认值是否为收起  | boolean       | —                     | true  |
+| is-init-collapse   | 初始默认值是否为收起  | boolean       | —                     | false |
 | collapse-text      | 收起文字        | string        | —                     | 收起    |
 | spread-text        | 展开文字        | string        | —                     | 展开    |
 | align              | 垂直方向对齐方式    | string        | top/middle/bottom     | top   |
-| search-btn-props   | 搜索按钮props配置 | object        |  —    | —   |
-| reset-btn-props    | 重置按钮props配置 | object        |  —    | —   |
+| search-btn-props   | 搜索按钮props配置 | object        |  —    | —     |
+| reset-btn-props    | 重置按钮props配置 | object        |  —    | —     |
 
 ### Form Attributes
 
@@ -469,23 +469,24 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 
 ### Wp-Form-Item Attributes
 
-| 参数                | 说明                                                   | 类型            | 可选值                                     | 默认值    |
-|-------------------|------------------------------------------------------|---------------|-----------------------------------------|--------|
-| prop              | 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的 | string        | 传入 Form 组件的 `model` 中的字段                | —      |
-| label             | 标签文本                                                 | string        | —                                       | —      |
-| pattern           | 内置正则验证的key                                           | string/RegExp | —  详见下面pattern可选值                       | —      |
-| pattern-msg       | 内置正则验证的key对应的message                                 | string        | —                         | —      |
-| tooltip           | tooltip的content提示文字                                  | string        | —            详见tool-tip                 | bottom |
-| tooltip-placement | tooltip的placement                                    | string        | —                                       | —      |
-| validator         | 验证函数                                                 | function      | —                                       | —      |
-| value-type        | 绑定值的类型                                               | string        | string/number/boolean/array/object/date | string |
-| label-width       | 表单域标签的的宽度，例如 '50px'。支持 `auto`。                       | string        | —                                       | —      |
-| required          | 是否必填，如不设置，则会根据校验规则自动生成                               | boolean       | —                                       | false  |
-| rules             | 表单验证规则                                               | object        | —                                       | —      |
-| error             | 表单域验证错误信息, 设置该值会使表单验证状态变为`error`，并显示该错误信息            | string        | —                                       | —      |
-| show-message      | 是否显示校验错误信息                                           | boolean       | —                                       | true   |
-| inline-message    | 以行内形式展示校验信息                                          | boolean       | —                                       | false  |
-| size              | 用于控制该表单域下组件的尺寸                                       | string        | medium / small / mini                   | -      |
+| 参数                | 说明                                                                 | 类型            | 可选值                                     | 默认值    |
+|-------------------|--------------------------------------------------------------------|---------------|-----------------------------------------|--------|
+| prop              | 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的               | string        | 传入 Form 组件的 `model` 中的字段                | —      |
+| label             | 标签文本                                                               | string        | —                                       | —      |
+| pattern           | 内置正则验证的key                                                         | string/RegExp | —  详见下面pattern可选值                       | —      |
+| pattern-msg       | 内置正则验证的key对应的message                                               | string        | —                         | —      |
+| tooltip           | tooltip的content提示文字                                                | string        | —            详见tool-tip                 | bottom |
+| tooltip-placement | tooltip的placement                                                  | string        | —                                       | —      |
+| validator         | 验证函数                                                               | function      | —                                       | —      |
+| value-type        | 绑定值的类型                                                             | string        | string/number/boolean/array/object/date | string |
+| label-width       | 表单域标签的的宽度，例如 '50px'。支持 `auto`。                                     | string        | —                                       | —      |
+| label-position    | 当与`form`冲突时，优先生效。表单域标签的位置，如果值为 left 或者 right 时，则需要设置 `label-width` | string        | right/left/top        | top   |
+| required          | 是否必填，如不设置，则会根据校验规则自动生成                                             | boolean       | —                                       | false  |
+| rules             | 表单验证规则                                                             | object        | —                                       | —      |
+| error             | 表单域验证错误信息, 设置该值会使表单验证状态变为`error`，并显示该错误信息                          | string        | —                                       | —      |
+| show-message      | 是否显示校验错误信息                                                         | boolean       | —                                       | true   |
+| inline-message    | 以行内形式展示校验信息                                                        | boolean       | —                                       | false  |
+| size              | 用于控制该表单域下组件的尺寸                                                     | string        | medium / small / mini                   | -      |
 
 ### Wp-Form-Item pattern 可选值
 | key          | 说明（所有验证均可为空）                                 |

@@ -71,12 +71,13 @@ export default {
   computed: {
     formConfig() {
       return this.columns.filter(item => item.hiddenInForm !== true).map(item => {
-        const {tag, label, prop, pattern, required, formItemProps, tagProps, tagInitValue} = item;
+        const {tag, label, prop, pattern, required, formItemProps, tagProps, tagInitValue, tagAttrs} = item;
         return {
           formItemProps: assign({label, prop, pattern, required}, formItemProps || Object.create(null)),
           tagProps: assign({ label, prop }, tagProps || Object.create(null)),
           tag,
-          tagInitValue
+          tagInitValue,
+          tagAttrs
         };
       });
     },

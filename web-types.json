@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -4618,7 +4618,7 @@
             {
               "name": "size",
               "description": "Size",
-              "type": "string"
+              "type": "'medium' | 'small' | 'mini'"
             },
             {
               "name": "pageSize",

@@ -220,8 +220,8 @@ export default {
       return this.getTableInstance().refreshOfDelete(delCount);
     },
     // 获取选择的
-    getSelected() {
-      return this.getTableInstance().getSelected();
+    getSelected(isGetInfo) {
+      return this.getTableInstance().getSelected(isGetInfo);
     }
   },
   render(h) {

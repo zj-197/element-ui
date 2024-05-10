@@ -388,7 +388,8 @@ export default {
         });
       }
     },
-    getSelected() {
+    getSelected(isGetInfo) {
+      if (isGetInfo) return this.selectedInfo || [];
       return this.selected || [];
     },
     // 获取受控制的列
@@ -409,6 +410,7 @@ export default {
       }
       const listClone = list.map(item => item[this.rowKey]);
       this.selected = listClone;
+      this.selectedInfo = list;
       this.$emit('selection-change', listClone, list);
     },
     // 渲染slot为空的插槽

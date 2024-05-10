@@ -75,7 +75,7 @@ export function scrollTo(element, to, duration, direction, callback) {
 
 /**
  * @description 跳转到指定位置
- * @param {Element} [container] - 容器元素
+ * @param {Element | Window} [container] - 容器元素
  * @param {Element} [scrollContainer] - 滚动容器元素
  * @param {Element} [selected] - 要跳转到element元素, 如果不传就回到顶部
  * @param {number} [duration] - 动画持续时间
@@ -88,6 +88,9 @@ export function scrollIntoView(container, scrollContainer, selected, duration, d
   container = scrollContainer ? container : getScrollContainer(container, direction !== 'horizontal');
   scrollContainer = scrollContainer || container;
   if (!container) return;
+  if (container === window) {
+    container = document.documentElement;
+  }
   const scrollDirection = direction === 'horizontal' ? 'scrollLeft' : 'scrollTop';
   const offsetDirection = direction === 'horizontal' ? 'offsetLeft' : 'offsetTop';
   const offsetReact = direction === 'horizontal' ? 'offsetWidth' : 'offsetHeight';

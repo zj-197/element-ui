@@ -1,9 +1,6 @@
 <template>
   <div>
-
-    <el-button type="primary" v-popover-mul:confirm="confirmTips">确认提示</el-button>
-    <el-button type="primary" @click="confirmTips = '我是改变之后的提示'">改变提示</el-button>
-    <el-popconfirm ref="confirm"></el-popconfirm>
+     <el-wp-date-picker  placeholder="我们不一样"></el-wp-date-picker>
   </div>
 </template>
 <script>
@@ -35,20 +32,11 @@ export default {
 
   },
   methods: {
-    onSubmit() {
-      this.$refs.form.validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    },
-    handleStart(fileList) {
-      console.log(fileList, 'fileList');
-      return fileList;
-      // return null
+    getRandomImageUrl (width, height) {
+      if (!width) width = 200
+      if (!height) height = width;
+      const randomStr = Math.random().toString(16)
+      return `https://picsum.photos/${width}/${height}?q=${randomStr}`
     }
   }
 };

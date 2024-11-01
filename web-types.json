@@ -1,7 +1,7 @@
 {
   "framework": "vue",
   "name": "wp-element-ui",
-  "version": "1.3.9",
+  "version": "1.4.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -4777,6 +4777,11 @@
               "type": "TableColumnFilter[]"
             },
             {
+              "name": "formatter",
+              "description": "An function to format cell",
+              "type": "(row: object, column: TableColumn, cellValue: any, $index: number, h) => any"
+            },
+            {
               "name": "width",
               "description": "Column width",
               "type": "string"
@@ -4898,6 +4903,11 @@
               "name": "sortable",
               "description": "Whether column can be sorted",
               "type": "boolean | \"custom\""
+            },
+            {
+              "name": "formatter",
+              "description": "An function to format cell",
+              "type": "(row: object, column: TableColumn, cellValue: any, $index: number, h) => any"
             },
             {
               "name": "filters",

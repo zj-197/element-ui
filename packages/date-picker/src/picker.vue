@@ -626,7 +626,6 @@ export default {
       gpuAcceleration: false
     };
     this.placement = PLACEMENT_MAP[this.align] || PLACEMENT_MAP.left;
-
     this.$on('fieldReset', this.handleFieldReset);
   },
 

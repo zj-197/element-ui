@@ -6,7 +6,7 @@
                   :format="realFormat"
                   :value-format="realValueFormat"
                   :readonly="readonly"
-                  :placeholder="placeholder || /range/.test(type) ? undefined : t('el.select.placeholder')"
+                  :placeholder="realPlaceholder"
                   :start-placeholder="typeof startPlaceholder === 'undefined' ? (Array.isArray(DATE_PLACEHOLDER_BY_TYPE[type]) ? DATE_PLACEHOLDER_BY_TYPE[type][0] : undefined) : startPlaceholder"
                   :end-placeholder="typeof endPlaceholder === 'undefined' ? (Array.isArray(DATE_PLACEHOLDER_BY_TYPE[type]) ? DATE_PLACEHOLDER_BY_TYPE[type][1] : undefined) : endPlaceholder"
                   :prefix-icon="prefixIcon"
@@ -193,6 +193,9 @@ export default {
     offsetDay() {
       const firstDayOfWeek = (isObject(this.pickerOptions) ? this.pickerOptions : Object.create(null)).firstDayOfWeek;
       return firstDayOfWeek === 7 ? 0 : firstDayOfWeek || DEFAULT_FIRST_WEEK_DAY;
+    },
+    realPlaceholder() {
+      return this.placeholder || (/range/.test(this.type) ? undefined : this.t('el.select.placeholder'));
     }
   },
   methods: {
